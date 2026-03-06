@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        const { hostname, pathname, search, hash } = window.location;
+
+        // Only apply this fallback strategy for GitHub Pages hosting.
+        if (!hostname.endsWith("github.io")) {
+          window.location.replace("/");
+          return;
+        }
+
+        const segments = pathname.split("/").filter(Boolean);
+        const repo = segments[0] || "";
+        const routeParts = segments.slice(1);
+
+        const base = repo ? `/${repo}/` : "/";
+        const params = new URLSearchParams(search);
+
+        if (routeParts.length) {
+          params.set("__gh_path", `/${routeParts.join("/")}`);
+        }
+
+        const target = `${base}${params.toString() ? `?${params.toString()}` : ""}${hash}`;
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
