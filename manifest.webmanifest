@@ -1,6 +1,6 @@
 ﻿{
   "name": "Rafi's Wörterbuch",
-  "short_name": "Wörterbuch",
+  "short_name": "Rafi's Wörterbuch",
   "description": "German-Bangla-English learning dictionary with category routing and offline support.",
   "start_url": "./",
   "scope": "./",
@@ -22,3 +22,4 @@
     }
   ]
 }
+
