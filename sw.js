@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v1";
+const CACHE_VERSION = "rw-cache-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {
@@ -103,15 +103,33 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Static files: cache-first for fast/offline behavior.
+  // Keep dictionary JSON fresh: network-first, cache fallback.
+  if (requestUrl.pathname.endsWith("/js/words.json")) {
+    event.respondWith(
+      fetch(request)
+        .then(networkResponse => {
+          const clone = networkResponse.clone();
+          caches.open(STATIC_CACHE).then(cache => cache.put(request, clone));
+          return networkResponse;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Static files: stale-while-revalidate for smoother updates.
   if (isStaticAsset(requestUrl)) {
     event.respondWith(
-      caches.match(request).then(async cached => {
-        if (cached) return cached;
-        const networkResponse = await fetch(request);
-        const clone = networkResponse.clone();
-        caches.open(STATIC_CACHE).then(cache => cache.put(request, clone));
-        return networkResponse;
+      caches.match(request).then(cached => {
+        const networkFetch = fetch(request)
+          .then(networkResponse => {
+            const clone = networkResponse.clone();
+            caches.open(STATIC_CACHE).then(cache => cache.put(request, clone));
+            return networkResponse;
+          })
+          .catch(() => null);
+
+        return cached || networkFetch;
       })
     );
     return;
