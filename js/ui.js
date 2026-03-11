@@ -468,6 +468,19 @@ function shouldShowSynonym(word) {
   );
 }
 
+function isVerbWord(word) {
+  const category = String(word?.category || "").toLowerCase();
+  const type = String(word?.type || "").toLowerCase();
+  return category === "verben" || type === "verb";
+}
+
+function getConjugationStatusText(word) {
+  const status = String(word?.conjugation_status || "").toLowerCase();
+  if (!status) return "Unknown";
+  if (status === "needs decision") return "Needs decision (add irregular entry)";
+  return status.charAt(0).toUpperCase() + status.slice(1);
+}
+
 function getSynonymText(word) {
   if (Array.isArray(word?.synonym) && word.synonym.length) {
     return escapeHtml(word.synonym.join(", "));
@@ -740,6 +753,26 @@ const CATEGORY_EXPLANATIONS = {
   }
 };
 
+const CATEGORY_EXPLAIN_TITLES = {
+  Verben: "Was sind Verben?",
+  Adjektiven: "Was sind Adjektive?",
+  Adverbien: "Was sind Adverbien?",
+  Nomen: "Was sind Nomen?",
+  "Nomen-Verb Verbindung": "Was sind Nomen-Verb-Verbindungen?",
+  Redewendungen: "Was sind Redewendungen?",
+  Slang: "Was ist Slang?",
+  "Schimpfwörter": "Was sind Schimpfwörter?",
+  "Best YT Kanäle": "Was sind die besten YouTube-Kanäle?",
+  "Filme & Serien": "Was sind Filme & Serien zum Deutschlernen?",
+  "Adverbiale Wendung": "Was sind adverbiale Wendungen?"
+};
+
+const CONJUGATION_EXPLANATION = {
+  de: "Die Konjugation zeigt, wie ein Verb je nach Person, Zeit und Modus verändert wird. So lernst du die korrekte Form im echten Satzgebrauch.",
+  en: "Conjugation shows how a verb changes by person, tense, and mood. It helps you use the correct form in real sentences.",
+  bn: "Konjugation দেখায় একটি verb ব্যক্তি, কাল এবং ধরন অনুযায়ী কীভাবে বদলায়। এতে বাস্তব বাক্যে সঠিক verb form ব্যবহার করা সহজ হয়।"
+};
+
 function generateCategories() {
   const nav = document.getElementById("categoryNav");
   if (!nav) return;
@@ -769,7 +802,16 @@ function handleRouting() {
   const params = new URLSearchParams(window.location.search);
   const category = params.get("category");
   const wordName = params.get("word");
+  const conjugationWord = params.get("conjugation");
   const page = params.get("page");
+
+  if (conjugationWord) {
+    const word = getAllWords().find(w => w.word === conjugationWord);
+    if (word) {
+      openConjugationPage(word.id);
+      return;
+    }
+  }
 
   if (wordName) {
 
@@ -814,7 +856,7 @@ function handleRouting() {
 
 function showSection(id) {
 
-  const sections = ["homePage", "categoryPage", "wordDetailPage"];
+  const sections = ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"];
 
   sections.forEach(sec => {
     const el = document.getElementById(sec);
@@ -926,10 +968,11 @@ categoryPage.appendChild(searchWrapper);
 
 const categoryExplain = CATEGORY_EXPLANATIONS[categoryName];
 if (categoryExplain) {
+  const explainTitle = CATEGORY_EXPLAIN_TITLES[categoryName] || `Was ist ${categoryName}?`;
   const explainer = document.createElement("section");
   explainer.className = "category-explainer";
   explainer.innerHTML = `
-    <h3>Über diese Kategorie</h3>
+    <h3>${escapeHtml(explainTitle)}</h3>
     <p class="category-explainer-de">${escapeHtml(categoryExplain.de)}</p>
     <div class="category-explainer-actions">
       <button id="showEnExplainBtn" type="button" class="category-explain-btn">See in English</button>
@@ -1308,6 +1351,349 @@ wordDisplay.appendChild(columnWrapper);
 
 }
 
+const CONJUGATION_PERSON_KEYS = ["ich", "du", "er_sie_es", "wir", "ihr", "sie_formal"];
+const CONJUGATION_PERSON_LABELS = {
+  ich: "ich",
+  du: "du",
+  er_sie_es: "er/sie/es",
+  wir: "wir",
+  ihr: "ihr",
+  sie_formal: "Sie"
+};
+
+const CONJUGATION_SCHEMA = [
+  {
+    key: "indikativ",
+    label: "Indikativ",
+    type: "persons",
+    tenses: [
+      { key: "praesens", label: "Präsens" },
+      { key: "praeteritum", label: "Präteritum" },
+      { key: "perfekt", label: "Perfekt" },
+      { key: "plusquamperfekt", label: "Plusquamperfekt" },
+      { key: "futur_i", label: "Futur I" },
+      { key: "futur_ii", label: "Futur II" }
+    ]
+  },
+  {
+    key: "konjunktiv_i",
+    label: "Konjunktiv I",
+    type: "persons",
+    tenses: [
+      { key: "praesens", label: "Präsens" },
+      { key: "perfekt", label: "Perfekt" },
+      { key: "futur_i", label: "Futur I" }
+    ]
+  },
+  {
+    key: "konjunktiv_ii",
+    label: "Konjunktiv II",
+    type: "persons",
+    tenses: [
+      { key: "praeteritum", label: "Präteritum" },
+      { key: "plusquamperfekt", label: "Plusquamperfekt" },
+      { key: "futur_i", label: "Futur I" },
+      { key: "futur_ii", label: "Futur II" }
+    ]
+  },
+  {
+    key: "imperativ",
+    label: "Imperativ Präsens",
+    type: "forms",
+    tenses: [{ key: "praesens", label: "Präsens" }]
+  },
+  {
+    key: "partizip",
+    label: "Partizip",
+    type: "simple",
+    tenses: [
+      { key: "partizip_i", label: "Partizip I" },
+      { key: "partizip_ii", label: "Partizip II" }
+    ]
+  },
+  {
+    key: "infinitiv",
+    label: "Infinitiv",
+    type: "simple",
+    tenses: [{ key: "praesens", label: "Präsens" }]
+  }
+];
+
+function setConjugationNode(base, key, value) {
+  if (!base || typeof base !== "object") return key;
+  const targetKey = normalizeConjugationKey(key);
+  const existingKey = Object.keys(base).find(
+    entryKey => normalizeConjugationKey(entryKey) === targetKey
+  );
+  if (existingKey) {
+    base[existingKey] = value;
+    return existingKey;
+  }
+  base[key] = value;
+  return key;
+}
+
+function createDefaultConjugationShape(verbWord) {
+  const defaultShape = {};
+  CONJUGATION_SCHEMA.forEach(mood => {
+    const moodNode = {};
+    mood.tenses.forEach(tense => {
+      if (mood.type === "persons") {
+        const personNode = {};
+        CONJUGATION_PERSON_KEYS.forEach(person => {
+          personNode[person] = "-";
+        });
+        moodNode[tense.key] = personNode;
+      } else if (mood.type === "forms") {
+        moodNode[tense.key] = {
+          du: "-",
+          ihr: "-",
+          sie_formal: "-"
+        };
+      } else {
+        moodNode[tense.key] =
+          mood.key === "infinitiv" && tense.key === "praesens"
+            ? String(verbWord || "").trim() || "-"
+            : "-";
+      }
+    });
+    defaultShape[mood.key] = moodNode;
+  });
+  return defaultShape;
+}
+
+function mergeConjugationWithTemplate(rawConjugation, templateConjugation) {
+  const merged = JSON.parse(JSON.stringify(templateConjugation || {}));
+  if (!rawConjugation || typeof rawConjugation !== "object") return merged;
+
+  Object.entries(rawConjugation).forEach(([moodKey, moodValue]) => {
+    if (!moodValue || typeof moodValue !== "object" || Array.isArray(moodValue)) {
+      setConjugationNode(merged, moodKey, moodValue);
+      return;
+    }
+
+    const currentMoodNode = getConjugationNode(merged, moodKey);
+    const safeMoodNode =
+      currentMoodNode && typeof currentMoodNode === "object" && !Array.isArray(currentMoodNode)
+        ? currentMoodNode
+        : {};
+    const targetMoodKey = setConjugationNode(merged, moodKey, safeMoodNode);
+    const targetMoodNode = merged[targetMoodKey];
+
+    Object.entries(moodValue).forEach(([tenseKey, tenseValue]) => {
+      if (!tenseValue || typeof tenseValue !== "object" || Array.isArray(tenseValue)) {
+        setConjugationNode(targetMoodNode, tenseKey, tenseValue);
+        return;
+      }
+
+      const currentTenseNode = getConjugationNode(targetMoodNode, tenseKey);
+      const safeTenseNode =
+        currentTenseNode &&
+        typeof currentTenseNode === "object" &&
+        !Array.isArray(currentTenseNode)
+          ? currentTenseNode
+          : {};
+      const targetTenseKey = setConjugationNode(targetMoodNode, tenseKey, safeTenseNode);
+      const targetTenseNode = targetMoodNode[targetTenseKey];
+
+      Object.entries(tenseValue).forEach(([personKey, personValue]) => {
+        setConjugationNode(targetTenseNode, personKey, personValue);
+      });
+    });
+  });
+
+  return merged;
+}
+
+function normalizeConjugationKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ß/g, "ss")
+    .replace(/\s+/g, "_")
+    .replace(/[^a-z0-9_]/g, "");
+}
+
+function getConjugationNode(base, key) {
+  if (!base || typeof base !== "object") return null;
+  const targetKey = normalizeConjugationKey(key);
+  for (const entryKey of Object.keys(base)) {
+    if (normalizeConjugationKey(entryKey) === targetKey) {
+      return base[entryKey];
+    }
+  }
+  return null;
+}
+
+function getConjugationPersonValue(tenseData, personKey) {
+  if (!tenseData || typeof tenseData !== "object") return "-";
+  const aliases = {
+    ich: ["ich"],
+    du: ["du"],
+    er_sie_es: ["er_sie_es", "er/sie/es", "ersiees", "er_sie_es_"],
+    wir: ["wir"],
+    ihr: ["ihr"],
+    sie_formal: ["sie_formal", "sie", "sie_formell", "Sie"]
+  };
+  const keys = aliases[personKey] || [personKey];
+  for (const alias of keys) {
+    const match = getConjugationNode(tenseData, alias);
+    if (typeof match === "string" && match.trim()) return match.trim();
+  }
+  return "-";
+}
+
+function renderConjugationPersons(tenseData) {
+  const rows = CONJUGATION_PERSON_KEYS.map(key => {
+    const label = CONJUGATION_PERSON_LABELS[key];
+    const value = getConjugationPersonValue(tenseData, key);
+    return `<li><span>${label}</span><strong>${escapeHtml(value)}</strong></li>`;
+  }).join("");
+  return `<ul class="conjugation-person-list">${rows}</ul>`;
+}
+
+function renderConjugationSimpleField(data, key, label) {
+  const value = getConjugationNode(data, key);
+  return `
+    <li>
+      <span>${label}</span>
+      <strong>${escapeHtml(typeof value === "string" && value.trim() ? value : "-")}</strong>
+    </li>
+  `;
+}
+
+function renderConjugationForms(tenseData) {
+  if (!tenseData || typeof tenseData !== "object") {
+    return `<p class="conjugation-empty">No form available.</p>`;
+  }
+  const orderedKeys = ["du", "ihr", "sie_formal"];
+  const formLabelMap = { du: "du", ihr: "ihr", sie_formal: "Sie" };
+  const rows = orderedKeys.map(key => {
+    const value = getConjugationPersonValue(tenseData, key);
+    return `<li><span>${formLabelMap[key]}</span><strong>${escapeHtml(value)}</strong></li>`;
+  });
+  return `<ul class="conjugation-person-list">${rows.join("")}</ul>`;
+}
+
+function renderConjugationCard(moodData, tense, moodType) {
+  const tenseData = getConjugationNode(moodData, tense.key);
+  let body = `<p class="conjugation-empty">No data available.</p>`;
+
+  if (moodType === "persons") {
+    body = renderConjugationPersons(tenseData);
+  } else if (moodType === "forms") {
+    body = renderConjugationForms(tenseData);
+  } else if (moodType === "simple") {
+    body = `
+      <ul class="conjugation-person-list">
+        ${renderConjugationSimpleField(moodData, tense.key, tense.label)}
+      </ul>
+    `;
+  }
+
+  return `
+    <article class="conjugation-tense-card">
+      <h3>${tense.label}</h3>
+      ${body}
+    </article>
+  `;
+}
+
+function openConjugationPage(wordId) {
+  const word = getAllWords().find(w => w.id === wordId);
+  if (!word) return;
+
+  const isVerb =
+    String(word.category || "").toLowerCase() === "verben" ||
+    String(word.type || "").toLowerCase() === "verb";
+  if (!isVerb) {
+    showToast("Conjugation is available only for verbs.", "error");
+    return;
+  }
+
+  showSection("conjugationPage");
+  const page = document.getElementById("conjugationPage");
+  if (!page) return;
+  page.innerHTML = "";
+  page.className = "conjugation-page";
+
+  const topBar = document.createElement("div");
+  topBar.className = "conjugation-topbar";
+  const backBtn = document.createElement("button");
+  backBtn.className = "back-btn";
+  backBtn.textContent = "← Back";
+  backBtn.onclick = () => {
+    setSingleRouteParam("word", word.word);
+    openWordDetail(word.id);
+  };
+  const title = document.createElement("h1");
+  title.textContent = `${word.word} – Konjugation`;
+  topBar.appendChild(backBtn);
+  topBar.appendChild(title);
+  page.appendChild(topBar);
+
+  const explainer = document.createElement("section");
+  explainer.className = "category-explainer conjugation-explainer";
+  explainer.innerHTML = `
+    <h3>Was ist Konjugation?</h3>
+    <p class="category-explainer-de">${escapeHtml(CONJUGATION_EXPLANATION.de)}</p>
+    <div class="category-explainer-actions">
+      <button id="showConjEnExplainBtn" type="button" class="category-explain-btn">See in English</button>
+      <button id="showConjBnExplainBtn" type="button" class="category-explain-btn">See in Bangla</button>
+    </div>
+    <div id="conjEnExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+      <h4>English</h4>
+      <p>${escapeHtml(CONJUGATION_EXPLANATION.en)}</p>
+    </div>
+    <div id="conjBnExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+      <h4>Bangla</h4>
+      <p>${escapeHtml(CONJUGATION_EXPLANATION.bn)}</p>
+    </div>
+  `;
+  page.appendChild(explainer);
+
+  const wireConjugationExplainToggle = (btnId, panelId) => {
+    const btn = explainer.querySelector(`#${btnId}`);
+    const panel = explainer.querySelector(`#${panelId}`);
+    if (!btn || !panel) return;
+    btn.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", () => {
+      const willOpen = panel.classList.contains("collapsed");
+      panel.classList.toggle("collapsed", !willOpen);
+      panel.classList.toggle("open", willOpen);
+      panel.setAttribute("aria-hidden", willOpen ? "false" : "true");
+      btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      btn.classList.toggle("active", willOpen);
+    });
+  };
+
+  wireConjugationExplainToggle("showConjEnExplainBtn", "conjEnExplainPanel");
+  wireConjugationExplainToggle("showConjBnExplainBtn", "conjBnExplainPanel");
+
+  const content = document.createElement("div");
+  content.className = "conjugation-content";
+  const conjugation = mergeConjugationWithTemplate(
+    word.conjugation,
+    createDefaultConjugationShape(word.word)
+  );
+
+  CONJUGATION_SCHEMA.forEach(mood => {
+    const moodData = getConjugationNode(conjugation, mood.key) || {};
+    const moodSection = document.createElement("section");
+    moodSection.className = "conjugation-mood";
+    moodSection.innerHTML = `
+      <h2>${mood.label}</h2>
+      <div class="conjugation-grid">
+        ${mood.tenses.map(tense => renderConjugationCard(moodData, tense, mood.type)).join("")}
+      </div>
+    `;
+    content.appendChild(moodSection);
+  });
+
+  page.appendChild(content);
+}
+
 /* =========================================================
    WORD DETAIL (CLEAN VERSION)
 ========================================================= */
@@ -1353,6 +1739,9 @@ function openWordDetail(wordId, options = {}) {
 
   const detailPage = document.getElementById("wordDetailPage");
   detailPage.innerHTML = "";
+  const isVerbEntry =
+    String(word.category || "").toLowerCase() === "verben" ||
+    String(word.type || "").toLowerCase() === "verb";
 
   /* ================= TOP BAR ================= */
 
@@ -1396,6 +1785,9 @@ function openWordDetail(wordId, options = {}) {
 }
 
   topBar.appendChild(backBtn);
+  const topActions = document.createElement("div");
+  topActions.className = "detail-top-actions";
+  topBar.appendChild(topActions);
 
   const favoriteBtn = document.createElement("button");
   favoriteBtn.className = "favorite-btn";
@@ -1424,7 +1816,7 @@ function openWordDetail(wordId, options = {}) {
     await persistFavoritesIfLoggedIn();
   };
 
-  topBar.appendChild(favoriteBtn);
+  topActions.appendChild(favoriteBtn);
 
   // Logged-in learning controls: learned tracker + custom lists + notes.
   const learnedBtn = document.createElement("button");
@@ -1451,7 +1843,18 @@ function openWordDetail(wordId, options = {}) {
     syncLearnedButton();
     await persistLearningStateIfLoggedIn();
   };
-  topBar.appendChild(learnedBtn);
+  topActions.appendChild(learnedBtn);
+
+  if (isVerbEntry) {
+    const conjugationBtn = document.createElement("button");
+    conjugationBtn.className = "conjugation-open-btn";
+    conjugationBtn.textContent = "See the Conjugation";
+    conjugationBtn.addEventListener("click", () => {
+      setSingleRouteParam("conjugation", word.word);
+      openConjugationPage(word.id);
+    });
+    topActions.appendChild(conjugationBtn);
+  }
 
   detailPage.appendChild(topBar);
 
@@ -1469,6 +1872,17 @@ function openWordDetail(wordId, options = {}) {
     <h3>Meaning</h3>
     <p>${formatMeaningText(word)}</p>
   </div>
+
+  ${
+    isVerbWord(word)
+      ? `
+        <div class="detail-section">
+          <h3>Conjugation Status</h3>
+          <p>${getConjugationStatusText(word)}</p>
+        </div>
+      `
+      : ""
+  }
 
   ${
     shouldShowSynonym(word)
@@ -1649,7 +2063,7 @@ function renderPanelPage(pageKey) {
 
   currentView = "custom";
 
-  ["homePage", "categoryPage", "wordDetailPage"].forEach(id => {
+  ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
   });
@@ -1677,7 +2091,7 @@ function renderFavoritesPage() {
   if (!desktopPage) return;
 
   currentView = "custom";
-  ["homePage", "categoryPage", "wordDetailPage"].forEach(id => {
+  ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
   });
@@ -1751,7 +2165,7 @@ function renderSettingsPage() {
     .join("");
 
   currentView = "custom";
-  ["homePage", "categoryPage", "wordDetailPage"].forEach(id => {
+  ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
   });
@@ -2503,7 +2917,8 @@ function handleAuthState() {
         const routeNeedsAccountRefresh =
           params.get("page") === "settings" ||
           params.get("page") === "favorites" ||
-          Boolean(params.get("word"));
+          Boolean(params.get("word")) ||
+          Boolean(params.get("conjugation"));
         // Rebuild only when cloud data differs from local fallback for smoother UX.
         if (routeNeedsAccountRefresh && postCloudSignature !== preCloudSignature) {
           handleRouting();

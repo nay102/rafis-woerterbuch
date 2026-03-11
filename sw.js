@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v2";
+const CACHE_VERSION = "rw-cache-v3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {
@@ -138,3 +138,4 @@ self.addEventListener("fetch", event => {
   // Default: network-first with cache fallback.
   event.respondWith(fetch(request).catch(() => caches.match(request)));
 });
+

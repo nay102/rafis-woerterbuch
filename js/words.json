@@ -25,9 +25,7 @@
                          "Er verlangt eine Erklärung."
                      ],
         "synonym":  [
-                        "gieren",
-                        "lechzen",
-                        "schmachten"
+
                     ]
     },
     {
@@ -46,10 +44,7 @@
                          "Der Bauer schlachtet das Schwein."
                      ],
         "synonym":  [
-                        "abschlachten",
-                        "massakrieren",
-                        "metzeln",
-                        "niedermachen"
+
                     ]
     },
     {
@@ -68,10 +63,7 @@
                          "Sie schneidet das Brot."
                      ],
         "synonym":  [
-                        "einfeilen",
-                        "einkerben",
-                        "einschneiden",
-                        "kerben"
+
                     ]
     },
     {
@@ -90,8 +82,7 @@
                          "Die Menschen fliehen aus dem Land."
                      ],
         "synonym":  [
-                        "entfliehen",
-                        "entkommen"
+
                     ]
     },
     {
@@ -110,9 +101,7 @@
                          "Hier entsteht ein neues Gebäude."
                      ],
         "synonym":  [
-                        "sich entfalten",
-                        "sich entspinnen",
-                        "sich entwickeln"
+
                     ]
     },
     {
@@ -131,8 +120,7 @@
                          "Bitte hör auf zu reden."
                      ],
         "synonym":  [
-                        "abreißen",
-                        "enden"
+
                     ]
     },
     {
@@ -151,8 +139,7 @@
                          "Er scheut sich, die Wahrheit zu sagen."
                      ],
         "synonym":  [
-                        "meiden",
-                        "umgehen"
+
                     ]
     },
     {
@@ -171,7 +158,7 @@
                          "Sie schämt sich für ihren Fehler."
                      ],
         "synonym":  [
-                        "sich genieren"
+
                     ]
     },
     {
@@ -190,7 +177,7 @@
                          "Er lügt nicht."
                      ],
         "synonym":  [
-                        "schwindeln"
+
                     ]
     },
     {
@@ -209,7 +196,7 @@
                          "Die Maschine versagt plötzlich."
                      ],
         "synonym":  [
-                        "scheitern"
+
                     ]
     },
     {
@@ -228,8 +215,7 @@
                          "Er ist in der Prüfung durchgefallen."
                      ],
         "synonym":  [
-                        "scheitern",
-                        "nicht bestehen"
+
                     ]
     },
     {
@@ -250,9 +236,7 @@
                          "Sie nennt ihren Sohn Ali."
                      ],
         "synonym":  [
-                        "deklarieren",
-                        "titulieren",
-                        "apostrophieren"
+
                     ]
     },
     {
@@ -271,10 +255,7 @@
                          "Er legt plötzlich auf."
                      ],
         "synonym":  [
-                        "anlegen",
-                        "anwenden",
-                        "ausgeben",
-                        "ausstellen"
+
                     ]
     },
     {
@@ -295,7 +276,7 @@
                          "Sie bricht das Studium ab."
                      ],
         "synonym":  [
-                        "stoppen"
+
                     ]
     },
     {
@@ -316,9 +297,7 @@
                          "Er legt die Prüfung morgen ab."
                      ],
         "synonym":  [
-                        "ausziehen",
-                        "abstreifen",
-                        "auskleiden"
+
                     ]
     },
     {
@@ -339,8 +318,7 @@
                          "Ich habe die Wahrheit erfahren."
                      ],
         "synonym":  [
-                        "lernen",
-                        "vernehmen"
+
                     ]
     },
     {
@@ -361,10 +339,7 @@
                          "Sie saugt das Zimmer."
                      ],
         "synonym":  [
-                        "auslutschen",
-                        "aussaugen",
-                        "nuckeln",
-                        "ziehen"
+
                     ]
     },
     {
@@ -383,9 +358,7 @@
                          "Ich erkenne ihn sofort."
                      ],
         "synonym":  [
-                        "erinnern",
-                        "wiedererkennen",
-                        "wiederkennen"
+
                     ]
     },
     {
@@ -404,9 +377,7 @@
                          "Viele Menschen wandern aus."
                      ],
         "synonym":  [
-                        "abwandern",
-                        "aussiedeln",
-                        "emigrieren"
+
                     ]
     },
     {
@@ -425,8 +396,7 @@
                          "Ich bevorzuge Kaffee."
                      ],
         "synonym":  [
-                        "begünstigen",
-                        "besserstellen"
+
                     ]
     },
     {
@@ -447,8 +417,7 @@
                          "Er erreicht sein Ziel."
                      ],
         "synonym":  [
-                        "ankommen",
-                        "anlangen"
+
                     ]
     },
     {
@@ -469,10 +438,7 @@
                          "Die Arbeit belastet ihn."
                      ],
         "synonym":  [
-                        "aufbürden",
-                        "auferlegen",
-                        "aufladen",
-                        "auflasten"
+
                     ]
     },
     {
@@ -491,8 +457,7 @@
                          "Du übertreibst ein bisschen."
                      ],
         "synonym":  [
-                        "dramatisieren",
-                        "hochspielen"
+
                     ]
     },
     {
@@ -513,8 +478,7 @@
                          "Er wirkt müde."
                      ],
         "synonym":  [
-                        "arbeiten",
-                        "betätigen"
+
                     ]
     },
     {
@@ -534,10 +498,7 @@
                          "Der Arzt behandelt den Patienten."
                      ],
         "synonym":  [
-                        "abfassen",
-                        "abhandeln",
-                        "ausarbeiten",
-                        "besprechen"
+
                     ]
     },
     {
@@ -556,10 +517,7 @@
                          "Ich hänge im Verkehr fest."
                      ],
         "synonym":  [
-                        "anfügen",
-                        "anhängen",
-                        "befestigen",
-                        "festheften"
+
                     ]
     },
     {
@@ -578,8 +536,7 @@
                          "Ich weiß die Antwort."
                      ],
         "synonym":  [
-                        "kennen",
-                        "Bescheid wissen"
+
                     ]
     },
     {
@@ -600,10 +557,7 @@
                          "Sie gestaltet das Zimmer neu."
                      ],
         "synonym":  [
-                        "ausbilden",
-                        "ausprägen",
-                        "bilden",
-                        "formen"
+
                     ]
     },
     {
@@ -624,10 +578,7 @@
                          "Das Thema reizt mich."
                      ],
         "synonym":  [
-                        "ärgern",
-                        "belästigen",
-                        "sekkieren",
-                        "feigeln"
+
                     ]
     },
     {
@@ -648,8 +599,7 @@
                          "Wir gehen auf Ihre Frage ein."
                      ],
         "synonym":  [
-                        "ankommen",
-                        "reagieren"
+
                     ]
     },
     {
@@ -668,9 +618,7 @@
                          "Er betont die Bedeutung."
                      ],
         "synonym":  [
-                        "behaupten",
-                        "beteuern",
-                        "versichern"
+
                     ]
     },
     {
@@ -690,8 +638,7 @@
                          "Alles klappt gut."
                      ],
         "synonym":  [
-                        "gelingen",
-                        "funktionieren"
+
                     ]
     },
     {
@@ -712,9 +659,7 @@
                          "Er läuft schnell."
                      ],
         "synonym":  [
-                        "fegen",
-                        "galoppieren",
-                        "hasten"
+
                     ]
     },
     {
@@ -733,7 +678,7 @@
                          "Wir gehen spazieren."
                      ],
         "synonym":  [
-                        "flanieren"
+
                     ]
     },
     {
@@ -753,10 +698,7 @@
                          "Ich spüre den Schmerz."
                      ],
         "synonym":  [
-                        "empfinden",
-                        "fühlen",
-                        "verspüren",
-                        "wahrnehmen"
+
                     ]
     },
     {
@@ -775,10 +717,7 @@
                          "Komm bitte rein."
                      ],
         "synonym":  [
-                        "hereinkommen",
-                        "hineinkommen",
-                        "betreten",
-                        "eintreten"
+
                     ]
     },
     {
@@ -797,10 +736,7 @@
                          "Das Internet erleichtert das Lernen."
                      ],
         "synonym":  [
-                        "abschwächen",
-                        "lindern",
-                        "mildern",
-                        "vermindern"
+
                     ]
     },
     {
@@ -821,9 +757,7 @@
                          "Er kann gut mit Stress umgehen."
                      ],
         "synonym":  [
-                        "handeln",
-                        "handhaben",
-                        "hantieren"
+
                     ]
     },
     {
@@ -842,8 +776,7 @@
                          "Die Zeit ist begrenzt."
                      ],
         "synonym":  [
-                        "beschränken",
-                        "einhegen"
+
                     ]
     },
     {
@@ -862,10 +795,7 @@
                          "Es hängt vom Wetter ab."
                      ],
         "synonym":  [
-                        "abschütteln",
-                        "loswerden",
-                        "abnehmen",
-                        "einholen"
+
                     ]
     },
     {
@@ -885,9 +815,7 @@
                          "Er überwindet seine Angst."
                      ],
         "synonym":  [
-                        "zurücklegen",
-                        "bewältigen",
-                        "durchstehen"
+
                     ]
     },
     {
@@ -906,8 +834,7 @@
                          "Ich entspanne mich am Wochenende."
                      ],
         "synonym":  [
-                        "ausspannen",
-                        "erholen"
+
                     ]
     },
     {
@@ -928,9 +855,7 @@
                          "Sie erholt sich schnell."
                      ],
         "synonym":  [
-                        "erholen",
-                        "regenerieren",
-                        "wiederherstellen"
+
                     ]
     },
     {
@@ -949,8 +874,7 @@
                          "Eine Dusche erfrischt mich."
                      ],
         "synonym":  [
-                        "erquicken",
-                        "laben"
+
                     ]
     },
     {
@@ -970,10 +894,7 @@
                          "Die Firma erweitert ihr Angebot."
                      ],
         "synonym":  [
-                        "ausbauen",
-                        "ergänzen",
-                        "nachrüsten",
-                        "aufweiten"
+
                     ]
     },
     {
@@ -992,8 +913,7 @@
                          "Wir müssen die Kosten verringern."
                      ],
         "synonym":  [
-                        "einschrumpfen",
-                        "schrumpfen"
+
                     ]
     },
     {
@@ -1014,8 +934,7 @@
                          "Sie bauen das Zelt ab."
                      ],
         "synonym":  [
-                        "abschrauben",
-                        "demontieren"
+
                     ]
     },
     {
@@ -1034,10 +953,7 @@
                          "Ich fühle mich gut."
                      ],
         "synonym":  [
-                        "empfinden",
-                        "fühlen",
-                        "spüren",
-                        "verspüren"
+
                     ]
     },
     {
@@ -1056,9 +972,7 @@
                          "Er baut ein Geschäft auf."
                      ],
         "synonym":  [
-                        "aufragen",
-                        "aufsteigen",
-                        "aufstreben"
+
                     ]
     },
     {
@@ -1077,8 +991,7 @@
                          "Der Sturm verursacht Schäden."
                      ],
         "synonym":  [
-                        "bewirken",
-                        "heraufbeschwören"
+
                     ]
     },
     {
@@ -1099,10 +1012,7 @@
                          "Die Schule fördert Talente."
                      ],
         "synonym":  [
-                        "dienen",
-                        "guttun",
-                        "nutzen",
-                        "nützen"
+
                     ]
     },
     {
@@ -1121,9 +1031,7 @@
                          "Die Firma steigert den Gewinn."
                      ],
         "synonym":  [
-                        "vergrößern",
-                        "vermehren",
-                        "maximieren"
+
                     ]
     },
     {
@@ -1142,8 +1050,7 @@
                          "Sie bewirtet ihre Gäste freundlich."
                      ],
         "synonym":  [
-                        "aufwarten",
-                        "versorgen"
+
                     ]
     },
     {
@@ -1162,10 +1069,7 @@
                          "Wir trennen Müll."
                      ],
         "synonym":  [
-                        "abwracken",
-                        "atomisieren",
-                        "auflösen",
-                        "aufspalten"
+
                     ]
     },
     {
@@ -1184,10 +1088,7 @@
                          "Man muss den Konsum einschränken."
                      ],
         "synonym":  [
-                        "absenken",
-                        "dämpfen",
-                        "ermäßigen",
-                        "erniedrigen"
+
                     ]
     },
     {
@@ -1206,7 +1107,7 @@
                          "Er verliert sein Handy."
                      ],
         "synonym":  [
-                        "abgeschlagen"
+
                     ]
     },
     {
@@ -1225,9 +1126,7 @@
                          "Ich überlege es mir."
                      ],
         "synonym":  [
-                        "bedenken",
-                        "grübeln",
-                        "nachdenken"
+
                     ]
     },
     {
@@ -1246,10 +1145,7 @@
                          "Diese Aufgabe erfordert Geduld."
                      ],
         "synonym":  [
-                        "beanspruchen",
-                        "bedingen",
-                        "bedürfen",
-                        "benötigen"
+
                     ]
     },
     {
@@ -1270,8 +1166,7 @@
                          "Er hält das Buch."
                      ],
         "synonym":  [
-                        "bestehen",
-                        "fortbestehen"
+
                     ]
     },
     {
@@ -1292,8 +1187,7 @@
                          "Die Firma feuert einen Mitarbeiter."
                      ],
         "synonym":  [
-                        "schießen",
-                        "ballern"
+
                     ]
     },
     {
@@ -1312,10 +1206,7 @@
                          "Der Zug kommt pünktlich an."
                      ],
         "synonym":  [
-                        "aufkreuzen",
-                        "kommen",
-                        "anlangen",
-                        "einfinden"
+
                     ]
     },
     {
@@ -1336,10 +1227,7 @@
                          "Sie trägt ein rotes Kleid."
                      ],
         "synonym":  [
-                        "abstützen",
-                        "katalysieren",
-                        "mittragen",
-                        "stützen"
+
                     ]
     },
     {
@@ -1359,8 +1247,7 @@
                          "Die Schuhe passen gut."
                      ],
         "synonym":  [
-                        "stimmen",
-                        "zutreffen"
+
                     ]
     },
     {
@@ -1379,10 +1266,7 @@
                          "Such dir ein Buch aus."
                      ],
         "synonym":  [
-                        "auswählen",
-                        "erwählen",
-                        "küren",
-                        "optieren"
+
                     ]
     },
     {
@@ -1403,9 +1287,7 @@
                          "Die Wissenschaftler erforschen das Meer."
                      ],
         "synonym":  [
-                        "durchleuchten",
-                        "nachforschen",
-                        "untersuchen"
+
                     ]
     },
     {
@@ -1424,7 +1306,7 @@
                          "Man verlernt schnell eine Sprache."
                      ],
         "synonym":  [
-                        "vergessen"
+
                     ]
     },
     {
@@ -1443,9 +1325,7 @@
                          "Wir verreisen im Sommer."
                      ],
         "synonym":  [
-                        "niedermachen",
-                        "verreißen",
-                        "herunterputzen"
+
                     ]
     },
     {
@@ -1464,7 +1344,7 @@
                          "Ich ruhe mich aus."
                      ],
         "synonym":  [
-                        "faulenzen"
+
                     ]
     },
     {
@@ -1484,10 +1364,7 @@
                          "Er schleimt sich beim Chef ein."
                      ],
         "synonym":  [
-                        "kratzfüßeln",
-                        "kriechen",
-                        "liebedienern",
-                        "antichambrieren"
+
                     ]
     },
     {
@@ -1506,8 +1383,7 @@
                          "Er verteidigt seine Meinung."
                      ],
         "synonym":  [
-                        "sich aussprechen",
-                        "sich einsetzen"
+
                     ]
     },
     {
@@ -1526,9 +1402,7 @@
                          "Sie schließt die Tür."
                      ],
         "synonym":  [
-                        "aufgeben",
-                        "ausscheiden",
-                        "dichtmachen"
+
                     ]
     },
     {
@@ -1547,9 +1421,7 @@
                          "Schreib die Nummer auf."
                      ],
         "synonym":  [
-                        "dokumentieren",
-                        "niederschreiben",
-                        "schreiben"
+
                     ]
     },
     {
@@ -1570,9 +1442,7 @@
                          "Er beherrscht Deutsch gut."
                      ],
         "synonym":  [
-                        "ausüben",
-                        "herrschen",
-                        "managen"
+
                     ]
     },
     {
@@ -1592,10 +1462,7 @@
                          "Ich nehme ein Geräusch wahr."
                      ],
         "synonym":  [
-                        "bemerken",
-                        "erkennen",
-                        "merken",
-                        "realisieren"
+
                     ]
     },
     {
@@ -1614,9 +1481,7 @@
                          "Sie absolviert ein Praktikum."
                      ],
         "synonym":  [
-                        "abschließen",
-                        "erfüllen",
-                        "erledigen"
+
                     ]
     },
     {
@@ -1636,8 +1501,7 @@
                          "Wir quatschen lange."
                      ],
         "synonym":  [
-                        "plaudern",
-                        "reden"
+
                     ]
     },
     {
@@ -1656,10 +1520,7 @@
                          "Sie betreut die Kinder."
                      ],
         "synonym":  [
-                        "beaufsichtigen",
-                        "befürsorgen",
-                        "kuratieren",
-                        "bemuttern"
+
                     ]
     },
     {
@@ -1678,9 +1539,7 @@
                          "Er nimmt am Kurs teil."
                      ],
         "synonym":  [
-                        "beitragen",
-                        "mitarbeiten",
-                        "mitgestalten"
+
                     ]
     },
     {
@@ -1699,10 +1558,7 @@
                          "Du kannst das Buch behalten."
                      ],
         "synonym":  [
-                        "aufbewahren",
-                        "aufheben",
-                        "bewahren",
-                        "erhalten"
+
                     ]
     },
     {
@@ -1721,9 +1577,7 @@
                          "Er versteckt das Geschenk."
                      ],
         "synonym":  [
-                        "camouflieren",
-                        "kaschieren",
-                        "maskieren"
+
                     ]
     },
     {
@@ -1744,8 +1598,7 @@
                          "Er holt den Bus ein."
                      ],
         "synonym":  [
-                        "überholen",
-                        "übertreffen"
+
                     ]
     },
     {
@@ -1766,8 +1619,7 @@
                          "Er stellt seinem Idol nach."
                      ],
         "synonym":  [
-                        "verfolgen",
-                        "stalken"
+
                     ]
     },
     {
@@ -1786,7 +1638,7 @@
                          "Ich kenne mich hier gut aus."
                      ],
         "synonym":  [
-                        "beschlagen"
+
                     ]
     },
     {
@@ -1806,9 +1658,7 @@
                          "Er dreht den Schlüssel."
                      ],
         "synonym":  [
-                        "kreisen",
-                        "rotieren",
-                        "trudeln"
+
                     ]
     },
     {
@@ -1827,8 +1677,7 @@
                          "Sie surft im Internet."
                      ],
         "synonym":  [
-                        "browsen",
-                        "wellenreiten"
+
                     ]
     },
     {
@@ -1847,8 +1696,7 @@
                          "Ich kriege eine Nachricht."
                      ],
         "synonym":  [
-                        "bekommen",
-                        "erhalten"
+
                     ]
     },
     {
@@ -1867,8 +1715,7 @@
                          "Er verhält sich ruhig."
                      ],
         "synonym":  [
-                        "sich benehmen",
-                        "agieren"
+
                     ]
     },
     {
@@ -1887,8 +1734,7 @@
                          "Es lohnt sich zu lernen."
                      ],
         "synonym":  [
-                        "sich rentieren",
-                        "sich auszahlen"
+
                     ]
     },
     {
@@ -1909,9 +1755,7 @@
                          "Das Geld reicht nicht."
                      ],
         "synonym":  [
-                        "geben",
-                        "ausfolgen",
-                        "aushändigen"
+
                     ]
     },
     {
@@ -1930,10 +1774,7 @@
                          "Er erstellt einen Plan."
                      ],
         "synonym":  [
-                        "entwerfen",
-                        "entwickeln",
-                        "erarbeiten",
-                        "schaffen"
+
                     ]
     },
     {
@@ -1954,9 +1795,7 @@
                          "Mach bitte das Licht aus."
                      ],
         "synonym":  [
-                        "betragen",
-                        "ergeben",
-                        "sich belaufen"
+
                     ]
     },
     {
@@ -1975,8 +1814,7 @@
                          "Was ist passiert? Was ist geschehen?"
                      ],
         "synonym":  [
-                        "passieren",
-                        "erfolgen"
+
                     ]
     },
     {
@@ -1995,10 +1833,7 @@
                          "Er übersetzt den Text."
                      ],
         "synonym":  [
-                        "deuten",
-                        "transkribieren",
-                        "hinüberfahren",
-                        "dolmetschen"
+
                     ]
     },
     {
@@ -2019,10 +1854,7 @@
                          "Sie nimmt ein Video auf."
                      ],
         "synonym":  [
-                        "einbauen",
-                        "einbeziehen",
-                        "einfügen",
-                        "eingliedern"
+
                     ]
     },
     {
@@ -2041,8 +1873,7 @@
                          "Das Handy lenkt mich ab."
                      ],
         "synonym":  [
-                        "zerstreuen",
-                        "stören"
+
                     ]
     },
     {
@@ -2063,10 +1894,7 @@
                          "Er führt das Team."
                      ],
         "synonym":  [
-                        "administrieren",
-                        "verwalten",
-                        "bugsieren",
-                        "dirigieren"
+
                     ]
     },
     {
@@ -2085,9 +1913,7 @@
                          "Die Fabrik verschmutzt den Fluss."
                      ],
         "synonym":  [
-                        "beschmutzen",
-                        "verdrecken",
-                        "versiffen"
+
                     ]
     },
     {
@@ -2108,8 +1934,7 @@
                          "Das betrifft uns alle."
                      ],
         "synonym":  [
-                        "angehen",
-                        "sich auswirken"
+
                     ]
     },
     {
@@ -2128,8 +1953,7 @@
                          "Er übernimmt die Aufgabe."
                      ],
         "synonym":  [
-                        "annehmen",
-                        "verantworten"
+
                     ]
     },
     {
@@ -2150,9 +1974,7 @@
                          "Sie besitzt ein Auto."
                      ],
         "synonym":  [
-                        "aufweisen",
-                        "bieten",
-                        "haben"
+
                     ]
     },
     {
@@ -2172,9 +1994,7 @@
                          "Ich erledige meine Hausaufgaben."
                      ],
         "synonym":  [
-                        "abschließen",
-                        "absolvieren",
-                        "erfüllen"
+
                     ]
     },
     {
@@ -2193,7 +2013,7 @@
                          "Bitte unterbrich mich nicht."
                      ],
         "synonym":  [
-                        "intermittieren"
+
                     ]
     },
     {
@@ -2214,8 +2034,7 @@
                          "Wir vereinbaren einen Termin."
                      ],
         "synonym":  [
-                        "abmachen",
-                        "absprechen"
+
                     ]
     },
     {
@@ -2234,8 +2053,7 @@
                          "Das Konzert findet morgen statt."
                      ],
         "synonym":  [
-                        "geschehen",
-                        "erfolgen"
+
                     ]
     },
     {
@@ -2254,8 +2072,7 @@
                          "Er döst auf dem Sofa."
                      ],
         "synonym":  [
-                        "dahindämmern",
-                        "schlafen"
+
                     ]
     },
     {
@@ -2275,8 +2092,7 @@
                          "Wie gelangt man zum Bahnhof?"
                      ],
         "synonym":  [
-                        "entern",
-                        "hineingelangen"
+
                     ]
     },
     {
@@ -2296,7 +2112,7 @@
                          "Er hat die Prüfung versaut."
                      ],
         "synonym":  [
-                        "verbrechen"
+
                     ]
     },
     {
@@ -2315,8 +2131,7 @@
                          "Verschwende keine Zeit."
                      ],
         "synonym":  [
-                        "verschenken",
-                        "verströmen"
+
                     ]
     },
     {
@@ -2335,8 +2150,7 @@
                          "Er hat den Unfall überlebt."
                      ],
         "synonym":  [
-                        "durchkommen",
-                        "durchstehen"
+
                     ]
     },
     {
@@ -2357,8 +2171,7 @@
                          "Wie sollen wir vorgehen?"
                      ],
         "synonym":  [
-                        "handeln",
-                        "agieren"
+
                     ]
     },
     {
@@ -2377,9 +2190,7 @@
                          "Er enttäuscht seine Eltern."
                      ],
         "synonym":  [
-                        "desillusionieren",
-                        "entmutigen",
-                        "frustrieren"
+
                     ]
     },
     {
@@ -2398,9 +2209,7 @@
                          "Ich beobachte die Vögel."
                      ],
         "synonym":  [
-                        "aufpassen",
-                        "beaufsichtigen",
-                        "checken"
+
                     ]
     },
     {
@@ -2421,9 +2230,7 @@
                          "Der Arzt stellt eine Krankheit fest."
                      ],
         "synonym":  [
-                        "bemerken",
-                        "erfassen",
-                        "registrieren"
+
                     ]
     },
     {
@@ -2443,10 +2250,7 @@
                          "Er macht das Boot fest."
                      ],
         "synonym":  [
-                        "anbringen",
-                        "anfügen",
-                        "befestigen",
-                        "montieren"
+
                     ]
     },
     {
@@ -2466,10 +2270,7 @@
                          "Der Vertrag läuft ab."
                      ],
         "synonym":  [
-                        "abfließen",
-                        "absickern",
-                        "abströmen",
-                        "ausfließen"
+
                     ]
     },
     {
@@ -2488,7 +2289,7 @@
                          "Der Lehrer lobt den Schüler."
                      ],
         "synonym":  [
-                        "belobigen"
+
                     ]
     },
     {
@@ -2507,7 +2308,7 @@
                          "Die Blumen riechen gut."
                      ],
         "synonym":  [
-                        "duften"
+
                     ]
     },
     {
@@ -2526,9 +2327,7 @@
                          "Ein Dieb bricht ins Haus ein."
                      ],
         "synonym":  [
-                        "hacken",
-                        "aufbrechen",
-                        "knacken"
+
                     ]
     },
     {
@@ -2547,8 +2346,7 @@
                          "Schreib deine Adresse hin."
                      ],
         "synonym":  [
-                        "notieren",
-                        "aufschreiben"
+
                     ]
     },
     {
@@ -2567,8 +2365,7 @@
                          "Sie tröstet ihr Kind."
                      ],
         "synonym":  [
-                        "ausweichen",
-                        "hinhalten"
+
                     ]
     },
     {
@@ -2587,9 +2384,7 @@
                          "Die Erklärung verwirrt mich."
                      ],
         "synonym":  [
-                        "durcheinanderbringen",
-                        "verknäueln",
-                        "chaotisieren"
+
                     ]
     },
     {
@@ -2609,10 +2404,7 @@
                          "Das Kind schreit laut."
                      ],
         "synonym":  [
-                        "brüllen",
-                        "bläken",
-                        "blöken",
-                        "dröhnen"
+
                     ]
     },
     {
@@ -2631,10 +2423,7 @@
                          "Die Erfahrung bereichert mein Leben."
                      ],
         "synonym":  [
-                        "anregen",
-                        "anspornen",
-                        "beflügeln",
-                        "befruchten"
+
                     ]
     },
     {
@@ -2655,8 +2444,7 @@
                          "Er spricht das Problem an."
                      ],
         "synonym":  [
-                        "angehen",
-                        "anreden"
+
                     ]
     },
     {
@@ -2676,8 +2464,7 @@
                          "Das Ergebnis entspricht meinen Erwartungen."
                      ],
         "synonym":  [
-                        "erfüllen",
-                        "nachkommen"
+
                     ]
     },
     {
@@ -2697,10 +2484,7 @@
                          "Ich empfinde große Freude."
                      ],
         "synonym":  [
-                        "fühlen",
-                        "spüren",
-                        "verspüren",
-                        "wahrnehmen"
+
                     ]
     },
     {
@@ -2720,8 +2504,7 @@
                          "Sein Verhalten fällt mir auf."
                      ],
         "synonym":  [
-                        "hervorstechen",
-                        "bemerkt werden"
+
                     ]
     },
     {
@@ -2741,7 +2524,7 @@
                          "Sie lehnt das Angebot ab."
                      ],
         "synonym":  [
-                        "missbilligen"
+
                     ]
     },
     {
@@ -2761,10 +2544,7 @@
                          "Er strebt eine Karriere an."
                      ],
         "synonym":  [
-                        "wollen",
-                        "abzielen",
-                        "anpeilen",
-                        "anvisieren"
+
                     ]
     },
     {
@@ -2783,9 +2563,7 @@
                          "Ich erlebe viele Abenteuer."
                      ],
         "synonym":  [
-                        "ausstehen",
-                        "durchhalten",
-                        "durchlaufen"
+
                     ]
     },
     {
@@ -2804,10 +2582,7 @@
                          "Er schiebt den Tisch."
                      ],
         "synonym":  [
-                        "drängeln",
-                        "drängen",
-                        "drücken",
-                        "pferchen"
+
                     ]
     },
     {
@@ -2827,10 +2602,7 @@
                          "Ich stoße gegen die Tür."
                      ],
         "synonym":  [
-                        "rempeln",
-                        "schubsen",
-                        "schupsen",
-                        "stupsen"
+
                     ]
     },
     {
@@ -2849,10 +2621,7 @@
                          "Bitte nicht anfassen."
                      ],
         "synonym":  [
-                        "anlangen",
-                        "berühren",
-                        "anrühren",
-                        "angrapschen"
+
                     ]
     },
     {
@@ -2872,10 +2641,7 @@
                          "Wir verlängern den Vertrag."
                      ],
         "synonym":  [
-                        "ausdehnen",
-                        "ausspannen",
-                        "ausweiten",
-                        "erweitern"
+
                     ]
     },
     {
@@ -2894,8 +2660,7 @@
                          "Das Museum befindet sich in Berlin."
                      ],
         "synonym":  [
-                        "sein",
-                        "sich aufhalten"
+
                     ]
     },
     {
@@ -2914,9 +2679,7 @@
                          "Er erhitzt das Wasser."
                      ],
         "synonym":  [
-                        "erwärmen",
-                        "heizen",
-                        "echauffieren"
+
                     ]
     },
     {
@@ -2935,9 +2698,7 @@
                          "Ich wärme das Essen auf."
                      ],
         "synonym":  [
-                        "erwärmen",
-                        "wärmen",
-                        "einlaufen"
+
                     ]
     },
     {
@@ -2958,7 +2719,7 @@
                          "Er verrät das Geheimnis."
                      ],
         "synonym":  [
-                        "ausliefern"
+
                     ]
     },
     {
@@ -2977,9 +2738,7 @@
                          "Sie erfüllt ihre Pflicht."
                      ],
         "synonym":  [
-                        "abschließen",
-                        "absolvieren",
-                        "erledigen"
+
                     ]
     },
     {
@@ -2999,9 +2758,7 @@
                          "Kosten fallen an."
                      ],
         "synonym":  [
-                        "angreifen",
-                        "attackieren",
-                        "herfallen"
+
                     ]
     },
     {
@@ -3020,10 +2777,7 @@
                          "Das Papier klebt am Tisch."
                      ],
         "synonym":  [
-                        "haften",
-                        "pappen",
-                        "kitten",
-                        "kleistern"
+
                     ]
     },
     {
@@ -3042,8 +2796,7 @@
                          "Er will niemanden umbringen."
                      ],
         "synonym":  [
-                        "töten",
-                        "auslöschen"
+
                     ]
     },
     {
@@ -3063,9 +2816,7 @@
                          "Wir verabreden uns morgen."
                      ],
         "synonym":  [
-                        "ausgehen",
-                        "daten",
-                        "sich treffen"
+
                     ]
     },
     {
@@ -3086,10 +2837,7 @@
                          "Ich merke mir die Regel."
                      ],
         "synonym":  [
-                        "beachten",
-                        "bemerken",
-                        "einprägen",
-                        "fassen"
+
                     ]
     },
     {
@@ -3110,10 +2858,7 @@
                          "Der Lehrer gliedert den Text."
                      ],
         "synonym":  [
-                        "ordnen",
-                        "anlegen",
-                        "anordnen",
-                        "arrangieren"
+
                     ]
     },
     {
@@ -3134,10 +2879,7 @@
                          "Die Firma stellt neue Mitarbeiter ein."
                      ],
         "synonym":  [
-                        "alignieren",
-                        "ausrichten",
-                        "eichen",
-                        "einrichten"
+
                     ]
     },
     {
@@ -3157,10 +2899,7 @@
                          "Die Schule bildet Lehrer aus."
                      ],
         "synonym":  [
-                        "bilden",
-                        "erziehen",
-                        "schulen",
-                        "beschulen"
+
                     ]
     },
     {
@@ -3179,8 +2918,7 @@
                          "Lass mich ausreden."
                      ],
         "synonym":  [
-                        "abbringen",
-                        "abhalten"
+
                     ]
     },
     {
@@ -3199,7 +2937,7 @@
                          "Das Papier tränt."
                      ],
         "synonym":  [
-                        "weinen"
+
                     ]
     },
     {
@@ -3218,8 +2956,7 @@
                          "Er misst die Temperatur."
                      ],
         "synonym":  [
-                        "abmessen",
-                        "vermessen"
+
                     ]
     },
     {
@@ -3238,9 +2975,7 @@
                          "Ich überzeuge ihn von meiner Idee."
                      ],
         "synonym":  [
-                        "beeinflussen",
-                        "bewegen",
-                        "indoktrinieren"
+
                     ]
     },
     {
@@ -3259,7 +2994,7 @@
                          "Er bemüht sich um gute Noten."
                      ],
         "synonym":  [
-                        "sich anstrengen"
+
                     ]
     },
     {
@@ -3278,10 +3013,7 @@
                          "Sie drückt ihre Meinung aus."
                      ],
         "synonym":  [
-                        "auspressen",
-                        "ausquetschen",
-                        "auswringen",
-                        "exprimieren"
+
                     ]
     },
     {
@@ -3300,8 +3032,7 @@
                          "Er äußert seine Kritik."
                      ],
         "synonym":  [
-                        "sagen",
-                        "aussprechen"
+
                     ]
     },
     {
@@ -3320,9 +3051,7 @@
                          "Unterschätze ihn nicht."
                      ],
         "synonym":  [
-                        "unterbewerten",
-                        "verkennen",
-                        "depretiieren"
+
                     ]
     },
     {
@@ -3341,9 +3070,7 @@
                          "Ich beschäftige mich mit Deutsch."
                      ],
         "synonym":  [
-                        "anstellen",
-                        "berufen",
-                        "beschäftigen"
+
                     ]
     },
     {
@@ -3362,7 +3089,7 @@
                          "Er trägt zum Erfolg bei."
                      ],
         "synonym":  [
-                        "einbringen"
+
                     ]
     },
     {
@@ -3383,10 +3110,7 @@
                          "Ich schätze deine Hilfe."
                      ],
         "synonym":  [
-                        "bewerten",
-                        "beziffern",
-                        "festsetzen",
-                        "taxieren"
+
                     ]
     },
     {
@@ -3405,8 +3129,7 @@
                          "Er verzweifelt an der Aufgabe."
                      ],
         "synonym":  [
-                        "aufgeben",
-                        "aufstecken"
+
                     ]
     },
     {
@@ -3425,8 +3148,7 @@
                          "Sie tritt dem Verein bei."
                      ],
         "synonym":  [
-                        "anschließen",
-                        "eintreten"
+
                     ]
     },
     {
@@ -3445,7 +3167,7 @@
                          "Niemand zwingt dich."
                      ],
         "synonym":  [
-                        "nötigen"
+
                     ]
     },
     {
@@ -3465,7 +3187,7 @@
                          "Ich verzichte auf Zucker."
                      ],
         "synonym":  [
-                        "nachgeben"
+
                     ]
     },
     {
@@ -3486,8 +3208,7 @@
                          "Die Mutter versorgt das Kind."
                      ],
         "synonym":  [
-                        "aufwarten",
-                        "bewirten"
+
                     ]
     },
     {
@@ -3506,8 +3227,7 @@
                          "Der alte Mann stirbt."
                      ],
         "synonym":  [
-                        "versterben",
-                        "ums Leben kommen"
+
                     ]
     },
     {
@@ -3527,9 +3247,7 @@
                          "Ich leihe mir ein Buch aus."
                      ],
         "synonym":  [
-                        "ausborgen",
-                        "borgen",
-                        "entlehnen"
+
                     ]
     },
     {
@@ -3548,8 +3266,7 @@
                          "Das Buch erscheint morgen."
                      ],
         "synonym":  [
-                        "auftauchen",
-                        "auftreten"
+
                     ]
     },
     {
@@ -3570,9 +3287,7 @@
                          "Es scheint schwierig."
                      ],
         "synonym":  [
-                        "leuchten",
-                        "glühen",
-                        "strahlen"
+
                     ]
     },
     {
@@ -3591,10 +3306,7 @@
                          "Wähle ein Thema aus."
                      ],
         "synonym":  [
-                        "auslesen",
-                        "aussieben",
-                        "ermitteln",
-                        "herauspicken"
+
                     ]
     },
     {
@@ -3613,7 +3325,7 @@
                          "Ich verlinke die Webseite."
                      ],
         "synonym":  [
-                        "verknüpfen"
+
                     ]
     },
     {
@@ -3632,10 +3344,7 @@
                          "Die Jungs prügeln sich."
                      ],
         "synonym":  [
-                        "boxen",
-                        "hauen",
-                        "schlagen",
-                        "dreschen"
+
                     ]
     },
     {
@@ -3655,10 +3364,7 @@
                          "Die Feuerwehr rettet das Kind."
                      ],
         "synonym":  [
-                        "sichern",
-                        "erlösen",
-                        "bergen",
-                        "zurückholen"
+
                     ]
     },
     {
@@ -3678,10 +3384,7 @@
                          "Kannst du mir dein Buch leihen?"
                      ],
         "synonym":  [
-                        "ausborgen",
-                        "ausleihen",
-                        "borgen",
-                        "entlehnen"
+
                     ]
     },
     {
@@ -3700,8 +3403,7 @@
                          "Die Arbeit überlastet ihn."
                      ],
         "synonym":  [
-                        "übersteuern",
-                        "sich übernehmen"
+
                     ]
     },
     {
@@ -3722,10 +3424,7 @@
                          "Ich nehme dein Angebot an."
                      ],
         "synonym":  [
-                        "ausgehen",
-                        "denken",
-                        "erwarten",
-                        "glauben"
+
                     ]
     },
     {
@@ -3745,10 +3444,7 @@
                          "Drücke den Knopf."
                      ],
         "synonym":  [
-                        "auslösen",
-                        "bedienen",
-                        "betätigen",
-                        "handhaben"
+
                     ]
     },
     {
@@ -3767,8 +3463,7 @@
                          "Der Bus ist überfüllt."
                      ],
         "synonym":  [
-                        "überladen",
-                        "vollstopfen"
+
                     ]
     },
     {
@@ -3789,9 +3484,7 @@
                          "Er unterhält die Gäste."
                      ],
         "synonym":  [
-                        "belustigen",
-                        "amüsieren",
-                        "bespaßen"
+
                     ]
     },
     {
@@ -3810,7 +3503,7 @@
                          "Ich kümmere mich um das Kind."
                      ],
         "synonym":  [
-                        "sich bemühen"
+
                     ]
     },
     {
@@ -3829,10 +3522,7 @@
                          "Er bemerkt den Fehler."
                      ],
         "synonym":  [
-                        "beachten",
-                        "merken",
-                        "erfassen",
-                        "feststellen"
+
                     ]
     },
     {
@@ -3852,10 +3542,7 @@
                          "Der Ballon steigt auf."
                      ],
         "synonym":  [
-                        "aufbauen",
-                        "aufragen",
-                        "aufstreben",
-                        "auftürmen"
+
                     ]
     },
     {
@@ -3875,8 +3562,7 @@
                          "Der Baum neigt sich im Wind."
                      ],
         "synonym":  [
-                        "neigen",
-                        "Beugen"
+
                     ]
     },
     {
@@ -3895,8 +3581,7 @@
                          "Er hat ein Verbrechen begangen."
                      ],
         "synonym":  [
-                        "begehen",
-                        "verüben"
+
                     ]
     },
     {
@@ -3915,8 +3600,7 @@
                          "Ich probiere das neue Handy aus."
                      ],
         "synonym":  [
-                        "versuchen",
-                        "antesten"
+
                     ]
     },
     {
@@ -3935,8 +3619,7 @@
                          "Ich lüfte das Zimmer."
                      ],
         "synonym":  [
-                        "belüften",
-                        "bewettern"
+
                     ]
     },
     {
@@ -3955,10 +3638,7 @@
                          "Der Moderator sagt die Gewinner an."
                      ],
         "synonym":  [
-                        "ankündigen",
-                        "annoncieren",
-                        "ausrufen",
-                        "bekanntgeben"
+
                     ]
     },
     {
@@ -3977,8 +3657,7 @@
                          "Der Lärm nervt mich."
                      ],
         "synonym":  [
-                        "ärgern",
-                        "reizen"
+
                     ]
     },
     {
@@ -3999,9 +3678,7 @@
                          "Er tritt den Ball."
                      ],
         "synonym":  [
-                        "ausschlagen",
-                        "strampeln",
-                        "stampfen"
+
                     ]
     },
     {
@@ -4020,10 +3697,7 @@
                          "Füge den Text hinzu."
                      ],
         "synonym":  [
-                        "addieren",
-                        "beifügen",
-                        "ergänzen",
-                        "hinzukommen"
+
                     ]
     },
     {
@@ -4044,10 +3718,7 @@
                          "Er leistet gute Arbeit."
                      ],
         "synonym":  [
-                        "ausführen",
-                        "durchführen",
-                        "fahren",
-                        "schmeißen"
+
                     ]
     },
     {
@@ -4066,7 +3737,7 @@
                          "Tiere können sich schnell fortbewegen."
                      ],
         "synonym":  [
-                        "entfernen"
+
                     ]
     },
     {
@@ -4087,9 +3758,7 @@
                          "Er legt an Gewicht zu."
                      ],
         "synonym":  [
-                        "ansetzen",
-                        "aufgehen",
-                        "auseinandergehen"
+
                     ]
     },
     {
@@ -4108,7 +3777,7 @@
                          "Er beweist seine Theorie."
                      ],
         "synonym":  [
-                        "belegen"
+
                     ]
     },
     {
@@ -4128,8 +3797,7 @@
                          "Er verwirklicht seine Ziele."
                      ],
         "synonym":  [
-                        "ausführen",
-                        "durchführen"
+
                     ]
     },
     {
@@ -4148,9 +3816,7 @@
                          "Er wirft das Buch hin."
                      ],
         "synonym":  [
-                        "skizzieren",
-                        "abschmeißen",
-                        "abwerfen"
+
                     ]
     },
     {
@@ -4171,9 +3837,7 @@
                          "Er richtet den Blick auf mich."
                      ],
         "synonym":  [
-                        "urteilen",
-                        "fixieren",
-                        "heften"
+
                     ]
     },
     {
@@ -4192,10 +3856,7 @@
                          "Die Firma baut ihr Geschäft aus."
                      ],
         "synonym":  [
-                        "ergänzen",
-                        "erweitern",
-                        "nachrüsten",
-                        "aufstocken"
+
                     ]
     },
     {
@@ -4214,9 +3875,7 @@
                          "Der Journalist berichtet über das Ereignis."
                      ],
         "synonym":  [
-                        "melden",
-                        "rapportieren",
-                        "reportieren"
+
                     ]
     },
     {
@@ -4235,8 +3894,7 @@
                          "Er leidet an Kopfschmerzen."
                      ],
         "synonym":  [
-                        "erdulden",
-                        "durchmachen"
+
                     ]
     },
     {
@@ -4255,10 +3913,7 @@
                          "Ich begleite dich nach Hause."
                      ],
         "synonym":  [
-                        "eskortieren",
-                        "flankieren",
-                        "anhaften",
-                        "innewohnen"
+
                     ]
     },
     {
@@ -4277,9 +3932,7 @@
                          "Er bringt mir Deutsch bei."
                      ],
         "synonym":  [
-                        "anleiten",
-                        "einbegleiten",
-                        "einleiten"
+
                     ]
     },
     {
@@ -4300,15 +3953,12 @@
                          "Gib dein Passwort ein."
                      ],
         "synonym":  [
-                        "einhändigen",
-                        "einreichen",
-                        "schreiben",
-                        "tippen"
+
                     ]
     },
     {
         "id":  "verb202",
-        "word":  "sich befassen mit",
+        "word":  "sich befassen",
         "type":  "Verb",
         "category":  "Verben",
         "englisch":  [
@@ -4323,10 +3973,7 @@
                          "Ich befasse mich mit dem Problem."
                      ],
         "synonym":  [
-                        "thematisieren",
-                        "adressieren",
-                        "anschneiden",
-                        "ansprechen"
+
                     ]
     },
     {
@@ -4345,10 +3992,7 @@
                          "Sie ermutigt mich."
                      ],
         "synonym":  [
-                        "animieren",
-                        "anspornen",
-                        "beflügeln",
-                        "motivieren"
+
                     ]
     },
     {
@@ -4367,8 +4011,7 @@
                          "Er vermag es nicht zu kommen."
                      ],
         "synonym":  [
-                        "können",
-                        "fähig sein"
+
                     ]
     },
     {
@@ -4389,8 +4032,7 @@
                          "Der Chef entlässt den Mitarbeiter."
                      ],
         "synonym":  [
-                        "entladen",
-                        "freisprechen"
+
                     ]
     },
     {
@@ -4409,7 +4051,7 @@
                          "Er musste erbrechen."
                      ],
         "synonym":  [
-                        "hochwürgen"
+
                     ]
     },
     {
@@ -4428,10 +4070,7 @@
                          "Der Feuerwehrmann rettet das Kind."
                      ],
         "synonym":  [
-                        "sichern",
-                        "erlösen",
-                        "bergen",
-                        "zurückholen"
+
                     ]
     },
     {
@@ -4450,10 +4089,7 @@
                          "Ich verpasse den Bus."
                      ],
         "synonym":  [
-                        "übersehen",
-                        "verfehlen",
-                        "vergessen",
-                        "versäumen"
+
                     ]
     },
     {
@@ -4473,8 +4109,7 @@
                          "Er verstößt gegen die Regeln."
                      ],
         "synonym":  [
-                        "ausstoßen",
-                        "verbannen"
+
                     ]
     },
     {
@@ -4493,8 +4128,7 @@
                          "Meine Mutter bekocht uns."
                      ],
         "synonym":  [
-                        "bewirten",
-                        "verköstigen"
+
                     ]
     },
     {
@@ -4515,10 +4149,7 @@
                          "Er bedient die Gäste."
                      ],
         "synonym":  [
-                        "bewirten",
-                        "dienen",
-                        "servieren",
-                        "auslösen"
+
                     ]
     },
     {
@@ -4537,8 +4168,7 @@
                          "Ich kann die beiden Wörter unterscheiden."
                      ],
         "synonym":  [
-                        "abweichen",
-                        "deviieren"
+
                     ]
     },
     {
@@ -4557,8 +4187,7 @@
                          "Er wurde aus dem Haus rausgeworfen."
                      ],
         "synonym":  [
-                        "kündigen",
-                        "entlassen"
+
                     ]
     },
     {
@@ -4578,9 +4207,7 @@
                          "Ich verwechselte die Wörter."
                      ],
         "synonym":  [
-                        "durcheinandergeraten",
-                        "durcheinanderbringen",
-                        "durcheinandergehen"
+
                     ]
     },
     {
@@ -4599,7 +4226,7 @@
                          "Er hat eine Jacke an."
                      ],
         "synonym":  [
-                        "tragen"
+
                     ]
     },
     {
@@ -4618,10 +4245,7 @@
                          "Er schmeißt den Müll weg."
                      ],
         "synonym":  [
-                        "wegwerfen",
-                        "ausmustern",
-                        "ausrangieren",
-                        "aussortieren"
+
                     ]
     },
     {
@@ -4640,9 +4264,7 @@
                          "Sie reinigt das Zimmer."
                      ],
         "synonym":  [
-                        "eliminieren",
-                        "entfernen",
-                        "löschen"
+
                     ]
     },
     {
@@ -4661,7 +4283,7 @@
                          "Er bereut seine Entscheidung."
                      ],
         "synonym":  [
-                        "bedauern"
+
                     ]
     },
     {
@@ -4680,9 +4302,7 @@
                          "Ich verschenke mein altes Buch."
                      ],
         "synonym":  [
-                        "geben",
-                        "schenken",
-                        "spendieren"
+
                     ]
     },
     {
@@ -4702,8 +4322,7 @@
                          "Er führt den Plan aus."
                      ],
         "synonym":  [
-                        "exportieren",
-                        "durchführen"
+
                     ]
     },
     {
@@ -4722,10 +4341,7 @@
                          "Sie erwirbt neue Kenntnisse."
                      ],
         "synonym":  [
-                        "anerziehen",
-                        "kaufen",
-                        "ankaufen",
-                        "aufkaufen"
+
                     ]
     },
     {
@@ -4744,9 +4360,7 @@
                          "Er verjagt die Katze."
                      ],
         "synonym":  [
-                        "davonjagen",
-                        "fortjagen",
-                        "jagen"
+
                     ]
     },
     {
@@ -4767,10 +4381,7 @@
                          "Ich erfasse das Problem."
                      ],
         "synonym":  [
-                        "bemerken",
-                        "feststellen",
-                        "registrieren",
-                        "verstehen"
+
                     ]
     },
     {
@@ -4789,9 +4400,7 @@
                          "Ich kapiere die Aufgabe."
                      ],
         "synonym":  [
-                        "verstehen",
-                        "aufnehmen",
-                        "begreifen"
+
                     ]
     },
     {
@@ -4810,10 +4419,7 @@
                          "Wir tauschen die Nummern aus."
                      ],
         "synonym":  [
-                        "umwälzen",
-                        "eintauschen",
-                        "reklamieren",
-                        "tauschen"
+
                     ]
     },
     {
@@ -4834,8 +4440,7 @@
                          "Er wendet das Auto."
                      ],
         "synonym":  [
-                        "drehen",
-                        "kehren"
+
                     ]
     },
     {
@@ -4854,10 +4459,7 @@
                          "Er zögert zu antworten."
                      ],
         "synonym":  [
-                        "trödeln",
-                        "verweilen",
-                        "zaudern",
-                        "zieren"
+
                     ]
     },
     {
@@ -4876,10 +4478,7 @@
                          "Ich reiche die Bewerbung ein."
                      ],
         "synonym":  [
-                        "eingeben",
-                        "einhändigen",
-                        "unterbreiten",
-                        "vorbringen"
+
                     ]
     },
     {
@@ -4898,8 +4497,7 @@
                          "Er benennt das Problem."
                      ],
         "synonym":  [
-                        "bezeichnen",
-                        "benamsen"
+
                     ]
     },
     {
@@ -4918,8 +4516,7 @@
                          "Das bedarf einer Erklärung."
                      ],
         "synonym":  [
-                        "benötigen",
-                        "brauchen"
+
                     ]
     },
     {
@@ -4938,10 +4535,7 @@
                          "Der Chef weist ihn an."
                      ],
         "synonym":  [
-                        "anordnen",
-                        "aufzwingen",
-                        "befinden",
-                        "bestimmen"
+
                     ]
     },
     {
@@ -4960,10 +4554,7 @@
                          "Er bringt neue Ideen ein."
                      ],
         "synonym":  [
-                        "bringen",
-                        "einfahren",
-                        "erwirtschaften",
-                        "abfallen"
+
                     ]
     },
     {
@@ -4983,10 +4574,7 @@
                          "Ich kann das nachvollziehen."
                      ],
         "synonym":  [
-                        "nachstellen",
-                        "reproduzieren",
-                        "wiederholen",
-                        "nachbilden"
+
                     ]
     },
     {
@@ -5005,7 +4593,7 @@
                          "Wir bummeln durch die Stadt."
                      ],
         "synonym":  [
-                        "trödeln"
+
                     ]
     },
     {
@@ -5024,7 +4612,7 @@
                          "Ich will das Problem loswerden."
                      ],
         "synonym":  [
-                        "abwimmeln"
+
                     ]
     },
     {
@@ -5043,9 +4631,7 @@
                          "Die Theorie basiert auf Fakten."
                      ],
         "synonym":  [
-                        "abhangen",
-                        "abhängen",
-                        "aufbauen"
+
                     ]
     },
     {
@@ -5064,10 +4650,7 @@
                          "Ich sortiere die Dateien."
                      ],
         "synonym":  [
-                        "gruppieren",
-                        "ordnen",
-                        "organisieren",
-                        "zusammenstellen"
+
                     ]
     },
     {
@@ -5086,8 +4669,7 @@
                          "Was hast du vor?"
                      ],
         "synonym":  [
-                        "planen",
-                        "beabsichtigen"
+
                     ]
     },
     {
@@ -5106,10 +4688,7 @@
                          "Er verspürt Angst."
                      ],
         "synonym":  [
-                        "empfinden",
-                        "fühlen",
-                        "spüren",
-                        "wahrnehmen"
+
                     ]
     },
     {
@@ -5128,8 +4707,7 @@
                          "Ich komme darauf nicht."
                      ],
         "synonym":  [
-                        "bemerken",
-                        "erkennen"
+
                     ]
     },
     {
@@ -5148,10 +4726,7 @@
                          "Er kündigt das Treffen an."
                      ],
         "synonym":  [
-                        "annoncieren",
-                        "ansagen",
-                        "ausrufen",
-                        "bekanntgeben"
+
                     ]
     },
     {
@@ -5170,9 +4745,7 @@
                          "Er kifft mit Freunden."
                      ],
         "synonym":  [
-                        "haschen",
-                        "barzen",
-                        "buffen"
+
                     ]
     },
     {
@@ -5192,7 +4765,7 @@
                          "Er holt zum Schlag aus."
                      ],
         "synonym":  [
-                        "ausgreifen"
+
                     ]
     },
     {
@@ -5211,7 +4784,7 @@
                          "Man sollte das Thema nicht politisieren."
                      ],
         "synonym":  [
-                        "instrumentalisieren"
+
                     ]
     },
     {
@@ -5230,8 +4803,7 @@
                          "Der Baum ist umgefallen."
                      ],
         "synonym":  [
-                        "stürzen",
-                        "kippen"
+
                     ]
     },
     {
@@ -5250,7 +4822,7 @@
                          "Er wurde pensioniert."
                      ],
         "synonym":  [
-                        "verrenten"
+
                     ]
     },
     {
@@ -5271,10 +4843,7 @@
                          "Er legt eine Jacke an."
                      ],
         "synonym":  [
-                        "anwenden",
-                        "auflegen",
-                        "ordnen",
-                        "anordnen"
+
                     ]
     },
     {
@@ -5295,10 +4864,7 @@
                          "Ich betrachte das Problem."
                      ],
         "synonym":  [
-                        "ansehen",
-                        "anschauen",
-                        "beaugapfeln",
-                        "mustern"
+
                     ]
     },
     {
@@ -5318,8 +4884,7 @@
                          "Der Sender strahlt die Sendung aus."
                      ],
         "synonym":  [
-                        "abstrahlen",
-                        "emittieren"
+
                     ]
     },
     {
@@ -5338,9 +4903,7 @@
                          "Wir setzen die Arbeit fort."
                      ],
         "synonym":  [
-                        "fortfahren",
-                        "fortführen",
-                        "kontinuieren"
+
                     ]
     },
     {
@@ -5359,8 +4922,7 @@
                          "Sie erobern die Stadt."
                      ],
         "synonym":  [
-                        "besiegen",
-                        "niederringen"
+
                     ]
     },
     {
@@ -5380,10 +4942,7 @@
                          "Die Kindheit prägt das Leben."
                      ],
         "synonym":  [
-                        "stempeln",
-                        "ausbilden",
-                        "ausprägen",
-                        "bilden"
+
                     ]
     },
     {
@@ -5402,10 +4961,7 @@
                          "Ich übermittle die Nachricht."
                      ],
         "synonym":  [
-                        "leiten",
-                        "navigieren",
-                        "routen",
-                        "schicken"
+
                     ]
     },
     {
@@ -5424,8 +4980,7 @@
                          "Er beeindruckt mich."
                      ],
         "synonym":  [
-                        "imponieren",
-                        "faszinieren"
+
                     ]
     },
     {
@@ -5444,8 +4999,7 @@
                          "Sie verbeugt sich vor dem Publikum."
                      ],
         "synonym":  [
-                        "verbeugen",
-                        "verneigen"
+
                     ]
     },
     {
@@ -5464,7 +5018,7 @@
                          "Wir einigen uns auf einen Termin."
                      ],
         "synonym":  [
-                        "übereinkommen"
+
                     ]
     },
     {
@@ -5484,9 +5038,7 @@
                          "Er bewältigt die Prüfung."
                      ],
         "synonym":  [
-                        "fertigbekommen",
-                        "bewerkstelligen",
-                        "meistern"
+
                     ]
     },
     {
@@ -5505,9 +5057,7 @@
                          "Er klaut mein Handy."
                      ],
         "synonym":  [
-                        "stehlen",
-                        "entwenden",
-                        "räubern"
+
                     ]
     },
     {
@@ -5527,8 +5077,7 @@
                          "Das kommt häufig vor."
                      ],
         "synonym":  [
-                        "geschehen",
-                        "auftreten"
+
                     ]
     },
     {
@@ -5548,8 +5097,7 @@
                          "Er biegt das Problem gerade."
                      ],
         "synonym":  [
-                        "abhelfen",
-                        "abstellen"
+
                     ]
     },
     {
@@ -5569,10 +5117,7 @@
                          "Sie steuert das Auto."
                      ],
         "synonym":  [
-                        "Abgaben",
-                        "Gebühren",
-                        "anführen",
-                        "dirigieren"
+
                     ]
     },
     {
@@ -5591,9 +5136,7 @@
                          "Ich fahre den Computer herunter."
                      ],
         "synonym":  [
-                        "Abschalten",
-                        "Lockdown",
-                        "Shutdown"
+
                     ]
     },
     {
@@ -5612,10 +5155,7 @@
                          "Die Regierung finanziert das Projekt."
                      ],
         "synonym":  [
-                        "bestreiten",
-                        "bezahlen",
-                        "ausstatten",
-                        "dotieren"
+
                     ]
     },
     {
@@ -5634,10 +5174,7 @@
                          "Gott erschuf die Welt."
                      ],
         "synonym":  [
-                        "schaffen",
-                        "entwerfen",
-                        "erstellen",
-                        "gestalten"
+
                     ]
     },
     {
@@ -5656,7 +5193,7 @@
                          "Ich beneide ihn um seinen Erfolg."
                      ],
         "synonym":  [
-                        "neiden"
+
                     ]
     },
     {
@@ -5675,7 +5212,7 @@
                          "Das Projekt scheitert."
                      ],
         "synonym":  [
-                        "misslingen"
+
                     ]
     },
     {
@@ -5694,9 +5231,7 @@
                          "Ich rufe die Daten ab."
                      ],
         "synonym":  [
-                        "Abfragen",
-                        "aktivieren",
-                        "zugreifen"
+
                     ]
     },
     {
@@ -5715,8 +5250,7 @@
                          "Wir führen das Experiment durch."
                      ],
         "synonym":  [
-                        "ausführen",
-                        "realisieren"
+
                     ]
     },
     {
@@ -5735,10 +5269,7 @@
                          "Er beteiligt sich am Projekt."
                      ],
         "synonym":  [
-                        "einsteigen",
-                        "sich anschließen",
-                        "sich einklinken",
-                        "sich einschalten"
+
                     ]
     },
     {
@@ -5758,10 +5289,7 @@
                          "Wir bewahren die Tradition."
                      ],
         "synonym":  [
-                        "erhalten",
-                        "verewigen",
-                        "wahren",
-                        "eternisieren"
+
                     ]
     },
     {
@@ -5780,10 +5308,7 @@
                          "Er platziert das Buch auf dem Tisch."
                      ],
         "synonym":  [
-                        "anbringen",
-                        "stellen",
-                        "ablegen",
-                        "abstellen"
+
                     ]
     },
     {
@@ -5802,10 +5327,7 @@
                          "Er verbirgt das Geheimnis."
                      ],
         "synonym":  [
-                        "dissimulieren",
-                        "kaschieren",
-                        "verhehlen",
-                        "verheimlichen"
+
                     ]
     },
     {
@@ -5824,10 +5346,7 @@
                          "Ich verstau die Kleidung im Schrank."
                      ],
         "synonym":  [
-                        "einräumen",
-                        "einsortieren",
-                        "unterbringen",
-                        "verräumen"
+
                     ]
     },
     {
@@ -5846,9 +5365,7 @@
                          "Ich packe die Tasche aus."
                      ],
         "synonym":  [
-                        "entpacken",
-                        "aufdecken",
-                        "aufklären"
+
                     ]
     },
     {
@@ -5868,10 +5385,7 @@
                          "Er klagt über Schmerzen."
                      ],
         "synonym":  [
-                        "trauern",
-                        "jammern",
-                        "bejammern",
-                        "lamentieren"
+
                     ]
     },
     {
@@ -5890,10 +5404,7 @@
                          "Sie blickt mich an."
                      ],
         "synonym":  [
-                        "gucken",
-                        "lugen",
-                        "schauen",
-                        "sehen"
+
                     ]
     },
     {
@@ -5912,9 +5423,7 @@
                          "Er hegt Hoffnung."
                      ],
         "synonym":  [
-                        "bemuttern",
-                        "pflegen",
-                        "umsorgen"
+
                     ]
     },
     {
@@ -5933,9 +5442,7 @@
                          "Alles ist schiefgegangen."
                      ],
         "synonym":  [
-                        "fehlschlagen",
-                        "fehlgehen",
-                        "missglücken"
+
                     ]
     },
     {
@@ -5954,8 +5461,7 @@
                          "Der Bauer sät Mais."
                      ],
         "synonym":  [
-                        "aussäen",
-                        "ausstreuen"
+
                     ]
     },
     {
@@ -5974,9 +5480,7 @@
                          "Ich begegne ihm auf der Straße."
                      ],
         "synonym":  [
-                        "antreffen",
-                        "auffinden",
-                        "entdecken"
+
                     ]
     },
     {
@@ -5995,10 +5499,7 @@
                          "Das Auto hält an."
                      ],
         "synonym":  [
-                        "aufhalten",
-                        "behindern",
-                        "verzögern",
-                        "herbeiwinken"
+
                     ]
     },
     {
@@ -6017,10 +5518,7 @@
                          "Wir arbeiten den Plan aus."
                      ],
         "synonym":  [
-                        "entwerfen",
-                        "entwickeln",
-                        "erarbeiten",
-                        "erfinden"
+
                     ]
     },
     {
@@ -6039,10 +5537,7 @@
                          "Er jätet im Garten."
                      ],
         "synonym":  [
-                        "rupfen",
-                        "zupfen",
-                        "ausjäten",
-                        "ausraufen"
+
                     ]
     },
     {
@@ -6061,8 +5556,7 @@
                          "Sie steht die Prüfung durch."
                      ],
         "synonym":  [
-                        "durchkommen",
-                        "überleben"
+
                     ]
     },
     {
@@ -6081,9 +5575,7 @@
                          "Er lehrt Deutsch."
                      ],
         "synonym":  [
-                        "dozieren",
-                        "lesen",
-                        "beibringen"
+
                     ]
     },
     {
@@ -6102,10 +5594,7 @@
                          "Er erhebt die Stimme."
                      ],
         "synonym":  [
-                        "aufbauen",
-                        "aufragen",
-                        "aufsteigen",
-                        "aufstreben"
+
                     ]
     },
     {
@@ -6124,8 +5613,7 @@
                          "Das Kind gehorcht seinen Eltern."
                      ],
         "synonym":  [
-                        "folgen",
-                        "gehorchen"
+
                     ]
     },
     {
@@ -6144,7 +5632,7 @@
                          "Er weist auf den Fehler hin."
                      ],
         "synonym":  [
-                        "anmerken"
+
                     ]
     },
     {
@@ -6163,8 +5651,7 @@
                          "Er tritt gegen die Tür zu."
                      ],
         "synonym":  [
-                        "hinzutreten",
-                        "nähertreten"
+
                     ]
     },
     {
@@ -6183,8 +5670,7 @@
                          "Wir rasten nach der Wanderung."
                      ],
         "synonym":  [
-                        "ausspannen",
-                        "entspannen"
+
                     ]
     },
     {
@@ -6203,10 +5689,7 @@
                          "Die Firma dehnt ihr Geschäft aus."
                      ],
         "synonym":  [
-                        "aufstocken",
-                        "ausbauen",
-                        "dazugewinnen",
-                        "hinzugewinnen"
+
                     ]
     },
     {
@@ -6225,9 +5708,7 @@
                          "Er zittert vor Kälte."
                      ],
         "synonym":  [
-                        "bibbern",
-                        "erbeben",
-                        "erschaudern"
+
                     ]
     },
     {
@@ -6246,8 +5727,7 @@
                          "Er erscheint plötzlich."
                      ],
         "synonym":  [
-                        "auftauchen",
-                        "publik werden"
+
                     ]
     },
     {
@@ -6266,7 +5746,7 @@
                          "Das Kind ertrinkt im See."
                      ],
         "synonym":  [
-                        "ersaufen"
+
                     ]
     },
     {
@@ -6285,7 +5765,7 @@
                          "Ich traue mich nicht."
                      ],
         "synonym":  [
-                        "wagen"
+
                     ]
     },
     {
@@ -6304,9 +5784,7 @@
                          "Das dient dem Zweck."
                      ],
         "synonym":  [
-                        "bedienen",
-                        "bewirten",
-                        "servieren"
+
                     ]
     },
     {
@@ -6325,7 +5803,7 @@
                          "Er berät die Kunden."
                      ],
         "synonym":  [
-                        "beistehen"
+
                     ]
     },
     {
@@ -6344,7 +5822,7 @@
                          "Ich lasse mich beraten."
                      ],
         "synonym":  [
-                        "konsultieren"
+
                     ]
     },
     {
@@ -6363,8 +5841,7 @@
                          "Die Arbeit überfordert ihn."
                      ],
         "synonym":  [
-                        "sich übernehmen",
-                        "sich verheben"
+
                     ]
     },
     {
@@ -6383,7 +5860,7 @@
                          "Er verbreitet die Nachricht."
                      ],
         "synonym":  [
-                        "ausbreiten"
+
                     ]
     },
     {
@@ -6402,9 +5879,7 @@
                          "Das Bild hängt an der Wand."
                      ],
         "synonym":  [
-                        "herunterhängen",
-                        "baumeln",
-                        "aufhängen"
+
                     ]
     },
     {
@@ -6424,10 +5899,7 @@
                          "Er beschneidet die Bäume."
                      ],
         "synonym":  [
-                        "einkürzen",
-                        "kappen",
-                        "kürzen",
-                        "stutzen"
+
                     ]
     },
     {
@@ -6446,10 +5918,7 @@
                          "Das Konzert begeistert mich."
                      ],
         "synonym":  [
-                        "anregen",
-                        "anspornen",
-                        "beflügeln",
-                        "befruchten"
+
                     ]
     },
     {
@@ -6468,8 +5937,7 @@
                          "Wir kommen dir entgegen."
                      ],
         "synonym":  [
-                        "nachgeben",
-                        "entgegengehen"
+
                     ]
     },
     {
@@ -6488,8 +5956,7 @@
                          "Er wägt die Vorteile ab."
                      ],
         "synonym":  [
-                        "abschätzen",
-                        "taxieren"
+
                     ]
     },
     {
@@ -6509,8 +5976,7 @@
                          "Die Geschichte berührt mich."
                      ],
         "synonym":  [
-                        "bedrücken",
-                        "belasten"
+
                     ]
     },
     {
@@ -6530,7 +5996,7 @@
                          "Ich gönne dir den Erfolg."
                      ],
         "synonym":  [
-                        "genehmigen"
+
                     ]
     },
     {
@@ -6549,7 +6015,7 @@
                          "Man soll nicht vorurteilen."
                      ],
         "synonym":  [
-                        "vorverurteilen"
+
                     ]
     },
     {
@@ -6568,8 +6034,7 @@
                          "Wir besiegen den Gegner."
                      ],
         "synonym":  [
-                        "erobern",
-                        "niederringen"
+
                     ]
     },
     {
@@ -6588,10 +6053,7 @@
                          "Er erläutert das Problem."
                      ],
         "synonym":  [
-                        "beschreiben",
-                        "ausführen",
-                        "darlegen",
-                        "darstellen"
+
                     ]
     },
     {
@@ -6610,7 +6072,7 @@
                          "Das Gericht verurteilt ihn."
                      ],
         "synonym":  [
-                        "ablehnen"
+
                     ]
     },
     {
@@ -6629,10 +6091,7 @@
                          "Sport hilft Krankheiten vorzubeugen."
                      ],
         "synonym":  [
-                        "abwenden",
-                        "unterbinden",
-                        "vereiteln",
-                        "verhindern"
+
                     ]
     },
     {
@@ -6652,9 +6111,7 @@
                          "Die Mutter ernährt das Kind."
                      ],
         "synonym":  [
-                        "beköstigen",
-                        "bewirten",
-                        "füttern"
+
                     ]
     },
     {
@@ -6673,8 +6130,7 @@
                          "Er schwitzt im Training."
                      ],
         "synonym":  [
-                        "transpirieren",
-                        "schwitzen"
+
                     ]
     },
     {
@@ -6693,7 +6149,7 @@
                          "Er vernachlässigt seine Aufgaben."
                      ],
         "synonym":  [
-                        "missachten"
+
                     ]
     },
     {
@@ -6713,9 +6169,7 @@
                          "Er betreibt ein Geschäft."
                      ],
         "synonym":  [
-                        "ausüben",
-                        "nachgehen",
-                        "bewirtschaften"
+
                     ]
     },
     {
@@ -6734,8 +6188,7 @@
                          "Er bevormundet seine Kollegen."
                      ],
         "synonym":  [
-                        "gängeln",
-                        "infantilisieren"
+
                     ]
     },
     {
@@ -6754,9 +6207,7 @@
                          "Ich blättere im Buch."
                      ],
         "synonym":  [
-                        "schmökern",
-                        "rollen",
-                        "scrollen"
+
                     ]
     },
     {
@@ -6775,9 +6226,7 @@
                          "Jemand klopft an die Tür."
                      ],
         "synonym":  [
-                        "klingeln",
-                        "hämmern",
-                        "pochen"
+
                     ]
     },
     {
@@ -6796,9 +6245,7 @@
                          "Ich wette, dass er kommt."
                      ],
         "synonym":  [
-                        "setzen",
-                        "spielen",
-                        "tippen"
+
                     ]
     },
     {
@@ -6817,10 +6264,7 @@
                          "Der Motor rohrt laut."
                      ],
         "synonym":  [
-                        "brüllen",
-                        "orgeln",
-                        "röhren",
-                        "schreien"
+
                     ]
     },
     {
@@ -6839,10 +6283,7 @@
                          "Die Firma stellt Autos her."
                      ],
         "synonym":  [
-                        "anfertigen",
-                        "erstellen",
-                        "erzeugen",
-                        "fabrizieren"
+
                     ]
     },
     {
@@ -6861,8 +6302,7 @@
                          "Er belohnt die Schüler."
                      ],
         "synonym":  [
-                        "revanchieren",
-                        "honorieren"
+
                     ]
     },
     {
@@ -6881,7 +6321,7 @@
                          "Sie schminkt sich."
                      ],
         "synonym":  [
-                        "sich schminken"
+
                     ]
     },
     {
@@ -6900,10 +6340,7 @@
                          "Er schwingt den Hammer."
                      ],
         "synonym":  [
-                        "pendeln",
-                        "schaukeln",
-                        "wiegen",
-                        "oszillieren"
+
                     ]
     },
     {
@@ -6922,8 +6359,7 @@
                          "Sie stimmen ein Lied an."
                      ],
         "synonym":  [
-                        "beginnen",
-                        "einsetzen"
+
                     ]
     },
     {
@@ -6942,9 +6378,7 @@
                          "Er meckert ständig."
                      ],
         "synonym":  [
-                        "nörgeln",
-                        "beckmessern",
-                        "bekritteln"
+
                     ]
     },
     {
@@ -6963,7 +6397,7 @@
                          "Die Menschen demonstrieren auf der Straße."
                      ],
         "synonym":  [
-                        "protestieren"
+
                     ]
     },
     {
@@ -6982,8 +6416,7 @@
                          "Das Essen vergiftet ihn."
                      ],
         "synonym":  [
-                        "kontaminieren",
-                        "verunreinigen"
+
                     ]
     },
     {
@@ -7003,8 +6436,7 @@
                          "Ich nehme mir vor, mehr zu lernen."
                      ],
         "synonym":  [
-                        "ausführen",
-                        "durchführen"
+
                     ]
     },
     {
@@ -7023,7 +6455,7 @@
                          "Er zieht das Projekt durch."
                      ],
         "synonym":  [
-                        "einlesen"
+
                     ]
     },
     {
@@ -7042,8 +6474,7 @@
                          "Wir unternehmen eine Reise."
                      ],
         "synonym":  [
-                        "angehen",
-                        "starten"
+
                     ]
     },
     {
@@ -7062,8 +6493,7 @@
                          "Der Vertrag verpflichtet ihn."
                      ],
         "synonym":  [
-                        "einschwören",
-                        "anstellen"
+
                     ]
     },
     {
@@ -7082,10 +6512,7 @@
                          "Man verhütet Krankheiten."
                      ],
         "synonym":  [
-                        "abwenden",
-                        "unterbinden",
-                        "vereiteln",
-                        "verhindern"
+
                     ]
     },
     {
@@ -7104,8 +6531,7 @@
                          "Ich erkundige mich nach dem Preis."
                      ],
         "synonym":  [
-                        "sich informieren",
-                        "sich aufschlauen"
+
                     ]
     },
     {
@@ -7124,10 +6550,7 @@
                          "Sie besetzen die Stadt."
                      ],
         "synonym":  [
-                        "aneignen",
-                        "angliedern",
-                        "annektieren",
-                        "einverleiben"
+
                     ]
     },
     {
@@ -7146,8 +6569,7 @@
                          "Ich gehe die Treppe runter."
                      ],
         "synonym":  [
-                        "abnehmen",
-                        "lichten"
+
                     ]
     },
     {
@@ -8457,8 +7879,7 @@
                          "Die Stadt ist lebendig."
                      ],
         "synonym":  [
-                        "lebend",
-                        "untot"
+
                     ]
     },
     {
@@ -8477,9 +7898,7 @@
                          "Er ist sehr großzügig."
                      ],
         "synonym":  [
-                        "weitherzig",
-                        "ausgedehnt",
-                        "großflächig"
+
                     ]
     },
     {
@@ -8498,10 +7917,7 @@
                          "Das ist überflüssig."
                      ],
         "synonym":  [
-                        "doppelt",
-                        "mehrfach",
-                        "überreichlich",
-                        "überzählig"
+
                     ]
     },
     {
@@ -8520,10 +7936,7 @@
                          "Die Arbeit ist anstrengend."
                      ],
         "synonym":  [
-                        "stressig",
-                        "nervend",
-                        "stressvoll",
-                        "aufwändig"
+
                     ]
     },
     {
@@ -8542,9 +7955,7 @@
                          "Er fühlt sich deprimiert."
                      ],
         "synonym":  [
-                        "niedergeschlagen",
-                        "bedrückt",
-                        "traurig"
+
                     ]
     },
     {
@@ -8564,9 +7975,7 @@
                          "Der Job ist anspruchsvoll."
                      ],
         "synonym":  [
-                        "kritisch",
-                        "spitzfingrig",
-                        "wählerisch"
+
                     ]
     },
     {
@@ -8585,9 +7994,7 @@
                          "Er ist zuverlässig."
                      ],
         "synonym":  [
-                        "ergeben",
-                        "loyal",
-                        "treu"
+
                     ]
     },
     {
@@ -8607,8 +8014,7 @@
                          "Er ist ausgesprochen freundlich."
                      ],
         "synonym":  [
-                        "gänzlich",
-                        "betont"
+
                     ]
     },
     {
@@ -8627,10 +8033,7 @@
                          "Die Erklärung war prägnant."
                      ],
         "synonym":  [
-                        "augenfällig",
-                        "ausgeprägt",
-                        "bezeichnend",
-                        "charakteristisch"
+
                     ]
     },
     {
@@ -8650,9 +8053,7 @@
                          "Die Leistung war mangelhaft."
                      ],
         "synonym":  [
-                        "unzureichend",
-                        "fehlerhaft",
-                        "defizitär"
+
                     ]
     },
     {
@@ -8671,7 +8072,7 @@
                          "Das Design ist ausgefallen."
                      ],
         "synonym":  [
-                        "atypisch"
+
                     ]
     },
     {
@@ -8690,9 +8091,7 @@
                          "Er ist beim Essen wählerisch."
                      ],
         "synonym":  [
-                        "anspruchsvoll",
-                        "kritisch",
-                        "spitzfingrig"
+
                     ]
     },
     {
@@ -8711,7 +8110,7 @@
                          "Die Kultur ist facettenreich."
                      ],
         "synonym":  [
-                        "bunt"
+
                     ]
     },
     {
@@ -8730,9 +8129,7 @@
                          "Der Film ist aufregend."
                      ],
         "synonym":  [
-                        "attraktiv",
-                        "atemberaubend",
-                        "aufregend"
+
                     ]
     },
     {
@@ -8753,10 +8150,7 @@
                          "Sie ist aufgeregt."
                      ],
         "synonym":  [
-                        "beunruhigt",
-                        "erregt",
-                        "fieberhaft",
-                        "gereizt"
+
                     ]
     },
     {
@@ -8775,10 +8169,7 @@
                          "Das ist peinlich."
                      ],
         "synonym":  [
-                        "beschämend",
-                        "blamabel",
-                        "unangenehm",
-                        "cringe"
+
                     ]
     },
     {
@@ -8797,10 +8188,7 @@
                          "Er ist gut angezogen."
                      ],
         "synonym":  [
-                        "angekleidet",
-                        "bekleidet",
-                        "gekleidet",
-                        "gewandet"
+
                     ]
     },
     {
@@ -8819,10 +8207,7 @@
                          "Sein Kommentar war sarkastisch."
                      ],
         "synonym":  [
-                        "beißend",
-                        "beleidigend",
-                        "ehrenrührig",
-                        "höhnisch"
+
                     ]
     },
     {
@@ -8842,8 +8227,7 @@
                          "Grundsätzlich stimme ich zu."
                      ],
         "synonym":  [
-                        "generell",
-                        "gesamthaft"
+
                     ]
     },
     {
@@ -8862,10 +8246,7 @@
                          "Er hat es gekonnt gemacht."
                      ],
         "synonym":  [
-                        "geschickt",
-                        "gewandt",
-                        "kunstfertig",
-                        "kunstgerecht"
+
                     ]
     },
     {
@@ -8884,8 +8265,7 @@
                          "Er ist heute anwesend."
                      ],
         "synonym":  [
-                        "präsent",
-                        "zeigen"
+
                     ]
     },
     {
@@ -8904,8 +8284,7 @@
                          "Die Datei ist auffindbar."
                      ],
         "synonym":  [
-                        "findbar",
-                        "lokalisierbar"
+
                     ]
     },
     {
@@ -8924,9 +8303,7 @@
                          "Das ist ein entscheidender Punkt."
                      ],
         "synonym":  [
-                        "ausschlaggebend",
-                        "bestimmend",
-                        "kriegsentscheidend"
+
                     ]
     },
     {
@@ -8945,9 +8322,7 @@
                          "Er fragt gezielt."
                      ],
         "synonym":  [
-                        "absichtlich",
-                        "bewusst",
-                        "gewollt"
+
                     ]
     },
     {
@@ -8966,9 +8341,7 @@
                          "Sie ist zuversichtlich."
                      ],
         "synonym":  [
-                        "erwartungsfroh",
-                        "frohgemut",
-                        "hochgemut"
+
                     ]
     },
     {
@@ -8987,8 +8360,7 @@
                          "Der Bus ist gedrängt."
                      ],
         "synonym":  [
-                        "kurzgefasst",
-                        "knapp"
+
                     ]
     },
     {
@@ -9007,8 +8379,7 @@
                          "Er wohnt vorübergehend hier."
                      ],
         "synonym":  [
-                        "vorläufig",
-                        "einstweilen"
+
                     ]
     },
     {
@@ -9027,8 +8398,7 @@
                          "Ich bin auf Hilfe angewiesen."
                      ],
         "synonym":  [
-                        "abhängig",
-                        "dependent"
+
                     ]
     },
     {
@@ -9047,10 +8417,7 @@
                          "Die Arbeit ist abwechslungsreich."
                      ],
         "synonym":  [
-                        "divers",
-                        "unterschiedlich",
-                        "vielfältig",
-                        "facettenreich"
+
                     ]
     },
     {
@@ -9070,10 +8437,7 @@
                          "Das Restaurant ist gehoben."
                      ],
         "synonym":  [
-                        "hochstehend",
-                        "besser",
-                        "bessergestellt",
-                        "vornehm"
+
                     ]
     },
     {
@@ -9092,10 +8456,7 @@
                          "Das Wetter ist angenehm."
                      ],
         "synonym":  [
-                        "behaglich",
-                        "bequem",
-                        "gemütlich",
-                        "wirtlich"
+
                     ]
     },
     {
@@ -9114,10 +8475,7 @@
                          "Das ist relativ einfach."
                      ],
         "synonym":  [
-                        "einigermaßen",
-                        "durchaus",
-                        "eher",
-                        "halb"
+
                     ]
     },
     {
@@ -9136,9 +8494,7 @@
                          "Ich bin begeistert."
                      ],
         "synonym":  [
-                        "berauscht",
-                        "entflammt",
-                        "enthusiastisch"
+
                     ]
     },
     {
@@ -9158,7 +8514,7 @@
                          "Das Risiko ist gering."
                      ],
         "synonym":  [
-                        "überschaubar"
+
                     ]
     },
     {
@@ -9177,10 +8533,7 @@
                          "Er ist äußerst klug."
                      ],
         "synonym":  [
-                        "sehr",
-                        "allzu",
-                        "ausgesprochen",
-                        "außergewöhnlich"
+
                     ]
     },
     {
@@ -9199,9 +8552,7 @@
                          "Das ist ein wesentlicher Punkt."
                      ],
         "synonym":  [
-                        "elementar",
-                        "entscheidend",
-                        "essentiell"
+
                     ]
     },
     {
@@ -9220,10 +8571,7 @@
                          "Ich brauche zusätzliche Zeit."
                      ],
         "synonym":  [
-                        "alternative",
-                        "andere",
-                        "sonstige",
-                        "übrige"
+
                     ]
     },
     {
@@ -9242,10 +8590,7 @@
                          "Er ist sehr enthusiastisch."
                      ],
         "synonym":  [
-                        "begeistert",
-                        "berauscht",
-                        "entflammt",
-                        "entzückt"
+
                     ]
     },
     {
@@ -9264,10 +8609,7 @@
                          "Das Ergebnis ist voraussichtlich morgen."
                      ],
         "synonym":  [
-                        "absehbar",
-                        "abzusehen",
-                        "berechenbar",
-                        "voraussagbar"
+
                     ]
     },
     {
@@ -9286,8 +8628,7 @@
                          "Er hat eine geistliche Ausbildung."
                      ],
         "synonym":  [
-                        "kirchlich",
-                        "klerikal"
+
                     ]
     },
     {
@@ -9306,10 +8647,7 @@
                          "Die Situation ist angespannt."
                      ],
         "synonym":  [
-                        "gespannt",
-                        "überdreht",
-                        "überempfindlich",
-                        "überreizt"
+
                     ]
     },
     {
@@ -9328,10 +8666,7 @@
                          "Die Leistung ist ausgezeichnet."
                      ],
         "synonym":  [
-                        "außergewöhnlich",
-                        "außerordentlich",
-                        "besonders",
-                        "bestens"
+
                     ]
     },
     {
@@ -9350,9 +8685,7 @@
                          "Er arbeitet sorgfältig."
                      ],
         "synonym":  [
-                        "genau",
-                        "gründlich",
-                        "reiflich"
+
                     ]
     },
     {
@@ -9371,9 +8704,7 @@
                          "Er geht heimlich raus."
                      ],
         "synonym":  [
-                        "geheimniskrämerisch",
-                        "geheimnistuerisch",
-                        "verstohlen"
+
                     ]
     },
     {
@@ -9394,7 +8725,7 @@
                          "Mittlerweile ist er angekommen."
                      ],
         "synonym":  [
-                        "inzwischen"
+
                     ]
     },
     {
@@ -9413,10 +8744,7 @@
                          "Das stimmt teilweise."
                      ],
         "synonym":  [
-                        "bruchstückhaft",
-                        "fragmentarisch",
-                        "holzschnittartig",
-                        "inkomplett"
+
                     ]
     },
     {
@@ -9435,9 +8763,7 @@
                          "Er reagiert unverzüglich."
                      ],
         "synonym":  [
-                        "augenblicklich",
-                        "direkt",
-                        "fristlos"
+
                     ]
     },
     {
@@ -9456,9 +8782,7 @@
                          "Er ist angeblich krank."
                      ],
         "synonym":  [
-                        "vorgeblich",
-                        "vermeintlich",
-                        "scheinbar"
+
                     ]
     },
     {
@@ -9477,8 +8801,7 @@
                          "Überwiegend regnet es."
                      ],
         "synonym":  [
-                        "größtenteils",
-                        "mehrheitlich"
+
                     ]
     },
     {
@@ -9497,9 +8820,7 @@
                          "Nicht zuletzt danke ich dir."
                      ],
         "synonym":  [
-                        "insbesondere",
-                        "vor allem",
-                        "zumal"
+
                     ]
     },
     {
@@ -9518,8 +8839,7 @@
                          "Wenn du gehst, dann ich erst recht."
                      ],
         "synonym":  [
-                        "umso mehr",
-                        "besonders"
+
                     ]
     },
     {
@@ -9538,9 +8858,7 @@
                          "Er ist quasi mein Bruder."
                      ],
         "synonym":  [
-                        "eigentlich",
-                        "fast",
-                        "gewissermaßen"
+
                     ]
     },
     {
@@ -9579,7 +8897,7 @@
         "id":  "slang1",
         "word":  "Alter",
         "type":  "Slang",
-        "category":  "Slang",
+        "category":  "Schimpfwörter / Slang",
         "englisch":  [
                          "dude"
                      ],
@@ -9589,109 +8907,6 @@
         "meaning":  "Used informally to address someone.",
         "examples":  [
                          "Alter, das ist krass!"
-                     ]
-    },
-    {
-        "id":  "slang2",
-        "word":  "Digga",
-        "type":  "Slang",
-        "category":  "Slang",
-        "englisch":  [
-                         "bro",
-                         "dude"
-                     ],
-        "bangla":  [
-                       "দোস্ত",
-                       "ভাই (স্ল্যাং)"
-                   ],
-        "meaning":  "Very common informal word among friends.",
-        "examples":  [
-                         "Digga!"
-                     ]
-    },
-    {
-        "id":  "slang3",
-        "word":  "krass",
-        "type":  "Slang",
-        "category":  "Slang",
-        "englisch":  [
-                         "crazy",
-                         "intense"
-                     ],
-        "bangla":  [
-                       "দারুণ",
-                       "অবিশ্বাস্য"
-                   ],
-        "meaning":  "Informal word for something surprising or intense.",
-        "examples":  [
-                         "Krass!"
-                     ]
-    },
-    {
-        "id":  "slang4",
-        "word":  "geil",
-        "type":  "Slang",
-        "category":  "Slang",
-        "englisch":  [
-                         "awesome",
-                         "cool"
-                     ],
-        "bangla":  [
-                       "চমৎকার",
-                       "দারুণ"
-                   ],
-        "meaning":  "Informal positive word for something very good.",
-        "examples":  [
-                         "Geil!"
-                     ]
-    },
-    {
-        "id":  "schimpf1",
-        "word":  "fick dich",
-        "type":  "Schimpfwort",
-        "category":  "Schimpfwörter",
-        "englisch":  [
-                         "fuck you"
-                     ],
-        "bangla":  [
-                       "তুই চুপ কর (অপমানজনক)"
-                   ],
-        "meaning":  "A very rude and offensive insult.",
-        "examples":  [
-                         "Er rief im Streit: \"fick dich\"."
-                     ]
-    },
-    {
-        "id":  "schimpf2",
-        "word":  "verpiss dich",
-        "type":  "Schimpfwort",
-        "category":  "Schimpfwörter",
-        "englisch":  [
-                         "piss off",
-                         "get lost"
-                     ],
-        "bangla":  [
-                       "দূর হয়ে যা (অপমানজনক)"
-                   ],
-        "meaning":  "A very rude way to tell someone to go away.",
-        "examples":  [
-                         "Im Streit sagte sie: \"verpiss dich\"."
-                     ]
-    },
-    {
-        "id":  "schimpf3",
-        "word":  "Idiot",
-        "type":  "Schimpfwort",
-        "category":  "Schimpfwörter",
-        "englisch":  [
-                         "idiot"
-                     ],
-        "bangla":  [
-                       "বোকা (অপমানজনক)"
-                   ],
-        "meaning":  "An insulting word used to call someone stupid.",
-        "examples":  [
-                         "Idiot!"
                      ]
     },
     {
