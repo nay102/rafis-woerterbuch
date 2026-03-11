@@ -240,7 +240,8 @@ body.dark .desktop-menu-btn {
 .header-controls button {
   padding: 8px 16px;
   border-radius: 12px;
-  border: none;
+  border: 1px solid #8364f5;
+  /* border: none; */
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -837,6 +838,182 @@ body.dark .category-explain-panel h4 {
   hyphens: auto;
 }
 
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.detail-top-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.conjugation-open-btn {
+  border: 1px solid #60a5fa;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.conjugation-open-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.45);
+}
+
+.conjugation-open-btn:active {
+  transform: translateY(0);
+}
+
+#conjugationPage {
+  background: rgb(224, 228, 235);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 20px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+  border: 2px solid #8fb8f9;
+}
+
+.conjugation-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.conjugation-topbar h1 {
+  font-size: 26px;
+  color: #1e3a8a;
+}
+
+.conjugation-explainer {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.conjugation-content {
+  display: grid;
+  gap: 14px;
+}
+
+.conjugation-mood {
+  border-radius: 16px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+  padding: 14px 0px;
+  animation: conjugationMoodIn 0.35s ease;
+}
+
+.conjugation-mood h2 {
+  font-size: 20px;
+  color: #1d4ed8;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.conjugation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  /* justify-content: flex-start; */
+  justify-content: center ;
+}
+
+.conjugation-tense-card {
+  border-radius: 12px;
+  border: 1px solid #a2a2f3;
+  background: #ffffff;
+  padding: 10px 12px;
+  margin: 5px 40px;
+  height: auto;
+  align-self: start;
+  width: fit-content;
+  min-width: min(260px, 100%);
+  max-width: 100%;
+  flex: 0 1 380px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.conjugation-tense-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.12);
+}
+
+.conjugation-tense-card h3 {
+  font-size: 15px;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+
+.conjugation-person-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.conjugation-person-list li {
+  display: grid;
+  grid-template-columns: minmax(64px, 92px) auto;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px dashed #77aff8;
+  padding-bottom: 5px;
+}
+
+.conjugation-person-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.conjugation-person-list span {
+  font-size: 12px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.conjugation-person-list strong {
+  font-size: 13px;
+  color: #1d4ed8;
+  font-weight: 700;
+  text-align: left;
+}
+
+.conjugation-empty {
+  font-size: 12px;
+  color: #64748b;
+}
+
+@keyframes conjugationMoodIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* =========================================================
    🔟 BACK BUTTON
    Premium Pill Style Button
@@ -1189,7 +1366,8 @@ body.dark .category-explain-panel h4 {
 /* Pages fade in smoothly */
 #homePage,
 #categoryPage,
-#wordDetailPage {
+#wordDetailPage,
+#conjugationPage {
   opacity: 0;
 
   transform: translateY(25px);
@@ -1202,7 +1380,8 @@ body.dark .category-explain-panel h4 {
 /* Active Page */
 #homePage.active,
 #categoryPage.active,
-#wordDetailPage.active {
+#wordDetailPage.active,
+#conjugationPage.active {
   opacity: 1;
 
   transform: translateY(0);
@@ -2238,6 +2417,7 @@ body,
 #homePage,
 #categoryPage,
 #wordDetailPage,
+#conjugationPage,
 .footer,
 button,
 input,
@@ -2442,6 +2622,57 @@ body.dark #wordDetailPage p {
 /* Example styling */
 body.dark #wordDetailPage em {
   color: #8695aa;
+}
+
+body.dark #conjugationPage {
+  background: rgb(20, 31, 52);
+  border: 2px solid #1f2937;
+}
+
+body.dark .conjugation-topbar h1 {
+  color: #93c5fd;
+}
+
+body.dark .conjugation-mood {
+  background: #111a2b;
+  border-color: #334155;
+}
+
+body.dark .conjugation-mood h2,
+body.dark .conjugation-tense-card h3 {
+  color: #7fb0ff;
+}
+
+body.dark .conjugation-tense-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.dark .conjugation-person-list li {
+  border-bottom-color: #233147;
+}
+
+body.dark .conjugation-person-list span {
+  color: #e2e8f0;
+}
+
+body.dark .conjugation-person-list strong {
+  color: #60a5fa;
+}
+
+body.dark .conjugation-empty {
+  color: #94a3b8;
+}
+
+body.dark .conjugation-open-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #60a5fa;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.4);
+}
+
+body.dark .conjugation-open-btn:hover {
+  filter: brightness(1.1);
 }
 
 /* ======================================================
@@ -2820,6 +3051,16 @@ body.dark .close-btn:hover {
     gap: 10px;
   }
 
+  #conjugationPage {
+    margin: 16px 14px;
+    padding: 20px 16px;
+  }
+
+  .conjugation-tense-card {
+    margin: 5px 18px;
+    flex: 0 1 340px;
+  }
+
   body.dark .header,
   body.dark .footer,
   body.dark .detail-card {
@@ -2876,6 +3117,25 @@ body.dark .close-btn:hover {
 
   body.dark #categoryPage .vertical-word-item {
     border-color: #334155;
+  }
+
+  #conjugationPage {
+    margin: 14px 12px;
+    padding: 18px 14px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 22px;
+  }
+
+  .conjugation-grid {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .conjugation-tense-card {
+    margin: 5px 12px;
+    flex: 0 1 320px;
   }
 }
 
@@ -3027,6 +3287,28 @@ body.dark .close-btn:hover {
     border-radius: 0;
     margin-bottom: 0;
     color: #d4deec;
+  }
+
+  #conjugationPage {
+    margin: 12px 10px;
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 20px;
+  }
+
+  .conjugation-grid {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .conjugation-tense-card {
+    width: 100%;
+    min-width: 0;
+    margin: 4px 0;
+    /* flex: 1 1 100%; */
   }
 
   .panel-page-wrap {
@@ -3294,6 +3576,47 @@ body.dark .close-btn:hover {
     margin-bottom: 12px;
   }
 
+  #conjugationPage {
+    margin: 8px 6px;
+    padding: 12px 8px;
+    border-radius: 14px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 17px;
+  }
+
+  .conjugation-mood {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .conjugation-mood h2 {
+    font-size: 16px;
+  }
+
+  .conjugation-tense-card {
+    padding: 8px 9px;
+  }
+
+  .conjugation-tense-card h3 {
+    font-size: 13px;
+  }
+
+  .conjugation-person-list span,
+  .conjugation-person-list strong {
+    font-size: 12px;
+  }
+
+  .conjugation-person-list li {
+    grid-template-columns: minmax(58px, 82px) auto;
+    gap: 6px;
+  }
+
+  .conjugation-tense-card {
+    margin: 4px 0;
+  }
+
   .settings-head {
     padding: 12px;
     border-radius: 12px;
@@ -3530,6 +3853,37 @@ body.dark .close-btn:hover {
 
   .detail-title {
     font-size: 20px;
+  }
+
+  #conjugationPage {
+    margin: 6px 4px;
+    padding: 10px 6px;
+    border-radius: 12px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 15px;
+  }
+
+  .conjugation-mood {
+    padding: 8px;
+  }
+
+  .conjugation-mood h2 {
+    font-size: 14px;
+  }
+
+  .conjugation-tense-card h3 {
+    font-size: 12px;
+  }
+
+  .conjugation-person-list li {
+    grid-template-columns: minmax(54px, 76px) auto;
+    gap: 6px;
+  }
+
+  .conjugation-tense-card {
+    margin: 4px 0;
   }
 
   .settings-head h1 {
