@@ -3221,17 +3221,17 @@ body.dark .close-btn:hover {
   }
 
   .vertical-word-item {
-    font-size: 14px;
-    padding: 12px;
+    font-size: 13px;
+    padding: 11px;
   }
 
   .word-number {
     width: 38px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .word-text {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   #wordDetailPage {
@@ -3538,6 +3538,25 @@ body.dark .close-btn:hover {
     gap: 8px;
   }
 
+  #categoryPage[data-category="Nomen-Verb Verbindung"] .two-column-wrapper,
+  #categoryPage[data-category="Redewendungen"] .two-column-wrapper,
+  #categoryPage[data-category="Sprichwörter"] .two-column-wrapper,
+  #categoryPage[data-category="Filme & Serien"] .two-column-wrapper,
+  #categoryPage[data-category="Adverbiale Wendung"] .two-column-wrapper,
+  #categoryPage[data-category="Feste Wendungen"] .two-column-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+
+  .detail-top-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-top-actions .favorite-btn {
+    margin-left: 0;
+  }
+
   .vertical-word-item {
     padding: 8px 9px;
     border-radius: 10px;
@@ -3818,6 +3837,32 @@ body.dark .close-btn:hover {
   .four-column-wrapper,
   .two-column-wrapper {
     grid-template-columns: 1fr !important;
+  }
+
+  #categoryPage[data-category="Slang"] .four-column-wrapper,
+  #categoryPage[data-category="Nomen"] .four-column-wrapper,
+  #categoryPage[data-category="Schimpfwörter"] .four-column-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  #categoryPage[data-category="Slang"] .vertical-word-item,
+  #categoryPage[data-category="Nomen"] .vertical-word-item,
+  #categoryPage[data-category="Schimpfwörter"] .vertical-word-item {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  #categoryPage[data-category="Slang"] .word-number,
+  #categoryPage[data-category="Nomen"] .word-number,
+  #categoryPage[data-category="Schimpfwörter"] .word-number {
+    width: 24px;
+    font-size: 10px;
+  }
+
+  #categoryPage[data-category="Slang"] .word-text,
+  #categoryPage[data-category="Nomen"] .word-text,
+  #categoryPage[data-category="Schimpfwörter"] .word-text {
+    font-size: 12px;
   }
 
   .vertical-word-item {

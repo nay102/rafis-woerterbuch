@@ -981,6 +981,7 @@ function openCategoryPage(categoryName, options = {}) {
 
   const categoryPage = document.getElementById("categoryPage");
   categoryPage.innerHTML = "";
+  categoryPage.dataset.category = categoryName;
 
   showSection("categoryPage");
 
