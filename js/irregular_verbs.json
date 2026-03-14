@@ -517,6 +517,17 @@
         "k1_ihr":  "schreiet"
     },
     {
+        "infinitive":  "schreiben",
+        "praeteritum":  "schrieb",
+        "partizip2":  "geschrieben",
+        "aux":  "haben",
+        "present_du":  "schreibst",
+        "present_er":  "schreibt",
+        "konjunktiv2_stem":  "schriebe",
+        "k1_du":  "schreibest",
+        "k1_ihr":  "schreibet"
+    },
+    {
         "infinitive":  "schwingen",
         "praeteritum":  "schwang",
         "partizip2":  "geschwungen",

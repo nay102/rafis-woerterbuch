@@ -639,7 +639,11 @@ const panelPageContent = {
 
 export async function initUI() {
 
-  await loadWords();
+  try {
+    await loadWords();
+  } catch (error) {
+    console.error("Failed to load words/irregulars JSON.", error);
+  }
   restoreGitHubFallbackRoute();
 
   generateCategories();
@@ -649,6 +653,7 @@ export async function initUI() {
 
   // Update word counter
   updateWordCounter();
+  reportDuplicateWords();
 
   applyAppSettings(getStoredSettings(), { persist: false });
   setupDarkMode();
@@ -677,6 +682,53 @@ function updateWordCounter() {
 
 }
 
+function normalizeText(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function reportDuplicateWords() {
+  const words = getAllWords();
+  const byKey = new Map();
+  const duplicates = [];
+
+  words.forEach(entry => {
+    const word = normalizeText(entry?.word);
+    const category = normalizeText(entry?.category);
+    if (!word) return;
+    const key = `${word}__${category}`;
+    const existing = byKey.get(key);
+    if (existing) {
+      duplicates.push({ word: entry.word, category: entry.category, id: entry.id });
+      return;
+    }
+    byKey.set(key, entry);
+  });
+
+  if (duplicates.length === 0) return;
+
+  console.warn("[duplicates] Found duplicate words:", duplicates);
+
+  const importMessage = document.getElementById("importMessage");
+  if (!importMessage) return;
+
+  const total = duplicates.length;
+  const sample = duplicates.slice(0, 6);
+  const list = sample
+    .map(d => `${escapeHtml(d.word || "-")} (${escapeHtml(d.category || "-")})`)
+    .join(", ");
+  const suffix = total > sample.length ? `, +${total - sample.length} more` : "";
+
+  importMessage.innerHTML = `
+    <div class="search-message" style="margin-top:10px;">
+      Duplicate entries detected (${total}). Check and remove duplicates in words.json.
+      <div style="margin-top:6px; font-size:13px; opacity:0.9;">${list}${suffix}</div>
+    </div>
+  `;
+}
+
 /* =========================================================
    CATEGORY LIST
 ========================================================= */
@@ -688,6 +740,8 @@ const categories = [
   "Nomen",
   "Nomen-Verb Verbindung",
   "Redewendungen",
+  "Sprichwörter",
+  "Feste Wendungen",
   "Slang",
   "Schimpfwörter",
   "Best YT Kanäle",
@@ -726,6 +780,16 @@ const CATEGORY_EXPLANATIONS = {
     en: "Idiomatic expressions are fixed phrases with figurative meaning. They help you speak German more naturally and authentically.",
     bn: "প্রবাদধর্মী বাক্যাংশ হলো স্থায়ী অভিব্যক্তি, যেগুলোর অর্থ প্রায়ই আক্ষরিক নয়। এগুলো জার্মানকে বেশি স্বাভাবিকভাবে বলতে সাহায্য করে।"
   },
+  "Sprichwörter": {
+    de: "Sprichwörter sind kurze, feste Sätze mit allgemeiner Lebensweisheit. Sie fassen Erfahrungen zusammen und werden oft im Alltag verwendet.",
+    en: "Proverbs are short, fixed sayings that express general wisdom. They summarize experience and are often used in everyday language.",
+    bn: "প্রবাদ হলো ছোট, স্থির বাক্য যেগুলো সাধারণ জীবনের জ্ঞান প্রকাশ করে। এগুলো অভিজ্ঞতা সংক্ষেপে তুলে ধরে এবং দৈনন্দিন কথায় ব্যবহৃত হয়।"
+  },
+  "Feste Wendungen": {
+    de: "Feste Wendungen sind häufig gebrauchte Wortverbindungen mit klarer Bedeutung. Sie klingen natürlich und helfen beim flüssigen Sprechen.",
+    en: "Fixed expressions are commonly used word combinations with a clear meaning. They sound natural and help you speak fluently.",
+    bn: "স্থির বাক্যাংশ হলো নিয়মিত ব্যবহৃত শব্দসমষ্টি যার অর্থ নির্দিষ্ট। এগুলো প্রাকৃতিক শোনায় এবং সাবলীলভাবে বলতে সাহায্য করে।"
+  },
   Slang: {
     de: "Slang ist lockere, informelle Alltagssprache. Er klingt natürlicher in Gesprächen mit Freunden und hilft, echte gesprochene Sprache besser zu verstehen.",
     en: "Slang is informal everyday language. It sounds more natural in casual conversations and helps you understand real spoken German better.",
@@ -760,6 +824,8 @@ const CATEGORY_EXPLAIN_TITLES = {
   Nomen: "Was sind Nomen?",
   "Nomen-Verb Verbindung": "Was sind Nomen-Verb-Verbindungen?",
   Redewendungen: "Was sind Redewendungen?",
+  "Sprichwörter": "Was sind Sprichwörter?",
+  "Feste Wendungen": "Was sind feste Wendungen?",
   Slang: "Was ist Slang?",
   "Schimpfwörter": "Was sind Schimpfwörter?",
   "Best YT Kanäle": "Was sind die besten YouTube-Kanäle?",

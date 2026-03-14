@@ -2,7 +2,8 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v3";
+const CACHE_VERSION = "rw-cache-v5";
+const DATA_VERSION = "2026-03-13-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {
@@ -29,7 +30,8 @@ function coreUrls() {
     toAbsolute("js/app.js"),
     toAbsolute("js/ui.js"),
     toAbsolute("js/words.js"),
-    toAbsolute("js/words.json"),
+    toAbsolute(`js/words.json?v=${DATA_VERSION}`),
+    toAbsolute(`js/irregular_verbs.json?v=${DATA_VERSION}`),
     toAbsolute("js/firebase.js"),
     toAbsolute("js/auth.js"),
     toAbsolute("assets/favicon.png"),
@@ -104,7 +106,10 @@ self.addEventListener("fetch", event => {
   }
 
   // Keep dictionary JSON fresh: network-first, cache fallback.
-  if (requestUrl.pathname.endsWith("/js/words.json")) {
+  if (
+    requestUrl.pathname.endsWith("/js/words.json") ||
+    requestUrl.pathname.endsWith("/js/irregular_verbs.json")
+  ) {
     event.respondWith(
       fetch(request)
         .then(networkResponse => {

@@ -4056,21 +4056,21 @@
     },
     {
         "id":  "verb207",
-        "word":  "retten",
+        "word":  "stolpern",
         "type":  "Verb",
         "category":  "Verben",
         "englisch":  [
-                         "to save"
+                         "to stumble"
                      ],
         "bangla":  [
-                       "বাঁচানো"
-                   ],
-        "meaning":  "To save someone or something from danger.",
+                        "হোঁচট খাওয়া"
+                    ],
+        "meaning":  "To trip or stumble while walking.",
         "examples":  [
-                         "Der Feuerwehrmann rettet das Kind."
+                         "Er stolpert über den Stein."
                      ],
         "synonym":  [
-
+                         "straucheln"
                     ]
     },
     {
@@ -5713,21 +5713,22 @@
     },
     {
         "id":  "verb293",
-        "word":  "erscheinen",
+        "word":  "erziehen",
         "type":  "Verb",
         "category":  "Verben",
         "englisch":  [
-                         "to appear"
+                         "to raise",
+                         "to educate"
                      ],
         "bangla":  [
-                       "দেখা দেওয়া"
-                   ],
-        "meaning":  "To appear or show up.",
+                        "লালন-পালন করা"
+                    ],
+        "meaning":  "To raise or educate a child.",
         "examples":  [
-                         "Er erscheint plötzlich."
+                         "Sie erzieht ihre Kinder streng."
                      ],
         "synonym":  [
-
+                         "aufziehen"
                     ]
     },
     {
@@ -6570,6 +6571,1381 @@
                      ],
         "synonym":  [
 
+                    ]
+    },
+    {
+        "id":  "verb338",
+        "word":  "bezeugen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to testify",
+                         "to attest"
+                     ],
+        "bangla":  [
+                       "সাক্ষ্য দেওয়া",
+                       "প্রমাণ করা"
+                   ],
+        "meaning":  "To confirm or attest something officially.",
+        "examples":  [
+                         "Der Zeuge bezeugt die Wahrheit vor Gericht."
+                     ],
+        "synonym":  [
+                         "bestätigen"
+                    ]
+    },
+
+{
+        "id":  "verb339",
+        "word":  "einsetzen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to deploy",
+                         "to use"
+                     ],
+        "bangla":  [
+                       "ব্যবহার করা",
+                       "নিযুক্ত করা"
+                   ],
+        "meaning":  "To put something or someone into use or service.",
+        "examples":  [
+                         "Die Firma setzt neue Technologien ein."
+                     ],
+        "synonym":  [
+                         "verwenden"
+                    ]
+    },
+
+{
+        "id":  "verb340",
+        "word":  "sich wappnen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to prepare oneself",
+                         "to brace oneself"
+                     ],
+        "bangla":  [
+                       "নিজেকে প্রস্তুত করা"
+                   ],
+        "meaning":  "To prepare oneself mentally or physically for something difficult.",
+        "examples":  [
+                         "Er wappnet sich für die kommenden Herausforderungen."
+                     ],
+        "synonym":  [
+                         "sich vorbereiten"
+                    ]
+    },
+
+{
+        "id":  "verb341",
+        "word":  "verzaubern",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to enchant",
+                         "to charm"
+                     ],
+        "bangla":  [
+                       "মুগ্ধ করা",
+                       "মন্ত্রমুগ্ধ করা"
+                   ],
+        "meaning":  "To fascinate or enchant someone strongly.",
+        "examples":  [
+                         "Die Musik verzaubert das Publikum."
+                     ],
+        "synonym":  [
+                         "begeistern"
+                    ]
+    },
+
+{
+        "id":  "verb342",
+        "word":  "bewerten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to evaluate",
+                         "to assess"
+                     ],
+        "bangla":  [
+                       "মূল্যায়ন করা"
+                   ],
+        "meaning":  "To judge or assess the value or quality of something.",
+        "examples":  [
+                         "Die Lehrerin bewertet die Prüfungen."
+                     ],
+        "synonym":  [
+                         "beurteilen"
+                    ]
+    },
+
+{
+        "id":  "verb343",
+        "word":  "ertönen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to sound",
+                         "to resound"
+                     ],
+        "bangla":  [
+                       "ধ্বনিত হওয়া"
+                   ],
+        "meaning":  "To produce a sound or to be heard.",
+        "examples":  [
+                         "Plötzlich ertönt ein lauter Alarm."
+                     ],
+        "synonym":  [
+                         "klingen"
+                    ]
+    },
+
+{
+        "id":  "verb344",
+        "word":  "tanken",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to refuel"
+                     ],
+        "bangla":  [
+                       "জ্বালানি ভরা"
+                   ],
+        "meaning":  "To fill a vehicle with fuel.",
+        "examples":  [
+                         "Ich muss das Auto tanken."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb345",
+        "word":  "widersprechen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to contradict",
+                         "to object"
+                     ],
+        "bangla":  [
+                       "বিরোধিতা করা",
+                       "আপত্তি করা"
+                   ],
+        "meaning":  "To say that something is not true or correct.",
+        "examples":  [
+                         "Er widerspricht dem Vorschlag seines Kollegen."
+                     ],
+        "synonym":  [
+                         "ablehnen"
+                    ]
+    },
+
+{
+        "id":  "verb346",
+        "word":  "beurteilen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to judge",
+                         "to evaluate"
+                     ],
+        "bangla":  [
+                       "মূল্যায়ন করা",
+                       "বিচার করা"
+                   ],
+        "meaning":  "To form an opinion or judgment about something.",
+        "examples":  [
+                         "Es ist schwer, die Situation richtig zu beurteilen."
+                     ],
+        "synonym":  [
+                         "bewerten"
+                    ]
+    },
+
+{
+        "id":  "verb347",
+        "word":  "kündigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to resign",
+                         "to terminate"
+                     ],
+        "bangla":  [
+                       "চাকরি ছাড়ানো",
+                       "চুক্তি বাতিল করা"
+                   ],
+        "meaning":  "To end a job or contract officially.",
+        "examples":  [
+                         "Er kündigt seinen Job im nächsten Monat."
+                     ],
+        "synonym":  [
+                         "aufgeben"
+                    ]
+    },
+    {
+        "id":  "verb348",
+        "word":  "belegen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to prove",
+                         "to occupy"
+                     ],
+        "bangla":  [
+                       "প্রমাণ করা",
+                       "দখল করা"
+                   ],
+        "meaning":  "To provide evidence for something or to occupy a place.",
+        "examples":  [
+                         "Die Studie belegt seine Theorie."
+                     ],
+        "synonym":  [
+                         "nachweisen"
+                    ]
+    },
+
+{
+        "id":  "verb349",
+        "word":  "herunterkommen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to come down",
+                         "to deteriorate"
+                     ],
+        "bangla":  [
+                       "নিচে নামা",
+                       "অবনতি হওয়া"
+                   ],
+        "meaning":  "To come down from somewhere or to decline in condition.",
+        "examples":  [
+                         "Er kommt schnell die Treppe herunter."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb350",
+        "word":  "aufkommen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to arise",
+                         "to emerge"
+                     ],
+        "bangla":  [
+                       "উত্থিত হওয়া",
+                       "উদ্ভব হওয়া"
+                   ],
+        "meaning":  "To appear or arise, especially feelings or questions.",
+        "examples":  [
+                         "Viele Fragen kommen während des Gesprächs auf."
+                     ],
+        "synonym":  [
+                         "entstehen"
+                    ]
+    },
+
+{
+        "id":  "verb351",
+        "word":  "ausbrechen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to break out",
+                         "to escape"
+                     ],
+        "bangla":  [
+                       "হঠাৎ শুরু হওয়া",
+                       "পালিয়ে যাওয়া"
+                   ],
+        "meaning":  "To suddenly start, especially for wars or diseases.",
+        "examples":  [
+                         "Ein Feuer brach in der Küche aus."
+                     ],
+        "synonym":  [
+                         "entkommen"
+                    ]
+    },
+
+{
+        "id":  "verb352",
+        "word":  "schnarchen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to snore"
+                     ],
+        "bangla":  [
+                       "নাক ডাকা"
+                   ],
+        "meaning":  "To breathe noisily during sleep.",
+        "examples":  [
+                         "Er schnarcht sehr laut in der Nacht."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb353",
+        "word":  "veranstalten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to organize",
+                         "to host"
+                     ],
+        "bangla":  [
+                       "আয়োজন করা"
+                   ],
+        "meaning":  "To organize or arrange an event.",
+        "examples":  [
+                         "Die Schule veranstaltet ein Sommerfest."
+                     ],
+        "synonym":  [
+                         "organisieren"
+                    ]
+    },
+
+{
+        "id":  "verb354",
+        "word":  "einprägen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to imprint",
+                         "to memorize"
+                     ],
+        "bangla":  [
+                       "মনে গেঁথে দেওয়া"
+                   ],
+        "meaning":  "To fix something firmly in someone’s memory.",
+        "examples":  [
+                         "Der Lehrer prägt den Schülern die Regeln ein."
+                     ],
+        "synonym":  [
+                         "merken"
+                    ]
+    },
+
+{
+        "id":  "verb355",
+        "word":  "gewährleisten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to guarantee",
+                         "to ensure"
+                     ],
+        "bangla":  [
+                       "নিশ্চিত করা"
+                   ],
+        "meaning":  "To ensure or guarantee that something will happen.",
+        "examples":  [
+                         "Die Regierung gewährleistet die Sicherheit."
+                     ],
+        "synonym":  [
+                         "sichern"
+                    ]
+    },
+
+{
+        "id":  "verb356",
+        "word":  "sich bewaffnen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to arm oneself"
+                     ],
+        "bangla":  [
+                       "নিজেকে অস্ত্রসজ্জিত করা"
+                   ],
+        "meaning":  "To equip oneself with weapons.",
+        "examples":  [
+                         "Die Soldaten bewaffnen sich für den Einsatz."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb357",
+        "word":  "prokrastinieren",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to procrastinate"
+                     ],
+        "bangla":  [
+                       "কাজ পিছিয়ে দেওয়া"
+                   ],
+        "meaning":  "To delay tasks unnecessarily.",
+        "examples":  [
+                         "Er prokrastiniert oft vor wichtigen Aufgaben."
+                     ],
+        "synonym":  [
+                         "aufschieben"
+                    ]
+    },
+
+{
+        "id":  "verb358",
+        "word":  "benachrichtigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to notify",
+                         "to inform"
+                     ],
+        "bangla":  [
+                       "অবহিত করা",
+                       "জানানো"
+                   ],
+        "meaning":  "To inform someone about something.",
+        "examples":  [
+                         "Bitte benachrichtigen Sie mich sofort."
+                     ],
+        "synonym":  [
+                         "informieren"
+                    ]
+    },
+
+{
+        "id":  "verb359",
+        "word":  "wechseln",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to change",
+                         "to switch"
+                     ],
+        "bangla":  [
+                       "পরিবর্তন করা"
+                   ],
+        "meaning":  "To change from one thing to another.",
+        "examples":  [
+                         "Er wechselt den Job im nächsten Monat."
+                     ],
+        "synonym":  [
+                         "ändern"
+                    ]
+    },
+
+{
+        "id":  "verb360",
+        "word":  "beantragen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to apply for"
+                     ],
+        "bangla":  [
+                       "আবেদন করা"
+                   ],
+        "meaning":  "To formally request something.",
+        "examples":  [
+                         "Sie beantragt ein Visum."
+                     ],
+        "synonym":  [
+                         "anfordern"
+                    ]
+    },
+
+{
+        "id":  "verb361",
+        "word":  "hinterfragen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to question",
+                         "to critically examine"
+                     ],
+        "bangla":  [
+                       "সমালোচনামূলকভাবে প্রশ্ন করা"
+                   ],
+        "meaning":  "To critically question or examine something.",
+        "examples":  [
+                         "Man sollte alte Traditionen hinterfragen."
+                     ],
+        "synonym":  [
+                         "anzweifeln"
+                    ]
+    },
+
+{
+        "id":  "verb362",
+        "word":  "schmeißen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to throw"
+                     ],
+        "bangla":  [
+                       "ছুড়ে ফেলা"
+                   ],
+        "meaning":  "Informal verb meaning to throw something.",
+        "examples":  [
+                         "Er schmeißt den Ball weit."
+                     ],
+        "synonym":  [
+                         "werfen"
+                    ]
+    },
+
+{
+        "id":  "verb363",
+        "word":  "dranbleiben",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to stick with something",
+                         "to keep at it"
+                     ],
+        "bangla":  [
+                       "লেগে থাকা"
+                   ],
+        "meaning":  "To continue working on something without giving up.",
+        "examples":  [
+                         "Du musst beim Lernen dranbleiben."
+                     ],
+        "synonym":  [
+                         "weitermachen"
+                    ]
+    },
+
+{
+        "id":  "verb364",
+        "word":  "ausgehen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to go out"
+                     ],
+        "bangla":  [
+                       "বাইরে যাওয়া"
+                   ],
+        "meaning":  "To leave the house for leisure or social activities.",
+        "examples":  [
+                         "Am Wochenende gehen wir aus."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb365",
+        "word":  "genehmigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to approve",
+                         "to authorize"
+                     ],
+        "bangla":  [
+                       "অনুমোদন করা"
+                   ],
+        "meaning":  "To officially approve something.",
+        "examples":  [
+                         "Der Chef genehmigt den Urlaub."
+                     ],
+        "synonym":  [
+                         "bewilligen"
+                    ]
+    },
+
+{
+        "id":  "verb366",
+        "word":  "einhaken",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to hook in",
+                         "to link arms"
+                     ],
+        "bangla":  [
+                       "হুক দিয়ে আটকানো",
+                       "হাত জড়িয়ে ধরা"
+                   ],
+        "meaning":  "To hook into something or link arms with someone.",
+        "examples":  [
+                         "Sie hakt sich bei ihrem Freund ein."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb367",
+        "word":  "frustrieren",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to frustrate"
+                     ],
+        "bangla":  [
+                       "হতাশ করা"
+                   ],
+        "meaning":  "To make someone feel disappointed or discouraged.",
+        "examples":  [
+                         "Die ständigen Probleme frustrieren ihn."
+                     ],
+        "synonym":  [
+                         "entmutigen"
+                    ]
+    },
+    {
+        "id":  "verb368",
+        "word":  "absteigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to get off",
+                         "to descend"
+                     ],
+        "bangla":  [
+                       "নামা",
+                       "নেমে যাওয়া"
+                   ],
+        "meaning":  "To get off from something such as a bike or horse, or to descend.",
+        "examples":  [
+                         "Er steigt vom Fahrrad ab."
+                     ],
+        "synonym":  [
+                         "hinuntergehen"
+                    ]
+    },
+
+{
+        "id":  "verb369",
+        "word":  "belassen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to leave as it is"
+                     ],
+        "bangla":  [
+                       "যেমন আছে তেমনই রেখে দেওয়া"
+                   ],
+        "meaning":  "To leave something unchanged.",
+        "examples":  [
+                         "Wir belassen alles beim Alten."
+                     ],
+        "synonym":  [
+                         "lassen"
+                    ]
+    },
+
+{
+        "id":  "verb370",
+        "word":  "beeinträchtigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to impair",
+                         "to affect negatively"
+                     ],
+        "bangla":  [
+                       "ক্ষতিগ্রস্ত করা",
+                       "বাধা দেওয়া"
+                   ],
+        "meaning":  "To negatively influence or damage something.",
+        "examples":  [
+                         "Der Lärm beeinträchtigt meine Konzentration."
+                     ],
+        "synonym":  [
+                         "stören"
+                    ]
+    },
+
+{
+        "id":  "verb371",
+        "word":  "auftreten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to appear",
+                         "to perform"
+                     ],
+        "bangla":  [
+                       "প্রকাশ পাওয়া",
+                       "মঞ্চে পরিবেশন করা"
+                   ],
+        "meaning":  "To appear or perform in front of others.",
+        "examples":  [
+                         "Die Band tritt heute Abend auf."
+                     ],
+        "synonym":  [
+                         "erscheinen"
+                    ]
+    },
+
+{
+        "id":  "verb372",
+        "word":  "verinnerlichen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to internalize"
+                     ],
+        "bangla":  [
+                       "অন্তরে গ্রহণ করা"
+                   ],
+        "meaning":  "To deeply absorb or internalize something.",
+        "examples":  [
+                         "Die Schüler verinnerlichen die neuen Regeln."
+                     ],
+        "synonym":  [
+                         "verstehen"
+                    ]
+    },
+
+{
+        "id":  "verb373",
+        "word":  "beschleunigen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to accelerate"
+                     ],
+        "bangla":  [
+                       "ত্বরান্বিত করা"
+                   ],
+        "meaning":  "To make something move faster.",
+        "examples":  [
+                         "Der Fahrer beschleunigt das Auto."
+                     ],
+        "synonym":  [
+                         "schneller machen"
+                    ]
+    },
+
+{
+        "id":  "verb374",
+        "word":  "hinausschicken",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to send out"
+                     ],
+        "bangla":  [
+                       "বাইরে পাঠানো"
+                   ],
+        "meaning":  "To send someone or something outside.",
+        "examples":  [
+                         "Der Lehrer schickt den Schüler hinaus."
+                     ],
+        "synonym":  [
+                         "senden"
+                    ]
+    },
+
+{
+        "id":  "verb375",
+        "word":  "vortäuschen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to pretend",
+                         "to fake"
+                     ],
+        "bangla":  [
+                       "ভান করা"
+                   ],
+        "meaning":  "To pretend something that is not true.",
+        "examples":  [
+                         "Er täuscht Interesse vor."
+                     ],
+        "synonym":  [
+                         "vorgeben"
+                    ]
+    },
+
+{
+        "id":  "verb376",
+        "word":  "beleuchten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to illuminate",
+                         "to examine"
+                     ],
+        "bangla":  [
+                       "আলো ফেলা",
+                       "বিশ্লেষণ করা"
+                   ],
+        "meaning":  "To shine light on something or examine a topic.",
+        "examples":  [
+                         "Der Artikel beleuchtet das Problem."
+                     ],
+        "synonym":  [
+                         "analysieren"
+                    ]
+    },
+
+{
+        "id":  "verb377",
+        "word":  "einrichten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to set up",
+                         "to furnish"
+                     ],
+        "bangla":  [
+                       "স্থাপন করা",
+                       "সাজানো"
+                   ],
+        "meaning":  "To set up or arrange something.",
+        "examples":  [
+                         "Sie richtet ihr neues Büro ein."
+                     ],
+        "synonym":  [
+                         "installieren"
+                    ]
+    },
+
+{
+        "id":  "verb378",
+        "word":  "begehen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to commit",
+                         "to celebrate"
+                     ],
+        "bangla":  [
+                       "সম্পাদন করা",
+                       "উদযাপন করা"
+                   ],
+        "meaning":  "To commit an act or celebrate an event.",
+        "examples":  [
+                         "Sie begehen einen wichtigen Feiertag."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb379",
+        "word":  "austricksen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to outsmart",
+                         "to trick"
+                     ],
+        "bangla":  [
+                       "চাতুর্য দিয়ে হারানো"
+                   ],
+        "meaning":  "To defeat someone using clever tricks.",
+        "examples":  [
+                         "Er versucht den Gegner auszutricksen."
+                     ],
+        "synonym":  [
+                         "täuschen"
+                    ]
+    },
+
+{
+        "id":  "verb380",
+        "word":  "erörtern",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to discuss",
+                         "to examine"
+                     ],
+        "bangla":  [
+                       "আলোচনা করা"
+                   ],
+        "meaning":  "To discuss a topic thoroughly.",
+        "examples":  [
+                         "Wir erörtern das Problem gemeinsam."
+                     ],
+        "synonym":  [
+                         "diskutieren"
+                    ]
+    },
+
+{
+        "id":  "verb381",
+        "word":  "reaktivieren",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to reactivate"
+                     ],
+        "bangla":  [
+                       "পুনরায় সক্রিয় করা"
+                   ],
+        "meaning":  "To make something active again.",
+        "examples":  [
+                         "Die Firma reaktiviert das alte Projekt."
+                     ],
+        "synonym":  [
+                         "wiederbeleben"
+                    ]
+    },
+
+    {
+        "id":  "verb382",
+        "word":  "stammen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to originate"
+                     ],
+        "bangla":  [
+                        "উৎপত্তি হওয়া"
+                    ],
+        "meaning":  "To come from a place or origin.",
+        "examples":  [
+                         "Er stammt aus Berlin."
+                     ],
+        "synonym":  [
+                         "herkommen"
+                    ]
+    },
+
+{
+        "id":  "verb383",
+        "word":  "wappnen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to arm",
+                         "to prepare"
+                     ],
+        "bangla":  [
+                       "অস্ত্রসজ্জিত করা",
+                       "প্রস্তুত করা"
+                   ],
+        "meaning":  "To equip or prepare someone for something.",
+        "examples":  [
+                         "Die Soldaten wappnen sich für den Einsatz."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb384",
+        "word":  "nicken",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to nod"
+                     ],
+        "bangla":  [
+                       "মাথা নেড়ে সম্মতি দেওয়া"
+                   ],
+        "meaning":  "To move the head up and down to show agreement.",
+        "examples":  [
+                         "Er nickt zustimmend."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb385",
+        "word":  "wegklicken",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to click away",
+                         "to close by clicking"
+                     ],
+        "bangla":  [
+                       "ক্লিক করে বন্ধ করা"
+                   ],
+        "meaning":  "To close something on a screen by clicking.",
+        "examples":  [
+                         "Er klickt die Werbung schnell weg."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb386",
+        "word":  "verplanen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to schedule completely"
+                     ],
+        "bangla":  [
+                       "সব সময়সূচি ভরে ফেলা"
+                   ],
+        "meaning":  "To fill a schedule completely with plans.",
+        "examples":  [
+                         "Ich habe den ganzen Tag verplant."
+                     ],
+        "synonym":  [
+
+                    ]
+    },
+
+{
+        "id":  "verb387",
+        "word":  "anschließen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to connect",
+                         "to join"
+                     ],
+        "bangla":  [
+                       "সংযুক্ত করা",
+                       "যোগ দেওয়া"
+                   ],
+        "meaning":  "To connect something or join a group.",
+        "examples":  [
+                         "Er schließt den Computer an das Netz an."
+                     ],
+        "synonym":  [
+                         "verbinden"
+                    ]
+    },
+    {
+        "id":  "verb388",
+        "word":  "einlegen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to insert",
+                         "to put in"
+                     ],
+        "bangla":  [
+                       "ভিতরে রাখা",
+                       "প্রবেশ করানো"
+                   ],
+        "meaning":  "Etwas in etwas anderes hineinlegen oder einsetzen.",
+        "examples":  [
+                         "Bitte legen Sie die Batterie richtig ein."
+                     ],
+        "synonym":  [
+                        "einsetzen"
+                    ]
+    },
+{
+        "id":  "verb389",
+        "word":  "festlegen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to determine",
+                         "to define"
+                     ],
+        "bangla":  [
+                       "নির্ধারণ করা",
+                       "স্থির করা"
+                   ],
+        "meaning":  "Etwas verbindlich bestimmen oder entscheiden.",
+        "examples":  [
+                         "Wir müssen einen Termin festlegen."
+                     ],
+        "synonym":  [
+                        "bestimmen"
+                    ]
+    },
+{
+        "id":  "verb390",
+        "word":  "abspielen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to play",
+                         "to play back"
+                     ],
+        "bangla":  [
+                       "চালানো",
+                       "প্লে করা"
+                   ],
+        "meaning":  "Eine Aufnahme oder Datei wiedergeben.",
+        "examples":  [
+                         "Er spielt die Musik auf seinem Handy ab."
+                     ],
+        "synonym":  [
+                        "wiedergeben"
+                    ]
+    },
+{
+        "id":  "verb391",
+        "word":  "zurückbleiben",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to remain behind",
+                         "to stay behind"
+                     ],
+        "bangla":  [
+                       "পিছনে থেকে যাওয়া"
+                   ],
+        "meaning":  "Nicht mit anderen weitergehen oder zurückgelassen werden.",
+        "examples":  [
+                         "Ein Schüler blieb nach dem Unterricht zurück."
+                     ],
+        "synonym":  [
+                        "bleiben"
+                    ]
+    },
+{
+        "id":  "verb392",
+        "word":  "anfügen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to add",
+                         "to append"
+                     ],
+        "bangla":  [
+                       "যোগ করা"
+                   ],
+        "meaning":  "Etwas ergänzend hinzufügen.",
+        "examples":  [
+                         "Er fügte am Ende noch eine Bemerkung an."
+                     ],
+        "synonym":  [
+                        "hinzufügen"
+                    ]
+    },
+{
+        "id":  "verb393",
+        "word":  "nachahmen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to imitate"
+                     ],
+        "bangla":  [
+                       "অনুকরণ করা"
+                   ],
+        "meaning":  "Das Verhalten oder die Handlung von jemandem kopieren.",
+        "examples":  [
+                         "Kinder ahmen oft ihre Eltern nach."
+                     ],
+        "synonym":  [
+                        "imitieren"
+                    ]
+    },
+{
+        "id":  "verb394",
+        "word":  "überarbeiten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to revise",
+                         "to rework"
+                     ],
+        "bangla":  [
+                       "পুনরায় সম্পাদনা করা",
+                       "সংশোধন করা"
+                   ],
+        "meaning":  "Etwas erneut bearbeiten oder verbessern.",
+        "examples":  [
+                         "Ich muss meinen Bericht noch einmal überarbeiten."
+                     ],
+        "synonym":  [
+                        "korrigieren"
+                    ]
+    },
+{
+        "id":  "verb395",
+        "word":  "einwenden",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to object",
+                         "to raise an objection"
+                     ],
+        "bangla":  [
+                       "আপত্তি তোলা"
+                   ],
+        "meaning":  "Einen Einwand oder eine Gegenmeinung äußern.",
+        "examples":  [
+                         "Er wandte gegen den Plan nichts ein."
+                     ],
+        "synonym":  [
+                        "widersprechen"
+                    ]
+    },
+{
+        "id":  "verb396",
+        "word":  "vorschreiben",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to prescribe",
+                         "to stipulate"
+                     ],
+        "bangla":  [
+                       "নির্দেশ দেওয়া",
+                       "বাধ্যতামূলক করা"
+                   ],
+        "meaning":  "Etwas offiziell festlegen oder anordnen.",
+        "examples":  [
+                         "Das Gesetz schreibt diese Regeln vor."
+                     ],
+        "synonym":  [
+                        "anordnen"
+                    ]
+    },
+{
+        "id":  "verb397",
+        "word":  "auswerten",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to evaluate",
+                         "to analyze"
+                     ],
+        "bangla":  [
+                       "বিশ্লেষণ করা",
+                       "মূল্যায়ন করা"
+                   ],
+        "meaning":  "Daten oder Informationen analysieren und beurteilen.",
+        "examples":  [
+                         "Die Forscher werten die Ergebnisse aus."
+                     ],
+        "synonym":  [
+                        "analysieren"
+                    ]
+    },
+{
+        "id":  "verb398",
+        "word":  "sich blamieren",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to embarrass oneself"
+                     ],
+        "bangla":  [
+                       "নিজেকে লজ্জিত করা"
+                   ],
+        "meaning":  "Sich durch eigenes Verhalten lächerlich machen.",
+        "examples":  [
+                         "Er hat sich vor allen blamiert."
+                     ],
+        "synonym":  [
+                        "sich lächerlich machen"
+                    ]
+    },
+{
+        "id":  "verb399",
+        "word":  "abnehmen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to lose weight",
+                         "to remove"
+                     ],
+        "bangla":  [
+                       "ওজন কমানো",
+                       "খুলে নেওয়া"
+                   ],
+        "meaning":  "Weniger Gewicht bekommen oder etwas entfernen.",
+        "examples":  [
+                         "Sie möchte fünf Kilo abnehmen."
+                     ],
+        "synonym":  [
+                        "reduzieren"
+                    ]
+    },
+{
+        "id":  "verb400",
+        "word":  "mischen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to mix"
+                     ],
+        "bangla":  [
+                       "মেশানো"
+                   ],
+        "meaning":  "Verschiedene Dinge zusammenbringen.",
+        "examples":  [
+                         "Er mischt Wasser mit Saft."
+                     ],
+        "synonym":  [
+                        "vermischen"
+                    ]
+    },
+{
+        "id":  "verb401",
+        "word":  "erwärmen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to warm",
+                         "to heat up"
+                     ],
+        "bangla":  [
+                       "গরম করা"
+                   ],
+        "meaning":  "Etwas wärmer machen.",
+        "examples":  [
+                         "Ich erwärme das Essen in der Mikrowelle."
+                     ],
+        "synonym":  [
+                        "aufwärmen"
+                    ]
+    },
+{
+        "id":  "verb402",
+        "word":  "nachsprechen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to repeat after someone"
+                     ],
+        "bangla":  [
+                       "অনুসরণ করে বলা"
+                   ],
+        "meaning":  "Wörter oder Sätze nach einer anderen Person wiederholen.",
+        "examples":  [
+                         "Der Schüler spricht die Wörter nach."
+                     ],
+        "synonym":  [
+                        "wiederholen"
+                    ]
+    },
+{
+        "id":  "verb403",
+        "word":  "heilen",
+        "type":  "Verb",
+        "category":  "Verben",
+        "englisch":  [
+                         "to heal",
+                         "to cure"
+                     ],
+        "bangla":  [
+                       "সুস্থ করা",
+                       "সেরে ওঠা"
+                   ],
+        "meaning":  "Gesund werden oder gesund machen.",
+        "examples":  [
+                         "Die Wunde heilt langsam."
+                     ],
+        "synonym":  [
+                        "genesen"
                     ]
     },
     {
@@ -8670,6 +10046,1076 @@
                     ]
     },
     {
+"id": "adj43",
+"word": "verlässlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"reliable"
+],
+"bangla": [
+"নির্ভরযোগ্য"
+],
+"meaning": "Someone or something that can be trusted or depended on.",
+"examples": [
+"Er ist ein sehr verlässlicher Freund."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj44",
+"word": "erforderlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"necessary",
+"required"
+],
+"bangla": [
+"প্রয়োজনীয়"
+],
+"meaning": "Something that is needed or required.",
+"examples": [
+"Diese Dokumente sind erforderlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj45",
+"word": "oberflächlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"superficial"
+],
+"bangla": [
+"উপরিভাগীয়"
+],
+"meaning": "Not deep; concerned only with the surface.",
+"examples": [
+"Seine Erklärung war sehr oberflächlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj46",
+"word": "angesprochen",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"addressed"
+],
+"bangla": [
+"উল্লেখ করা হয়েছে"
+],
+"meaning": "Something that has been mentioned or addressed.",
+"examples": [
+"Das Problem wurde im Meeting angesprochen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj47",
+"word": "hervorragend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"excellent",
+"outstanding"
+],
+"bangla": [
+"চমৎকার"
+],
+"meaning": "Extremely good or outstanding.",
+"examples": [
+"Das Essen war hervorragend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj48",
+"word": "phänomenal",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"phenomenal"
+],
+"bangla": [
+"অসাধারণ"
+],
+"meaning": "Extremely impressive or remarkable.",
+"examples": [
+"Sie hat ein phänomenales Talent."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj49",
+"word": "erstaunlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"amazing",
+"astonishing"
+],
+"bangla": [
+"আশ্চর্যজনক"
+],
+"meaning": "Causing great surprise or wonder.",
+"examples": [
+"Sein Fortschritt ist erstaunlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj50",
+"word": "ausbaufähig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"capable of improvement"
+],
+"bangla": [
+"উন্নতির সম্ভাবনা আছে"
+],
+"meaning": "Something that can be further developed or improved.",
+"examples": [
+"Das Konzept ist noch ausbaufähig."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj51",
+"word": "frustrierend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"frustrating"
+],
+"bangla": [
+"হতাশাজনক"
+],
+"meaning": "Causing feelings of frustration.",
+"examples": [
+"Die Situation ist sehr frustrierend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj52",
+"word": "gleichmäßig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"even",
+"uniform"
+],
+"bangla": [
+"সমানভাবে"
+],
+"meaning": "Spread or arranged evenly.",
+"examples": [
+"Die Farbe wurde gleichmäßig verteilt."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj53",
+"word": "eindeutig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"clear",
+"unambiguous"
+],
+"bangla": [
+"স্পষ্ট"
+],
+"meaning": "Clear and leaving no doubt.",
+"examples": [
+"Die Antwort ist eindeutig."
+],
+"synonym": [
+
+]
+},
+
+{
+"id": "adj54",
+"word": "vielseitig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"versatile"
+],
+"bangla": [
+"বহুমুখী"
+],
+"meaning": "Having many different abilities or uses.",
+"examples": [
+"Sie ist eine vielseitige Künstlerin."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj55",
+"word": "fortgeschritten",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"advanced"
+],
+"bangla": [
+"উন্নত"
+],
+"meaning": "Something that is advanced or developed.",
+"examples": [
+"Er hat ein fortgeschrittenes Niveau erreicht."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj56",
+"word": "entmutigt",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"discouraged"
+],
+"bangla": [
+"হতাশ"
+],
+"meaning": "Feeling less confident or hopeful.",
+"examples": [
+"Nach der Niederlage war er entmutigt."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj57",
+"word": "selbstverständlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"obvious",
+"self-evident"
+],
+"bangla": [
+"স্বাভাবিকভাবে স্পষ্ট"
+],
+"meaning": "Something that is obvious or taken for granted.",
+"examples": [
+"Das ist selbstverständlich."
+],
+"synonym": [
+
+]
+},
+
+{
+"id": "adj58",
+"word": "unvermeidlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"inevitable"
+],
+"bangla": [
+"অপরিহার্য"
+],
+"meaning": "Something that cannot be avoided.",
+"examples": [
+"Der Fehler war unvermeidlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj59",
+"word": "erkennbar",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"recognizable"
+],
+"bangla": [
+"চেনা যায় এমন"
+],
+"meaning": "Something that is easily identifiable or recognizable.",
+"examples": [
+"Das ist sein erkennbar Stil."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj60",
+"word": "fragwürdig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"questionable",
+"dubious"
+],
+"bangla": [
+"সন্দেহজনক"
+],
+"meaning": "Something that is doubtful or suspicious.",
+"examples": [
+"Seine Angaben sind fragwürdig."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj61",
+"word": "ausreichend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"sufficient",
+"adequate"
+],
+"bangla": [
+"পর্যাপ্ত"
+],
+"meaning": "Enough to meet the need.",
+"examples": [
+"Das Essen ist ausreichend für alle Gäste."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj62",
+"word": "ausdrücklich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"explicit",
+"express"
+],
+"bangla": [
+"স্পষ্ট"
+],
+"meaning": "Clearly stated or emphasized.",
+"examples": [
+"Er hat ausdrücklich darauf hingewiesen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj63",
+"word": "bezaubernd",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"charming",
+"enchanting"
+],
+"bangla": [
+"মোহনীয়"
+],
+"meaning": "Extremely delightful or charming.",
+"examples": [
+"Sie hat ein bezauberndes Lächeln."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj64",
+"word": "schattenhaft",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"shadowy",
+"shady"
+],
+"bangla": [
+"ছায়াময়"
+],
+"meaning": "Appearing like a shadow; unclear or mysterious.",
+"examples": [
+"Die Figur war nur schattenhaft zu erkennen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj65",
+"word": "umfassend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"comprehensive",
+"extensive"
+],
+"bangla": [
+"বিস্তৃত"
+],
+"meaning": "Covering completely or broadly.",
+"examples": [
+"Der Bericht ist sehr umfassend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj66",
+"word": "erheblich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"considerable",
+"significant"
+],
+"bangla": [
+"গুরুত্বপূর্ণ"
+],
+"meaning": "Large in amount, importance, or degree.",
+"examples": [
+"Es gab erhebliche Fortschritte."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj67",
+"word": "naheliegend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"obvious",
+"plausible"
+],
+"bangla": [
+"স্পষ্ট"
+],
+"meaning": "Something that seems logical or likely.",
+"examples": [
+"Seine Entscheidung ist naheliegend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj68",
+"word": "kritikfähig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"able to take criticism"
+],
+"bangla": [
+"সমালোচনার জন্য সক্ষম"
+],
+"meaning": "Open to receiving criticism constructively.",
+"examples": [
+"Ein kritikfähiger Mitarbeiter lernt schnell."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj69",
+"word": "verstaubt",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"dusty",
+"old-fashioned"
+],
+"bangla": [
+"ধুলোযুক্ত"
+],
+"meaning": "Covered with dust; outdated.",
+"examples": [
+"Das Möbelstück ist verstaubt."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj70",
+"word": "künftig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"future",
+"forthcoming"
+],
+"bangla": [
+"ভবিষ্যৎ"
+],
+"meaning": "Relating to what is to come.",
+"examples": [
+"In zukünftigen Projekten wird das berücksichtigt."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj71",
+"word": "einheitlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"uniform",
+"consistent"
+],
+"bangla": [
+"একরূপ"
+],
+"meaning": "All parts are the same or consistent.",
+"examples": [
+"Die Kleidung ist einheitlich gestaltet."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj72",
+"word": "bezogen",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"related",
+"referenced"
+],
+"bangla": [
+"সম্পর্কিত"
+],
+"meaning": "Referring to or related to something.",
+"examples": [
+"Die Angaben sind auf die vorherige Studie bezogen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj73",
+"word": "nachhaltig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"sustainable",
+"lasting"
+],
+"bangla": [
+"টেকসই"
+],
+"meaning": "Having a long-term, positive effect.",
+"examples": [
+"Wir brauchen nachhaltige Lösungen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj74",
+"word": "individuell",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"individual",
+"personalized"
+],
+"bangla": [
+"ব্যক্তিগত"
+],
+"meaning": "Tailored to one person or unique.",
+"examples": [
+"Das Angebot ist individuell angepasst."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj75",
+"word": "ausführlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"detailed",
+"comprehensive"
+],
+"bangla": [
+"বিস্তারিত"
+],
+"meaning": "Thoroughly and in detail.",
+"examples": [
+"Der Bericht ist ausführlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj76",
+"word": "zweckmäßig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"practical",
+"appropriate"
+],
+"bangla": [
+"উপযুক্ত"
+],
+"meaning": "Suitable for the intended purpose.",
+"examples": [
+"Die Lösung ist zweckmäßig."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj77",
+"word": "ansprechend",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"appealing",
+"attractive"
+],
+"bangla": [
+"আকর্ষণীয়"
+],
+"meaning": "Pleasant or attractive to the senses.",
+"examples": [
+"Das Design ist ansprechend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj78",
+"word": "schießlos",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"harmless",
+"non-lethal"
+],
+"bangla": [
+"নির্দোষ"
+],
+"meaning": "Without causing harm or danger.",
+"examples": [
+"Die Waffe ist schießlos."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj79",
+"word": "spürbar",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"noticeable",
+"perceptible"
+],
+"bangla": [
+"অনুভূতিযোগ্য"
+],
+"meaning": "Something that can be felt or perceived.",
+"examples": [
+"Der Unterschied ist spürbar."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj80",
+"word": "ewig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"eternal",
+"everlasting"
+],
+"bangla": [
+"চিরন্তন"
+],
+"meaning": "Lasting forever or for a very long time.",
+"examples": [
+"Diese Liebe scheint ewig zu dauern."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj81",
+"word": "melancholisch",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"melancholic",
+"sad"
+],
+"bangla": [
+"বিষণ্ণ"
+],
+"meaning": "Feeling or showing sadness or pensiveness.",
+"examples": [
+"Er wirkte melancholisch an diesem Abend."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj82",
+"word": "effektiv",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"effective",
+"efficient"
+],
+"bangla": [
+"কার্যকর"
+],
+"meaning": "Achieving a desired result successfully.",
+"examples": [
+"Das Training ist sehr effektiv."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj83",
+"word": "relevant",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"relevant",
+"important"
+],
+"bangla": [
+"প্রাসঙ্গিক"
+],
+"meaning": "Closely connected to the matter at hand.",
+"examples": [
+"Diese Information ist sehr relevant."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj84",
+"word": "zweifellos",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"undoubted",
+"certain"
+],
+"bangla": [
+"নিঃসন্দেহে"
+],
+"meaning": "Without doubt; unquestionably.",
+"examples": [
+"Er ist zweifellos talentiert."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj85",
+"word": "auffällig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"conspicuous",
+"striking"
+],
+"bangla": [
+"প্রসিদ্ধ"
+],
+"meaning": "Easily noticeable or attracting attention.",
+"examples": [
+"Sein Kleid war sehr auffällig."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj86",
+"word": "konkret",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"concrete",
+"specific"
+],
+"bangla": [
+"নির্দিষ্ট"
+],
+"meaning": "Clear and definite; not abstract.",
+"examples": [
+"Wir brauchen konkrete Beispiele."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj87",
+"word": "einzig",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"unique",
+"only"
+],
+"bangla": [
+"একক"
+],
+"meaning": "The one and only; unique.",
+"examples": [
+"Das ist sein einziges Buch."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj88",
+"word": "fester",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"firm",
+"solid"
+],
+"bangla": [
+"দৃঢ়"
+],
+"meaning": "Strong or solid in structure or consistency.",
+"examples": [
+"Wir haben einen festen Zeitplan."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj89",
+"word": "eben",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"even",
+"flat"
+],
+"bangla": [
+"সমান"
+],
+"meaning": "Level, smooth, or flat.",
+"examples": [
+"Der Boden ist eben."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj90",
+"word": "besonnen",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"calm",
+"prudent"
+],
+"bangla": [
+"বিবেচক"
+],
+"meaning": "Careful and thoughtful in behavior.",
+"examples": [
+"Er handelt immer besonnen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj91",
+"word": "behilflich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"helpful",
+"assisting"
+],
+"bangla": [
+"সহায়ক"
+],
+"meaning": "Providing assistance or support.",
+"examples": [
+"Er war mir behilflich bei der Aufgabe."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj92",
+"word": "genial",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"brilliant",
+"ingenious"
+],
+"bangla": [
+"অসাধারণ"
+],
+"meaning": "Extremely clever or creative.",
+"examples": [
+"Das war eine geniale Idee."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj93",
+"word": "unheimlich",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"eerie",
+"terrifying"
+],
+"bangla": [
+"ভয়ঙ্কর"
+],
+"meaning": "Causing fear or discomfort.",
+"examples": [
+"Das Haus wirkt unheimlich."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj94",
+"word": "geflasht",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"amazed",
+"stunned"
+],
+"bangla": [
+"আশ্চর্যপ্রাপ্ত"
+],
+"meaning": "Extremely impressed or shocked.",
+"examples": [
+"Ich war total geflasht von dem Konzert."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj95",
+"word": "glatt",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"smooth",
+"slippery"
+],
+"bangla": [
+"মসৃণ"
+],
+"meaning": "Even and smooth in surface.",
+"examples": [
+"Der Boden ist glatt."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adj96",
+"word": "vertraut",
+"type": "Adjektiv",
+"category": "Adjektiven",
+"englisch": [
+"familiar",
+"trusted"
+],
+"bangla": [
+"পরিচিত"
+],
+"meaning": "Well known or recognized.",
+"examples": [
+"Die Umgebung ist mir vertraut."
+],
+"synonym": [
+
+]
+},
+{
         "id":  "adv1",
         "word":  "sorgfältig",
         "type":  "Adverb",
@@ -8862,6 +11308,282 @@
                     ]
     },
     {
+"id": "adv11",
+"word": "einigermaßen",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"somewhat",
+"fairly"
+],
+"bangla": [
+"মোটামুটি"
+],
+"meaning": "To a moderate degree; fairly or somewhat.",
+"examples": [
+"Das Ergebnis ist einigermaßen gut."
+],
+"synonym": [
+
+]
+},{
+"id": "adv12",
+"word": "eher",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"rather",
+"sooner"
+],
+"bangla": [
+"বরং"
+],
+"meaning": "Used to indicate preference or something more likely.",
+"examples": [
+"Ich würde eher zu Hause bleiben."
+],
+"synonym": [
+
+]
+},{
+"id": "adv13",
+"word": "lustigerweise",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"funny enough"
+],
+"bangla": [
+"মজার ব্যাপার হলো"
+],
+"meaning": "Used to introduce something amusing or surprising.",
+"examples": [
+"Lustigerweise habe ich ihn gestern gesehen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv14",
+"word": "hinterher",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"afterwards",
+"behind"
+],
+"bangla": [
+"পরে"
+],
+"meaning": "Indicating something that happens later or following.",
+"examples": [
+"Er lief dem Bus hinterher."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv15",
+"word": "wiederum",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"in turn",
+"on the other hand"
+],
+"bangla": [
+"অন্যদিকে"
+],
+"meaning": "Used to indicate a contrast or sequence.",
+"examples": [
+"Er half mir, ich wiederum half ihm."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv16",
+"word": "folglich",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"consequently",
+"therefore"
+],
+"bangla": [
+"ফলে"
+],
+"meaning": "Indicating a logical result.",
+"examples": [
+"Er hat nicht gelernt, folglich hat er die Prüfung nicht bestanden."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv17",
+"word": "kürzlich",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"recently",
+"lately"
+],
+"bangla": [
+"সম্প্রতি"
+],
+"meaning": "Not long ago; in the recent past.",
+"examples": [
+"Ich habe ihn kürzlich getroffen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv18",
+"word": "inwiefern",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"to what extent",
+"how"
+],
+"bangla": [
+"কতটা"
+],
+"meaning": "Used to ask about the degree or scope.",
+"examples": [
+"Inwiefern bist du damit einverstanden?"
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv19",
+"word": "demnach",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"accordingly",
+"therefore"
+],
+"bangla": [
+"সুতরাং"
+],
+"meaning": "Indicating a result or conclusion.",
+"examples": [
+"Die Regeln wurden verletzt, demnach gibt es Konsequenzen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv20",
+"word": "kurzerhand",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"straightaway",
+"immediately"
+],
+"bangla": [
+"সরাসরি"
+],
+"meaning": "Without hesitation; immediately taking action.",
+"examples": [
+"Er entschied kurzerhand, das Projekt zu stoppen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv21",
+"word": "zumindest",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"at least"
+],
+"bangla": [
+"অন্তত"
+],
+"meaning": "Indicating the minimum or least amount.",
+"examples": [
+"Du solltest zumindest versuchen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv22",
+"word": "vorab",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"in advance",
+"beforehand"
+],
+"bangla": [
+"পূর্বে"
+],
+"meaning": "Something done ahead of time.",
+"examples": [
+"Ich informiere dich vorab über das Treffen."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv23",
+"word": "ohnehin",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"anyway",
+"in any case"
+],
+"bangla": [
+"যাই হোক"
+],
+"meaning": "Indicating that something is true regardless.",
+"examples": [
+"Es wird ohnehin passieren."
+],
+"synonym": [
+
+]
+},
+{
+"id": "adv24",
+"word": "nahezu",
+"type": "Adverb",
+"category": "Adverbien",
+"englisch": [
+"almost",
+"nearly"
+],
+"bangla": [
+"প্রায়"
+],
+"meaning": "Indicating something is very close to happening or being true.",
+"examples": [
+"Das ist nahezu unmöglich."
+],
+"synonym": [
+
+]
+},
+    {
         "id":  "nv1",
         "word":  "Frage stellen",
         "type":  "Nomen-Verb Verbindung",
@@ -8891,22 +11613,6 @@
         "meaning":  "A phrase used before eating.",
         "examples":  [
                          "Guten Appetit!"
-                     ]
-    },
-    {
-        "id":  "slang1",
-        "word":  "Alter",
-        "type":  "Slang",
-        "category":  "Schimpfwörter / Slang",
-        "englisch":  [
-                         "dude"
-                     ],
-        "bangla":  [
-                       "বন্ধু (স্ল্যাং)"
-                   ],
-        "meaning":  "Used informally to address someone.",
-        "examples":  [
-                         "Alter, das ist krass!"
                      ]
     },
     {
@@ -8957,4 +11663,1057 @@
                          "Im Gegensatz zu dir bin ich ruhig"
                      ]
     }
+,
+    {
+        "id": "spr1",
+        "word": "Morgenstund hat Gold im Mund",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["The early bird catches the worm"],
+        "bangla": ["সকাল বেলা কাজ করলে সাফল্য মেলে"],
+        "meaning": "Wer früh beginnt, hat bessere Chancen auf Erfolg.",
+        "examples": ["Er steht immer früh auf. Morgenstund hat Gold im Mund."],
+        "synonym": []
+    },
+    {
+        "id": "spr2",
+        "word": "Übung macht den Meister",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["Practice makes perfect"],
+        "bangla": ["অনুশীলনেই দক্ষতা আসে"],
+        "meaning": "Durch regelmäßiges Üben wird man besser.",
+        "examples": ["Du wirst besser im Deutsch. Übung macht den Meister."],
+        "synonym": []
+    },
+    {
+        "id": "spr3",
+        "word": "Ende gut, alles gut",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["All's well that ends well"],
+        "bangla": ["শেষ ভালো তো সব ভালো"],
+        "meaning": "Wenn etwas gut endet, ist das Ergebnis positiv.",
+        "examples": ["Das Projekt war schwer, aber Ende gut, alles gut."],
+        "synonym": []
+    },
+    {
+        "id": "spr4",
+        "word": "Wer nicht wagt, der nicht gewinnt",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["Nothing ventured, nothing gained"],
+        "bangla": ["ঝুঁকি না নিলে লাভ হয় না"],
+        "meaning": "Ohne Mut gibt es keinen Erfolg.",
+        "examples": ["Bewirb dich! Wer nicht wagt, der nicht gewinnt."],
+        "synonym": []
+    },
+    {
+        "id": "spr5",
+        "word": "Alle Wege führen nach Rom",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["All roads lead to Rome"],
+        "bangla": ["সব পথই একই লক্ষ্যে পৌঁছায়"],
+        "meaning": "Es gibt viele Wege, ein Ziel zu erreichen.",
+        "examples": ["Mach dir keinen Stress – alle Wege führen nach Rom."],
+        "synonym": []
+    },
+    {
+        "id": "spr6",
+        "word": "Wer A sagt, muss auch B sagen",
+        "type": "Sprichwort",
+        "category": "Sprichwörter",
+        "englisch": ["In for a penny, in for a pound"],
+        "bangla": ["কাজ শুরু করলে শেষ করতে হয়"],
+        "meaning": "Wer etwas beginnt, sollte es auch zu Ende bringen.",
+        "examples": ["Du hast angefangen, also mach weiter. Wer A sagt, muss auch B sagen."],
+        "synonym": []
+    },
+    {
+        "id": "fest1",
+        "word": "Es geht um die Wurst",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["It comes down to the point"],
+        "bangla": ["চূড়ান্ত বিষয়টি গুরুত্বপূর্ণ"],
+        "meaning": "Jetzt ist der entscheidende Moment.",
+        "examples": ["Im Finale geht es um die Wurst."],
+        "synonym": []
+    },
+    {
+        "id": "fest2",
+        "word": "ins kalte Wasser springen",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["to jump in at the deep end"],
+        "bangla": ["হঠাৎ কঠিন কিছু শুরু করা"],
+        "meaning": "Ohne Vorbereitung etwas Schwieriges beginnen.",
+        "examples": ["Am ersten Tag musste ich ins kalte Wasser springen."],
+        "synonym": []
+    },
+    {
+        "id": "fest3",
+        "word": "auf Anhieb",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["right away", "at first try"],
+        "bangla": ["প্রথম চেষ্টােই"],
+        "meaning": "Sofort oder beim ersten Versuch.",
+        "examples": ["Er hat die Aufgabe auf Anhieb gelöst."],
+        "synonym": []
+    },
+    {
+        "id": "fest4",
+        "word": "im Handumdrehen",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["in no time"],
+        "bangla": ["খুব অল্প সময়ে"],
+        "meaning": "Sehr schnell.",
+        "examples": ["Die Reparatur war im Handumdrehen fertig."],
+        "synonym": []
+    },
+    {
+        "id": "fest5",
+        "word": "auf der sicheren Seite",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["on the safe side"],
+        "bangla": ["নিরাপদ দিক"],
+        "meaning": "Vorsichtig handeln, um Risiken zu vermeiden.",
+        "examples": ["Nimm einen Regenschirm mit, dann bist du auf der sicheren Seite."],
+        "synonym": []
+    },
+    {
+        "id": "fest6",
+        "word": "unter vier Augen",
+        "type": "Feste Wendung",
+        "category": "Feste Wendungen",
+        "englisch": ["in private", "one-on-one"],
+        "bangla": ["একান্তে"],
+        "meaning": "Nur zwischen zwei Personen.",
+        "examples": ["Wir müssen das unter vier Augen besprechen."],
+        "synonym": []
+    },
+    {
+    "id": "fest7",
+    "word": "meiner Meinung nach",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in my opinion"],
+    "bangla": ["আমার মতে"],
+    "meaning": "Ausdruck, um die eigene persönliche Meinung zu äußern.",
+    "examples": ["Meiner Meinung nach ist dieses Buch sehr interessant."],
+    "synonym": ["meiner Ansicht nach", "aus meiner Sicht"]
+},
+{
+    "id": "fest8",
+    "word": "meiner Ansicht nach",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in my opinion", "from my point of view"],
+    "bangla": ["আমার মতে"],
+    "meaning": "Ausdruck, um eine persönliche Meinung oder Einschätzung zu geben.",
+    "examples": ["Meiner Ansicht nach sollte man mehr lesen."],
+    "synonym": ["meiner Meinung nach", "aus meiner Sicht"]
+},
+{
+    "id": "fest9",
+    "word": "aus meiner Sicht",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["from my point of view", "in my view"],
+    "bangla": ["আমার দৃষ্টিতে"],
+    "meaning": "Ausdruck für eine persönliche Perspektive oder Meinung.",
+    "examples": ["Aus meiner Sicht ist das die beste Lösung."],
+    "synonym": ["meiner Meinung nach", "meiner Ansicht nach"]
+},
+{
+    "id": "fest10",
+    "word": "meiner Erfahrung nach",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in my experience"],
+    "bangla": ["আমার অভিজ্ঞতা অনুযায়ী"],
+    "meaning": "Ausdruck, der auf persönlichen Erfahrungen basiert.",
+    "examples": ["Meiner Erfahrung nach hilft regelmäßiges Üben sehr."],
+    "synonym": []
+},
+{
+    "id": "fest11",
+    "word": "im Allgemeinen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["generally", "in general"],
+    "bangla": ["সাধারণভাবে"],
+    "meaning": "Im Großen und Ganzen oder normalerweise.",
+    "examples": ["Im Allgemeinen sind die Menschen hier sehr freundlich."],
+    "synonym": ["generell"]
+},
+{
+    "id": "fest12",
+    "word": "im Grunde genommen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["basically", "fundamentally"],
+    "bangla": ["মূলত", "আসলে"],
+    "meaning": "Im Kern oder eigentlich.",
+    "examples": ["Im Grunde genommen hat er recht."],
+    "synonym": ["im Prinzip"]
+},
+{
+    "id": "fest13",
+    "word": "im Prinzip",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in principle", "basically"],
+    "bangla": ["নীতিগতভাবে", "মূলত"],
+    "meaning": "Grundsätzlich oder im Wesentlichen.",
+    "examples": ["Im Prinzip stimme ich dir zu."],
+    "synonym": ["im Grunde genommen"]
+},
+{
+    "id": "fest14",
+    "word": "im Vergleich zu",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["compared to", "in comparison with"],
+    "bangla": ["তুলনায়"],
+    "meaning": "Ausdruck, um zwei Dinge miteinander zu vergleichen.",
+    "examples": ["Im Vergleich zu letztem Jahr ist das Wetter besser."],
+    "synonym": []
+},
+{
+    "id": "fest15",
+    "word": "im Zusammenhang mit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in connection with", "related to"],
+    "bangla": ["এর সাথে সম্পর্কিত"],
+    "meaning": "Etwas steht in Beziehung zu etwas anderem.",
+    "examples": ["Im Zusammenhang mit dem Projekt gab es viele Fragen."],
+    "synonym": ["in Verbindung mit"]
+},
+{
+    "id": "fest16",
+    "word": "im Laufe der Zeit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["over time", "in the course of time"],
+    "bangla": ["সময়ের সাথে সাথে"],
+    "meaning": "Etwas entwickelt sich oder verändert sich mit der Zeit.",
+    "examples": ["Im Laufe der Zeit wurde die Stadt größer."],
+    "synonym": []
+},
+{
+    "id": "fest17",
+    "word": "im Laufe von",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the course of", "during"],
+    "bangla": ["সময়ের মধ্যে", "সময়ের ধারায়"],
+    "meaning": "Während einer bestimmten Zeitspanne.",
+    "examples": ["Im Laufe des Tages wird es wärmer."],
+    "synonym": []
+},
+{
+    "id": "fest18",
+    "word": "im Rahmen von",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["within the framework of", "as part of"],
+    "bangla": ["পরিধির মধ্যে", "অংশ হিসেবে"],
+    "meaning": "Innerhalb eines bestimmten Rahmens oder Projekts.",
+    "examples": ["Im Rahmen des Projekts wurden neue Ideen vorgestellt."],
+    "synonym": []
+},
+{
+    "id": "fest19",
+    "word": "im Bereich von",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the field of", "in the area of"],
+    "bangla": ["ক্ষেত্রে", "অঞ্চলে"],
+    "meaning": "Bezieht sich auf ein bestimmtes Fachgebiet oder Thema.",
+    "examples": ["Er arbeitet im Bereich der Informatik."],
+    "synonym": []
+},
+{
+    "id": "fest20",
+    "word": "im Gegenteil",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["on the contrary"],
+    "bangla": ["বরং এর বিপরীত"],
+    "meaning": "Wird benutzt, um das Gegenteil von etwas zu betonen.",
+    "examples": ["Er ist nicht faul, im Gegenteil, er arbeitet sehr viel."],
+    "synonym": []
+},
+{
+    "id": "fest21",
+    "word": "im Voraus",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in advance"],
+    "bangla": ["আগাম"],
+    "meaning": "Etwas wird vorher gemacht oder gesagt.",
+    "examples": ["Vielen Dank im Voraus für deine Hilfe."],
+    "synonym": ["vorab"]
+},
+{
+    "id": "fest22",
+    "word": "im Nachhinein",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["afterwards", "in retrospect"],
+    "bangla": ["পরে ভেবে দেখলে"],
+    "meaning": "Etwas wird nachträglich bewertet oder verstanden.",
+    "examples": ["Im Nachhinein war die Entscheidung richtig."],
+    "synonym": []
+},
+{
+    "id": "fest23",
+    "word": "im Durchschnitt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["on average"],
+    "bangla": ["গড়ে"],
+    "meaning": "Der mittlere Wert einer Gruppe oder Menge.",
+    "examples": ["Im Durchschnitt schlafen Erwachsene sieben Stunden."],
+    "synonym": []
+},
+{
+    "id": "fest24",
+    "word": "im Moment",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["at the moment", "right now"],
+    "bangla": ["এই মুহূর্তে"],
+    "meaning": "Zur aktuellen Zeit.",
+    "examples": ["Im Moment habe ich keine Zeit."],
+    "synonym": ["zurzeit"]
+},
+{
+    "id": "fest25",
+    "word": "im Endeffekt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the end", "ultimately"],
+    "bangla": ["শেষ পর্যন্ত"],
+    "meaning": "Das endgültige Ergebnis oder Fazit.",
+    "examples": ["Im Endeffekt war alles gut."],
+    "synonym": []
+},
+{
+    "id": "fest26",
+    "word": "im Wesentlichen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["essentially", "basically"],
+    "bangla": ["মূলত", "প্রধানত"],
+    "meaning": "Im Kern oder hauptsächlich.",
+    "examples": ["Im Wesentlichen geht es um Vertrauen."],
+    "synonym": []
+},
+{
+    "id": "fest27",
+    "word": "auf jeden Fall",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["definitely", "in any case"],
+    "bangla": ["অবশ্যই", "যাই হোক না কেন"],
+    "meaning": "Etwas wird sicher oder unbedingt passieren.",
+    "examples": ["Ich komme auf jeden Fall zur Party."],
+    "synonym": ["auf alle Fälle"]
+},
+{
+    "id": "fest28",
+    "word": "auf keinen Fall",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["under no circumstances", "absolutely not"],
+    "bangla": ["কোনো অবস্থাতেই নয়"],
+    "meaning": "Etwas wird ganz sicher nicht passieren.",
+    "examples": ["Das darfst du auf keinen Fall tun."],
+    "synonym": []
+},
+{
+    "id": "fest29",
+    "word": "auf diese Weise",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in this way", "like this"],
+    "bangla": ["এইভাবে"],
+    "meaning": "Etwas wird auf eine bestimmte Art und Weise gemacht.",
+    "examples": ["Auf diese Weise kann man Zeit sparen."],
+    "synonym": ["so"]
+},
+{
+    "id": "fest30",
+    "word": "auf der einen Seite",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["on the one hand"],
+    "bangla": ["একদিকে"],
+    "meaning": "Ein Teil eines Vergleichs oder einer Gegenüberstellung.",
+    "examples": ["Auf der einen Seite ist es teuer, auf der anderen Seite sehr nützlich."],
+    "synonym": []
+},
+{
+    "id": "fest31",
+    "word": "auf der anderen Seite",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["on the other hand"],
+    "bangla": ["অন্যদিকে"],
+    "meaning": "Der zweite Teil eines Vergleichs oder einer Gegenüberstellung.",
+    "examples": ["Auf der anderen Seite ist die Arbeit sehr interessant."],
+    "synonym": []
+},
+{
+    "id": "fest32",
+    "word": "auf einmal",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["suddenly", "all at once"],
+    "bangla": ["হঠাৎ"],
+    "meaning": "Etwas passiert plötzlich oder unerwartet.",
+    "examples": ["Auf einmal begann es stark zu regnen."],
+    "synonym": ["plötzlich"]
+},
+{
+    "id": "fest33",
+    "word": "auf Dauer",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the long run"],
+    "bangla": ["দীর্ঘমেয়াদে"],
+    "meaning": "Über eine längere Zeit hinweg.",
+    "examples": ["Auf Dauer ist das keine gute Lösung."],
+    "synonym": []
+},
+{
+    "id": "fest34",
+    "word": "auf lange Sicht",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the long term", "in the long run"],
+    "bangla": ["দীর্ঘমেয়াদে"],
+    "meaning": "Bezogen auf eine lange zukünftige Zeit.",
+    "examples": ["Auf lange Sicht wird sich die Arbeit lohnen."],
+    "synonym": ["auf Dauer"]
+},
+{
+    "id": "fest35",
+    "word": "auf kurze Sicht",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the short term"],
+    "bangla": ["স্বল্পমেয়াদে"],
+    "meaning": "Bezogen auf eine kurze zukünftige Zeit.",
+    "examples": ["Auf kurze Sicht ist die Lösung ausreichend."],
+    "synonym": []
+},
+{
+    "id": "fest36",
+    "word": "auf den ersten Blick",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["at first glance"],
+    "bangla": ["প্রথম দেখায়"],
+    "meaning": "Der erste Eindruck von etwas.",
+    "examples": ["Auf den ersten Blick sieht das einfach aus."],
+    "synonym": []
+},
+{
+    "id": "fest37",
+    "word": "in diesem Fall",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in this case"],
+    "bangla": ["এই ক্ষেত্রে"],
+    "meaning": "Bezieht sich auf eine bestimmte Situation.",
+    "examples": ["In diesem Fall sollten wir warten."],
+    "synonym": []
+},
+{
+    "id": "fest38",
+    "word": "in vielen Fällen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in many cases"],
+    "bangla": ["অনেক ক্ষেত্রে"],
+    "meaning": "Etwas passiert häufig oder oft.",
+    "examples": ["In vielen Fällen hilft Geduld."],
+    "synonym": []
+},
+{
+    "id": "fest39",
+    "word": "in der Regel",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["as a rule", "usually"],
+    "bangla": ["সাধারণত"],
+    "meaning": "Etwas passiert normalerweise.",
+    "examples": ["In der Regel beginnt der Unterricht um acht Uhr."],
+    "synonym": ["gewöhnlich", "normalerweise"]
+},
+{
+    "id": "fest40",
+    "word": "in erster Linie",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["primarily", "first and foremost"],
+    "bangla": ["প্রধানত"],
+    "meaning": "Etwas ist besonders wichtig oder steht an erster Stelle.",
+    "examples": ["In erster Linie geht es um Sicherheit."],
+    "synonym": []
+},
+{
+    "id": "fest41",
+    "word": "in letzter Zeit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["recently", "lately"],
+    "bangla": ["সম্প্রতি"],
+    "meaning": "Bezieht sich auf die nahe Vergangenheit.",
+    "examples": ["In letzter Zeit habe ich viel gearbeitet."],
+    "synonym": ["kürzlich"]
+},
+{
+    "id": "fest42",
+    "word": "in Zukunft",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the future"],
+    "bangla": ["ভবিষ্যতে"],
+    "meaning": "Bezieht sich auf die kommende Zeit.",
+    "examples": ["In Zukunft werde ich mehr lernen."],
+    "synonym": []
+},
+{
+    "id": "fest43",
+    "word": "in Wirklichkeit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in reality", "actually"],
+    "bangla": ["বাস্তবে"],
+    "meaning": "Was tatsächlich der Fall ist.",
+    "examples": ["In Wirklichkeit war er sehr nervös."],
+    "synonym": ["tatsächlich"]
+},
+{
+    "id": "fest44",
+    "word": "in gewisser Weise",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in a way", "in some sense"],
+    "bangla": ["কিছুটা অর্থে"],
+    "meaning": "Teilweise oder auf eine bestimmte Art.",
+    "examples": ["In gewisser Weise hat er recht."],
+    "synonym": []
+},
+{
+    "id": "fest45",
+    "word": "in diesem Zusammenhang",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in this context"],
+    "bangla": ["এই প্রেক্ষাপটে"],
+    "meaning": "Bezieht sich auf ein bestimmtes Thema oder eine Situation.",
+    "examples": ["In diesem Zusammenhang sollte man auch die Kosten erwähnen."],
+    "synonym": []
+},
+{
+    "id": "fest46",
+    "word": "in solchen Fällen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in such cases"],
+    "bangla": ["এমন ক্ষেত্রে"],
+    "meaning": "Bezieht sich auf ähnliche Situationen.",
+    "examples": ["In solchen Fällen sollte man ruhig bleiben."],
+    "synonym": []
+},
+{
+    "id": "fest47",
+    "word": "zum Beispiel",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["for example"],
+    "bangla": ["উদাহরণস্বরূপ"],
+    "meaning": "Wird benutzt, um ein Beispiel zu geben.",
+    "examples": ["Viele Früchte, zum Beispiel Äpfel und Bananen, sind gesund."],
+    "synonym": ["beispielsweise"]
+},
+{
+    "id": "fest48",
+    "word": "zum Teil",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["partly", "in part"],
+    "bangla": ["আংশিকভাবে"],
+    "meaning": "Etwas gilt nur teilweise.",
+    "examples": ["Die Arbeit ist zum Teil sehr schwierig."],
+    "synonym": ["teilweise"]
+},
+{
+    "id": "fest49",
+    "word": "zum Schluss",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the end", "finally"],
+    "bangla": ["শেষে"],
+    "meaning": "Am Ende von etwas.",
+    "examples": ["Zum Schluss stellte er noch eine Frage."],
+    "synonym": ["am Ende"]
+},
+{
+    "id": "fest50",
+    "word": "zum Glück",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["fortunately", "luckily"],
+    "bangla": ["সৌভাগ্যবশত"],
+    "meaning": "Etwas passiert auf eine glückliche Weise.",
+    "examples": ["Zum Glück hat es nicht geregnet."],
+    "synonym": ["glücklicherweise"]
+},
+{
+    "id": "fest51",
+    "word": "zum Nachteil",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["to the disadvantage of"],
+    "bangla": ["ক্ষতির দিকে"],
+    "meaning": "Etwas wirkt sich negativ für jemanden aus.",
+    "examples": ["Die Entscheidung war zum Nachteil der Mitarbeiter."],
+    "synonym": []
+},
+{
+    "id": "fest52",
+    "word": "zum Vorteil",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["to the advantage of"],
+    "bangla": ["সুবিধার দিকে"],
+    "meaning": "Etwas bringt einen Vorteil.",
+    "examples": ["Die neue Regel ist zum Vorteil der Studenten."],
+    "synonym": []
+},
+{
+    "id": "fest53",
+    "word": "zum ersten Mal",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["for the first time"],
+    "bangla": ["প্রথমবার"],
+    "meaning": "Etwas passiert das erste Mal.",
+    "examples": ["Ich war zum ersten Mal in Deutschland."],
+    "synonym": []
+},
+{
+    "id": "fest54",
+    "word": "zum letzten Mal",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["for the last time"],
+    "bangla": ["শেষবার"],
+    "meaning": "Etwas passiert das letzte Mal.",
+    "examples": ["Er warnte ihn zum letzten Mal."],
+    "synonym": []
+},
+{
+    "id": "fest55",
+    "word": "unter anderem",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["among other things"],
+    "bangla": ["অন্যান্য বিষয়ের মধ্যে"],
+    "meaning": "Ein Teil von mehreren Dingen.",
+    "examples": ["Wir haben unter anderem über die Zukunft gesprochen."],
+    "synonym": []
+},
+{
+    "id": "fest56",
+    "word": "unter Umständen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["under certain circumstances", "possibly"],
+    "bangla": ["নির্দিষ্ট পরিস্থিতিতে"],
+    "meaning": "Etwas kann unter bestimmten Bedingungen passieren.",
+    "examples": ["Unter Umständen komme ich morgen später."],
+    "synonym": []
+},
+{
+    "id": "fest57",
+    "word": "unter anderem gesagt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["among other things said"],
+    "bangla": ["অন্যান্য কথার মধ্যে বলা হয়েছে"],
+    "meaning": "Wird benutzt, wenn man erwähnt, dass etwas neben anderen Dingen gesagt wurde.",
+    "examples": ["Er hat unter anderem gesagt, dass wir früher kommen sollen."],
+    "synonym": []
+},
+{
+    "id": "fest58",
+    "word": "unter diesen Bedingungen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["under these conditions"],
+    "bangla": ["এই শর্তে"],
+    "meaning": "Bezieht sich auf eine bestimmte Situation oder Voraussetzung.",
+    "examples": ["Unter diesen Bedingungen kann ich nicht arbeiten."],
+    "synonym": []
+},
+{
+    "id": "fest59",
+    "word": "aus diesem Grund",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["for this reason", "because of this"],
+    "bangla": ["এই কারণে"],
+    "meaning": "Etwas wird durch einen bestimmten Grund erklärt.",
+    "examples": ["Es regnet stark, aus diesem Grund bleiben wir zu Hause."],
+    "synonym": ["deshalb", "darum"]
+},
+{
+    "id": "fest60",
+    "word": "aus diesem Anlass",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["on this occasion"],
+    "bangla": ["এই উপলক্ষে"],
+    "meaning": "Bezieht sich auf ein bestimmtes Ereignis.",
+    "examples": ["Aus diesem Anlass feiern wir heute zusammen."],
+    "synonym": []
+},
+{
+    "id": "fest61",
+    "word": "aus verschiedenen Gründen",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["for various reasons"],
+    "bangla": ["বিভিন্ন কারণে"],
+    "meaning": "Es gibt mehrere Ursachen oder Gründe.",
+    "examples": ["Aus verschiedenen Gründen konnte er nicht kommen."],
+    "synonym": []
+},
+{
+    "id": "fest62",
+    "word": "aus heutiger Sicht",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["from today's perspective"],
+    "bangla": ["আজকের দৃষ্টিকোণ থেকে"],
+    "meaning": "Bewertung einer Sache aus der heutigen Perspektive.",
+    "examples": ["Aus heutiger Sicht war die Entscheidung richtig."],
+    "synonym": []
+},
+{
+    "id": "fest63",
+    "word": "mit der Zeit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["over time"],
+    "bangla": ["সময়ের সাথে সাথে"],
+    "meaning": "Etwas verändert sich langsam mit der Zeit.",
+    "examples": ["Mit der Zeit wird alles besser."],
+    "synonym": ["im Laufe der Zeit"]
+},
+{
+    "id": "fest64",
+    "word": "mit Sicherheit",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["certainly", "for sure"],
+    "bangla": ["নিশ্চয়ই"],
+    "meaning": "Etwas ist ganz sicher.",
+    "examples": ["Er wird mit Sicherheit Erfolg haben."],
+    "synonym": ["auf jeden Fall"]
+},
+{
+    "id": "fest65",
+    "word": "mit Abstand",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["by far"],
+    "bangla": ["অনেক ব্যবধানে"],
+    "meaning": "Etwas ist deutlich besser oder größer als etwas anderes.",
+    "examples": ["Das ist mit Abstand das beste Restaurant hier."],
+    "synonym": []
+},
+{
+    "id": "fest66",
+    "word": "mit anderen Worten",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in other words"],
+    "bangla": ["অন্য কথায়"],
+    "meaning": "Wird benutzt, um etwas anders oder einfacher zu erklären.",
+    "examples": ["Er ist krank, mit anderen Worten, er kann nicht kommen."],
+    "synonym": []
+},
+{
+    "id": "fest67",
+    "word": "ohne Zweifel",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["without doubt", "undoubtedly"],
+    "bangla": ["নিঃসন্দেহে"],
+    "meaning": "Etwas ist ganz sicher oder eindeutig.",
+    "examples": ["Er ist ohne Zweifel ein sehr talentierter Musiker."],
+    "synonym": ["zweifellos"]
+},
+{
+    "id": "fest68",
+    "word": "ohne Weiteres",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["without difficulty", "readily"],
+    "bangla": ["সহজেই", "কোনো অসুবিধা ছাড়াই"],
+    "meaning": "Etwas kann leicht oder problemlos gemacht werden.",
+    "examples": ["Das Problem lässt sich ohne Weiteres lösen."],
+    "synonym": []
+},
+{
+    "id": "fest69",
+    "word": "ohne Probleme",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["without problems", "easily"],
+    "bangla": ["কোনো সমস্যা ছাড়াই"],
+    "meaning": "Etwas passiert ohne Schwierigkeiten.",
+    "examples": ["Die Aufgabe konnte ich ohne Probleme erledigen."],
+    "synonym": ["problemlos"]
+},
+{
+    "id": "fest70",
+    "word": "ohne Ausnahme",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["without exception"],
+    "bangla": ["ব্যতিক্রম ছাড়া"],
+    "meaning": "Alle Personen oder Dinge sind betroffen.",
+    "examples": ["Alle Studenten müssen ohne Ausnahme teilnehmen."],
+    "synonym": []
+},
+{
+    "id": "fest71",
+    "word": "alles in allem",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["all in all", "overall"],
+    "bangla": ["সব মিলিয়ে"],
+    "meaning": "Eine Zusammenfassung oder Gesamtbewertung.",
+    "examples": ["Alles in allem war der Urlaub sehr schön."],
+    "synonym": ["insgesamt"]
+},
+{
+    "id": "fest72",
+    "word": "kurz gesagt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in short", "briefly"],
+    "bangla": ["সংক্ষেপে"],
+    "meaning": "Etwas wird kurz zusammengefasst.",
+    "examples": ["Kurz gesagt, wir müssen mehr arbeiten."],
+    "synonym": ["kurz gesagt"]
+},
+{
+    "id": "fest73",
+    "word": "anders gesagt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["put differently", "in other words"],
+    "bangla": ["অন্যভাবে বললে"],
+    "meaning": "Etwas wird mit anderen Worten erklärt.",
+    "examples": ["Anders gesagt, wir brauchen mehr Zeit."],
+    "synonym": ["mit anderen Worten"]
+},
+{
+    "id": "fest74",
+    "word": "genauer gesagt",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["more precisely", "to be precise"],
+    "bangla": ["আরও নির্দিষ্টভাবে বললে"],
+    "meaning": "Eine genauere Erklärung oder Korrektur.",
+    "examples": ["Er kommt morgen, genauer gesagt um zehn Uhr."],
+    "synonym": []
+},
+{
+    "id": "fest75",
+    "word": "ganz im Gegenteil",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["quite the opposite"],
+    "bangla": ["ঠিক তার বিপরীত"],
+    "meaning": "Betont stark das Gegenteil von etwas.",
+    "examples": ["Er ist nicht faul, ganz im Gegenteil, er arbeitet sehr hart."],
+    "synonym": ["im Gegenteil"]
+},
+{
+    "id": "fest76",
+    "word": "letzten Endes",
+    "type": "Feste Wendung",
+    "category": "Feste Wendungen",
+    "englisch": ["in the end", "ultimately"],
+    "bangla": ["শেষ পর্যন্ত"],
+    "meaning": "Das endgültige Ergebnis oder Fazit.",
+    "examples": ["Letzten Endes war alles gut."],
+    "synonym": ["im Endeffekt"]
+},
+    {
+        "id":  "slang1",
+        "word":  "Alter",
+        "type":  "Slang",
+        "category": "Slang",
+        "englisch":  [
+                         "dude"
+                     ],
+        "bangla":  [
+                       "বন্ধু (স্ল্যাং)"
+                   ],
+        "meaning":  "Used informally to address someone.",
+        "examples":  [
+                         "Alter, das ist krass!"
+                     ]
+    },
+    {
+        "id": "slang2",
+        "word": "krass",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["awesome", "intense"],
+        "bangla": ["দারুণ", "তীব্র"],
+        "meaning": "Sehr stark oder beeindruckend (umgangssprachlich).",
+        "examples": ["Der Film war krass!"],
+        "synonym": []
+    },
+    {
+        "id": "slang3",
+        "word": "Bock haben",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["to feel like"],
+        "bangla": ["ইচ্ছা থাকা"],
+        "meaning": "Lust auf etwas haben.",
+        "examples": ["Hast du Bock auf einen Kaffee?"],
+        "synonym": []
+    },
+    {
+        "id": "slang4",
+        "word": "chillen",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["to chill", "to relax"],
+        "bangla": ["আরাম করা"],
+        "meaning": "Sich entspannen (umgangssprachlich).",
+        "examples": ["Am Wochenende chille ich zu Hause."],
+        "synonym": []
+    },
+    {
+        "id": "slang5",
+        "word": "abgehen",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["to go wild", "to be awesome"],
+        "bangla": ["উচ্ছ্বাসে থাকা"],
+        "meaning": "Sehr intensiv oder spannend sein (umgangssprachlich).",
+        "examples": ["Die Party geht richtig ab."],
+        "synonym": []
+    },
+    {
+        "id": "slang6",
+        "word": "verpeilen",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["to mess up", "to lose track"],
+        "bangla": ["গোলমাল করা"],
+        "meaning": "Etwas vergessen oder durcheinanderbringen.",
+        "examples": ["Ich hab den Termin verpeilt."],
+        "synonym": []
+    },
+    {
+        "id": "slang7",
+        "word": "Läuft!",
+        "type": "Slang",
+        "category": "Slang",
+        "englisch": ["All good", "It's going well"],
+        "bangla": ["সব ঠিক"],
+        "meaning": "Alles ist in Ordnung (umgangssprachlich).",
+        "examples": ["Wie läuft's? – Läuft!"],
+        "synonym": []
+    },
+    {
+        "id": "schimpf1",
+        "word": "Idiot",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["idiot"],
+        "bangla": ["বোকা"],
+        "meaning": "Beleidigendes Wort für eine Person.",
+        "examples": ["Sag so etwas nicht!"],
+        "synonym": []
+    },
+    {
+        "id": "schimpf2",
+        "word": "Dummkopf",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["blockhead", "dummy"],
+        "bangla": ["বুদ্ধিহীন"],
+        "meaning": "Beleidigende Bezeichnung für jemanden.",
+        "examples": ["Er nennt ihn einen Dummkopf."],
+        "synonym": []
+    },
+    {
+        "id": "schimpf3",
+        "word": "Trottel",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["idiot", "fool"],
+        "bangla": ["মূর্খ"],
+        "meaning": "Abwertende Bezeichnung.",
+        "examples": ["Das war eine dumme Idee, du Trottel."],
+        "synonym": []
+    },
+    {
+        "id": "schimpf4",
+        "word": "Arschloch",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["asshole"],
+        "bangla": ["গালিগালাজ"],
+        "meaning": "Sehr beleidigendes Wort.",
+        "examples": ["(Beleidigung, bitte nicht verwenden.)"],
+        "synonym": []
+    },
+    {
+        "id": "schimpf5",
+        "word": "Mistkerl",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["jerk"],
+        "bangla": ["খারাপ লোক"],
+        "meaning": "Beleidigende Bezeichnung für eine Person.",
+        "examples": ["Er hat mich ein Mistkerl genannt."],
+        "synonym": []
+    },
+    {
+        "id": "schimpf6",
+        "word": "Spinner",
+        "type": "Schimpfwort",
+        "category": "Schimpfwörter",
+        "englisch": ["crazy person", "nut"],
+        "bangla": ["পাগল"],
+        "meaning": "Abwertende Bezeichnung für jemanden.",
+        "examples": ["Du Spinner, was machst du da?"],
+        "synonym": []
+    }
 ]
+
+

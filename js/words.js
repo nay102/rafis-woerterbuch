@@ -1,4 +1,5 @@
-﻿let allWords = [];
+﻿const DATA_VERSION = "2026-03-13-1";
+let allWords = [];
 
 export function getAllWords() {
   return allWords;
@@ -6,8 +7,8 @@ export function getAllWords() {
 
 export async function loadWords() {
   const [wordsResponse, irregularResponse] = await Promise.all([
-    fetch("./js/words.json"),
-    fetch("./js/irregular_verbs.json")
+    fetch(`./js/words.json?v=${DATA_VERSION}`),
+    fetch(`./js/irregular_verbs.json?v=${DATA_VERSION}`)
   ]);
   const data = await wordsResponse.json();
   let irregularVerbs = [];
@@ -32,4 +33,5 @@ export async function loadWords() {
 
   console.log("Words loaded from words.json", allWords);
 }
+
 
