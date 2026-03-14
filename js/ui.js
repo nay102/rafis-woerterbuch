@@ -507,6 +507,14 @@ function showToast(message, type = "success") {
   }, 2200);
 }
 
+function promptLoginForRestrictedCategory(message) {
+  showToast(message, "error");
+  const loginBtn = document.getElementById("loginBtn");
+  if (!currentUser && loginBtn) {
+    loginBtn.click();
+  }
+}
+
 function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
   const modal = document.getElementById("schimpfWarningModal");
   const confirmBtn = document.getElementById("confirmSchimpfWarning");
@@ -966,6 +974,15 @@ function openCategoryPage(categoryName, options = {}) {
         showSection("homePage");
       }
     });
+    return;
+  }
+
+  const requiresLogin =
+    categoryName === "Schimpfwörter" && !currentUser;
+  if (requiresLogin) {
+    promptLoginForRestrictedCategory(
+      "Login required to view Schimpfwörter."
+    );
     return;
   }
 
@@ -1799,6 +1816,15 @@ function openWordDetail(wordId, options = {}) {
         showSection("homePage");
       }
     });
+    return;
+  }
+
+  const requiresLogin =
+    word.category === "Schimpfwörter" && !currentUser;
+  if (requiresLogin) {
+    promptLoginForRestrictedCategory(
+      "Login required to view Schimpfwörter."
+    );
     return;
   }
 
