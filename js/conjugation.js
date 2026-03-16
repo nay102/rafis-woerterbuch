@@ -58,6 +58,7 @@ const SEPARABLE_PREFIXES = [
 ];
 
 const AMBIGUOUS_VERBS = new Set([]);
+const NON_SEPARABLE_VERBS = new Set(["antworten"]);
 
 const IRREGULAR_OVERRIDE_FIELDS = [
   "praeteritum",
@@ -443,12 +444,12 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
   const presentStem = irregular.present_stem || null;
 
   const present = {
-    ich: presentStem ? `${presentStem}e` : base.present.ich,
+    ich: irregular.present_ich || (presentStem ? `${presentStem}e` : base.present.ich),
     du: irregular.present_du || (presentStem ? `${presentStem}${duEnding(presentStem)}` : base.present.du),
     er_sie_es: irregular.present_er || (presentStem ? `${presentStem}t` : base.present.er_sie_es),
-    wir: base.present.wir,
-    ihr: base.present.ihr,
-    sie_formal: base.present.sie_formal
+    wir: irregular.present_wir || base.present.wir,
+    ihr: irregular.present_ihr || base.present.ihr,
+    sie_formal: irregular.present_sie_formal || base.present.sie_formal
   };
 
   const praeteritumStem = irregular.praeteritum_stem || irregular.praeteritum;
@@ -462,12 +463,12 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
   };
 
   const k1Present = {
-    ich: present.ich,
+    ich: irregular.k1_ich || present.ich,
     du: irregular.k1_du || `${getStem(coreVerb)}est`,
-    er_sie_es: present.ich,
-    wir: base.present.wir,
+    er_sie_es: irregular.k1_er || present.ich,
+    wir: irregular.k1_wir || base.present.wir,
     ihr: irregular.k1_ihr || `${getStem(coreVerb)}et`,
-    sie_formal: base.present.sie_formal
+    sie_formal: irregular.k1_sie_formal || base.present.sie_formal
   };
 
   let partizipII = irregular.partizip2;
@@ -670,6 +671,15 @@ function parseVerb(word) {
   }
   if (!base || base.includes(" ")) {
     return null;
+  }
+  if (NON_SEPARABLE_VERBS.has(base.toLowerCase())) {
+    return {
+      fullVerb: base,
+      coreVerb: base,
+      prefix: null,
+      isSeparable: false,
+      isReflexive
+    };
   }
   const prefix = findSeparablePrefix(base);
   const isSeparable = Boolean(prefix && !isInseparablePrefix(base));

@@ -132,6 +132,17 @@
         "k1_ihr":  "bringet"
     },
     {
+        "infinitive":  "empfangen",
+        "praeteritum":  "empfing",
+        "partizip2":  "empfangen",
+        "aux":  "haben",
+        "present_du":  "empfängst",
+        "present_er":  "empfängt",
+        "konjunktiv2_stem":  "empfinge",
+        "k1_du":  "empfangest",
+        "k1_ihr":  "empfanget"
+    },
+    {
         "infinitive":  "empfinden",
         "praeteritum":  "empfand",
         "partizip2":  "empfunden",
@@ -543,11 +554,20 @@
         "praeteritum":  "war",
         "partizip2":  "gewesen",
         "aux":  "sein",
+        "present_ich":  "bin",
         "present_du":  "bist",
         "present_er":  "ist",
+        "present_wir":  "sind",
+        "present_ihr":  "seid",
+        "present_sie_formal":  "sind",
+        "k1_ich":  "sei",
         "konjunktiv2_stem":  "wäre",
         "k1_du":  "seiest",
+        "k1_er":  "sei",
+        "k1_wir":  "seien",
         "k1_ihr":  "seiet"
+        ,
+        "k1_sie_formal":  "seien"
     },
     {
         "infinitive":  "sprechen",
@@ -671,6 +691,17 @@
         "k1_ihr":  "verbrechet"
     },
     {
+        "infinitive":  "vergessen",
+        "praeteritum":  "vergaß",
+        "partizip2":  "vergessen",
+        "aux":  "haben",
+        "present_du":  "vergisst",
+        "present_er":  "vergisst",
+        "konjunktiv2_stem":  "vergäße",
+        "k1_du":  "vergessest",
+        "k1_ihr":  "vergesset"
+    },
+    {
         "infinitive":  "verlieren",
         "praeteritum":  "verlor",
         "partizip2":  "verloren",
@@ -691,6 +722,17 @@
         "konjunktiv2_stem":  "vermöchte",
         "k1_du":  "vermögest",
         "k1_ihr":  "vermöget"
+    },
+    {
+        "infinitive":  "verstehen",
+        "praeteritum":  "verstand",
+        "partizip2":  "verstanden",
+        "aux":  "haben",
+        "present_du":  "verstehst",
+        "present_er":  "versteht",
+        "konjunktiv2_stem":  "verstünde",
+        "k1_du":  "verstehest",
+        "k1_ihr":  "verstehet"
     },
     {
         "infinitive":  "verstoßen",
@@ -726,6 +768,28 @@
         "k1_ihr":  "wendet"
     },
     {
+        "infinitive":  "waschen",
+        "praeteritum":  "wusch",
+        "partizip2":  "gewaschen",
+        "aux":  "haben",
+        "present_du":  "wäschst",
+        "present_er":  "wäscht",
+        "konjunktiv2_stem":  "wüsche",
+        "k1_du":  "waschest",
+        "k1_ihr":  "waschet"
+    },
+    {
+        "infinitive":  "werden",
+        "praeteritum":  "wurde",
+        "partizip2":  "geworden",
+        "aux":  "sein",
+        "present_du":  "wirst",
+        "present_er":  "wird",
+        "konjunktiv2_stem":  "würde",
+        "k1_du":  "werdest",
+        "k1_ihr":  "werdet"
+    },
+    {
         "infinitive":  "werfen",
         "aux":  "haben",
         "present_er":  "wirft",
@@ -757,5 +821,280 @@
         "konjunktiv2_stem":  "zwänge",
         "k1_du":  "zwingest",
         "k1_ihr":  "zwinget"
+    },
+    {
+        "infinitive":  "ziehen",
+        "praeteritum":  "zog",
+        "partizip2":  "gezogen",
+        "aux":  "haben",
+        "present_du":  "ziehst",
+        "present_er":  "zieht",
+        "konjunktiv2_stem":  "zöge",
+        "k1_du":  "ziehest",
+        "k1_ihr":  "ziehet"
+    },
+    {
+        "infinitive":  "fangen",
+        "praeteritum":  "fing",
+        "partizip2":  "gefangen",
+        "aux":  "haben",
+        "present_du":  "fängst",
+        "present_er":  "fängt",
+        "konjunktiv2_stem":  "finge",
+        "k1_du":  "fangest",
+        "k1_ihr":  "fanget"
+    },
+    {
+        "infinitive":  "rufen",
+        "praeteritum":  "rief",
+        "partizip2":  "gerufen",
+        "aux":  "haben",
+        "present_du":  "rufst",
+        "present_er":  "ruft",
+        "konjunktiv2_stem":  "riefe",
+        "k1_du":  "rufest",
+        "k1_ihr":  "rufet"
+    },
+    {
+        "infinitive":  "stehen",
+        "praeteritum":  "stand",
+        "partizip2":  "gestanden",
+        "aux":  "haben",
+        "present_du":  "stehst",
+        "present_er":  "steht",
+        "konjunktiv2_stem":  "stände",
+        "k1_du":  "stehest",
+        "k1_ihr":  "stehet"
+    },
+    {
+        "infinitive":  "backen",
+        "praeteritum":  "buk",
+        "partizip2":  "gebacken",
+        "aux":  "haben",
+        "present_du":  "bäckst",
+        "present_er":  "bäckt",
+        "konjunktiv2_stem":  "büke",
+        "k1_du":  "backest",
+        "k1_ihr":  "backet"
+    },
+    {
+        "infinitive":  "beginnen",
+        "praeteritum":  "begann",
+        "partizip2":  "begonnen",
+        "aux":  "haben",
+        "present_du":  "beginnst",
+        "present_er":  "beginnt",
+        "konjunktiv2_stem":  "begönne",
+        "k1_du":  "beginnest",
+        "k1_ihr":  "beginnet"
+    },
+    {
+        "infinitive":  "bekommen",
+        "praeteritum":  "bekam",
+        "partizip2":  "bekommen",
+        "aux":  "haben",
+        "present_du":  "bekommst",
+        "present_er":  "bekommt",
+        "konjunktiv2_stem":  "bekäme",
+        "k1_du":  "bekommest",
+        "k1_ihr":  "bekommet"
+    },
+    {
+        "infinitive":  "denken",
+        "praeteritum":  "dachte",
+        "partizip2":  "gedacht",
+        "aux":  "haben",
+        "present_du":  "denkst",
+        "present_er":  "denkt",
+        "konjunktiv2_stem":  "dächte",
+        "k1_du":  "denkest",
+        "k1_ihr":  "denket"
+    },
+    {
+        "infinitive":  "laden",
+        "praeteritum":  "lud",
+        "partizip2":  "geladen",
+        "aux":  "haben",
+        "present_du":  "lädst",
+        "present_er":  "lädt",
+        "konjunktiv2_stem":  "lüde",
+        "k1_du":  "ladest",
+        "k1_ihr":  "ladet"
+    },
+    {
+        "infinitive":  "empfehlen",
+        "praeteritum":  "empfahl",
+        "partizip2":  "empfohlen",
+        "aux":  "haben",
+        "present_du":  "empfiehlst",
+        "present_er":  "empfiehlt",
+        "konjunktiv2_stem":  "empföhle",
+        "k1_du":  "empfehlest",
+        "k1_ihr":  "empfehlet"
+    },
+    {
+        "infinitive":  "essen",
+        "praeteritum":  "aß",
+        "partizip2":  "gegessen",
+        "aux":  "haben",
+        "present_du":  "isst",
+        "present_er":  "isst",
+        "konjunktiv2_stem":  "äße",
+        "k1_du":  "essest",
+        "k1_ihr":  "esset"
+    },
+    {
+        "infinitive":  "fahren",
+        "praeteritum":  "fuhr",
+        "partizip2":  "gefahren",
+        "aux":  "sein",
+        "present_du":  "fährst",
+        "present_er":  "fährt",
+        "konjunktiv2_stem":  "führe",
+        "k1_du":  "fahrest",
+        "k1_ihr":  "fahret"
+    },
+    {
+        "infinitive":  "fliegen",
+        "praeteritum":  "flog",
+        "partizip2":  "geflogen",
+        "aux":  "sein",
+        "present_du":  "fliegst",
+        "present_er":  "fliegt",
+        "konjunktiv2_stem":  "flöge",
+        "k1_du":  "fliegest",
+        "k1_ihr":  "flieget"
+    },
+    {
+        "infinitive":  "gefallen",
+        "praeteritum":  "gefiel",
+        "partizip2":  "gefallen",
+        "aux":  "haben",
+        "present_du":  "gefällst",
+        "present_er":  "gefällt",
+        "konjunktiv2_stem":  "gefiele",
+        "k1_du":  "gefallest",
+        "k1_ihr":  "gefallet"
+    },
+    {
+        "infinitive":  "helfen",
+        "praeteritum":  "half",
+        "partizip2":  "geholfen",
+        "aux":  "haben",
+        "present_du":  "hilfst",
+        "present_er":  "hilft",
+        "konjunktiv2_stem":  "hülfe",
+        "k1_du":  "helfest",
+        "k1_ihr":  "helfet"
+    },
+    {
+        "infinitive":  "heißen",
+        "praeteritum":  "hieß",
+        "partizip2":  "geheißen",
+        "aux":  "haben",
+        "present_du":  "heißt",
+        "present_er":  "heißt",
+        "konjunktiv2_stem":  "hieße",
+        "k1_du":  "heißest",
+        "k1_ihr":  "heißet"
+    },
+    {
+        "infinitive":  "lesen",
+        "praeteritum":  "las",
+        "partizip2":  "gelesen",
+        "aux":  "haben",
+        "present_du":  "liest",
+        "present_er":  "liest",
+        "konjunktiv2_stem":  "läse",
+        "k1_du":  "lesest",
+        "k1_ihr":  "leset"
+    },
+    {
+        "infinitive":  "liegen",
+        "praeteritum":  "lag",
+        "partizip2":  "gelegen",
+        "aux":  "haben",
+        "present_du":  "liegst",
+        "present_er":  "liegt",
+        "konjunktiv2_stem":  "läge",
+        "k1_du":  "liegest",
+        "k1_ihr":  "lieget"
+    },
+    {
+        "infinitive":  "schlafen",
+        "praeteritum":  "schlief",
+        "partizip2":  "geschlafen",
+        "aux":  "haben",
+        "present_du":  "schläfst",
+        "present_er":  "schläft",
+        "konjunktiv2_stem":  "schliefe",
+        "k1_du":  "schlafest",
+        "k1_ihr":  "schlafet"
+    },
+    {
+        "infinitive":  "sehen",
+        "praeteritum":  "sah",
+        "partizip2":  "gesehen",
+        "aux":  "haben",
+        "present_du":  "siehst",
+        "present_er":  "sieht",
+        "konjunktiv2_stem":  "sähe",
+        "k1_du":  "sehest",
+        "k1_ihr":  "sehet"
+    },
+    {
+        "infinitive":  "singen",
+        "praeteritum":  "sang",
+        "partizip2":  "gesungen",
+        "aux":  "haben",
+        "present_du":  "singst",
+        "present_er":  "singt",
+        "konjunktiv2_stem":  "sänge",
+        "k1_du":  "singest",
+        "k1_ihr":  "singet"
+    },
+    {
+        "infinitive":  "sitzen",
+        "praeteritum":  "saß",
+        "partizip2":  "gesessen",
+        "aux":  "haben",
+        "present_du":  "sitzt",
+        "present_er":  "sitzt",
+        "konjunktiv2_stem":  "säße",
+        "k1_du":  "sitzest",
+        "k1_ihr":  "sitzet"
+    },
+    {
+        "infinitive":  "treffen",
+        "praeteritum":  "traf",
+        "partizip2":  "getroffen",
+        "aux":  "haben",
+        "present_du":  "triffst",
+        "present_er":  "trifft",
+        "konjunktiv2_stem":  "träfe",
+        "k1_du":  "treffest",
+        "k1_ihr":  "treffet"
+    },
+    {
+        "infinitive":  "trinken",
+        "praeteritum":  "trank",
+        "partizip2":  "getrunken",
+        "aux":  "haben",
+        "present_du":  "trinkst",
+        "present_er":  "trinkt",
+        "konjunktiv2_stem":  "tränke",
+        "k1_du":  "trinkest",
+        "k1_ihr":  "trinket"
+    },
+    {
+        "infinitive":  "tun",
+        "praeteritum":  "tat",
+        "partizip2":  "getan",
+        "aux":  "haben",
+        "present_du":  "tust",
+        "present_er":  "tut",
+        "konjunktiv2_stem":  "täte",
+        "k1_du":  "tuest",
+        "k1_ihr":  "tuet"
     }
 ]

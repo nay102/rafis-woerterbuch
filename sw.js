@@ -2,8 +2,8 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v5";
-const DATA_VERSION = "2026-03-13-1";
+const CACHE_VERSION = "rw-cache-v8";
+const DATA_VERSION = "2026-03-16-3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {

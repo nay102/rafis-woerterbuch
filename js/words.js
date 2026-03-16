@@ -1,4 +1,4 @@
-﻿const DATA_VERSION = "2026-03-13-1";
+﻿const DATA_VERSION = "2026-03-16-3";
 let allWords = [];
 
 export function getAllWords() {

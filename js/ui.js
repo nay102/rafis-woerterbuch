@@ -1050,28 +1050,25 @@ searchWrapper.appendChild(categorySearchMessage);
 
 categoryPage.appendChild(searchWrapper);
 
-const categoryExplain = CATEGORY_EXPLANATIONS[categoryName];
-if (categoryExplain) {
-  const explainTitle = CATEGORY_EXPLAIN_TITLES[categoryName] || `Was ist ${categoryName}?`;
-  const explainer = document.createElement("section");
-  explainer.className = "category-explainer";
-  explainer.innerHTML = `
-    <h3>${escapeHtml(explainTitle)}</h3>
-    <p class="category-explainer-de">${escapeHtml(categoryExplain.de)}</p>
-    <div class="category-explainer-actions">
-      <button id="showEnExplainBtn" type="button" class="category-explain-btn">See in English</button>
-      <button id="showBnExplainBtn" type="button" class="category-explain-btn">See in Bangla</button>
-    </div>
-    <div id="enExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+  const categoryExplain = CATEGORY_EXPLANATIONS[categoryName];
+  if (categoryExplain) {
+    const explainTitle = CATEGORY_EXPLAIN_TITLES[categoryName] || `Was ist ${categoryName}?`;
+    const explainer = document.createElement("section");
+    explainer.className = "category-explainer";
+    explainer.innerHTML = `
+    <button id="toggleExplainBtn" type="button" class="category-explain-btn category-explain-question">
+      ${escapeHtml(explainTitle)}
+    </button>
+    <div id="explainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+      <h4>Deutsch</h4>
+      <p class="category-explainer-de">${escapeHtml(categoryExplain.de)}</p>
       <h4>English</h4>
       <p>${escapeHtml(categoryExplain.en)}</p>
-    </div>
-    <div id="bnExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
       <h4>Bangla</h4>
       <p>${escapeHtml(categoryExplain.bn)}</p>
     </div>
-  `;
-  categoryPage.appendChild(explainer);
+    `;
+    categoryPage.appendChild(explainer);
 
   const wireExplainToggle = (btnId, panelId) => {
     const btn = explainer.querySelector(`#${btnId}`);
@@ -1088,8 +1085,7 @@ if (categoryExplain) {
     });
   };
 
-  wireExplainToggle("showEnExplainBtn", "enExplainPanel");
-  wireExplainToggle("showBnExplainBtn", "bnExplainPanel");
+  wireExplainToggle("toggleExplainBtn", "explainPanel");
 }
 
 categorySearchMessage.addEventListener("click", (e) => {
@@ -1720,17 +1716,14 @@ function openConjugationPage(wordId) {
   const explainer = document.createElement("section");
   explainer.className = "category-explainer conjugation-explainer";
   explainer.innerHTML = `
-    <h3>Was ist Konjugation?</h3>
-    <p class="category-explainer-de">${escapeHtml(CONJUGATION_EXPLANATION.de)}</p>
-    <div class="category-explainer-actions">
-      <button id="showConjEnExplainBtn" type="button" class="category-explain-btn">See in English</button>
-      <button id="showConjBnExplainBtn" type="button" class="category-explain-btn">See in Bangla</button>
-    </div>
-    <div id="conjEnExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+    <button id="toggleConjExplainBtn" type="button" class="category-explain-btn category-explain-question">
+      Was ist Konjugation?
+    </button>
+    <div id="conjExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
+      <h4>Deutsch</h4>
+      <p class="category-explainer-de">${escapeHtml(CONJUGATION_EXPLANATION.de)}</p>
       <h4>English</h4>
       <p>${escapeHtml(CONJUGATION_EXPLANATION.en)}</p>
-    </div>
-    <div id="conjBnExplainPanel" class="category-explain-panel collapsed" aria-hidden="true">
       <h4>Bangla</h4>
       <p>${escapeHtml(CONJUGATION_EXPLANATION.bn)}</p>
     </div>
@@ -1752,8 +1745,7 @@ function openConjugationPage(wordId) {
     });
   };
 
-  wireConjugationExplainToggle("showConjEnExplainBtn", "conjEnExplainPanel");
-  wireConjugationExplainToggle("showConjBnExplainBtn", "conjBnExplainPanel");
+  wireConjugationExplainToggle("toggleConjExplainBtn", "conjExplainPanel");
 
   const content = document.createElement("div");
   content.className = "conjugation-content";
