@@ -55,6 +55,7 @@ let lastContext = {
 let openedFromFavorites = false;
 let schimpfWarningOpen = false;
 let germanyPageLanguage = "en";
+let bangladeshPageLanguage = "en";
 
 const APP_SETTINGS_KEY = "rw_app_settings_v1";
 const LOCAL_FAVORITES_KEY_PREFIX = "rw_local_favorites_v1_";
@@ -568,15 +569,43 @@ function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
 
 const panelPageContent = {
   owner: {
-    title: "👑 Owner",
+    title: "Welcome to My Profile",
     image: "https://picsum.photos/seed/owner/1200/500",
     description:
-      "This section introduces the creator and mission behind Rafi's Wörterbuch.",
+      "Assalamu Alaikum. My full name is Md Rafikul Islam. Rafi is a short form of Rafikul, and Nayeem is my nickname. This profile shares my background, my German learning journey, and the dream behind Rafi's Wörterbuch.",
     cards: [
-      "Personal language-learning journey and why this platform was built.",
-      "Goals: practical German for real life, study, and migration.",
-      "Future roadmap and community contribution plans."
-    ]
+      {
+        title: "Personal Journey",
+        body:
+          "My hometown is Mymensingh, and I currently live in Dhaka, Bangladesh. My journey is built on learning, discipline, and the hope of creating a better future through language and practical skills.",
+        photo: "Photo placeholder: Mymensingh and Dhaka"
+      },
+      {
+        title: "German Learning Journey",
+        body:
+          "I started learning German on 13 August 2024 after the July Movement. From that day, German became an important part of my future plan and a serious daily focus.",
+        photo: "Photo placeholder: German learning journey"
+      },
+      {
+        title: "Education Decision",
+        body:
+          "I studied Computer Science and Engineering for one year. After that, I left university so I could focus on learning German properly and prepare for an Ausbildung in Germany.",
+        photo: "Photo placeholder: education journey"
+      },
+      {
+        title: "Goal",
+        body:
+          "My clear goal is to learn German properly, move to Germany, and complete an Ausbildung. I want to prepare step by step with vocabulary, grammar, confidence, and real-life communication skills.",
+        photo: "Photo placeholder: Germany and Ausbildung"
+      },
+      {
+        title: "Learning Process",
+        body:
+          "My learning process is based on daily practice, useful word lists, sentence building, listening, speaking, and regular revision. Rafi's Wörterbuch is part of that process: a personal learning space that can also help others.",
+        photo: "Photo placeholder: daily learning setup"
+      }
+    ],
+    footer: "© All rights reserved."
   },
   ausbildung: {
     title: "📚 Ausbildung",
@@ -587,6 +616,17 @@ const panelPageContent = {
       "Required German level and interview vocabulary.",
       "Common Ausbildung domains and starter phrases.",
       "Preparation checklist for documents and communication."
+    ]
+  },
+  bangladesh: {
+    title: "🇧🇩 Bangladesh",
+    image: "https://picsum.photos/seed/bangladesh/1200/500",
+    description:
+      "A short overview of Bangladesh with practical language and cultural context for the side panel.",
+    cards: [
+      "Everyday vocabulary and common phrases related to daily life.",
+      "A compact cultural snapshot for learners who want quick context.",
+      "Useful bridge content for bilingual navigation inside the site."
     ]
   },
   about: {
@@ -601,7 +641,7 @@ const panelPageContent = {
     ]
   },
   option4: {
-    title: "🧠 Practice Lab",
+    title: " Rafis Sprachwelt",
     image: "https://picsum.photos/seed/option4/1200/500",
     description: "Focused drills and revision practice for faster vocabulary retention.",
     cards: [
@@ -867,22 +907,22 @@ const GERMANY_PAGE_COPY = {
     statesIntro:
       "Germany is a federal republic. Each Bundesland has its own government and important responsibilities, especially in education, culture, policing, and local administration.",
     states: [
-      "Baden-Württemberg",
-      "Bavaria",
-      "Berlin",
-      "Brandenburg",
-      "Bremen",
-      "Hamburg",
-      "Hesse",
-      "Lower Saxony",
-      "Mecklenburg-Vorpommern",
-      "North Rhine-Westphalia",
-      "Rhineland-Palatinate",
-      "Saarland",
-      "Saxony",
-      "Saxony-Anhalt",
-      "Schleswig-Holstein",
-      "Thuringia"
+      "Baden-Württemberg (Stuttgart)",
+      "Bavaria (Munich)",
+      "Berlin (Berlin)",
+      "Brandenburg (Potsdam)",
+      "Bremen (Bremen)",
+      "Hamburg (Hamburg)",
+      "Hesse (Wiesbaden)",
+      "Lower Saxony (Hanover)",
+      "Mecklenburg-Vorpommern (Schwerin)",
+      "North Rhine-Westphalia (Düsseldorf)",
+      "Rhineland-Palatinate (Mainz)",
+      "Saarland (Saarbrücken)",
+      "Saxony (Dresden)",
+      "Saxony-Anhalt (Magdeburg)",
+      "Schleswig-Holstein (Kiel)",
+      "Thuringia (Erfurt)"
     ],
     sections: [
       {
@@ -949,6 +989,13 @@ const GERMANY_PAGE_COPY = {
           "Famous places include the Brandenburg Gate, Berlin Museum Island, Cologne Cathedral, Neuschwanstein Castle, the Black Forest, the Rhine Valley, Heidelberg, Hamburg's Speicherstadt, Zugspitze, Dresden's old town, and the Romantic Road."
       },
       {
+        title: "Religion and Society",
+        image:
+          "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Germany's religious landscape includes Christian traditions, a growing number of people without religious affiliation, and Muslim, Jewish, Buddhist, and other communities. Churches, cathedrals, mosques, synagogues, and civic traditions all contribute to the country's public life and local identity."
+      },
+      {
         title: "Famous Companies",
         image:
           "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80",
@@ -989,42 +1036,42 @@ const GERMANY_PAGE_COPY = {
     statesIntro:
       "Deutschland ist eine föderale Republik. Jedes Bundesland hat eine eigene Regierung und wichtige Aufgaben, besonders bei Bildung, Kultur, Polizei und Verwaltung.",
     states: [
-      "Baden-Württemberg",
-      "Bayern",
-      "Berlin",
-      "Brandenburg",
-      "Bremen",
-      "Hamburg",
-      "Hessen",
-      "Niedersachsen",
-      "Mecklenburg-Vorpommern",
-      "Nordrhein-Westfalen",
-      "Rheinland-Pfalz",
-      "Saarland",
-      "Sachsen",
-      "Sachsen-Anhalt",
-      "Schleswig-Holstein",
-      "Thüringen"
+      "Baden-Württemberg (Stuttgart)",
+      "Bayern (München)",
+      "Berlin (Berlin)",
+      "Brandenburg (Potsdam)",
+      "Bremen (Bremen)",
+      "Hamburg (Hamburg)",
+      "Hessen (Wiesbaden)",
+      "Niedersachsen (Hannover)",
+      "Mecklenburg-Vorpommern (Schwerin)",
+      "Nordrhein-Westfalen (Düsseldorf)",
+      "Rheinland-Pfalz (Mainz)",
+      "Saarland (Saarbrücken)",
+      "Sachsen (Dresden)",
+      "Sachsen-Anhalt (Magdeburg)",
+      "Schleswig-Holstein (Kiel)",
+      "Thüringen (Erfurt)"
     ],
     sections: [
       {
         title: "Städte und Struktur",
         image:
-          "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
         body:
           "Deutschland hat 2.056 Städte mit offiziellem Stadtrecht und 10.753 Gemeinden, Stand Januar 2024. Berlin ist Hauptstadt und zugleich Stadtstaat. Weitere große Zentren sind Hamburg, München, Köln, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen und Bremen."
       },
       {
         title: "Bevölkerung und Kultur",
         image:
-          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
         body:
           "Deutschland hat nach EU-Zahlen von 2025 rund 83,6 Millionen Einwohner. Die Kultur verbindet regionale Identität mit modernem Stadtleben: klassische Musik, Literatur, Weihnachtsmärkte, Fußball, Feste, Pünktlichkeit, Privatsphäre, direkte Kommunikation und starke öffentliche Institutionen prägen den Alltag."
       },
       {
         title: "Geschichte und Europäische Union",
         image:
-          "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sangshad_2.jpg",
         body:
           "Das moderne Deutschland wurde durch das Heilige Römische Reich, Preußen, Industrialisierung, zwei Weltkriege, die Teilung in West- und Ostdeutschland und die Wiedervereinigung am 3. Oktober 1990 geprägt. Deutschland förderte die europäische Zusammenarbeit nach dem Krieg und war 1957 Gründungsmitglied der Europäischen Wirtschaftsgemeinschaft, aus der später die heutige Europäische Union hervorging."
       },
@@ -1045,7 +1092,7 @@ const GERMANY_PAGE_COPY = {
       {
         title: "Sprache",
         image:
-          "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/7/77/Bd_school.jpg",
         body:
           "Deutsch ist die Amtssprache und eine wichtige Sprache für Wissenschaft, Technik, Kultur und Wirtschaft in Europa. Standarddeutsch wird in Bildung und Verwaltung genutzt, während Dialekte eine starke regionale Identität zeigen."
       },
@@ -1059,16 +1106,23 @@ const GERMANY_PAGE_COPY = {
       {
         title: "Essen, Brot und Alltagsgeschmack",
         image:
-          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
         body:
           "Deutschland ist bekannt für Brotkultur, Bäckereien, Wurst, Brezeln, Kartoffelgerichte, Kuchen und regionale Küche. Bekannte Beispiele sind Brötchen, Roggenbrot, Sauerteigbrot, Brezel, Currywurst, Schnitzel, Spätzle, Sauerkraut, Schwarzwälder Kirschtorte und Stollen."
       },
       {
         title: "Bekannte Sehenswürdigkeiten",
         image:
-          "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
+          "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
         body:
           "Berühmte Orte sind das Brandenburger Tor, die Berliner Museumsinsel, der Kölner Dom, Schloss Neuschwanstein, der Schwarzwald, das Rheintal, Heidelberg, die Hamburger Speicherstadt, die Zugspitze, die Dresdner Altstadt und die Romantische Straße."
+      },
+      {
+        title: "Religion und Gesellschaft",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        body:
+          "Deutschlands religiöse Landschaft umfasst christliche Traditionen, viele Menschen ohne religiöse Bindung sowie muslimische, jüdische, buddhistische und weitere Gemeinschaften. Kirchen, Kathedralen, Moscheen, Synagogen und zivile Traditionen prägen gemeinsam das öffentliche Leben und die lokale Identität."
       },
       {
         title: "Bekannte Unternehmen",
@@ -1091,6 +1145,199 @@ const GERMANY_PAGE_COPY = {
     ],
     note:
       "Die Zahlen sind ein praktischer Überblick: Deutschland hat 16 Bundesländer, 2.056 Städte mit Stadtrecht und 10.753 Gemeinden, Stand Januar 2024."
+  }
+};
+
+const BANGLADESH_PAGE_COPY = {
+  en: {
+    toggleLabel: "Deutsch",
+    title: "Bangladesh",
+    subtitle:
+      "A polished overview of Bangladesh's divisions, cities, history, education, language, food, landmarks, and economy.",
+    stats: [
+      { value: "8", label: "Administrative divisions" },
+      { value: "173M+", label: "Population estimate" },
+      { value: "Dhaka", label: "Capital city" },
+      { value: "1971", label: "Independence year" },
+      { value: "Bengali", label: "Official language" }
+    ],
+    divisionsTitle: "The 8 Divisions",
+    divisionsIntro:
+      "Bangladesh is divided into eight divisions, each with its own administrative center and strong regional identity. The structure keeps government, services, and local culture closely connected to everyday life.",
+    divisions: [
+      "Dhaka Division",
+      "Chattogram Division",
+      "Khulna Division",
+      "Rajshahi Division",
+      "Barishal Division",
+      "Sylhet Division",
+      "Rangpur Division",
+      "Mymensingh Division"
+    ],
+    sections: [
+      {
+        title: "Cities and Structure",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Dhaka is the capital and a fast-moving megacity, while Chattogram, Khulna, Rajshahi, Sylhet, Barishal, Rangpur, and Mymensingh each bring their own regional identity. Bangladesh balances dense urban life with powerful local communities and a strong national center."
+      },
+      {
+        title: "Population and Culture",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Bangladesh has one of the largest populations in the world and a rich culture shaped by language, literature, music, festivals, family life, and hospitality. Pohela Boishakh, cricket, traditional dress, and everyday creativity are all part of the national rhythm."
+      },
+      {
+        title: "History and Independence",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Modern Bangladesh emerged after the 1971 Liberation War and the long struggle for self-determination. Its identity is rooted in the Bengali language movement, a powerful independence story, and a civic culture shaped by resilience and pride."
+      },
+      {
+        title: "Education System",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        body:
+          "Education runs from primary school through secondary and higher education, with public and private institutions serving a large and ambitious student population. English, Bengali, science, and technical training all play important roles in study and career planning."
+      },
+      {
+        title: "Language",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        body:
+          "Bengali is the official and most widely spoken language in Bangladesh. It is central to literature, identity, public life, and the country's cultural confidence, while English is widely used in education, business, and professional settings."
+      },
+      {
+        title: "Food and Everyday Taste",
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+        body:
+          "Bangladeshi food is fragrant, generous, and deeply regional. Rice, fish, lentils, bhorta, curries, biryani, pitha, and sweets like mishti are everyday anchors, with local spice blends bringing warmth and character to the table."
+      },
+      {
+        title: "Sightseeing Highlights",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        body:
+          "Notable places include Cox's Bazar, Sundarbans, Srimangal, Lalbagh Fort, Ahsan Manzil, Sixty Dome Mosque, Sonargaon, and the tea gardens of Sylhet. The country combines river landscapes, heritage sites, and natural beauty in a striking way."
+      },
+      {
+        title: "Religion and Society",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        body:
+          "Bangladesh is shaped by a diverse social fabric with Islam as the majority religion and significant Hindu, Buddhist, and Christian communities contributing to public life. Festivals, charity, neighborhood ties, and family traditions all reflect a social culture that is warm and community-oriented."
+      },
+      {
+        title: "Economy and Industry",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
+        body:
+          "Bangladesh is known for garments, textiles, agriculture, remittances, pharmaceuticals, shipbuilding, leather, jute, and a growing digital economy. Its economy is energetic, export-focused, and shaped by entrepreneurship and resilience."
+      }
+    ],
+    snapshotTitle: "Economic Snapshot",
+    snapshot: [
+      "Garments: a major export engine and global supply-chain backbone.",
+      "Agriculture: rice, jute, fish, tea, and diverse local food production.",
+      "Pharmaceuticals: an important domestic industry with regional reach.",
+      "Shipbuilding: a rising industrial capability with practical export value.",
+      "ICT and services: a fast-growing space for startups and digital work.",
+      "Remittances: a key source of national income and household support.",
+      "Leather and footwear: established manufacturing and export sectors.",
+      "Jute heritage: a classic material that still shapes industry and identity."
+    ],
+    note:
+      "Bangladesh is a country of strong language pride, regional depth, and fast-moving modern growth. The divisions, cities, and industries all show a nation building forward with confidence."
+  },
+  de: {
+    toggleLabel: "English",
+    title: "Bangladesch",
+    subtitle:
+      "Ein hochwertiger Überblick über die Divisionen, Städte, Geschichte, Bildung, Sprache, Essen, Sehenswürdigkeiten und Wirtschaft von Bangladesch.",
+    stats: [
+      { value: "8", label: "Verwaltungsdivisionen" },
+      { value: "173 Mio.+", label: "Bevölkerungsschätzung" },
+      { value: "Dhaka", label: "Hauptstadt" },
+      { value: "1971", label: "Unabhängigkeitsjahr" },
+      { value: "Bengalisch", label: "Amtssprache" }
+    ],
+    divisionsTitle: "Die 8 Divisionen",
+    divisionsIntro:
+      "Bangladesch ist in acht Divisionen gegliedert, die jeweils ein eigenes Verwaltungszentrum und eine starke regionale Identität haben. Diese Struktur hält Regierung, Dienstleistungen und lokales Leben eng miteinander verbunden.",
+    divisions: [
+      "Dhaka Division",
+      "Chattogram Division",
+      "Khulna Division",
+      "Rajshahi Division",
+      "Barishal Division",
+      "Sylhet Division",
+      "Rangpur Division",
+      "Mymensingh Division"
+    ],
+    sections: [
+      {
+        title: "Städte und Struktur",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Dhaka ist die Hauptstadt und eine dynamische Megastadt, während Chattogram, Khulna, Rajshahi, Sylhet, Barishal, Rangpur und Mymensingh jeweils ihre eigene regionale Prägung mitbringen. Bangladesch verbindet dichtes Stadtleben mit starken lokalen Gemeinschaften und einem klaren nationalen Zentrum."
+      },
+      {
+        title: "Bevölkerung und Kultur",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Bangladesch gehört zu den bevölkerungsreichsten Ländern der Welt und besitzt eine reiche Kultur, die von Sprache, Literatur, Musik, Festen, Familienleben und Gastfreundschaft geprägt ist. Pohela Boishakh, Cricket, traditionelle Kleidung und alltägliche Kreativität gehören zum nationalen Rhythmus."
+      },
+      {
+        title: "Geschichte und Unabhängigkeit",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        body:
+          "Das moderne Bangladesch entstand nach dem Befreiungskrieg von 1971 und dem langen Kampf um Selbstbestimmung. Seine Identität wurzelt in der bengalischen Sprachbewegung, einer kraftvollen Unabhängigkeitsgeschichte und einer von Resilienz und Stolz geprägten Zivilgesellschaft."
+      },
+      {
+        title: "Bildungssystem",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        body:
+          "Das Bildungssystem reicht von der Grundschule bis zur weiterführenden und höheren Bildung, wobei öffentliche und private Einrichtungen eine große und ehrgeizige Studentenschaft versorgen. Englisch, Bengalisch, Naturwissenschaften und technische Ausbildung spielen wichtige Rollen bei Studium und Berufsplanung."
+      },
+      {
+        title: "Sprache",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        body:
+          "Bengalisch ist die Amtssprache und die am weitesten verbreitete Sprache in Bangladesch. Sie ist zentral für Literatur, Identität, öffentliches Leben und kulturelles Selbstbewusstsein, während Englisch in Bildung, Wirtschaft und beruflichen Kontexten weit verbreitet ist."
+      },
+      {
+        title: "Essen und Alltag",
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+        body:
+          "Die Küche Bangladeschs ist aromatisch, großzügig und stark regional geprägt. Reis, Fisch, Linsen, Bhorta, Currys, Biryani, Pitha und Süßspeisen wie Mishti gehören zum Alltag, während lokale Gewürzmischungen Wärme und Charakter auf den Teller bringen."
+      },
+      {
+        title: "Sehenswürdigkeiten",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        body:
+          "Zu den bekannten Orten gehören Cox's Bazar, die Sundarbans, Srimangal, Lalbagh Fort, Ahsan Manzil, die Sixty Dome Mosque, Sonargaon und die Teeplantagen von Sylhet. Das Land verbindet Flusslandschaften, Kulturerbe und Natur auf eindrucksvolle Weise."
+      },
+      {
+        title: "Religion und Gesellschaft",
+        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        body:
+          "Bangladesch ist von einem vielfältigen sozialen Gefüge geprägt, in dem der Islam die Mehrheitsreligion ist und hinduistische, buddhistische und christliche Gemeinschaften das öffentliche Leben mitprägen. Feste, Wohltätigkeit, Nachbarschaft und Familientraditionen spiegeln eine warme, gemeinschaftsorientierte Kultur wider."
+      },
+      {
+        title: "Wirtschaft und Industrie",
+        image: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
+        body:
+          "Bangladesch ist bekannt für Bekleidung, Textilien, Landwirtschaft, Rücküberweisungen, Pharmazeutika, Schiffbau, Leder, Jute und eine wachsende digitale Wirtschaft. Die Wirtschaft ist energiegeladen, exportorientiert und von Unternehmergeist und Widerstandskraft geprägt."
+      }
+    ],
+    snapshotTitle: "Wirtschaftssnapshot",
+    snapshot: [
+      "Bekleidung: ein zentraler Exportmotor und Teil globaler Lieferketten.",
+      "Landwirtschaft: Reis, Jute, Fisch, Tee und vielfältige lokale Produktion.",
+      "Pharmazeutika: eine wichtige heimische Industrie mit regionaler Reichweite.",
+      "Schiffbau: eine wachsende industrielle Stärke mit Exportpotenzial.",
+      "IT und Dienstleistungen: ein schnell wachsender Bereich für Startups und digitale Arbeit.",
+      "Rücküberweisungen: eine wichtige Einkommensquelle für Haushalte und Land.",
+      "Leder und Schuhe: etablierte Produktions- und Exportsektoren.",
+      "Jute-Erbe: ein klassisches Material, das Industrie und Identität weiterhin prägt."
+    ],
+    note:
+      "Bangladesch ist ein Land mit starkem Sprachbewusstsein, regionaler Tiefe und schnellem modernem Wachstum. Die Divisionen, Städte und Branchen zeigen ein Land, das selbstbewusst nach vorne geht."
   }
 };
 
@@ -1196,6 +1443,122 @@ function renderGermanyPage() {
   `;
 
   wireGermanyLanguageToggle();
+}
+
+function buildBangladeshPageHTML(page) {
+  return `
+    <section class="bangladesh-hero">
+      <div class="bangladesh-hero-copy">
+        <button id="bangladeshLanguageToggle" class="bangladesh-lang-toggle germany-lang-toggle" type="button">${escapeHtml(page.toggleLabel)}</button>
+        <h1>${escapeHtml(page.title)}</h1>
+        <p>${escapeHtml(page.subtitle)}</p>
+      </div>
+      <div class="bangladesh-hero-side">
+        <div class="bangladesh-flag-panel" aria-hidden="true">
+          <div class="bangladesh-flag-art">
+            <div class="bangladesh-flag-circle"></div>
+          </div>
+          <div class="bangladesh-flag-label">🇧🇩</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bangladesh-stats">
+      ${page.stats
+        .map(
+          stat => `
+            <article class="bangladesh-stat">
+              <strong>${escapeHtml(stat.value)}</strong>
+              <span>${escapeHtml(stat.label)}</span>
+            </article>
+          `
+        )
+        .join("")}
+    </section>
+
+    <section class="bangladesh-block bangladesh-divisions-block">
+      <div class="bangladesh-section-head">
+        <h2>${escapeHtml(page.divisionsTitle)}</h2>
+        <p>${escapeHtml(page.divisionsIntro)}</p>
+      </div>
+      <div class="bangladesh-division-grid">
+        ${page.divisions
+          .map(
+            (division, idx) =>
+              `<span><b>${String(idx + 1).padStart(2, "0")}</b><em>${escapeHtml(division)}</em></span>`
+          )
+          .join("")}
+      </div>
+    </section>
+
+    <section class="bangladesh-feature-grid">
+      ${page.sections
+        .map(
+          section => `
+            <article class="bangladesh-feature">
+              <img src="${section.image}" alt="${escapeHtml(section.title)}" loading="lazy">
+              <div>
+                <h2>${escapeHtml(section.title)}</h2>
+                <p>${escapeHtml(section.body)}</p>
+              </div>
+            </article>
+          `
+        )
+        .join("")}
+    </section>
+
+    <section class="bangladesh-block bangladesh-snapshot-block">
+      <div class="bangladesh-section-head">
+        <h2>${escapeHtml(page.snapshotTitle)}</h2>
+      </div>
+      <div class="bangladesh-snapshot-list">
+        ${page.snapshot.map(item => `<p>${escapeHtml(item)}</p>`).join("")}
+      </div>
+    </section>
+
+    <p class="bangladesh-note">${escapeHtml(page.note)}</p>
+  `;
+}
+
+function renderBangladeshPage() {
+  const desktopPage = document.getElementById("desktopPage");
+  if (!desktopPage) return;
+
+  const page = BANGLADESH_PAGE_COPY[bangladeshPageLanguage] || BANGLADESH_PAGE_COPY.en;
+
+  currentView = "custom";
+  ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  });
+
+  const hero = document.getElementById("heroSection");
+  if (hero) hero.style.display = "none";
+
+  desktopPage.style.display = "block";
+  desktopPage.innerHTML = `
+    <div class="bangladesh-page">${buildBangladeshPageHTML(page)}</div>
+  `;
+
+  wireBangladeshLanguageToggle();
+}
+
+function wireBangladeshLanguageToggle() {
+  document.getElementById("bangladeshLanguageToggle")?.addEventListener("click", () => {
+    const bangladeshPage = document.querySelector(".bangladesh-page");
+    if (!bangladeshPage || bangladeshPage.classList.contains("is-switching")) return;
+
+    bangladeshPage.classList.add("is-switching");
+    window.setTimeout(() => {
+      bangladeshPageLanguage = bangladeshPageLanguage === "en" ? "de" : "en";
+      const nextPage = BANGLADESH_PAGE_COPY[bangladeshPageLanguage] || BANGLADESH_PAGE_COPY.en;
+      bangladeshPage.innerHTML = buildBangladeshPageHTML(nextPage);
+      bangladeshPage.classList.remove("is-switching");
+      bangladeshPage.classList.add("has-switched");
+      window.setTimeout(() => bangladeshPage.classList.remove("has-switched"), 260);
+      wireBangladeshLanguageToggle();
+    }, 180);
+  });
 }
 
 const CATEGORY_EXPLAIN_TITLES = {
@@ -2520,6 +2883,11 @@ function renderPanelPage(pageKey) {
     return;
   }
 
+  if (pageKey === "bangladesh") {
+    renderBangladeshPage();
+    return;
+  }
+
   const page = panelPageContent[pageKey];
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage || !page) return;
@@ -2534,16 +2902,33 @@ function renderPanelPage(pageKey) {
   const hero = document.getElementById("heroSection");
   if (hero) hero.style.display = "none";
 
+  const cards = page.cards
+    .map((card, idx) => {
+      const title = typeof card === "string" ? `Section ${idx + 1}` : card.title || `Section ${idx + 1}`;
+      const body = typeof card === "string" ? card : card.body || "";
+      const photo = typeof card === "string" ? "" : card.photo || "";
+
+      return `
+        <article class="panel-page-card">
+          ${photo ? `<div class="panel-photo-placeholder">${escapeHtml(photo)}</div>` : ""}
+          <h3>${escapeHtml(title)}</h3>
+          <p>${escapeHtml(body)}</p>
+        </article>
+      `;
+    })
+    .join("");
+
   desktopPage.style.display = "block";
   desktopPage.innerHTML = `
     <div class="panel-page-wrap">
       <div class="panel-hero-image" style="background-image:url('${page.image}')"></div>
       <div class="panel-page-content">
-        <h1>${page.title}</h1>
-        <p class="panel-page-description">${page.description}</p>
+        <h1>${escapeHtml(page.title)}</h1>
+        <p class="panel-page-description">${escapeHtml(page.description)}</p>
         <div class="panel-page-cards">
-          ${page.cards.map((card, idx) => `<article class="panel-page-card"><h3>Section ${idx + 1}</h3><p>${card}</p></article>`).join("")}
+          ${cards}
         </div>
+        ${page.footer ? `<footer class="panel-page-footer">${escapeHtml(page.footer)}</footer>` : ""}
       </div>
     </div>
   `;

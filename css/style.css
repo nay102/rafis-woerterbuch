@@ -1696,6 +1696,22 @@ body.dark input:focus {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.panel-photo-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 138px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(30, 64, 175, 0.34);
+  background:
+    linear-gradient(135deg, rgba(219, 234, 254, 0.88), rgba(240, 249, 255, 0.92));
+  color: #1e3a8a;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 14px;
+}
+
 .panel-page-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(34, 80, 210, 0.14);
@@ -1710,6 +1726,15 @@ body.dark input:focus {
 .panel-page-card p {
   font-size: 14px;
   line-height: 1.6;
+}
+
+.panel-page-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
 }
 
 .germany-page {
@@ -1738,6 +1763,10 @@ body.dark input:focus {
   animation: germanyLanguageIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+.bangladesh-page.has-switched {
+  animation: germanyLanguageIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .germany-hero {
   min-height: clamp(320px, 36vw, 420px);
   border-radius: 8px;
@@ -1746,7 +1775,8 @@ body.dark input:focus {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-items: stretch;
   justify-content: space-between;
   gap: 18px;
   padding: clamp(20px, 4vw, 42px);
@@ -1769,6 +1799,19 @@ body.dark input:focus {
   z-index: 1;
   color: #ffffff;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.46);
+}
+
+.germany-hero-side,
+.bangladesh-hero-side {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  width: min(360px, 100%);
+  flex: 0 1 360px;
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 14px;
 }
 
 .germany-hero-copy span {
@@ -1826,6 +1869,11 @@ body.dark input:focus {
     color 0.34s ease;
 }
 
+.bangladesh-lang-toggle {
+  align-self: start;
+  margin-bottom: 10px;
+}
+
 .germany-lang-toggle::after {
   content: "";
   position: absolute;
@@ -1856,9 +1904,92 @@ body.dark input:focus {
   gap: 12px;
 }
 
+.germany-flag-panel,
+.bangladesh-flag-panel {
+  width: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(7, 25, 18, 0.26);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.germany-flag-art,
+.bangladesh-flag-art {
+  width: min(290px, 100%);
+  aspect-ratio: 5 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(0, 0, 0, 0.2);
+}
+
+.germany-flag-art {
+  background:
+    linear-gradient(180deg, #111827 0 33.33%, #d10f1f 33.33% 66.66%, #f0bf28 66.66%);
+}
+
+.germany-flag-art::after,
+.bangladesh-flag-art::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.germany-flag-label,
+.bangladesh-flag-label {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1;
+  letter-spacing: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.bangladesh-flag-art {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.95) 0 21%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    #006a4e;
+}
+
+.germany-flag-art span {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 33.333%;
+}
+
+.germany-flag-art span:nth-child(1) {
+  top: 0;
+  background: #111827;
+}
+
+.germany-flag-art span:nth-child(2) {
+  top: 33.333%;
+  background: #d10f1f;
+}
+
+.germany-flag-art span:nth-child(3) {
+  top: 66.666%;
+  background: #f0bf28;
+}
+
 .germany-stat,
 .germany-block,
-.germany-feature {
+.germany-feature,
+.bangladesh-stat,
+.bangladesh-block,
+.bangladesh-feature {
   border: 1px solid rgba(148, 163, 184, 0.32);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
@@ -2144,6 +2275,432 @@ body.dark input:focus {
   line-height: 1.5;
 }
 
+.bangladesh-page {
+  width: min(1180px, calc(100% - 28px));
+  margin: 20px auto 42px;
+  display: grid;
+  gap: 18px;
+  color: #123224;
+  animation: panelPageEnter 0.35s ease;
+}
+
+.bangladesh-page,
+.bangladesh-page * {
+  box-sizing: border-box;
+}
+
+.bangladesh-hero {
+  min-height: clamp(340px, 38vw, 450px);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 44px);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 206, 46, 0.18), transparent 25%),
+    radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.12), transparent 20%),
+    linear-gradient(145deg, #0a5f45 0%, #064a38 48%, #042f24 100%);
+  box-shadow: 0 26px 60px rgba(10, 34, 27, 0.28);
+}
+
+.bangladesh-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.08)),
+    linear-gradient(180deg, rgba(2, 20, 14, 0.06), rgba(2, 20, 14, 0.28));
+  pointer-events: none;
+}
+
+.bangladesh-hero-copy {
+  max-width: 730px;
+  position: relative;
+  z-index: 1;
+  color: #fffef7;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bangladesh-hero-copy span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
+}
+
+.bangladesh-hero-copy h1 {
+  margin: 12px 0 10px;
+  font-size: clamp(38px, 6vw, 74px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.bangladesh-hero-copy p {
+  max-width: 670px;
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bangladesh-flag-panel {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  width: min(360px, 100%);
+  flex: 0 1 360px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(7, 25, 18, 0.26);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.bangladesh-flag-art {
+  width: min(290px, 100%);
+  aspect-ratio: 5 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.95) 0 21%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    #006a4e;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(0, 0, 0, 0.2);
+}
+
+.bangladesh-flag-art::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.bangladesh-flag-circle {
+  position: absolute;
+  left: 53%;
+  top: 50%;
+  width: 26%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #f42a41;
+  box-shadow: 0 10px 24px rgba(244, 42, 65, 0.3);
+}
+
+.bangladesh-flag-label {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1;
+  letter-spacing: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.bangladesh-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.bangladesh-stat,
+.bangladesh-block,
+.bangladesh-feature {
+  border: 1px solid rgba(121, 162, 139, 0.26);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 46px rgba(10, 34, 27, 0.08);
+}
+
+.bangladesh-stat {
+  border-radius: 8px;
+  padding: 18px;
+  display: grid;
+  gap: 5px;
+  animation: germanyCardIn 0.55s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.bangladesh-stat:nth-child(1) {
+  border-top: 4px solid #006a4e;
+}
+
+.bangladesh-stat:nth-child(2) {
+  border-top: 4px solid #f42a41;
+}
+
+.bangladesh-stat:nth-child(3) {
+  border-top: 4px solid #0f766e;
+}
+
+.bangladesh-stat:nth-child(4) {
+  border-top: 4px solid #f0bf28;
+}
+
+.bangladesh-stat:nth-child(5) {
+  border-top: 4px solid #1d4ed8;
+}
+
+.bangladesh-stat:hover,
+.bangladesh-block:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 95, 70, 0.38);
+  box-shadow: 0 24px 56px rgba(10, 34, 27, 0.14);
+}
+
+.bangladesh-stat strong {
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1;
+  color: #0e1f17;
+}
+
+.bangladesh-stat span {
+  font-size: 13px;
+  color: #54665d;
+  line-height: 1.35;
+}
+
+.bangladesh-block {
+  border-radius: 8px;
+  padding: clamp(18px, 3vw, 28px);
+  animation: germanyCardIn 0.6s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.bangladesh-section-head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.bangladesh-section-head h2,
+.bangladesh-feature h2 {
+  font-size: clamp(22px, 3vw, 34px);
+  color: #0e1f17;
+  letter-spacing: 0;
+}
+
+.bangladesh-section-head p,
+.bangladesh-feature p {
+  color: #4b6258;
+  line-height: 1.72;
+  font-size: 15px;
+}
+
+.bangladesh-division-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.bangladesh-division-grid span {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(121, 162, 139, 0.28);
+  background:
+    radial-gradient(circle at top right, rgba(6, 106, 78, 0.18), transparent 34%),
+    linear-gradient(135deg, #ffffff, #f8fbf9);
+  padding: 13px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #273d33;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  isolation: isolate;
+  box-shadow: 0 10px 26px rgba(10, 34, 27, 0.06);
+  opacity: 0;
+  animation: germanyStateIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    border-color 0.34s ease,
+    background 0.34s ease;
+}
+
+.bangladesh-division-grid span:nth-child(1) { animation-delay: 0.02s; }
+.bangladesh-division-grid span:nth-child(2) { animation-delay: 0.04s; }
+.bangladesh-division-grid span:nth-child(3) { animation-delay: 0.06s; }
+.bangladesh-division-grid span:nth-child(4) { animation-delay: 0.08s; }
+.bangladesh-division-grid span:nth-child(5) { animation-delay: 0.1s; }
+.bangladesh-division-grid span:nth-child(6) { animation-delay: 0.12s; }
+.bangladesh-division-grid span:nth-child(7) { animation-delay: 0.14s; }
+.bangladesh-division-grid span:nth-child(8) { animation-delay: 0.16s; }
+
+.bangladesh-division-grid span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: translateX(-120%);
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bangladesh-division-grid span:hover {
+  transform: translateY(-3px) scale(1.008);
+  border-color: rgba(6, 106, 78, 0.32);
+  box-shadow: 0 18px 38px rgba(10, 34, 27, 0.12);
+}
+
+.bangladesh-division-grid span:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+.bangladesh-division-grid span:hover::after {
+  transform: translateX(120%);
+}
+
+.bangladesh-division-grid b {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #006a4e;
+  color: #f8fafc;
+  font-size: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  position: relative;
+  z-index: 1;
+}
+
+.bangladesh-division-grid em {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+}
+
+.bangladesh-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bangladesh-feature {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  animation: germanyCardIn 0.65s ease both;
+}
+
+.bangladesh-feature:nth-child(2n) {
+  animation-delay: 0.05s;
+}
+
+.bangladesh-feature:nth-child(3n) {
+  animation-delay: 0.1s;
+}
+
+.bangladesh-feature:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(6, 106, 78, 0.36);
+  box-shadow: 0 24px 54px rgba(10, 34, 27, 0.14);
+}
+
+.bangladesh-feature img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  background: #d1fae5;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.bangladesh-feature:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.bangladesh-feature div {
+  padding: 18px;
+  display: grid;
+  gap: 9px;
+}
+
+.bangladesh-feature h2 {
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.bangladesh-feature p {
+  font-size: 14px;
+}
+
+.bangladesh-snapshot-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.bangladesh-snapshot-list p {
+  position: relative;
+  margin: 0;
+  padding: 13px 13px 13px 42px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 249, 0.95)),
+    linear-gradient(90deg, #006a4e, #f42a41, #f0bf28);
+  border: 1px solid rgba(121, 162, 139, 0.28);
+  color: #31443b;
+  line-height: 1.55;
+  box-shadow: 0 10px 24px rgba(10, 34, 27, 0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.bangladesh-snapshot-list p::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #006a4e;
+  box-shadow: 0 0 0 4px rgba(244, 42, 65, 0.14);
+}
+
+.bangladesh-snapshot-list p:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 106, 78, 0.34);
+  box-shadow: 0 18px 38px rgba(10, 34, 27, 0.12);
+}
+
+.bangladesh-note {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid #006a4e;
+  background: #ecfdf5;
+  color: #14532d;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 body.dark .germany-page {
   color: #e5e7eb;
 }
@@ -2156,6 +2713,31 @@ body.dark .germany-hero::before {
   background:
     linear-gradient(180deg, rgba(2, 6, 14, 0.16), rgba(2, 6, 14, 0.5)),
     linear-gradient(90deg, rgba(2, 6, 14, 0.32), transparent 68%);
+}
+
+body.dark .germany-flag-panel {
+  background:
+    linear-gradient(180deg, rgba(10, 16, 28, 0.88), rgba(4, 8, 18, 0.94));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark .germany-flag-art {
+  background:
+    linear-gradient(180deg, #05070c 0 33.33%, #7f1120 33.33% 66.66%, #8d6a10 66.66%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+body.dark .germany-flag-art::after {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .germany-flag-label {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
 }
 
 body.dark .germany-lang-toggle {
@@ -2231,6 +2813,104 @@ body.dark .germany-note {
   color: #ffedd5;
   border-left-color: #ffce2e;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+body.dark .bangladesh-page {
+  color: #e5e7eb;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.14), rgba(2, 6, 23, 0));
+}
+
+body.dark .bangladesh-hero {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.46);
+}
+
+body.dark .bangladesh-hero::before {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.05)),
+    linear-gradient(180deg, rgba(2, 20, 14, 0.12), rgba(2, 20, 14, 0.48));
+}
+
+body.dark .bangladesh-flag-panel {
+  background:
+    linear-gradient(180deg, rgba(6, 23, 18, 0.86), rgba(2, 12, 10, 0.92));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark .bangladesh-flag-art {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.98) 0 21%, transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%),
+    #004f3b;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+body.dark .bangladesh-flag-circle {
+  box-shadow: 0 10px 24px rgba(244, 42, 65, 0.38);
+}
+
+body.dark .bangladesh-stat,
+body.dark .bangladesh-block,
+body.dark .bangladesh-feature {
+  background:
+    linear-gradient(145deg, rgba(8, 15, 31, 0.98), rgba(5, 10, 22, 0.94));
+  border-color: rgba(148, 163, 184, 0.24);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+body.dark .bangladesh-stat:hover,
+body.dark .bangladesh-block:hover,
+body.dark .bangladesh-feature:hover {
+  border-color: rgba(110, 231, 183, 0.34);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.44);
+}
+
+body.dark .bangladesh-stat strong,
+body.dark .bangladesh-section-head h2,
+body.dark .bangladesh-feature h2 {
+  color: #f8fafc;
+}
+
+body.dark .bangladesh-stat span,
+body.dark .bangladesh-section-head p,
+body.dark .bangladesh-feature p {
+  color: #cbd5e1;
+}
+
+body.dark .bangladesh-division-grid span,
+body.dark .bangladesh-snapshot-list p {
+  background:
+    radial-gradient(circle at top right, rgba(244, 42, 65, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(11, 20, 36, 0.98), rgba(4, 9, 20, 0.96));
+  border-color: rgba(148, 163, 184, 0.24);
+  color: #f1f5f9;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+body.dark .bangladesh-division-grid span:hover,
+body.dark .bangladesh-snapshot-list p:hover {
+  border-color: rgba(110, 231, 183, 0.36);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+}
+
+body.dark .bangladesh-division-grid b {
+  background: #f0bf28;
+  color: #111827;
+}
+
+body.dark .bangladesh-note {
+  background: rgba(5, 20, 14, 0.72);
+  color: #d1fae5;
+  border-left-color: #f0bf28;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================================================
@@ -3325,12 +4005,24 @@ body.dark .panel-page-card {
   border: 1px solid #334155;
 }
 
+body.dark .panel-photo-placeholder {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.94));
+  border-color: rgba(96, 165, 250, 0.38);
+  color: #bfdbfe;
+}
+
 body.dark .panel-page-card h3 {
   color: #93c5fd;
 }
 
 body.dark .panel-page-card p {
   color: #e2e8f0;
+}
+
+body.dark .panel-page-footer {
+  border-top-color: rgba(148, 163, 184, 0.22);
+  color: #94a3b8;
 }
 
 body.dark .user-info-row {
@@ -3598,7 +4290,8 @@ body.dark .close-btn:hover {
 ========================================================= */
 
 @media (max-width: 1200px) {
-  .germany-feature-grid {
+  .germany-feature-grid,
+  .bangladesh-feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -3638,20 +4331,24 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 992px) {
-  .germany-page {
+  .germany-page,
+  .bangladesh-page {
     width: min(100% - 24px, 900px);
     gap: 14px;
   }
 
-  .germany-hero {
+  .germany-hero,
+  .bangladesh-hero {
     min-height: 340px;
   }
 
-  .germany-stats {
+  .germany-stats,
+  .bangladesh-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .germany-state-grid {
+  .germany-state-grid,
+  .bangladesh-division-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -3910,37 +4607,51 @@ body.dark .close-btn:hover {
     font-size: 24px;
   }
 
-  .germany-page {
+  .germany-page,
+  .bangladesh-page {
     width: min(100% - 18px, 720px);
     margin-top: 12px;
     gap: 12px;
   }
 
-  .germany-hero {
+  .germany-hero,
+  .bangladesh-hero {
     min-height: min(390px, calc(100svh - 120px));
-    align-items: flex-end;
-    flex-direction: column-reverse;
-    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 18px;
     gap: 16px;
+    overflow: visible;
   }
 
-  .germany-hero-copy {
+  .germany-hero-copy,
+  .bangladesh-hero-copy {
     width: 100%;
   }
 
-  .germany-hero-copy span {
+  .germany-hero-side,
+  .bangladesh-hero-side {
+    width: 100%;
+    flex-basis: auto;
+    margin-left: 0;
+  }
+
+  .germany-hero-copy span,
+  .bangladesh-hero-copy span {
     font-size: 11px;
     min-height: 26px;
     padding: 4px 9px;
   }
 
-  .germany-hero-copy h1 {
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
     font-size: clamp(34px, 10vw, 52px);
     line-height: 1;
   }
 
-  .germany-hero-copy p {
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
     font-size: 14px;
     line-height: 1.55;
   }
@@ -3951,31 +4662,58 @@ body.dark .close-btn:hover {
     padding: 9px 14px;
   }
 
+  .bangladesh-flag-panel {
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .germany-flag-panel {
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(260px, 100%);
+  }
+
+  .germany-flag-art {
+    width: min(260px, 100%);
+  }
+
   .germany-stats,
+  .bangladesh-stats,
   .germany-feature-grid,
-  .germany-company-list {
+  .bangladesh-feature-grid,
+  .germany-company-list,
+  .bangladesh-snapshot-list {
     grid-template-columns: 1fr;
   }
 
-  .germany-state-grid {
+  .germany-state-grid,
+  .bangladesh-division-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
-  .germany-state-grid span {
+  .germany-state-grid span,
+  .bangladesh-division-grid span {
     min-height: 52px;
     padding: 11px 10px;
     font-size: 13px;
     gap: 8px;
   }
 
-  .germany-state-grid b {
+  .germany-state-grid b,
+  .bangladesh-division-grid b {
     width: 30px;
     height: 30px;
     flex-basis: 30px;
   }
 
-  .germany-feature img {
+  .germany-feature img,
+  .bangladesh-feature img {
     aspect-ratio: 16 / 9;
   }
 
@@ -4167,16 +4905,21 @@ body.dark .close-btn:hover {
     padding: 10px 12px;
   }
 
-  .germany-hero {
+  .germany-hero,
+  .bangladesh-hero {
     min-height: min(360px, calc(100svh - 112px));
     padding: 14px;
+    justify-content: flex-start;
+    overflow: visible;
   }
 
-  .germany-hero-copy h1 {
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
     font-size: clamp(32px, 11vw, 42px);
   }
 
-  .germany-hero-copy p {
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
     font-size: 13px;
     line-height: 1.5;
   }
@@ -4188,33 +4931,71 @@ body.dark .close-btn:hover {
     font-size: 12px;
   }
 
-  .germany-stats {
+  .bangladesh-flag-panel {
+    padding: 12px;
+  }
+
+  .germany-flag-panel {
+    padding: 12px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(240px, 100%);
+    border-radius: 20px;
+  }
+
+  .germany-flag-art {
+    width: min(240px, 100%);
+    border-radius: 20px;
+  }
+
+  .bangladesh-flag-label {
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .germany-flag-label {
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .germany-stats,
+  .bangladesh-stats {
     gap: 9px;
   }
 
-  .germany-state-grid {
+  .germany-state-grid,
+  .bangladesh-division-grid {
     grid-template-columns: 1fr;
   }
 
   .germany-block,
   .germany-feature div,
-  .germany-stat {
+  .germany-stat,
+  .bangladesh-block,
+  .bangladesh-feature div,
+  .bangladesh-stat {
     padding: 14px;
   }
 
-  .germany-section-head {
+  .germany-section-head,
+  .bangladesh-section-head {
     margin-bottom: 14px;
   }
 
   .germany-section-head h2,
-  .germany-feature h2 {
+  .germany-feature h2,
+  .bangladesh-section-head h2,
+  .bangladesh-feature h2 {
     font-size: clamp(19px, 6vw, 24px);
   }
 
   .germany-section-head p,
   .germany-feature p,
   .germany-company-list p,
-  .germany-note {
+  .germany-note,
+  .bangladesh-section-head p,
+  .bangladesh-feature p,
+  .bangladesh-snapshot-list p,
+  .bangladesh-note {
     font-size: 13px;
     line-height: 1.58;
   }
@@ -4490,27 +5271,32 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 360px) {
-  .germany-page {
+  .germany-page,
+  .bangladesh-page {
     width: min(100% - 12px, 348px);
     margin-top: 8px;
     gap: 10px;
   }
 
-  .germany-hero {
+  .germany-hero,
+  .bangladesh-hero {
     min-height: min(330px, calc(100svh - 104px));
     padding: 12px;
     border-radius: 7px;
   }
 
-  .germany-hero-copy h1 {
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
     font-size: clamp(28px, 12vw, 34px);
   }
 
-  .germany-hero-copy p {
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
     font-size: 12px;
   }
 
-  .germany-hero-copy span {
+  .germany-hero-copy span,
+  .bangladesh-hero-copy span {
     font-size: 10px;
     letter-spacing: 0.05em;
   }
@@ -4522,20 +5308,46 @@ body.dark .close-btn:hover {
     font-size: 11.5px;
   }
 
+  .bangladesh-flag-panel {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .germany-flag-panel {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(220px, 100%);
+    border-radius: 16px;
+  }
+
+  .germany-flag-art {
+    width: min(220px, 100%);
+    border-radius: 16px;
+  }
+
+  .bangladesh-stats,
   .germany-stats,
   .germany-feature-grid,
+  .bangladesh-feature-grid,
   .germany-company-list,
-  .germany-state-grid {
+  .bangladesh-snapshot-list,
+  .germany-state-grid,
+  .bangladesh-division-grid {
     gap: 8px;
   }
 
-  .germany-state-grid span {
+  .germany-state-grid span,
+  .bangladesh-division-grid span {
     min-height: 46px;
     padding: 9px;
     font-size: 12px;
   }
 
-  .germany-state-grid b {
+  .germany-state-grid b,
+  .bangladesh-division-grid b {
     width: 28px;
     height: 28px;
     flex-basis: 28px;
@@ -4544,11 +5356,15 @@ body.dark .close-btn:hover {
 
   .germany-block,
   .germany-feature div,
-  .germany-stat {
+  .germany-stat,
+  .bangladesh-block,
+  .bangladesh-feature div,
+  .bangladesh-stat {
     padding: 12px;
   }
 
-  .germany-company-list p {
+  .germany-company-list p,
+  .bangladesh-snapshot-list p {
     padding: 11px 11px 11px 36px;
   }
 
