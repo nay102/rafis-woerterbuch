@@ -54,6 +54,7 @@ let lastContext = {
 };
 let openedFromFavorites = false;
 let schimpfWarningOpen = false;
+let germanyPageLanguage = "en";
 
 const APP_SETTINGS_KEY = "rw_app_settings_v1";
 const LOCAL_FAVORITES_KEY_PREFIX = "rw_local_favorites_v1_";
@@ -757,6 +758,27 @@ const categories = [
   "Adverbiale Wendung"
 ];
 
+const CATEGORY_SEARCH_LABELS = {
+  Verben: "verbs",
+  Adjektiven: "adjectives",
+  Adverbien: "adverbs",
+  Nomen: "nouns",
+  "Nomen-Verb Verbindung": "noun-verb combinations",
+  Redewendungen: "idioms",
+  "Sprichwörter": "proverbs",
+  "Feste Wendungen": "fixed expressions",
+  Slang: "slang",
+  "Schimpfwörter": "swear words",
+  "Best YT Kanäle": "YouTube channels",
+  "Filme & Serien": "movies and series",
+  "Adverbiale Wendung": "adverbial expressions"
+};
+
+function getCategorySearchPlaceholder(categoryName) {
+  const label = CATEGORY_SEARCH_LABELS[categoryName] || categoryName;
+  return `Search ${label}`;
+}
+
 const CATEGORY_EXPLANATIONS = {
   Verben: {
     de: "Verben beschreiben Handlungen, Vorgänge oder Zustände. Sie bilden das Zentrum eines Satzes, weil ohne Verb keine vollständige Aussage möglich ist.",
@@ -824,6 +846,357 @@ const CATEGORY_EXPLANATIONS = {
     bn: "ক্রিয়াবিশেষণধর্মী বাক্যাংশ সময়, স্থান, ধরন বা কারণ সম্পর্কে অতিরিক্ত তথ্য দেয়। এগুলো বাক্যকে আরও স্বাভাবিক ও সুন্দর করে।"
   }
 };
+
+const GERMANY_PAGE_COPY = {
+  en: {
+    toggleLabel: "Deutsch",
+    eyebrow: "Country Guide",
+    title: "Germany",
+    subtitle:
+      "A structured overview of Germany's states, cities, history, education, language, food, landmarks, and economy.",
+    heroImage:
+      "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    stats: [
+      { value: "16", label: "Federal states" },
+      { value: "83.6M", label: "Population, 2025 estimate" },
+      { value: "2,056", label: "Cities and towns with Stadt status" },
+      { value: "10,753", label: "Municipalities, January 2024" },
+      { value: "1957", label: "Founding EEC member" }
+    ],
+    statesTitle: "The 16 Federal States",
+    statesIntro:
+      "Germany is a federal republic. Each Bundesland has its own government and important responsibilities, especially in education, culture, policing, and local administration.",
+    states: [
+      "Baden-Württemberg",
+      "Bavaria",
+      "Berlin",
+      "Brandenburg",
+      "Bremen",
+      "Hamburg",
+      "Hesse",
+      "Lower Saxony",
+      "Mecklenburg-Vorpommern",
+      "North Rhine-Westphalia",
+      "Rhineland-Palatinate",
+      "Saarland",
+      "Saxony",
+      "Saxony-Anhalt",
+      "Schleswig-Holstein",
+      "Thuringia"
+    ],
+    sections: [
+      {
+        title: "Cities and Structure",
+        image:
+          "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Germany has 2,056 cities and towns with official Stadt status and 10,753 municipalities as of January 2024. Berlin is both the capital and a city-state. Other major urban centers include Hamburg, Munich, Cologne, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen, and Bremen."
+      },
+      {
+        title: "Population and Culture",
+        image:
+          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Germany has about 83.6 million people according to 2025 EU figures. Its culture blends regional identity with modern urban life: classical music, literature, Christmas markets, football, festivals, punctuality, privacy, direct communication, and strong public institutions all shape daily life."
+      },
+      {
+        title: "History and the European Union",
+        image:
+          "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Modern Germany was shaped by the Holy Roman Empire, Prussia, industrialization, two world wars, division into West and East Germany, and reunification on 3 October 1990. Germany helped build post-war European cooperation through the Coal and Steel Community and was a founding member of the European Economic Community in 1957, which later became part of today's European Union."
+      },
+      {
+        title: "Education System",
+        image:
+          "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Education is mainly organized by the federal states. Children usually begin with Grundschule and then continue into secondary paths such as Gymnasium, Realschule, Hauptschule, Gesamtschule, or state-specific models. Higher education includes universities, universities of applied sciences, and vocational routes."
+      },
+      {
+        title: "Ausbildung and Work Culture",
+        image:
+          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Ausbildung is Germany's respected vocational training path. The dual system combines paid practical training in a company with lessons at a Berufsschule. Many programs last two to three and a half years and lead into skilled careers in healthcare, crafts, industry, IT, logistics, hospitality, and business."
+      },
+      {
+        title: "Language",
+        image:
+          "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "German is the official language and a key language of science, engineering, culture, and business in Europe. Standard German is used in education and administration, while regional dialects add strong local identity."
+      },
+      {
+        title: "Where German Is Spoken",
+        image:
+          "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "German is an official language in Germany, Austria, Switzerland, Liechtenstein, Luxembourg, Belgium, and South Tyrol in Italy. It is also spoken by communities in neighboring countries and by German-speaking communities worldwide."
+      },
+      {
+        title: "Food, Bread, and Everyday Taste",
+        image:
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Germany is famous for bread culture, bakeries, sausages, pretzels, potato dishes, cakes, and regional meals. Popular examples include Brötchen, rye bread, sourdough, Brezel, Currywurst, Schnitzel, Spätzle, Sauerkraut, Black Forest cake, and Stollen."
+      },
+      {
+        title: "Sightseeing Highlights",
+        image:
+          "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Famous places include the Brandenburg Gate, Berlin Museum Island, Cologne Cathedral, Neuschwanstein Castle, the Black Forest, the Rhine Valley, Heidelberg, Hamburg's Speicherstadt, Zugspitze, Dresden's old town, and the Romantic Road."
+      },
+      {
+        title: "Famous Companies",
+        image:
+          "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Germany has a strong export and engineering economy. Well-known companies include Volkswagen, BMW, Mercedes-Benz, Bosch, Siemens, SAP, Deutsche Telekom, DHL Group, Bayer, BASF, Adidas, Puma, Allianz, and Lufthansa."
+      }
+    ],
+    companiesTitle: "Company Snapshot",
+    companies: [
+      "Volkswagen: one of the world's largest automotive groups.",
+      "BMW: premium cars and motorcycles, based in Munich.",
+      "Mercedes-Benz: luxury vehicles, trucks, and automotive engineering heritage.",
+      "Bosch: technology, mobility, industrial, and home solutions.",
+      "Siemens: industrial technology, infrastructure, automation, and health technology.",
+      "SAP: global enterprise software company founded in Walldorf.",
+      "BASF: major chemical company headquartered in Ludwigshafen.",
+      "Adidas and Puma: sportswear brands with roots in Herzogenaurach."
+    ],
+    note:
+      "Numbers are a practical snapshot: Germany has 16 states, 2,056 cities/towns with Stadt status, and 10,753 municipalities as of January 2024."
+  },
+  de: {
+    toggleLabel: "English",
+    eyebrow: "Länderführer",
+    title: "Deutschland",
+    subtitle:
+      "Ein strukturierter Überblick über Bundesländer, Städte, Geschichte, Bildung, Sprache, Essen, Sehenswürdigkeiten und Wirtschaft.",
+    heroImage:
+      "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    stats: [
+      { value: "16", label: "Bundesländer" },
+      { value: "83,6 Mio.", label: "Bevölkerung, Schätzung 2025" },
+      { value: "2.056", label: "Städte mit Stadtrecht" },
+      { value: "10.753", label: "Gemeinden, Januar 2024" },
+      { value: "1957", label: "Gründungsmitglied der EWG" }
+    ],
+    statesTitle: "Die 16 Bundesländer",
+    statesIntro:
+      "Deutschland ist eine föderale Republik. Jedes Bundesland hat eine eigene Regierung und wichtige Aufgaben, besonders bei Bildung, Kultur, Polizei und Verwaltung.",
+    states: [
+      "Baden-Württemberg",
+      "Bayern",
+      "Berlin",
+      "Brandenburg",
+      "Bremen",
+      "Hamburg",
+      "Hessen",
+      "Niedersachsen",
+      "Mecklenburg-Vorpommern",
+      "Nordrhein-Westfalen",
+      "Rheinland-Pfalz",
+      "Saarland",
+      "Sachsen",
+      "Sachsen-Anhalt",
+      "Schleswig-Holstein",
+      "Thüringen"
+    ],
+    sections: [
+      {
+        title: "Städte und Struktur",
+        image:
+          "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutschland hat 2.056 Städte mit offiziellem Stadtrecht und 10.753 Gemeinden, Stand Januar 2024. Berlin ist Hauptstadt und zugleich Stadtstaat. Weitere große Zentren sind Hamburg, München, Köln, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen und Bremen."
+      },
+      {
+        title: "Bevölkerung und Kultur",
+        image:
+          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutschland hat nach EU-Zahlen von 2025 rund 83,6 Millionen Einwohner. Die Kultur verbindet regionale Identität mit modernem Stadtleben: klassische Musik, Literatur, Weihnachtsmärkte, Fußball, Feste, Pünktlichkeit, Privatsphäre, direkte Kommunikation und starke öffentliche Institutionen prägen den Alltag."
+      },
+      {
+        title: "Geschichte und Europäische Union",
+        image:
+          "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Das moderne Deutschland wurde durch das Heilige Römische Reich, Preußen, Industrialisierung, zwei Weltkriege, die Teilung in West- und Ostdeutschland und die Wiedervereinigung am 3. Oktober 1990 geprägt. Deutschland förderte die europäische Zusammenarbeit nach dem Krieg und war 1957 Gründungsmitglied der Europäischen Wirtschaftsgemeinschaft, aus der später die heutige Europäische Union hervorging."
+      },
+      {
+        title: "Bildungssystem",
+        image:
+          "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Bildung wird vor allem von den Bundesländern organisiert. Kinder beginnen meist mit der Grundschule und wechseln danach in weiterführende Schulformen wie Gymnasium, Realschule, Hauptschule, Gesamtschule oder landesspezifische Modelle. Zur Hochschulbildung gehören Universitäten, Hochschulen für angewandte Wissenschaften und berufliche Wege."
+      },
+      {
+        title: "Ausbildung und Arbeitskultur",
+        image:
+          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Die Ausbildung ist ein angesehener beruflicher Weg in Deutschland. Das duale System verbindet bezahlte praktische Arbeit in einem Betrieb mit Unterricht an der Berufsschule. Viele Ausbildungen dauern zwei bis dreieinhalb Jahre und führen in qualifizierte Berufe in Pflege, Handwerk, Industrie, IT, Logistik, Gastronomie und kaufmännischen Bereichen."
+      },
+      {
+        title: "Sprache",
+        image:
+          "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutsch ist die Amtssprache und eine wichtige Sprache für Wissenschaft, Technik, Kultur und Wirtschaft in Europa. Standarddeutsch wird in Bildung und Verwaltung genutzt, während Dialekte eine starke regionale Identität zeigen."
+      },
+      {
+        title: "Wo Deutsch gesprochen wird",
+        image:
+          "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutsch ist Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg, Belgien und Südtirol in Italien. Außerdem wird Deutsch in Nachbarländern und von deutschsprachigen Gemeinschaften weltweit gesprochen."
+      },
+      {
+        title: "Essen, Brot und Alltagsgeschmack",
+        image:
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutschland ist bekannt für Brotkultur, Bäckereien, Wurst, Brezeln, Kartoffelgerichte, Kuchen und regionale Küche. Bekannte Beispiele sind Brötchen, Roggenbrot, Sauerteigbrot, Brezel, Currywurst, Schnitzel, Spätzle, Sauerkraut, Schwarzwälder Kirschtorte und Stollen."
+      },
+      {
+        title: "Bekannte Sehenswürdigkeiten",
+        image:
+          "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Berühmte Orte sind das Brandenburger Tor, die Berliner Museumsinsel, der Kölner Dom, Schloss Neuschwanstein, der Schwarzwald, das Rheintal, Heidelberg, die Hamburger Speicherstadt, die Zugspitze, die Dresdner Altstadt und die Romantische Straße."
+      },
+      {
+        title: "Bekannte Unternehmen",
+        image:
+          "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80",
+        body:
+          "Deutschland hat eine starke Export- und Ingenieurwirtschaft. Bekannte Unternehmen sind Volkswagen, BMW, Mercedes-Benz, Bosch, Siemens, SAP, Deutsche Telekom, DHL Group, Bayer, BASF, Adidas, Puma, Allianz und Lufthansa."
+      }
+    ],
+    companiesTitle: "Unternehmensüberblick",
+    companies: [
+      "Volkswagen: einer der größten Automobilkonzerne der Welt.",
+      "BMW: Premium-Autos und Motorräder mit Sitz in München.",
+      "Mercedes-Benz: Luxusfahrzeuge, Nutzfahrzeuge und lange Ingenieurtradition.",
+      "Bosch: Technologie, Mobilität, Industrie- und Haushaltslösungen.",
+      "Siemens: Industrietechnik, Infrastruktur, Automatisierung und Medizintechnik.",
+      "SAP: globaler Anbieter für Unternehmenssoftware aus Walldorf.",
+      "BASF: großer Chemiekonzern mit Hauptsitz in Ludwigshafen.",
+      "Adidas und Puma: Sportmarken mit Wurzeln in Herzogenaurach."
+    ],
+    note:
+      "Die Zahlen sind ein praktischer Überblick: Deutschland hat 16 Bundesländer, 2.056 Städte mit Stadtrecht und 10.753 Gemeinden, Stand Januar 2024."
+  }
+};
+
+function buildGermanyPageHTML(page) {
+  return `
+    <section class="germany-hero" style="background-image: linear-gradient(90deg, rgba(10, 14, 25, 0.18), rgba(10, 14, 25, 0)), url('${page.heroImage}')">
+      <div class="germany-hero-copy">
+        <span>${escapeHtml(page.eyebrow)}</span>
+        <h1>${escapeHtml(page.title)}</h1>
+        <p>${escapeHtml(page.subtitle)}</p>
+      </div>
+      <button id="germanyLanguageToggle" class="germany-lang-toggle" type="button">${escapeHtml(page.toggleLabel)}</button>
+    </section>
+
+    <section class="germany-stats">
+      ${page.stats
+        .map(
+          stat => `
+            <article class="germany-stat">
+              <strong>${escapeHtml(stat.value)}</strong>
+              <span>${escapeHtml(stat.label)}</span>
+            </article>
+          `
+        )
+        .join("")}
+    </section>
+
+    <section class="germany-block germany-states-block">
+      <div class="germany-section-head">
+        <h2>${escapeHtml(page.statesTitle)}</h2>
+        <p>${escapeHtml(page.statesIntro)}</p>
+      </div>
+      <div class="germany-state-grid">
+        ${page.states.map((state, idx) => `<span><b>${String(idx + 1).padStart(2, "0")}</b><em>${escapeHtml(state)}</em></span>`).join("")}
+      </div>
+    </section>
+
+    <section class="germany-feature-grid">
+      ${page.sections
+        .map(
+          section => `
+            <article class="germany-feature">
+              <img src="${section.image}" alt="${escapeHtml(section.title)}" loading="lazy">
+              <div>
+                <h2>${escapeHtml(section.title)}</h2>
+                <p>${escapeHtml(section.body)}</p>
+              </div>
+            </article>
+          `
+        )
+        .join("")}
+    </section>
+
+    <section class="germany-block germany-company-block">
+      <div class="germany-section-head">
+        <h2>${escapeHtml(page.companiesTitle)}</h2>
+      </div>
+      <div class="germany-company-list">
+        ${page.companies.map(item => `<p>${escapeHtml(item)}</p>`).join("")}
+      </div>
+    </section>
+
+    <p class="germany-note">${escapeHtml(page.note)}</p>
+  `;
+}
+
+function wireGermanyLanguageToggle() {
+  document.getElementById("germanyLanguageToggle")?.addEventListener("click", () => {
+    const germanyPage = document.querySelector(".germany-page");
+    if (!germanyPage || germanyPage.classList.contains("is-switching")) return;
+
+    germanyPage.classList.add("is-switching");
+    window.setTimeout(() => {
+      germanyPageLanguage = germanyPageLanguage === "en" ? "de" : "en";
+      const nextPage = GERMANY_PAGE_COPY[germanyPageLanguage] || GERMANY_PAGE_COPY.en;
+      germanyPage.innerHTML = buildGermanyPageHTML(nextPage);
+      germanyPage.classList.remove("is-switching");
+      germanyPage.classList.add("has-switched");
+      window.setTimeout(() => germanyPage.classList.remove("has-switched"), 260);
+      wireGermanyLanguageToggle();
+    }, 180);
+  });
+}
+
+function renderGermanyPage() {
+  const desktopPage = document.getElementById("desktopPage");
+  if (!desktopPage) return;
+
+  const page = GERMANY_PAGE_COPY[germanyPageLanguage] || GERMANY_PAGE_COPY.en;
+
+  currentView = "custom";
+  ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  });
+
+  const hero = document.getElementById("heroSection");
+  if (hero) hero.style.display = "none";
+
+  desktopPage.style.display = "block";
+  desktopPage.innerHTML = `
+    <div class="germany-page">${buildGermanyPageHTML(page)}</div>
+  `;
+
+  wireGermanyLanguageToggle();
+}
 
 const CATEGORY_EXPLAIN_TITLES = {
   Verben: "Was sind Verben?",
@@ -1033,7 +1406,7 @@ searchWrapper.style.maxWidth = "750px";
 searchWrapper.style.margin = "30px auto";
 
 const searchInput = document.createElement("input");
-searchInput.placeholder = "Search inside this category...";
+searchInput.placeholder = getCategorySearchPlaceholder(categoryName);
 searchInput.className = "category-search";
 
 const suggestionBox = document.createElement("div");
@@ -2142,6 +2515,11 @@ function goHomeWithoutRefresh() {
 }
 
 function renderPanelPage(pageKey) {
+  if (pageKey === "about") {
+    renderGermanyPage();
+    return;
+  }
+
   const page = panelPageContent[pageKey];
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage || !page) return;
