@@ -442,6 +442,14 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+function buildPhotoStyle(item = {}) {
+  const styleRules = [];
+  if (item.imageRatio) styleRules.push(`--photo-ratio: ${escapeHtml(item.imageRatio)}`);
+  if (item.imageHeight) styleRules.push(`--photo-height: ${escapeHtml(item.imageHeight)}`);
+  if (item.imagePosition) styleRules.push(`--photo-position: ${escapeHtml(item.imagePosition)}`);
+  return styleRules.length ? ` style="${styleRules.join("; ")}"` : "";
+}
+
 function formatMeaningText(word) {
   const meaningText =
     typeof word?.meaning === "string" && word.meaning.trim()
@@ -567,49 +575,110 @@ function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
    SIDE PANEL CONTENT DATA
 ========================================================= */
 
+const sitePhotos = {
+  // Change photo filenames here first. Keep spaces as %20 for browser-safe paths.
+  aboutRafi: {
+    hero: "assets/Rafis%20pic/Rafikul%20Islam.png",
+    backgroundValues: "assets/Rafis%20pic/n3_nondonpark1.jpeg",
+    germanJourney: "assets/Rafis%20pic/n6_Rafi.jpeg",
+    academicTrajectory: "assets/Rafis%20pic/n1_bandorban.jpg",
+    healthcareTraining: "assets/Rafis%20pic/n7_caregiving1.jpg",
+    languageCertifications: "assets/Rafis%20pic/goethe.jpeg",
+    internationalJourney: "assets/Rafis%20pic/n10_india4.jpg"
+  },
+  panel: {
+    ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
+    bangladesh: "https://picsum.photos/seed/bangladesh/1200/500",
+    germany: "https://picsum.photos/seed/germany/1200/500",
+    sprachwelt: "assets/Rafis%20pic/Rafis%20Sprachwelt.png",
+    examZone: "https://picsum.photos/seed/option5/1200/500",
+    proTools: "https://picsum.photos/seed/option6/1200/500",
+    settings: "https://picsum.photos/seed/settings/1200/500"
+  },
+  germany: {
+    hero: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    city: "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
+    culture: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
+    history: "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
+    education: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
+    work: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
+    language: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
+    spoken: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+    food: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+    sightseeing: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
+    religion: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=80",
+    companies: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80"
+  },
+  bangladesh: {
+    city: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+    education: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+    food: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+    sightseeing: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+    industry: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
+    parliament: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sangshad_2.jpg",
+    school: "https://upload.wikimedia.org/wikipedia/commons/7/77/Bd_school.jpg"
+  }
+};
+
 const panelPageContent = {
   owner: {
     title: "Welcome to My Profile",
-    image: "https://picsum.photos/seed/owner/1200/500",
+    image: sitePhotos.aboutRafi.hero,
+    imagePosition: "center 28%",
     description:
-      "Assalamu Alaikum. My full name is Md Rafikul Islam. Rafi is a short form of Rafikul, and Nayeem is my nickname. This profile shares my background, my German learning journey, and the dream behind Rafi's Wörterbuch.",
+      "My name is Md Rafikul Islam (commonly known as Rafi). I am a passionate language learner, developer, and the creator of Rafi’s Wörterbuch. This platform serves as a chronicle of my personal background, my dedicated German language journey, and my vision to build an accessible learning resource for aspiring students and professionals.",
     cards: [
       {
-        title: "Personal Journey",
+        title: "Background & Values",
+        image: sitePhotos.aboutRafi.backgroundValues,
+        imagePosition: "center 42%",
         body:
-          "My hometown is Mymensingh, and I currently live in Dhaka, Bangladesh. My journey is built on learning, discipline, and the hope of creating a better future through language and practical skills.",
-        photo: "Photo placeholder: Mymensingh and Dhaka"
+          "Although my family roots are originally from Mymensingh, I was born and raised in Dhaka, Bangladesh, where I have lived with my parents since childhood. Growing up in the capital city has shaped my adaptability and ambition, while my family's values instilled in me a deep appreciation for hard work and resilience. My personal growth is built on a foundation of strict self-discipline, continuous learning, and an unwavering commitment to self-improvement. I strongly believe that combining practical technical skills with cross-cultural communication is the key to unlocking global opportunities and making a meaningful impact.",
+        photo: "Background and values"
+      },
+      {
+        title: "Academic Trajectory",
+        image: sitePhotos.aboutRafi.academicTrajectory,
+        body:
+          "I completed my Higher Secondary Certificate (HSC) at Kabi Nazrul Govt. College in 2021. Following this, from 2023 to 2024, I pursued undergraduate studies in Computer Science and Engineering (CSE) at the Institute of Science and Technology (IST), affiliated with the National University in Dhanmondi. After successfully completing my first year, I made a calculated career pivot. Recognizing the immense potential of international vocational training, I redirected my full focus toward intensive German language acquisition and technical preparation to secure a dual vocational training program (Ausbildung) in Germany.",
+        photo: "Academic trajectory"
       },
       {
         title: "German Learning Journey",
+        image: sitePhotos.aboutRafi.germanJourney,
         body:
-          "I started learning German on 13 August 2024 after the July Movement. From that day, German became an important part of my future plan and a serious daily focus.",
-        photo: "Photo placeholder: German learning journey"
+          "My intensive German language training began on August 13, 2024. Driven by strong self-discipline, I undertook this entire linguistic journey independently from home, advancing from A1 to the B2 level through self-study. By strategically leveraging digital resources such as YouTube and ChatGPT for grammar synthesis and interactive practice, I made mastering German my primary daily focus. To build real-world speaking confidence, I heavily utilized HelloTalk to connect with native speakers—a tool I highly recommend to any aspiring language learner. I am fully committed to achieving high-level professional fluency to integrate seamlessly into a German vocational environment.",
+        photo: "German learning journey"
       },
       {
-        title: "Education Decision",
+        title: "Language Certifications",
+        image: sitePhotos.aboutRafi.languageCertifications,
+        imagePosition: "center 35%",
         body:
-          "I studied Computer Science and Engineering for one year. After that, I left university so I could focus on learning German properly and prepare for an Ausbildung in Germany.",
-        photo: "Photo placeholder: education journey"
+          "My path to language fluency and professional qualification is defined by resilience, strategic goal-setting, and a hands-on approach to learning: The German B1 Milestone: Demonstrating a fast-track learning approach, I chose to skip the standard A1 and A2 introductory levels and directly challenged the Goethe-Institut B1 Examination in Dhaka in March 2025. While this first attempt yielded passes in two modules, I systematically targeted my remaining requirements. I cleared the Lesen (Reading) module in May 2025. Due to booking constraints in Bangladesh, I proactively extended my search to Goethe-Institut Kolkata (India) for the Sprechen (Speaking) module, where I successfully cleared it with an exceptional score of 95 out of 100.",
+        photo: "Language certifications"
       },
       {
-        title: "Goal",
+        title: "First International Journey",
+        image: sitePhotos.aboutRafi.internationalJourney,
+        imagePosition: "center 35%",
         body:
-          "My clear goal is to learn German properly, move to Germany, and complete an Ausbildung. I want to prepare step by step with vocabulary, grammar, confidence, and real-life communication skills.",
-        photo: "Photo placeholder: Germany and Ausbildung"
+          "This photo was taken in India, marking my very first experience traveling abroad. To achieve my goals, I independently managed the entire journey—from navigating complex visa logistics during a tense political climate in August 2025 to organizing my travel directly without any agency assistance. By managing the process on my own, I secured my visa solely for the standard processing fee of 1,520 BDT. I am deeply grateful to Almighty Allah for guiding me through this challenging yet rewarding path. (Alhamdulillah). While the primary purpose of this milestone trip was to sit for my German B1 Speaking Examination at the Goethe-Institut Kolkata—which I passed successfully—I extended my stay for five days to explore the vibrant city of Kolkata, making it an unforgettable journey of personal growth and discovery.",
+        photo: "First international journey"
       },
       {
-        title: "Learning Process",
+        title: "Healthcare Training",
+        image: sitePhotos.aboutRafi.healthcareTraining,
         body:
-          "My learning process is based on daily practice, useful word lists, sentence building, listening, speaking, and regular revision. Rafi's Wörterbuch is part of that process: a personal learning space that can also help others.",
-        photo: "Photo placeholder: daily learning setup"
-      }
+          "Following the completion of my German B1 examination in September 2025, I deliberately dedicated a 5-month transitional period to immersing myself in the healthcare field. During this time, I completed an intensive 3-month professional Caregiver Course at UCEP Bangladesh. This strategic break allowed me to build a strong foundation in basic nursing knowledge, clinical patient care, and professional caregiving ethics. This hands-on training was a vital step in my preparation to pursue a Nursing Ausbildung (Pflegefachmann) in Germany, ensuring I enter the vocational system with practical experience and a clear commitment to the profession.",
+        photo: "Healthcare training"
+      },
     ],
     footer: "© All rights reserved."
   },
   ausbildung: {
     title: "📚 Ausbildung",
-    image: "https://picsum.photos/seed/ausbildung/1200/500",
+    image: sitePhotos.panel.ausbildung,
     description:
       "Guidance for Ausbildung paths, German requirements, and practical preparation.",
     cards: [
@@ -620,7 +689,7 @@ const panelPageContent = {
   },
   bangladesh: {
     title: "🇧🇩 Bangladesh",
-    image: "https://picsum.photos/seed/bangladesh/1200/500",
+    image: sitePhotos.panel.bangladesh,
     description:
       "A short overview of Bangladesh with practical language and cultural context for the side panel.",
     cards: [
@@ -631,7 +700,7 @@ const panelPageContent = {
   },
   about: {
     title: "🇩🇪 Germany",
-    image: "https://picsum.photos/seed/germany/1200/500",
+    image: sitePhotos.panel.germany,
     description:
       "Useful orientation notes about life, culture, and practical language in Germany.",
     cards: [
@@ -641,8 +710,8 @@ const panelPageContent = {
     ]
   },
   option4: {
-    title: " Rafis Sprachwelt",
-    image: "https://picsum.photos/seed/option4/1200/500",
+    title: "🎓 Rafis Sprachwelt",
+    image: sitePhotos.panel.sprachwelt,
     description: "Focused drills and revision practice for faster vocabulary retention.",
     cards: [
       "Topic-based quick practice sets for daily training.",
@@ -652,7 +721,7 @@ const panelPageContent = {
   },
   option5: {
     title: "📝 Exam Zone",
-    image: "https://picsum.photos/seed/option5/1200/500",
+    image: sitePhotos.panel.examZone,
     description: "Exam-oriented preparation area for structured learning sessions.",
     cards: [
       "Mock tasks and targeted exam vocabulary review.",
@@ -662,7 +731,7 @@ const panelPageContent = {
   },
   option6: {
     title: "🚀 Pro Tools",
-    image: "https://picsum.photos/seed/option6/1200/500",
+    image: sitePhotos.panel.proTools,
     description: "Advanced learning toolkit for power users and serious revision.",
     cards: [
       "Scenario-driven learning blocks for applied German.",
@@ -672,7 +741,7 @@ const panelPageContent = {
   },
   settings: {
     title: "⚙ Settings",
-    image: "https://picsum.photos/seed/settings/1200/500",
+    image: sitePhotos.panel.settings,
     description: "Personalization and preference controls for your learning experience.",
     cards: [
       "Theme preference and display tuning options.",
@@ -894,8 +963,7 @@ const GERMANY_PAGE_COPY = {
     title: "Germany",
     subtitle:
       "A structured overview of Germany's states, cities, history, education, language, food, landmarks, and economy.",
-    heroImage:
-      "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    heroImage: sitePhotos.germany.hero,
     stats: [
       { value: "16", label: "Federal states" },
       { value: "83.6M", label: "Population, 2025 estimate" },
@@ -927,78 +995,67 @@ const GERMANY_PAGE_COPY = {
     sections: [
       {
         title: "Cities and Structure",
-        image:
-          "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.city,
         body:
           "Germany has 2,056 cities and towns with official Stadt status and 10,753 municipalities as of January 2024. Berlin is both the capital and a city-state. Other major urban centers include Hamburg, Munich, Cologne, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen, and Bremen."
       },
       {
         title: "Population and Culture",
-        image:
-          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.culture,
         body:
           "Germany has about 83.6 million people according to 2025 EU figures. Its culture blends regional identity with modern urban life: classical music, literature, Christmas markets, football, festivals, punctuality, privacy, direct communication, and strong public institutions all shape daily life."
       },
       {
         title: "History and the European Union",
-        image:
-          "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.history,
         body:
           "Modern Germany was shaped by the Holy Roman Empire, Prussia, industrialization, two world wars, division into West and East Germany, and reunification on 3 October 1990. Germany helped build post-war European cooperation through the Coal and Steel Community and was a founding member of the European Economic Community in 1957, which later became part of today's European Union."
       },
       {
         title: "Education System",
-        image:
-          "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.education,
         body:
           "Education is mainly organized by the federal states. Children usually begin with Grundschule and then continue into secondary paths such as Gymnasium, Realschule, Hauptschule, Gesamtschule, or state-specific models. Higher education includes universities, universities of applied sciences, and vocational routes."
       },
       {
         title: "Ausbildung and Work Culture",
-        image:
-          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.work,
         body:
           "Ausbildung is Germany's respected vocational training path. The dual system combines paid practical training in a company with lessons at a Berufsschule. Many programs last two to three and a half years and lead into skilled careers in healthcare, crafts, industry, IT, logistics, hospitality, and business."
       },
       {
         title: "Language",
-        image:
-          "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.language,
         body:
           "German is the official language and a key language of science, engineering, culture, and business in Europe. Standard German is used in education and administration, while regional dialects add strong local identity."
       },
       {
         title: "Where German Is Spoken",
-        image:
-          "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.spoken,
         body:
           "German is an official language in Germany, Austria, Switzerland, Liechtenstein, Luxembourg, Belgium, and South Tyrol in Italy. It is also spoken by communities in neighboring countries and by German-speaking communities worldwide."
       },
       {
         title: "Food, Bread, and Everyday Taste",
-        image:
-          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.food,
         body:
           "Germany is famous for bread culture, bakeries, sausages, pretzels, potato dishes, cakes, and regional meals. Popular examples include Brötchen, rye bread, sourdough, Brezel, Currywurst, Schnitzel, Spätzle, Sauerkraut, Black Forest cake, and Stollen."
       },
       {
         title: "Sightseeing Highlights",
-        image:
-          "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.sightseeing,
         body:
           "Famous places include the Brandenburg Gate, Berlin Museum Island, Cologne Cathedral, Neuschwanstein Castle, the Black Forest, the Rhine Valley, Heidelberg, Hamburg's Speicherstadt, Zugspitze, Dresden's old town, and the Romantic Road."
       },
       {
         title: "Religion and Society",
-        image:
-          "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.religion,
         body:
           "Germany's religious landscape includes Christian traditions, a growing number of people without religious affiliation, and Muslim, Jewish, Buddhist, and other communities. Churches, cathedrals, mosques, synagogues, and civic traditions all contribute to the country's public life and local identity."
       },
       {
         title: "Famous Companies",
-        image:
-          "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.companies,
         body:
           "Germany has a strong export and engineering economy. Well-known companies include Volkswagen, BMW, Mercedes-Benz, Bosch, Siemens, SAP, Deutsche Telekom, DHL Group, Bayer, BASF, Adidas, Puma, Allianz, and Lufthansa."
       }
@@ -1023,8 +1080,7 @@ const GERMANY_PAGE_COPY = {
     title: "Deutschland",
     subtitle:
       "Ein strukturierter Überblick über Bundesländer, Städte, Geschichte, Bildung, Sprache, Essen, Sehenswürdigkeiten und Wirtschaft.",
-    heroImage:
-      "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    heroImage: sitePhotos.germany.hero,
     stats: [
       { value: "16", label: "Bundesländer" },
       { value: "83,6 Mio.", label: "Bevölkerung, Schätzung 2025" },
@@ -1056,78 +1112,67 @@ const GERMANY_PAGE_COPY = {
     sections: [
       {
         title: "Städte und Struktur",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.germany.city,
         body:
           "Deutschland hat 2.056 Städte mit offiziellem Stadtrecht und 10.753 Gemeinden, Stand Januar 2024. Berlin ist Hauptstadt und zugleich Stadtstaat. Weitere große Zentren sind Hamburg, München, Köln, Frankfurt, Stuttgart, Düsseldorf, Leipzig, Dortmund, Essen und Bremen."
       },
       {
         title: "Bevölkerung und Kultur",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.germany.culture,
         body:
           "Deutschland hat nach EU-Zahlen von 2025 rund 83,6 Millionen Einwohner. Die Kultur verbindet regionale Identität mit modernem Stadtleben: klassische Musik, Literatur, Weihnachtsmärkte, Fußball, Feste, Pünktlichkeit, Privatsphäre, direkte Kommunikation und starke öffentliche Institutionen prägen den Alltag."
       },
       {
         title: "Geschichte und Europäische Union",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sangshad_2.jpg",
+        image: sitePhotos.germany.history,
         body:
           "Das moderne Deutschland wurde durch das Heilige Römische Reich, Preußen, Industrialisierung, zwei Weltkriege, die Teilung in West- und Ostdeutschland und die Wiedervereinigung am 3. Oktober 1990 geprägt. Deutschland förderte die europäische Zusammenarbeit nach dem Krieg und war 1957 Gründungsmitglied der Europäischen Wirtschaftsgemeinschaft, aus der später die heutige Europäische Union hervorging."
       },
       {
         title: "Bildungssystem",
-        image:
-          "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.education,
         body:
           "Bildung wird vor allem von den Bundesländern organisiert. Kinder beginnen meist mit der Grundschule und wechseln danach in weiterführende Schulformen wie Gymnasium, Realschule, Hauptschule, Gesamtschule oder landesspezifische Modelle. Zur Hochschulbildung gehören Universitäten, Hochschulen für angewandte Wissenschaften und berufliche Wege."
       },
       {
         title: "Ausbildung und Arbeitskultur",
-        image:
-          "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.work,
         body:
           "Die Ausbildung ist ein angesehener beruflicher Weg in Deutschland. Das duale System verbindet bezahlte praktische Arbeit in einem Betrieb mit Unterricht an der Berufsschule. Viele Ausbildungen dauern zwei bis dreieinhalb Jahre und führen in qualifizierte Berufe in Pflege, Handwerk, Industrie, IT, Logistik, Gastronomie und kaufmännischen Bereichen."
       },
       {
         title: "Sprache",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/7/77/Bd_school.jpg",
+        image: sitePhotos.germany.language,
         body:
           "Deutsch ist die Amtssprache und eine wichtige Sprache für Wissenschaft, Technik, Kultur und Wirtschaft in Europa. Standarddeutsch wird in Bildung und Verwaltung genutzt, während Dialekte eine starke regionale Identität zeigen."
       },
       {
         title: "Wo Deutsch gesprochen wird",
-        image:
-          "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.spoken,
         body:
           "Deutsch ist Amtssprache in Deutschland, Österreich, der Schweiz, Liechtenstein, Luxemburg, Belgien und Südtirol in Italien. Außerdem wird Deutsch in Nachbarländern und von deutschsprachigen Gemeinschaften weltweit gesprochen."
       },
       {
         title: "Essen, Brot und Alltagsgeschmack",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+        image: sitePhotos.germany.food,
         body:
           "Deutschland ist bekannt für Brotkultur, Bäckereien, Wurst, Brezeln, Kartoffelgerichte, Kuchen und regionale Küche. Bekannte Beispiele sind Brötchen, Roggenbrot, Sauerteigbrot, Brezel, Currywurst, Schnitzel, Spätzle, Sauerkraut, Schwarzwälder Kirschtorte und Stollen."
       },
       {
         title: "Bekannte Sehenswürdigkeiten",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.germany.sightseeing,
         body:
           "Berühmte Orte sind das Brandenburger Tor, die Berliner Museumsinsel, der Kölner Dom, Schloss Neuschwanstein, der Schwarzwald, das Rheintal, Heidelberg, die Hamburger Speicherstadt, die Zugspitze, die Dresdner Altstadt und die Romantische Straße."
       },
       {
         title: "Religion und Gesellschaft",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.germany.religion,
         body:
           "Deutschlands religiöse Landschaft umfasst christliche Traditionen, viele Menschen ohne religiöse Bindung sowie muslimische, jüdische, buddhistische und weitere Gemeinschaften. Kirchen, Kathedralen, Moscheen, Synagogen und zivile Traditionen prägen gemeinsam das öffentliche Leben und die lokale Identität."
       },
       {
         title: "Bekannte Unternehmen",
-        image:
-          "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80",
+        image: sitePhotos.germany.companies,
         body:
           "Deutschland hat eine starke Export- und Ingenieurwirtschaft. Bekannte Unternehmen sind Volkswagen, BMW, Mercedes-Benz, Bosch, Siemens, SAP, Deutsche Telekom, DHL Group, Bayer, BASF, Adidas, Puma, Allianz und Lufthansa."
       }
@@ -1177,55 +1222,55 @@ const BANGLADESH_PAGE_COPY = {
     sections: [
       {
         title: "Cities and Structure",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.city,
         body:
           "Dhaka is the capital and a fast-moving megacity, while Chattogram, Khulna, Rajshahi, Sylhet, Barishal, Rangpur, and Mymensingh each bring their own regional identity. Bangladesh balances dense urban life with powerful local communities and a strong national center."
       },
       {
         title: "Population and Culture",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.city,
         body:
           "Bangladesh has one of the largest populations in the world and a rich culture shaped by language, literature, music, festivals, family life, and hospitality. Pohela Boishakh, cricket, traditional dress, and everyday creativity are all part of the national rhythm."
       },
       {
         title: "History and Independence",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.parliament,
         body:
           "Modern Bangladesh emerged after the 1971 Liberation War and the long struggle for self-determination. Its identity is rooted in the Bengali language movement, a powerful independence story, and a civic culture shaped by resilience and pride."
       },
       {
         title: "Education System",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        image: sitePhotos.bangladesh.education,
         body:
           "Education runs from primary school through secondary and higher education, with public and private institutions serving a large and ambitious student population. English, Bengali, science, and technical training all play important roles in study and career planning."
       },
       {
         title: "Language",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        image: sitePhotos.bangladesh.school,
         body:
           "Bengali is the official and most widely spoken language in Bangladesh. It is central to literature, identity, public life, and the country's cultural confidence, while English is widely used in education, business, and professional settings."
       },
       {
         title: "Food and Everyday Taste",
-        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+        image: sitePhotos.bangladesh.food,
         body:
           "Bangladeshi food is fragrant, generous, and deeply regional. Rice, fish, lentils, bhorta, curries, biryani, pitha, and sweets like mishti are everyday anchors, with local spice blends bringing warmth and character to the table."
       },
       {
         title: "Sightseeing Highlights",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.bangladesh.sightseeing,
         body:
           "Notable places include Cox's Bazar, Sundarbans, Srimangal, Lalbagh Fort, Ahsan Manzil, Sixty Dome Mosque, Sonargaon, and the tea gardens of Sylhet. The country combines river landscapes, heritage sites, and natural beauty in a striking way."
       },
       {
         title: "Religion and Society",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.bangladesh.sightseeing,
         body:
           "Bangladesh is shaped by a diverse social fabric with Islam as the majority religion and significant Hindu, Buddhist, and Christian communities contributing to public life. Festivals, charity, neighborhood ties, and family traditions all reflect a social culture that is warm and community-oriented."
       },
       {
         title: "Economy and Industry",
-        image: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
+        image: sitePhotos.bangladesh.industry,
         body:
           "Bangladesh is known for garments, textiles, agriculture, remittances, pharmaceuticals, shipbuilding, leather, jute, and a growing digital economy. Its economy is energetic, export-focused, and shaped by entrepreneurship and resilience."
       }
@@ -1272,55 +1317,55 @@ const BANGLADESH_PAGE_COPY = {
     sections: [
       {
         title: "Städte und Struktur",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.city,
         body:
           "Dhaka ist die Hauptstadt und eine dynamische Megastadt, während Chattogram, Khulna, Rajshahi, Sylhet, Barishal, Rangpur und Mymensingh jeweils ihre eigene regionale Prägung mitbringen. Bangladesch verbindet dichtes Stadtleben mit starken lokalen Gemeinschaften und einem klaren nationalen Zentrum."
       },
       {
         title: "Bevölkerung und Kultur",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.city,
         body:
           "Bangladesch gehört zu den bevölkerungsreichsten Ländern der Welt und besitzt eine reiche Kultur, die von Sprache, Literatur, Musik, Festen, Familienleben und Gastfreundschaft geprägt ist. Pohela Boishakh, Cricket, traditionelle Kleidung und alltägliche Kreativität gehören zum nationalen Rhythmus."
       },
       {
         title: "Geschichte und Unabhängigkeit",
-        image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
+        image: sitePhotos.bangladesh.parliament,
         body:
           "Das moderne Bangladesch entstand nach dem Befreiungskrieg von 1971 und dem langen Kampf um Selbstbestimmung. Seine Identität wurzelt in der bengalischen Sprachbewegung, einer kraftvollen Unabhängigkeitsgeschichte und einer von Resilienz und Stolz geprägten Zivilgesellschaft."
       },
       {
         title: "Bildungssystem",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        image: sitePhotos.bangladesh.education,
         body:
           "Das Bildungssystem reicht von der Grundschule bis zur weiterführenden und höheren Bildung, wobei öffentliche und private Einrichtungen eine große und ehrgeizige Studentenschaft versorgen. Englisch, Bengalisch, Naturwissenschaften und technische Ausbildung spielen wichtige Rollen bei Studium und Berufsplanung."
       },
       {
         title: "Sprache",
-        image: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
+        image: sitePhotos.bangladesh.school,
         body:
           "Bengalisch ist die Amtssprache und die am weitesten verbreitete Sprache in Bangladesch. Sie ist zentral für Literatur, Identität, öffentliches Leben und kulturelles Selbstbewusstsein, während Englisch in Bildung, Wirtschaft und beruflichen Kontexten weit verbreitet ist."
       },
       {
         title: "Essen und Alltag",
-        image: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
+        image: sitePhotos.bangladesh.food,
         body:
           "Die Küche Bangladeschs ist aromatisch, großzügig und stark regional geprägt. Reis, Fisch, Linsen, Bhorta, Currys, Biryani, Pitha und Süßspeisen wie Mishti gehören zum Alltag, während lokale Gewürzmischungen Wärme und Charakter auf den Teller bringen."
       },
       {
         title: "Sehenswürdigkeiten",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.bangladesh.sightseeing,
         body:
           "Zu den bekannten Orten gehören Cox's Bazar, die Sundarbans, Srimangal, Lalbagh Fort, Ahsan Manzil, die Sixty Dome Mosque, Sonargaon und die Teeplantagen von Sylhet. Das Land verbindet Flusslandschaften, Kulturerbe und Natur auf eindrucksvolle Weise."
       },
       {
         title: "Religion und Gesellschaft",
-        image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
+        image: sitePhotos.bangladesh.sightseeing,
         body:
           "Bangladesch ist von einem vielfältigen sozialen Gefüge geprägt, in dem der Islam die Mehrheitsreligion ist und hinduistische, buddhistische und christliche Gemeinschaften das öffentliche Leben mitprägen. Feste, Wohltätigkeit, Nachbarschaft und Familientraditionen spiegeln eine warme, gemeinschaftsorientierte Kultur wider."
       },
       {
         title: "Wirtschaft und Industrie",
-        image: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
+        image: sitePhotos.bangladesh.industry,
         body:
           "Bangladesch ist bekannt für Bekleidung, Textilien, Landwirtschaft, Rücküberweisungen, Pharmazeutika, Schiffbau, Leder, Jute und eine wachsende digitale Wirtschaft. Die Wirtschaft ist energiegeladen, exportorientiert und von Unternehmergeist und Widerstandskraft geprägt."
       }
@@ -1343,7 +1388,7 @@ const BANGLADESH_PAGE_COPY = {
 
 function buildGermanyPageHTML(page) {
   return `
-    <section class="germany-hero" style="background-image: linear-gradient(90deg, rgba(10, 14, 25, 0.18), rgba(10, 14, 25, 0)), url('${page.heroImage}')">
+    <section class="germany-hero" style="background-image: linear-gradient(90deg, rgba(10, 14, 25, 0.18), rgba(10, 14, 25, 0)), url('${escapeHtml(page.heroImage)}')">
       <div class="germany-hero-copy">
         <span>${escapeHtml(page.eyebrow)}</span>
         <h1>${escapeHtml(page.title)}</h1>
@@ -1380,7 +1425,7 @@ function buildGermanyPageHTML(page) {
         .map(
           section => `
             <article class="germany-feature">
-              <img src="${section.image}" alt="${escapeHtml(section.title)}" loading="lazy">
+              <img class="${escapeHtml(section.imageClass || "")}" src="${escapeHtml(section.image)}" alt="${escapeHtml(section.title)}" loading="lazy"${buildPhotoStyle(section)}>
               <div>
                 <h2>${escapeHtml(section.title)}</h2>
                 <p>${escapeHtml(section.body)}</p>
@@ -1496,7 +1541,7 @@ function buildBangladeshPageHTML(page) {
         .map(
           section => `
             <article class="bangladesh-feature">
-              <img src="${section.image}" alt="${escapeHtml(section.title)}" loading="lazy">
+              <img class="${escapeHtml(section.imageClass || "")}" src="${escapeHtml(section.image)}" alt="${escapeHtml(section.title)}" loading="lazy"${buildPhotoStyle(section)}>
               <div>
                 <h2>${escapeHtml(section.title)}</h2>
                 <p>${escapeHtml(section.body)}</p>
@@ -2907,12 +2952,24 @@ function renderPanelPage(pageKey) {
       const title = typeof card === "string" ? `Section ${idx + 1}` : card.title || `Section ${idx + 1}`;
       const body = typeof card === "string" ? card : card.body || "";
       const photo = typeof card === "string" ? "" : card.photo || "";
+      const image = typeof card === "string" ? "" : card.image || "";
+      const imageClass = typeof card === "string" ? "" : card.imageClass || "";
+      const photoStyle = typeof card === "string" ? "" : buildPhotoStyle(card);
 
       return `
-        <article class="panel-page-card">
-          ${photo ? `<div class="panel-photo-placeholder">${escapeHtml(photo)}</div>` : ""}
+        <article class="panel-page-card is-collapsed">
+          ${
+            image
+              ? `<img class="panel-page-photo ${escapeHtml(imageClass)}" src="${escapeHtml(image)}" alt="${escapeHtml(photo || title)}" loading="lazy"${photoStyle}>`
+              : photo
+                ? `<div class="panel-photo-placeholder">${escapeHtml(photo)}</div>`
+                : ""
+          }
           <h3>${escapeHtml(title)}</h3>
-          <p>${escapeHtml(body)}</p>
+          <p class="panel-card-body">${escapeHtml(body)}</p>
+          <button class="panel-card-read-more" type="button" data-panel-read-more aria-expanded="false">
+            Read more
+          </button>
         </article>
       `;
     })
@@ -2921,7 +2978,11 @@ function renderPanelPage(pageKey) {
   desktopPage.style.display = "block";
   desktopPage.innerHTML = `
     <div class="panel-page-wrap">
-      <div class="panel-hero-image" style="background-image:url('${page.image}')"></div>
+      ${
+        page.image
+          ? `<div class="panel-hero-image" style="background-image:url('${escapeHtml(page.image)}'); --photo-position: ${escapeHtml(page.imagePosition || "center")}"></div>`
+          : ""
+      }
       <div class="panel-page-content">
         <h1>${escapeHtml(page.title)}</h1>
         <p class="panel-page-description">${escapeHtml(page.description)}</p>
@@ -2932,6 +2993,22 @@ function renderPanelPage(pageKey) {
       </div>
     </div>
   `;
+
+  wirePanelCardReadMore(desktopPage);
+}
+
+function wirePanelCardReadMore(container) {
+  container.querySelectorAll("[data-panel-read-more]").forEach(button => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".panel-page-card");
+      if (!card) return;
+
+      const isExpanded = card.classList.toggle("is-expanded");
+      card.classList.toggle("is-collapsed", !isExpanded);
+      button.textContent = isExpanded ? "Show less" : "Read more";
+      button.setAttribute("aria-expanded", String(isExpanded));
+    });
+  });
 }
 
 function renderFavoritesPage() {

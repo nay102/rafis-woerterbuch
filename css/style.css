@@ -1651,6 +1651,15 @@ body.dark input:focus {
    CUSTOM PANEL PAGES + USER PROFILE
 ========================================================= */
 
+:root {
+  --panel-hero-height: clamp(170px, 34vw, 320px);
+  --panel-card-photo-ratio: 16 / 22;
+  --panel-card-photo-height: auto;
+  --country-hero-height: clamp(320px, 36vw, 420px);
+  --country-card-photo-ratio: 16 / 10;
+  --country-card-photo-height: auto;
+}
+
 .panel-page-wrap {
   max-width: 1100px;
   margin: 22px auto;
@@ -1664,10 +1673,10 @@ body.dark input:focus {
 
 .panel-hero-image {
   width: 100%;
-  height: 220px;
+  height: var(--panel-hero-height);
   border-radius: 14px;
   background-size: cover;
-  background-position: center;
+  background-position: var(--photo-position, center);
   margin-bottom: 16px;
 }
 
@@ -1684,8 +1693,9 @@ body.dark input:focus {
 
 .panel-page-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 14px;
 }
 
 .panel-page-card {
@@ -1693,6 +1703,9 @@ body.dark input:focus {
   background: #f8fafc;
   border: 1px solid #dbe7ff;
   padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -1712,6 +1725,42 @@ body.dark input:focus {
   padding: 14px;
 }
 
+.panel-page-photo {
+  display: block;
+  width: 100%;
+  height: var(--photo-height, var(--panel-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--panel-card-photo-ratio));
+  margin-bottom: 12px;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: var(--photo-position, center);
+  background: #e2e8f0;
+}
+
+.photo-fit-top {
+  --photo-position: center top;
+}
+
+.photo-fit-center {
+  --photo-position: center;
+}
+
+.photo-fit-bottom {
+  --photo-position: center bottom;
+}
+
+.photo-square {
+  --photo-ratio: 1 / 1;
+}
+
+.photo-portrait {
+  --photo-ratio: 4 / 5;
+}
+
+.photo-wide {
+  --photo-ratio: 16 / 9;
+}
+
 .panel-page-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(34, 80, 210, 0.14);
@@ -1723,9 +1772,51 @@ body.dark input:focus {
   color: #1e40af;
 }
 
-.panel-page-card p {
+.panel-page-card p,
+.panel-card-body {
   font-size: 14px;
   line-height: 1.6;
+}
+
+.panel-card-body {
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: max-height 0.28s ease;
+}
+
+.panel-page-card.is-collapsed .panel-card-body {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.panel-page-card.is-expanded .panel-card-body {
+  display: block;
+}
+
+.panel-card-read-more {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(30, 64, 175, 0.22);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.panel-card-read-more:hover {
+  transform: translateY(-1px);
+  background: #1e40af;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
 }
 
 .panel-page-footer {
@@ -1768,7 +1859,7 @@ body.dark input:focus {
 }
 
 .germany-hero {
-  min-height: clamp(320px, 36vw, 420px);
+  min-height: var(--country-hero-height);
   border-radius: 8px;
   background-size: cover;
   background-position: center;
@@ -2198,8 +2289,10 @@ body.dark input:focus {
 
 .germany-feature img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: var(--photo-height, var(--country-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--country-card-photo-ratio));
   object-fit: cover;
+  object-position: var(--photo-position, center);
   display: block;
   background: #dbeafe;
   transition: transform 0.35s ease, filter 0.35s ease;
@@ -2624,8 +2717,10 @@ body.dark input:focus {
 
 .bangladesh-feature img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: var(--photo-height, var(--country-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--country-card-photo-ratio));
   object-fit: cover;
+  object-position: var(--photo-position, center);
   display: block;
   background: #d1fae5;
   transition: transform 0.35s ease, filter 0.35s ease;
@@ -4020,6 +4115,18 @@ body.dark .panel-page-card p {
   color: #e2e8f0;
 }
 
+body.dark .panel-card-read-more {
+  background: #1e293b;
+  border-color: rgba(147, 197, 253, 0.24);
+  color: #bfdbfe;
+}
+
+body.dark .panel-card-read-more:hover {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
+}
+
 body.dark .panel-page-footer {
   border-top-color: rgba(148, 163, 184, 0.22);
   color: #94a3b8;
@@ -4290,6 +4397,11 @@ body.dark .close-btn:hover {
 ========================================================= */
 
 @media (max-width: 1200px) {
+  :root {
+    --panel-hero-height: clamp(170px, 26vw, 230px);
+    --country-card-photo-ratio: 16 / 9;
+  }
+
   .germany-feature-grid,
   .bangladesh-feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4331,6 +4443,10 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 992px) {
+  :root {
+    --country-hero-height: 340px;
+  }
+
   .germany-page,
   .bangladesh-page {
     width: min(100% - 24px, 900px);
@@ -4344,6 +4460,10 @@ body.dark .close-btn:hover {
 
   .germany-stats,
   .bangladesh-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel-page-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -4712,11 +4832,6 @@ body.dark .close-btn:hover {
     flex-basis: 30px;
   }
 
-  .germany-feature img,
-  .bangladesh-feature img {
-    aspect-ratio: 16 / 9;
-  }
-
   .settings-wrap {
     padding: 10px;
     gap: 9px;
@@ -4869,6 +4984,12 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 480px) {
+  :root {
+    --panel-hero-height: 150px;
+    --panel-card-photo-ratio: 16 / 20;
+    --country-hero-height: min(390px, calc(100svh - 120px));
+  }
+
   .container {
     padding: 0 12px;
   }
@@ -5215,10 +5336,6 @@ body.dark .close-btn:hover {
     font-weight: 500;
   }
 
-  .panel-hero-image {
-    height: 150px;
-  }
-
   .panel-page-cards {
     grid-template-columns: 1fr;
   }
@@ -5271,6 +5388,11 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 360px) {
+  :root {
+    --panel-hero-height: 135px;
+    --country-hero-height: min(330px, calc(100svh - 104px));
+  }
+
   .germany-page,
   .bangladesh-page {
     width: min(100% - 12px, 348px);
