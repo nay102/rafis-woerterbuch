@@ -1652,7 +1652,7 @@ body.dark input:focus {
 ========================================================= */
 
 :root {
-  --panel-hero-height: clamp(170px, 34vw, 320px);
+  --panel-hero-height: clamp(170px, 34vw, 345px);
   --panel-card-photo-ratio: 16 / 22;
   --panel-card-photo-height: auto;
   --country-hero-height: clamp(320px, 36vw, 420px);
@@ -4720,7 +4720,7 @@ body.dark .close-btn:hover {
   }
 
   .panel-hero-image {
-    height: 180px;
+    height: 200px;
   }
 
   .panel-page-content h1 {

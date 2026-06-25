@@ -455,7 +455,13 @@ function formatMeaningText(word) {
     typeof word?.meaning === "string" && word.meaning.trim()
       ? word.meaning
       : "No meaning added.";
-  const escapedMeaning = escapeHtml(meaningText);
+  // const escapedMeaning = escapeHtml(meaningText);
+    let escapedMeaning = escapeHtml(meaningText);
+
+  // Allow only <b> tags
+  escapedMeaning = escapedMeaning
+    .replace(/&lt;b&gt;/gi, "<b>")
+    .replace(/&lt;\/b&gt;/gi, "</b>");
   const isVerb =
     String(word?.category || "").toLowerCase() === "verben" ||
     String(word?.type || "").toLowerCase() === "verb";
@@ -578,7 +584,7 @@ function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
 const sitePhotos = {
   // Change photo filenames here first. Keep spaces as %20 for browser-safe paths.
   aboutRafi: {
-    hero: "assets/Rafis%20pic/Rafikul%20Islam.png",
+    hero: "assets/Rafis%20pic/Rafikul_Islam.png",
     backgroundValues: "assets/Rafis%20pic/n3_nondonpark1.jpeg",
     germanJourney: "assets/Rafis%20pic/n6_Rafi.jpeg",
     academicTrajectory: "assets/Rafis%20pic/n1_bandorban.jpg",
