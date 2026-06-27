@@ -601,6 +601,15 @@ const sitePhotos = {
     proTools: "https://picsum.photos/seed/option6/1200/500",
     settings: "https://picsum.photos/seed/settings/1200/500"
   },
+  panelHero: {
+    owner: "assets/Rafis%20pic/Rafikul_Islam.png",
+    germany: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    bangladesh: "assets/Bangladesh/City.jpg",
+    ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
+    sprachwelt: "assets/Rafis%20pic/Rafis%20Sprachwelt.png",
+    examZone: "https://picsum.photos/seed/option5/1200/500",
+    proTools: "https://picsum.photos/seed/option6/1200/500"
+  },
   germany: {
     hero: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
     city: "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
@@ -616,20 +625,22 @@ const sitePhotos = {
     companies: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80"
   },
   bangladesh: {
-    city: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Dhaka_Skyline_at_Night.jpg",
-    education: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Government_Primary_school_buildings_08.jpg",
-    food: "https://upload.wikimedia.org/wikipedia/commons/0/05/Iftar_puran_dhaka.JPG",
-    sightseeing: "https://upload.wikimedia.org/wikipedia/commons/e/e3/The_great_historical_mosque_in_the_ancient_time_of_Bangladesh.jpg",
-    industry: "https://upload.wikimedia.org/wikipedia/commons/1/12/Garment_Factory_Worker_Bengaldesh.jpg",
-    parliament: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sangshad_2.jpg",
-    school: "https://upload.wikimedia.org/wikipedia/commons/7/77/Bd_school.jpg"
+    city: "assets/Bangladesh/City.jpg",
+    population: "assets/Bangladesh/population.jpg",
+    history: "assets/Bangladesh/History.jpg",
+    education: "assets/Bangladesh/Education.jpg",
+    language: "assets/Bangladesh/Language.png",
+    food: "assets/Bangladesh/food.jpg",
+    sightseeing: "assets/Bangladesh/sightseeing.jpg",
+    religion: "assets/Bangladesh/religion.png",
+    economy: "assets/Bangladesh/economy.jpg"
   }
 };
 
 const panelPageContent = {
   owner: {
     title: "Welcome to My Profile",
-    image: sitePhotos.aboutRafi.hero,
+    image: sitePhotos.panelHero.owner,
     imagePosition: "center 28%",
     description:
       "My name is Md Rafikul Islam (commonly known as Rafi). I am a passionate language learner, developer, and the creator of Rafi’s Wörterbuch. This platform serves as a chronicle of my personal background, my dedicated German language journey, and my vision to build an accessible learning resource for aspiring students and professionals.",
@@ -684,7 +695,7 @@ const panelPageContent = {
   },
   ausbildung: {
     title: "📚 Ausbildung",
-    image: sitePhotos.panel.ausbildung,
+    image: sitePhotos.panelHero.ausbildung,
     description:
       "Guidance for Ausbildung paths, German requirements, and practical preparation.",
     cards: [
@@ -695,7 +706,7 @@ const panelPageContent = {
   },
   bangladesh: {
     title: "🇧🇩 Bangladesh",
-    image: sitePhotos.panel.bangladesh,
+    image: sitePhotos.panelHero.bangladesh,
     description:
       "A short overview of Bangladesh with practical language and cultural context for the side panel.",
     cards: [
@@ -706,7 +717,7 @@ const panelPageContent = {
   },
   about: {
     title: "🇩🇪 Germany",
-    image: sitePhotos.panel.germany,
+    image: sitePhotos.panelHero.germany,
     description:
       "Useful orientation notes about life, culture, and practical language in Germany.",
     cards: [
@@ -717,7 +728,7 @@ const panelPageContent = {
   },
   option4: {
     title: "🎓 Rafis Sprachwelt",
-    image: sitePhotos.panel.sprachwelt,
+    image: sitePhotos.panelHero.sprachwelt,
     description: "Focused drills and revision practice for faster vocabulary retention.",
     cards: [
       "Topic-based quick practice sets for daily training.",
@@ -727,7 +738,7 @@ const panelPageContent = {
   },
   option5: {
     title: "📝 Exam Zone",
-    image: sitePhotos.panel.examZone,
+    image: sitePhotos.panelHero.examZone,
     description: "Exam-oriented preparation area for structured learning sessions.",
     cards: [
       "Mock tasks and targeted exam vocabulary review.",
@@ -737,7 +748,7 @@ const panelPageContent = {
   },
   option6: {
     title: "🚀 Pro Tools",
-    image: sitePhotos.panel.proTools,
+    image: sitePhotos.panelHero.proTools,
     description: "Advanced learning toolkit for power users and serious revision.",
     cards: [
       "Scenario-driven learning blocks for applied German.",
@@ -787,6 +798,7 @@ export async function initUI() {
   handleRouting();
   setupLogoNavigation();
   setupHomeSearch();
+  setupHomeSprachweltCta();
 
   window.addEventListener("popstate", handleRouting);
 }
@@ -869,8 +881,7 @@ const categories = [
   "Slang",
   "Schimpfwörter",
   "Best YT Kanäle",
-  "Filme & Serien",
-  "Adverbiale Wendung"
+  "Filme & Serien"
 ];
 
 const CATEGORY_SEARCH_LABELS = {
@@ -885,8 +896,7 @@ const CATEGORY_SEARCH_LABELS = {
   Slang: "slang",
   "Schimpfwörter": "swear words",
   "Best YT Kanäle": "YouTube channels",
-  "Filme & Serien": "movies and series",
-  "Adverbiale Wendung": "adverbial expressions"
+  "Filme & Serien": "movies and series"
 };
 
 function getCategorySearchPlaceholder(categoryName) {
@@ -954,11 +964,6 @@ const CATEGORY_EXPLANATIONS = {
     de: "Filme und Serien verbessern Sprachgefühl und Hörverständnis durch echte Dialoge. Sie zeigen, wie Deutsch in natürlichen Situationen klingt.",
     en: "Movies and series improve language feel and listening comprehension through real dialogues. They show how German sounds in natural situations.",
     bn: "ফিল্ম ও সিরিজ বাস্তব সংলাপের মাধ্যমে ভাষার অনুভূতি ও শ্রবণ দক্ষতা বাড়ায়। এতে বোঝা যায় বাস্তব পরিস্থিতিতে জার্মান কেমন শোনায়।"
-  },
-  "Adverbiale Wendung": {
-    de: "Adverbiale Wendungen sind feste Ausdrücke, die zusätzliche Informationen zu Zeit, Ort, Art oder Grund geben. Sie machen Sätze flüssiger und stilistisch besser.",
-    en: "Adverbial expressions are fixed phrases that add information about time, place, manner, or reason. They make sentences more fluent and stylistically better.",
-    bn: "ক্রিয়াবিশেষণধর্মী বাক্যাংশ সময়, স্থান, ধরন বা কারণ সম্পর্কে অতিরিক্ত তথ্য দেয়। এগুলো বাক্যকে আরও স্বাভাবিক ও সুন্দর করে।"
   }
 };
 
@@ -969,7 +974,7 @@ const GERMANY_PAGE_COPY = {
     title: "Germany",
     subtitle:
       "A structured overview of Germany's states, cities, history, education, language, food, landmarks, and economy.",
-    heroImage: sitePhotos.germany.hero,
+    heroImage: sitePhotos.panelHero.germany,
     stats: [
       { value: "16", label: "Federal states" },
       { value: "83.6M", label: "Population, 2025 estimate" },
@@ -1086,7 +1091,7 @@ const GERMANY_PAGE_COPY = {
     title: "Deutschland",
     subtitle:
       "Ein strukturierter Überblick über Bundesländer, Städte, Geschichte, Bildung, Sprache, Essen, Sehenswürdigkeiten und Wirtschaft.",
-    heroImage: sitePhotos.germany.hero,
+    heroImage: sitePhotos.panelHero.germany,
     stats: [
       { value: "16", label: "Bundesländer" },
       { value: "83,6 Mio.", label: "Bevölkerung, Schätzung 2025" },
@@ -1203,6 +1208,7 @@ const BANGLADESH_PAGE_COPY = {
   en: {
     toggleLabel: "Deutsch",
     title: "Bangladesh",
+    heroImage: sitePhotos.panelHero.bangladesh,
     subtitle:
       "A polished overview of Bangladesh's divisions, cities, history, education, language, food, landmarks, and economy.",
     stats: [
@@ -1234,13 +1240,13 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Population and Culture",
-        image: sitePhotos.bangladesh.city,
+        image: sitePhotos.bangladesh.population,
         body:
           "Bangladesh has one of the largest populations in the world and a rich culture shaped by language, literature, music, festivals, family life, and hospitality. Pohela Boishakh, cricket, traditional dress, and everyday creativity are all part of the national rhythm."
       },
       {
         title: "History and Independence",
-        image: sitePhotos.bangladesh.parliament,
+        image: sitePhotos.bangladesh.history,
         body:
           "Modern Bangladesh emerged after the 1971 Liberation War and the long struggle for self-determination. Its identity is rooted in the Bengali language movement, a powerful independence story, and a civic culture shaped by resilience and pride."
       },
@@ -1252,7 +1258,7 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Language",
-        image: sitePhotos.bangladesh.school,
+        image: sitePhotos.bangladesh.language,
         body:
           "Bengali is the official and most widely spoken language in Bangladesh. It is central to literature, identity, public life, and the country's cultural confidence, while English is widely used in education, business, and professional settings."
       },
@@ -1270,13 +1276,13 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Religion and Society",
-        image: sitePhotos.bangladesh.sightseeing,
+        image: sitePhotos.bangladesh.religion,
         body:
           "Bangladesh is shaped by a diverse social fabric with Islam as the majority religion and significant Hindu, Buddhist, and Christian communities contributing to public life. Festivals, charity, neighborhood ties, and family traditions all reflect a social culture that is warm and community-oriented."
       },
       {
         title: "Economy and Industry",
-        image: sitePhotos.bangladesh.industry,
+        image: sitePhotos.bangladesh.economy,
         body:
           "Bangladesh is known for garments, textiles, agriculture, remittances, pharmaceuticals, shipbuilding, leather, jute, and a growing digital economy. Its economy is energetic, export-focused, and shaped by entrepreneurship and resilience."
       }
@@ -1298,6 +1304,7 @@ const BANGLADESH_PAGE_COPY = {
   de: {
     toggleLabel: "English",
     title: "Bangladesch",
+    heroImage: sitePhotos.panelHero.bangladesh,
     subtitle:
       "Ein hochwertiger Überblick über die Divisionen, Städte, Geschichte, Bildung, Sprache, Essen, Sehenswürdigkeiten und Wirtschaft von Bangladesch.",
     stats: [
@@ -1329,13 +1336,13 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Bevölkerung und Kultur",
-        image: sitePhotos.bangladesh.city,
+        image: sitePhotos.bangladesh.population,
         body:
           "Bangladesch gehört zu den bevölkerungsreichsten Ländern der Welt und besitzt eine reiche Kultur, die von Sprache, Literatur, Musik, Festen, Familienleben und Gastfreundschaft geprägt ist. Pohela Boishakh, Cricket, traditionelle Kleidung und alltägliche Kreativität gehören zum nationalen Rhythmus."
       },
       {
         title: "Geschichte und Unabhängigkeit",
-        image: sitePhotos.bangladesh.parliament,
+        image: sitePhotos.bangladesh.history,
         body:
           "Das moderne Bangladesch entstand nach dem Befreiungskrieg von 1971 und dem langen Kampf um Selbstbestimmung. Seine Identität wurzelt in der bengalischen Sprachbewegung, einer kraftvollen Unabhängigkeitsgeschichte und einer von Resilienz und Stolz geprägten Zivilgesellschaft."
       },
@@ -1347,7 +1354,7 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Sprache",
-        image: sitePhotos.bangladesh.school,
+        image: sitePhotos.bangladesh.language,
         body:
           "Bengalisch ist die Amtssprache und die am weitesten verbreitete Sprache in Bangladesch. Sie ist zentral für Literatur, Identität, öffentliches Leben und kulturelles Selbstbewusstsein, während Englisch in Bildung, Wirtschaft und beruflichen Kontexten weit verbreitet ist."
       },
@@ -1365,13 +1372,13 @@ const BANGLADESH_PAGE_COPY = {
       },
       {
         title: "Religion und Gesellschaft",
-        image: sitePhotos.bangladesh.sightseeing,
+        image: sitePhotos.bangladesh.religion,
         body:
           "Bangladesch ist von einem vielfältigen sozialen Gefüge geprägt, in dem der Islam die Mehrheitsreligion ist und hinduistische, buddhistische und christliche Gemeinschaften das öffentliche Leben mitprägen. Feste, Wohltätigkeit, Nachbarschaft und Familientraditionen spiegeln eine warme, gemeinschaftsorientierte Kultur wider."
       },
       {
         title: "Wirtschaft und Industrie",
-        image: sitePhotos.bangladesh.industry,
+        image: sitePhotos.bangladesh.economy,
         body:
           "Bangladesch ist bekannt für Bekleidung, Textilien, Landwirtschaft, Rücküberweisungen, Pharmazeutika, Schiffbau, Leder, Jute und eine wachsende digitale Wirtschaft. Die Wirtschaft ist energiegeladen, exportorientiert und von Unternehmergeist und Widerstandskraft geprägt."
       }
@@ -1498,7 +1505,7 @@ function renderGermanyPage() {
 
 function buildBangladeshPageHTML(page) {
   return `
-    <section class="bangladesh-hero">
+    <section class="bangladesh-hero" style="background-image: radial-gradient(circle at 18% 22%, rgba(255, 206, 46, 0.18), transparent 25%), radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.12), transparent 20%), linear-gradient(145deg, rgba(10, 95, 69, 0.84) 0%, rgba(6, 74, 56, 0.88) 48%, rgba(4, 47, 36, 0.92) 100%), url('${escapeHtml(page.heroImage)}')">
       <div class="bangladesh-hero-copy">
         <button id="bangladeshLanguageToggle" class="bangladesh-lang-toggle germany-lang-toggle" type="button">${escapeHtml(page.toggleLabel)}</button>
         <h1>${escapeHtml(page.title)}</h1>
@@ -1509,7 +1516,6 @@ function buildBangladeshPageHTML(page) {
           <div class="bangladesh-flag-art">
             <div class="bangladesh-flag-circle"></div>
           </div>
-          <div class="bangladesh-flag-label">🇧🇩</div>
         </div>
       </div>
     </section>
@@ -1624,8 +1630,7 @@ const CATEGORY_EXPLAIN_TITLES = {
   Slang: "Was ist Slang?",
   "Schimpfwörter": "Was sind Schimpfwörter?",
   "Best YT Kanäle": "Was sind die besten YouTube-Kanäle?",
-  "Filme & Serien": "Was sind Filme & Serien zum Deutschlernen?",
-  "Adverbiale Wendung": "Was sind adverbiale Wendungen?"
+  "Filme & Serien": "Was sind Filme & Serien zum Deutschlernen?"
 };
 
 const CONJUGATION_EXPLANATION = {
@@ -1651,6 +1656,13 @@ function generateCategories() {
     });
 
     nav.appendChild(btn);
+  });
+}
+
+function setupHomeSprachweltCta() {
+  document.getElementById("sprachweltHomeCta")?.addEventListener("click", () => {
+    setSingleRouteParam("page", "option4");
+    renderPanelPage("option4");
   });
 }
 
@@ -2953,6 +2965,9 @@ function renderPanelPage(pageKey) {
   const hero = document.getElementById("heroSection");
   if (hero) hero.style.display = "none";
 
+  const isSprachweltHero = pageKey === "option4";
+  const heroClassName = isSprachweltHero ? "panel-hero-image panel-hero-image--sprachwelt" : "panel-hero-image";
+
   const cards = page.cards
     .map((card, idx) => {
       const title = typeof card === "string" ? `Section ${idx + 1}` : card.title || `Section ${idx + 1}`;
@@ -2986,7 +3001,7 @@ function renderPanelPage(pageKey) {
     <div class="panel-page-wrap">
       ${
         page.image
-          ? `<div class="panel-hero-image" style="background-image:url('${escapeHtml(page.image)}'); --photo-position: ${escapeHtml(page.imagePosition || "center")}"></div>`
+          ? `<div class="${heroClassName}" style="background-image:url('${escapeHtml(page.image)}'); --photo-position: ${escapeHtml(page.imagePosition || "center")}"></div>`
           : ""
       }
       <div class="panel-page-content">

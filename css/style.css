@@ -421,6 +421,44 @@ body.dark .desktop-menu-btn {
   opacity: 1;
 }
 
+.home-sprachwelt-cta {
+  width: min(520px, 100%);
+  min-height: 52px;
+  margin: 18px auto 4px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: 30px;
+  background: linear-gradient(135deg, #2a5cff 0%, #6d4cff 58%, #17a886 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  cursor: pointer;
+  box-shadow:
+    0 16px 34px rgba(42, 92, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.home-sprachwelt-cta:hover {
+  transform: translateY(-3px);
+  border-color: #ffffff;
+  box-shadow:
+    0 20px 42px rgba(42, 92, 255, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.home-sprachwelt-cta:active {
+  transform: scale(0.97);
+}
+
 /* =========================================================
    6️⃣ CATEGORY BUTTONS
    Premium Modern Category Grid
@@ -1562,7 +1600,7 @@ body.dark input:focus {
 /* Panel Container */
 .desktop-side-panel {
   position: fixed;
-  left: -320px;
+  right: -320px;
   top: 0;
   width: 300px;
   height: 100vh;
@@ -1576,15 +1614,15 @@ body.dark input:focus {
 
   z-index: 5000;
 
-  border-right: 1px solid rgba(195, 244, 253, 0.489);
+  border-left: 1px solid rgba(195, 244, 253, 0.489);
 
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
 /* Open State */
 .desktop-side-panel.active {
-  left: 0;
+  right: 0;
 }
 
 /* Panel Buttons */
@@ -1658,6 +1696,7 @@ body.dark input:focus {
   --country-hero-height: clamp(320px, 36vw, 420px);
   --country-card-photo-ratio: 16 / 10;
   --country-card-photo-height: auto;
+  
 }
 
 .panel-page-wrap {
@@ -1678,6 +1717,11 @@ body.dark input:focus {
   background-size: cover;
   background-position: var(--photo-position, center);
   margin-bottom: 16px;
+}
+
+.panel-hero-image--sprachwelt {
+  height: clamp(220px, 30vw, 260px);
+  background-position: center 32%;
 }
 
 .panel-page-content h1 {
@@ -1900,8 +1944,7 @@ body.dark input:focus {
   width: min(360px, 100%);
   flex: 0 1 360px;
   display: grid;
-  align-content: start;
-  justify-items: center;
+  place-items: center;
   gap: 14px;
 }
 
@@ -1999,8 +2042,7 @@ body.dark input:focus {
 .bangladesh-flag-panel {
   width: 100%;
   display: grid;
-  align-content: center;
-  justify-items: center;
+  place-items: center;
   gap: 14px;
   padding: 18px;
   border-radius: 24px;
@@ -2047,7 +2089,6 @@ body.dark input:focus {
 
 .bangladesh-flag-art {
   background:
-    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.95) 0 21%, transparent 22%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
     #006a4e;
 }
@@ -2397,6 +2438,9 @@ body.dark input:focus {
     radial-gradient(circle at 18% 22%, rgba(255, 206, 46, 0.18), transparent 25%),
     radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.12), transparent 20%),
     linear-gradient(145deg, #0a5f45 0%, #064a38 48%, #042f24 100%);
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, center;
+  background-repeat: no-repeat;
   box-shadow: 0 26px 60px rgba(10, 34, 27, 0.28);
 }
 
@@ -2454,8 +2498,7 @@ body.dark input:focus {
   width: min(360px, 100%);
   flex: 0 1 360px;
   display: grid;
-  align-content: center;
-  justify-items: center;
+  place-items: center;
   gap: 14px;
   padding: 18px;
   border-radius: 24px;
@@ -2472,7 +2515,6 @@ body.dark input:focus {
   overflow: hidden;
   border-radius: 24px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.95) 0 21%, transparent 22%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
     #006a4e;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -2491,7 +2533,7 @@ body.dark input:focus {
 
 .bangladesh-flag-circle {
   position: absolute;
-  left: 53%;
+  left: 50%;
   top: 50%;
   width: 26%;
   aspect-ratio: 1;
@@ -2502,10 +2544,7 @@ body.dark input:focus {
 }
 
 .bangladesh-flag-label {
-  font-size: clamp(28px, 3.6vw, 48px);
-  line-height: 1;
-  letter-spacing: 0;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+  display: none;
 }
 
 .bangladesh-stats {
@@ -2936,7 +2975,6 @@ body.dark .bangladesh-flag-panel {
 
 body.dark .bangladesh-flag-art {
   background:
-    radial-gradient(circle at 50% 50%, rgba(244, 42, 65, 0.98) 0 21%, transparent 22%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%),
     #004f3b;
   box-shadow:
@@ -3853,6 +3891,14 @@ body.dark .hero p {
   color: #94a3b8;
 }
 
+body.dark .home-sprachwelt-cta {
+  border-color: rgba(96, 165, 250, 0.72);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 58%, #059669 100%);
+  box-shadow:
+    0 16px 34px rgba(37, 99, 235, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
 /* Search Input */
 body.dark #searchInput {
   background: #1e293b;
@@ -4400,7 +4446,12 @@ body.dark .close-btn:hover {
   :root {
     --panel-hero-height: clamp(170px, 26vw, 230px);
     --country-card-photo-ratio: 16 / 9;
+    
   }
+  /* .panel-hero-image--sprachwelt {
+  height: clamp(220px, 30vw, 200px);
+  background-position: center 32%;
+} */
 
   .germany-feature-grid,
   .bangladesh-feature-grid {
@@ -4446,6 +4497,10 @@ body.dark .close-btn:hover {
   :root {
     --country-hero-height: 340px;
   }
+  /* .panel-hero-image--sprachwelt {
+  height: clamp(150px, 30vw, 180px);
+  background-position: center 30%;
+} */
 
   .germany-page,
   .bangladesh-page {
@@ -4552,6 +4607,17 @@ body.dark .close-btn:hover {
     gap: 10px;
   }
 
+  .logo-area {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .header-controls {
+    grid-column: 3;
+    justify-self: end;
+    justify-content: flex-end;
+  }
+
   .site-title {
     font-size: 12px;
   }
@@ -4566,7 +4632,9 @@ body.dark .close-btn:hover {
   }
 
   .mobile-menu-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .desktop-menu-btn {
@@ -4588,6 +4656,14 @@ body.dark .close-btn:hover {
 
   #searchInput {
     padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .home-sprachwelt-cta {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 16px;
+    padding: 13px 18px;
     font-size: 15px;
   }
 
@@ -4995,7 +5071,13 @@ body.dark .close-btn:hover {
   }
 
   .header-inner {
+    grid-template-columns: auto 1fr auto;
     gap: 8px;
+  }
+
+  .header-controls {
+    grid-column: 3;
+    justify-self: end;
   }
 
   .site-title {
@@ -5151,7 +5233,6 @@ body.dark .close-btn:hover {
   #categoryPage[data-category="Redewendungen"] .two-column-wrapper,
   #categoryPage[data-category="Sprichwörter"] .two-column-wrapper,
   #categoryPage[data-category="Filme & Serien"] .two-column-wrapper,
-  #categoryPage[data-category="Adverbiale Wendung"] .two-column-wrapper,
   #categoryPage[data-category="Feste Wendungen"] .two-column-wrapper {
     grid-template-columns: 1fr !important;
   }

@@ -14100,16 +14100,6 @@
     "examples": ["Improve your problem-solving vocabulary with Wickie und die starken Männer."]
   },
   {
-    "id": "advw1",
-    "word": "im Gegensatz zu",
-    "type": "Phrase",
-    "category": "Adverbiale Wendung",
-    "englisch": ["in contrast to"],
-    "bangla": ["বিপরীতে"],
-    "meaning": "Used to compare differences.",
-    "examples": ["Im Gegensatz zu dir bin ich ruhig"]
-  },
- {
     "id": "spr1",
     "word": "Morgenstund hat Gold im Mund",
     "type": "Sprichwort",
