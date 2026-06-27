@@ -149,7 +149,7 @@ body {
 ========================================================= */
 
 .desktop-menu-btn {
-  width: 48px;
+  width: 58px;
   height: 48px;
 
   border-radius: 14px;
@@ -163,7 +163,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 6px;
+  gap: 5px;
 
   cursor: pointer;
 
@@ -292,7 +292,7 @@ body.dark .desktop-menu-btn {
 .hero {
   text-align: center;
 
-  padding: 20px 20px 70px 20px;
+  padding: 20px 20px 20px 20px;
   position: relative;
   z-index: 1000;
   /* Soft premium background feel */
@@ -4642,7 +4642,7 @@ body.dark .close-btn:hover {
   }
 
   .hero {
-    padding: 18px 14px 36px;
+    padding: 18px 14px 20px;
   }
 
   .hero h1 {
@@ -5090,7 +5090,7 @@ body.dark .close-btn:hover {
   }
 
   .hero {
-    padding: 14px 10px 30px;
+    padding: 14px 10px 20px;
   }
 
   .hero h1 {
@@ -5874,3 +5874,4 @@ body.dark .close-btn:hover {
     background: #111827;
   }
 }
+
