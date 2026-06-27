@@ -1690,17 +1690,15 @@ body.dark input:focus {
 ========================================================= */
 
 :root {
-  --panel-hero-height: clamp(170px, 34vw, 345px);
+  --panel-hero-height: clamp(170px, 40vw, 400px);
   --panel-card-photo-ratio: 16 / 22;
   --panel-card-photo-height: auto;
   --country-hero-height: clamp(320px, 36vw, 420px);
   --country-card-photo-ratio: 16 / 10;
-  --country-card-photo-height: auto;
-  
+  --country-card-photo-height: auto; 
 }
-
 .panel-page-wrap {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 22px auto;
   padding: 18px;
   border-radius: 18px;
@@ -1720,8 +1718,8 @@ body.dark input:focus {
 }
 
 .panel-hero-image--sprachwelt {
-  height: clamp(220px, 30vw, 260px);
-  background-position: center 32%;
+  height: clamp(220px, 40vw, 420px);
+  background-position: center 5%;
 }
 
 .panel-page-content h1 {
@@ -4444,14 +4442,14 @@ body.dark .close-btn:hover {
 
 @media (max-width: 1200px) {
   :root {
-    --panel-hero-height: clamp(170px, 26vw, 230px);
+    --panel-hero-height: clamp(170px, 40vw, 400px);
     --country-card-photo-ratio: 16 / 9;
     
   }
-  /* .panel-hero-image--sprachwelt {
-  height: clamp(220px, 30vw, 200px);
-  background-position: center 32%;
-} */
+  .panel-hero-image--sprachwelt {
+  height: clamp(370px, 30vw, 200px);
+  background-position: center 10%;
+}
 
   .germany-feature-grid,
   .bangladesh-feature-grid {
@@ -4495,12 +4493,13 @@ body.dark .close-btn:hover {
 
 @media (max-width: 992px) {
   :root {
+    --panel-hero-height: clamp(170px, 40vw, 300px);
     --country-hero-height: 340px;
   }
-  /* .panel-hero-image--sprachwelt {
-  height: clamp(150px, 30vw, 180px);
-  background-position: center 30%;
-} */
+  .panel-hero-image--sprachwelt {
+  height: clamp(270px, 30vw, 200px);
+  background-position: center 10%;
+}
 
   .germany-page,
   .bangladesh-page {
@@ -4598,6 +4597,7 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 768px) {
+
   .container {
     padding: 0 14px;
   }
@@ -5065,7 +5065,10 @@ body.dark .close-btn:hover {
     --panel-card-photo-ratio: 16 / 20;
     --country-hero-height: min(390px, calc(100svh - 120px));
   }
-
+  .panel-hero-image--sprachwelt {
+  height: clamp(200px, 30vw, 200px);
+  /* background-position: center 10%; */
+}
   .container {
     padding: 0 12px;
   }

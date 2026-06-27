@@ -606,7 +606,7 @@ const sitePhotos = {
     germany: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
     bangladesh: "assets/Bangladesh/City.jpg",
     ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
-    sprachwelt: "assets/Rafis%20pic/Rafis%20Sprachwelt.png",
+    sprachwelt: "assets/RafisSprachwelt.png",
     examZone: "https://picsum.photos/seed/option5/1200/500",
     proTools: "https://picsum.photos/seed/option6/1200/500"
   },
@@ -733,7 +733,8 @@ const panelPageContent = {
     cards: [
       "Topic-based quick practice sets for daily training.",
       "Short grammar and vocabulary drills with real context.",
-      "Designed for frequent updates without changing page flow."
+      "Designed for frequent updates without changing page flow.",
+      "Designed."
     ]
   },
   option5: {
