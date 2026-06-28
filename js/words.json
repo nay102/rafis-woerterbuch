@@ -13484,12 +13484,16 @@
     "word": "Easy German",
     "type": "Channel",
     "category": "Best YT Kanäle",
-    "englisch": ["German learning channel"],
-    "bangla": ["জার্মান শেখার চ্যানেল"],
-    "meaning": "YouTube channel for learning German.",
-    "examples": ["Subscribe to Easy German"]
+    "englisch": ["German learning channel", "Street interviews for language learners"],
+    "bangla": ["জার্মান শেখার চ্যানেল", "বাস্তব জীবনের জার্মান কথোপকথন"],
+    "meaning": "A very popular YouTube channel where you can learn German through real street interviews with subtitles and natural conversations.",
+    "link": "https://www.youtube.com/@EasyGerman",
+    "examples": [
+      "<b>(1) Ich schaue jeden Tag Easy German, um Deutsch zu lernen.</b>\n(I watch Easy German every day to learn German.)",
+      "<b>(2) Die Videos von Easy German sind sehr interessant.</b>\n(The videos from Easy German are very interesting.)"
+    ]
   },
-  {
+{
     "id": "yt2",
     "word": "Learn German with Anja",
     "type": "Channel",
@@ -13497,7 +13501,11 @@
     "englisch": ["German learning channel with a fun approach"],
     "bangla": ["মজার ছলে জার্মান শেখার চ্যানেল"],
     "meaning": "A channel for high-energy, immersive language learning. Features animated sketches, practical grammar shortcuts, and conversational phrases tailored specifically for absolute beginners and intermediate learners (A1-B1).",
-    "examples": ["Watch Learn German with Anja for grammar tips"]
+    "link": "https://www.youtube.com/@LearnGermanWithAnja",
+    "examples": [
+      "<b>(1) Anja erklärt die deutsche Grammatik mit viel Spaß.</b>\n(Anja explains German grammar with a lot of fun.)",
+      "<b>(2) Ich mag ihre Videos, weil sie sehr einfach zu verstehen sind.</b>\n(I like her videos because they are very easy to understand.)"
+    ]
   },
   {
     "id": "yt3",
@@ -13507,7 +13515,11 @@
     "englisch": ["German grammar and vocabulary channel"],
     "bangla": ["জার্মান ব্যাকরণ ও শব্দভান্ডার শেখার চ্যানেল"],
     "meaning": "A highly structured educational channel. Features step-by-step whiteboard explanations, exam preparation tips (Goethe/Telc), and core vocabulary lists perfect for systematic learners from A1 to B2 levels.",
-    "examples": ["Check out YourGermanTeacher for A1-B2 preparation"]
+    "link": "https://www.youtube.com/@YourGermanTeacher",
+    "examples": [
+      "<b>(1) Dieser Kanal hilft mir sehr bei der Vorbereitung auf die B1-Prüfung.</b>\n(This channel helps me a lot with preparing for the B1 exam.)",
+      "<b>(2) Die Lehrer erklären die schweren Regeln Schritt für Schritt auf einer Tafel.</b>\n(The teachers explain the difficult rules step by step on a whiteboard.)"
+    ]
   },
   {
     "id": "yt4",
@@ -13517,7 +13529,11 @@
     "englisch": ["German culture and idioms channel"],
     "bangla": ["জার্মান সংস্কৃতি ও বাগধারা শেখার চ্যানেল"],
     "meaning": "An entertaining cultural insight channel. Features comedic comparisons, explanations of bizarre idioms, and pronunciation guides that help pre-intermediate to advanced learners (A2-B2) understand native slang.",
-    "examples": ["Learn funny German idioms on Don't Trust The Rabbit"]
+    "link": "https://www.youtube.com/@DontTrustTheRabbit",
+    "examples": [
+      "<b>(1) Auf diesem Kanal lernt man lustige deutsche Redewendungen.</b>\n(On this channel, you learn funny German idioms.)",
+      "<b>(2) Das Video über die deutsche Kultur war wirklich sehr interessant.</b>\n(The video about German culture was really very interesting.)"
+    ]
   },
   {
     "id": "yt5",
@@ -13527,7 +13543,11 @@
     "englisch": ["German news and current affairs channel"],
     "bangla": ["জার্মান সংবাদ ও সমসাময়িক বিষয়ের চ্যানেল"],
     "meaning": "A premium public broadcasting news channel. Features daily reports, political analysis, and investigative journalism videos perfect for advanced learners (B2-C1) looking to build formal, high-level vocabulary.",
-    "examples": ["Watch ZDFheute Nachrichten for daily updates"]
+    "link": "https://www.youtube.com/@ZDFheute",
+    "examples": [
+      "<b>(1) Ich sehe die Nachrichten, um wichtige Wörter über Politik zu lernen.</b>\n(I watch the news to learn important words about politics.)",
+      "<b>(2) Die Berichte sind manchmal etwas schwer für mein Niveau.</b>\n(The reports are sometimes a bit difficult for my level.)"
+    ]
   },
   {
     "id": "yt6",
@@ -13537,7 +13557,11 @@
     "englisch": ["German finance and profession docu-series channel"],
     "bangla": ["জার্মান পেশা ও অর্থ বিষয়ক তথ্যচিত্রের চ্যানেল"],
     "meaning": "A highly engaging documentary channel by BR. Features transparent video profiles of people revealing their careers, working hours, and real earnings, ideal for practical native slang and career vocabulary (B1-C1).",
-    "examples": ["See how much professions earn on Lohnt sich das?"]
+    "link": "https://www.youtube.com/@lohntsichdas",
+    "examples": [
+      "<b>(1) In den Videos sieht man, wie viel Geld verschiedene Berufe in Deutschland verdienen.</b>\n(In the videos, you see how much money different professions earn in Germany.)",
+      "<b>(2) Ich finde es interessant zu sehen, wie die Menschen arbeiten.</b>\n(I find it interesting to see how people work.)"
+    ]
   },
   {
     "id": "yt7",
@@ -13547,7 +13571,11 @@
     "englisch": ["German social documentary channel"],
     "bangla": ["জার্মান সামাজিক তথ্যচিত্রের চ্যানেল"],
     "meaning": "A renowned ZDF documentary channel. Features deeply emotional, real-life human stories and social issues in Germany, offering natural, slow-paced narrative German best suited for intermediate and advanced levels (B1-C1).",
-    "examples": ["Watch a moving documentary on 37 Grad"]
+    "link": "https://www.youtube.com/@37Grad",
+    "examples": [
+      "<b>(1) Die Dokumentationen auf diesem Kanal zeigen das echte Leben der Menschen.</b>\n(The documentaries on this channel show the real life of people.)",
+      "<b>(2) Die Sprecher sprechen meistens langsam und deutlich.</b>\n(The speakers usually speak slowly and clearly.)"
+    ]
   },
   {
     "id": "yt8",
@@ -13557,7 +13585,11 @@
     "englisch": ["German communication and accent training channel"],
     "bangla": ["জার্মান যোগাযোগ ও উচ্চারণ শিক্ষার চ্যানেল"],
     "meaning": "An educational channel run by Maria. Features concise video tips on flawless pronunciation, accent reduction, and professional career communication strategies designed for upper-beginner to advanced speakers (A2-C1).",
-    "examples": ["Improve your pronunciation with Dein Sprachcoach"]
+    "link": "https://www.youtube.com/@DeinSprachcoach",
+    "examples": [
+      "<b>(1) Maria gibt tolle Tipps, wie man die deutsche Aussprache verbessern kann.</b>\n(Maria gives great tips on how to improve German pronunciation.)",
+      "<b>(2) Dank ihrer Übungen spreche ich jetzt viel deutlicher als früher.</b>\n(Thanks to her exercises, I speak much more clearly now than before.)"
+    ]
   },
   {
     "id": "yt9",
@@ -13567,7 +13599,11 @@
     "englisch": ["Fast-track German learning channel"],
     "bangla": ["দ্রুত জার্মান শেখার চ্যানেল"],
     "meaning": "A highly accessible beginner channel. Features animated video phrases, essential daily vocabulary, and slow listening drills specifically formatted for absolute beginners rushing to master basic interactions (A1-A2).",
-    "examples": ["Learn basic conversational phrases on Learn German Fast"]
+    "link": "https://www.youtube.com/@LearnGermanFast",
+    "examples": [
+      "<b>(1) Dieser Kanal ist perfekt, um schnell nützliche Sätze für den Alltag zu lernen.</b>\n(This channel is perfect for quickly learning useful sentences for everyday life.)",
+      "<b>(2) Die Animationen helfen dabei, sich die Wörter besser zu merken.</b>\n(The animations help to remember the words better.)"
+    ]
   },
   {
     "id": "yt10",
@@ -13577,7 +13613,11 @@
     "englisch": ["Structured German grammar and dialog channel"],
     "bangla": ["পরিকল্পিত জার্মান ব্যাকরণ ও কথোপকথনের চ্যানেল"],
     "meaning": "A crystal-clear instructional channel. Features step-by-step videos on complex grammar adjustments, listening dialogue simulations, and core verbs intended for structured learners across A1 to B2 levels.",
-    "examples": ["Master German grammar rules with Deutsch1"]
+    "link": "https://www.youtube.com/@deutsch_eins",
+    "examples": [
+      "<b>(1) Bei Deutsch1 gibt es gute Dialoge zum Mitsprechen.</b>\n(At Deutsch1, there are good dialogues to practice speaking along.)",
+      "<b>(2) Die Erklärungen zu den Verben sind sehr übersichtlich.</b>\n(The explanations of the verbs are very clear.)"
+    ]
   },
   {
     "id": "yt11",
@@ -13587,7 +13627,11 @@
     "englisch": ["Interactive German vocabulary and conversation channel"],
     "bangla": ["ইন্টারেক্টিভ জার্মান শব্দভাণ্ডার ও কথোপকথনের চ্যানেল"],
     "meaning": "A friendly, conversational learning channel. Features engaging situational dialogues, everyday vocabulary routines, and practical speaking hacks optimized for beginner to intermediate levels (A1-B2).",
-    "examples": ["Practice common everyday scenarios on Deutsch mit Lara"]
+    "link": "https://www.youtube.com/@DeutschmitLara",
+    "examples": [
+      "<b>(1) Lara zeigt in ihren Videos Situationen beim Einkaufen oder beim Arzt.</b>\n(Lara shows situations like shopping or at the doctor in her videos.)",
+      "<b>(2) Ich lerne hier viele Wörter, die ich sofort benutzen kann.</b>\n(I learn many words here that I can use immediately.)"
+    ]
   },
   {
     "id": "yt12",
@@ -13597,7 +13641,11 @@
     "englisch": ["German dialogue and listening practice channel"],
     "bangla": ["জার্মান কথোপকথন ও শোনার দক্ষতা বাড়ানোর চ্যানেল"],
     "meaning": "An animated language-immersion channel. Features clean cartoon story dialogues, interactive comprehension quizzes, and pronunciation training tailored mainly for foundational and intermediate blocks (A1-B1).",
-    "examples": ["Test your listening skills on Learn German with Lengura"]
+    "link": "https://www.youtube.com/@Lengura",
+    "examples": [
+      "<b>(1) Die Zeichentrickfilme auf Lengura machen das Lernen sehr unterhaltsam.</b>\n(The cartoons on Lengura make learning very entertaining.)",
+      "<b>(2) Nach der Geschichte kann man kleine Quizfragen beantworten.</b>\n(After the story, you can answer small quiz questions.)"
+    ]
   },
   {
     "id": "yt13",
@@ -13607,7 +13655,11 @@
     "englisch": ["German self-experiment and journalism channel"],
     "bangla": ["জার্মান আত্ম-পরীক্ষামূলক ও সাংবাদিকতা বিষয়ক চ্যানেল"],
     "meaning": "An investigative self-experiment channel by Felix. Features fast-paced, highly entertaining documentary-style videos testing extreme lifestyles or unique jobs, exceptional for casual youth slang and modern vocabulary (B1-C1).",
-    "examples": ["Watch an intense self-experiment on tomatolix"]
+    "link": "https://www.youtube.com/@tomatolix",
+    "examples": [
+      "<b>(1) Felix probiert in seinen Selbstexperimenten viele verrückte Dinge aus.</b>\n(Felix tries out many crazy things in his self-experiments.)",
+      "<b>(2) Man lernt auf diesem Kanal moderne Wörter, die Jugendliche oft benutzen.</b>\n(On this channel, you learn modern words that young people often use.)"
+    ]
   },
   {
     "id": "yt14",
@@ -13617,7 +13669,11 @@
     "englisch": ["German pop culture and comedy entertainment channel"],
     "bangla": ["জার্মান পপ সংস্কৃতি ও কৌতুক বিনোদনের চ্যানেল"],
     "meaning": "A major youth-radio media channel by WDR. Features hilarious comedy sketches, celebrity interviews, and lifestyle comedy clips, perfect for advanced learners tracking authentic native humor and rapid-fire speech (B2-C1).",
-    "examples": ["Enjoy funny German comedy sketches on 1LIVE"]
+    "link": "https://www.youtube.com/@1LIVE",
+    "examples": [
+      "<b>(1) Die Videos von 1LIVE sind oft extrem lustig, aber die Leute sprechen sehr schnell.</b>\n(The videos from 1LIVE are often extremely funny, but people speak very fast.)",
+      "<b>(2) Ich schaue die Interviews mit berühmten Musikern sehr gerne.</b>\n(I really enjoy watching the interviews with famous musicians.)"
+    ]
   },
   {
     "id": "yt15",
@@ -13627,7 +13683,11 @@
     "englisch": ["Official DW German educational channel"],
     "bangla": ["অফিসিয়াল ডিডব্লিউ জার্মান শিক্ষা চ্যানেল"],
     "meaning": "The golden standard language learning network from Deutsche Welle. Features famous structured drama series (like Nico's Weg), slow-spoken news, and academic grammar courses thoroughly mapped from A1 to C1 levels.",
-    "examples": ["Follow Nico's Weg on Deutsch lernen mit der DW"]
+    "link": "https://www.youtube.com/@dwlearngerman",
+    "examples": [
+      "<b>(1) 'Nicos Weg' ist die beste Serie für Menschen, die Deutsch lernen wollen.</b>\n('Nicos Weg' is the best series for people who want to learn German.)",
+      "<b>(2) Die Deutsche Welle bietet kostenlose Übungen für jedes Sprachniveau an.</b>\n(Deutsche Welle offers free exercises for every language level.)"
+    ]
   },
   {
     "id": "yt16",
@@ -13635,9 +13695,13 @@
     "type": "Channel",
     "category": "Best YT Kanäle",
     "englisch": ["Advanced German grammar and exam prep channel"],
-    "bangla": ["উচ্চতর জার্মান ব্যাকরণ ও পরীক্ষার প্রস্তুতির চ্যানেল"],
+    "bangla": ["উচ্চতর জার্মান ব্যাকরণ ও পরীক্ষার প্রস্তuতির চ্যানেল"],
     "meaning": "A deeply academic, professional teacher channel. Features in-depth whiteboard lectures focusing on advanced sentence structures, C1-level academic text structures, and precise TestDaF/Goethe exam tactics (B1-C1).",
-    "examples": ["Prepare for your advanced exams with Benjamin - Der Deutschlehrer"]
+    "link": "https://www.youtube.com/@BenjaminDerDeutschlehrer",
+    "examples": [
+      "<b>(1) Benjamin erklärt komplizierte Sätze für fortgeschrittene Lerner sehr genau.</b>\n(Benjamin explains complicated sentences for advanced learners very precisely.)",
+      "<b>(2) Seine Videos helfen mir, bessere Texte auf Deutsch zu schreiben.</b>\n(His videos help me write better texts in German.)"
+    ]
   },
   {
     "id": "yt17",
@@ -13647,7 +13711,11 @@
     "englisch": ["German sketch comedy channel"],
     "bangla": ["জার্মান স্কেচ কমেডি চ্যানেল"],
     "meaning": "An iconic comedy channel starring Martina Hill. Features absurd, visual, situational sketch comedy that lets learners analyze colloquial German, physical expressions, and everyday conversational sarcasm (A2-C1).",
-    "examples": ["Laugh along with Martina Hill on Knallerfrauen"]
+    "link": "https://www.youtube.com/@KnallerfrauenDE",
+    "examples": [
+      "<b>(1) Martina Hill macht in Knallerfrauen sehr lustige Witze über den Alltag.</b>\n(Martina Hill makes very funny jokes about everyday life in Knallerfrauen.)",
+      "<b>(2) Man versteht die Sketche auch dann gut, wenn man nicht jedes Wort kennt.</b>\n(You can understand the sketches well even if you don't know every word.)"
+    ]
   },
   {
     "id": "yt18",
@@ -13657,9 +13725,13 @@
     "englisch": ["Animated German course channel"],
     "bangla": ["অ্যানিমেটেড জার্মান কোর্স চ্যানেল"],
     "meaning": "A globally popular educational project. Features completely animated textbook courses, covering vocabulary, structured phrases, and systematic reading dialogues explicitly categorized step-by-step from A1 to B2.",
-    "examples": ["Study the complete baseline courses on Learn German"]
+    "link": "https://www.youtube.com/@LearnGermanOriginal",
+    "examples": [
+      "<b>(1) Die Lektionen auf diesem Kanal sind sehr gut organisiert.</b>\n(The lessons on this channel are very well organized.)",
+      "<b>(2) Man hört zuerst das Wort und sieht danach ein passendes Bild dazu.</b>\n(You hear the word first and then see a matching picture for it.)"
+    ]
   },
-  {
+{
     "id": "yt19",
     "word": "DW Deutsch",
     "type": "Channel",
@@ -13667,7 +13739,11 @@
     "englisch": ["German global news and culture channel"],
     "bangla": ["জার্মান বৈশ্বিক সংবাদ ও সংস্কৃতির চ্যানেল"],
     "meaning": "An official public international broadcaster. Features high-quality global news packages, political debates, and cultural documentaries spoken in crystal-clear standard German, optimal for upper-intermediate to advanced speakers (B2-C1).",
-    "examples": ["Stay updated on world politics with DW Deutsch"]
+    "link": "https://www.youtube.com/@dwdeutsch",
+    "examples": [
+      "<b>(1) Ich sehe diesen Kanal, um wichtige Nachrichten aus der ganzen Welt zu verstehen.</b>\n(I watch this channel to understand important news from around the world.)",
+      "<b>(2) Die Sprecher sprechen sehr deutlich, aber sie benutzen viele schwere Wörter.</b>\n(The speakers speak very clearly, but they use many difficult words.)"
+    ]
   },
   {
     "id": "yt20",
@@ -13677,7 +13753,11 @@
     "englisch": ["German regional and social documentary channel"],
     "bangla": ["জার্মান আঞ্চলিক ও সামাজিক তথ্যচিত্রের চ্যানেল"],
     "meaning": "A premium documentary channel by public broadcaster SWR. Features investigative reports, authentic human interest profiles, and deep-dives into German society, providing incredible natural narrative exposure for levels B1 to C1.",
-    "examples": ["Watch a deep social report on SWR Doku"]
+    "link": "https://www.youtube.com/@SWRDoku",
+    "examples": [
+      "<b>(1) Die Dokumentationen zeigen interessante Geschichten über das Leben in Deutschland.</b>\n(The documentaries show interesting stories about life in Germany.)",
+      "<b>(2) Ich finde die Videos toll, weil die Menschen ganz natürlich sprechen.</b>\n(I think the videos are great because the people speak very naturally.)"
+    ]
   },
   {
     "id": "yt21",
@@ -13687,7 +13767,11 @@
     "englisch": ["German science-pop and entertainment channel"],
     "bangla": ["জার্মান বিজ্ঞান-ভিত্তিক বিনোদনমূলক চ্যানেল"],
     "meaning": "An entertaining science and comedy show hosted by Dr. Mai Thi Nguyen-Kim (ZDF). Features fast-paced, witty, evidence-based video essays on social issues and tech, brilliant for high-level colloquial and academic vocabulary (B2-C1).",
-    "examples": ["Learn about complex scientific topics on MAITHINK X"]
+    "link": "https://www.youtube.com/@maithinkx",
+    "examples": [
+      "<b>(1) Die Moderatorin erklärt wissenschaftliche Themen mit viel Humor.</b>\n(The presenter explains scientific topics with a lot of humor.)",
+      "<b>(2) Obwohl sie schnell spricht, kann ich die Hauptthemen gut verstehen.</b>\n(Although she speaks fast, I can understand the main topics well.)"
+    ]
   },
   {
     "id": "yt22",
@@ -13697,7 +13781,11 @@
     "englisch": ["German travel and culture exploration channel"],
     "bangla": ["জার্মান ভ্রমণ ও সংস্কৃতি বিষয়ক চ্যানেল"],
     "meaning": "A popular spin-off from ProSieben's Galileo. Features fast-paced adventure vlogs, global food testing, and luxury-vs-budget travel comparisons, making it great for casual conversational phrases and geographic terms (B1-B2).",
-    "examples": ["Explore street food culture on Galileo Travel"]
+    "link": "https://www.youtube.com/@GalileoTravelofficial",
+    "examples": [
+      "<b>(1) Ich schaue die Videos, weil ich gerne andere Länder und Kulturen kennenlerne.</b>\n(I watch the files because I like getting to know other countries and cultures.)",
+      "<b>(2) In dieser Sendung testen die Reporter leckeres Essen aus der ganzen Welt.</b>\n(In this show, the reporters test delicious food from all over the world.)"
+    ]
   },
   {
     "id": "yt23",
@@ -13707,17 +13795,25 @@
     "englisch": ["German investigative journalism and reality docu channel"],
     "bangla": ["জার্মান অনুসন্ধানী সাংবাদিকতা ও বাস্তবভিত্তিক তথ্যচিত্রের চ্যানেল"],
     "meaning": "A mainstream media documentary hub. Features gritty undercover reporting, everyday emergency services footage, and consumer protection tests, providing realistic exposure to slang and emotional conversational German (B1-C1).",
-    "examples": ["Check out the latest undercover reporting on RTL Doku"]
+    "link": "https://www.youtube.com/@rtldoku",
+    "examples": [
+      "<b>(1) Dieser Kanal zeigt spannende Berichte über die Arbeit der Polizei.</b>\n(This channel shows exciting reports about the work of the police.)",
+      "<b>(2) Man lernt hier viele Wörter, die man im normalen Alltag benutzt.</b>\n(You learn many words here that are used in normal everyday life.)"
+    ]
   },
   {
     "id": "yt24",
-    "word": "ZDFheute unbubble",
+    "word": "ZDFunbubble",
     "type": "Channel",
     "category": "Best YT Kanäle",
     "englisch": ["German debate and perspective-sharing channel"],
     "bangla": ["জার্মান বিতর্ক ও দৃষ্টিভঙ্গি বিনিময়ের চ্যানেল"],
     "meaning": "A politically charged discussion channel by ZDF. Features structured debate videos bringing people with clashing views face-to-face, ideal for mastering complex debate phrases, expressions, and societal terms (B2-C1).",
-    "examples": ["Watch an engaging debate on hot political topics on ZDFheute unbubble"]
+    "link": "https://www.youtube.com/@unbubble",
+    "examples": [
+      "<b>(1) In den Videos diskutieren Menschen mit verschiedenen Meinungen miteinander.</b>\n(In the videos, people with different opinions discuss with each other.)",
+      "<b>(2) Das ist eine gute Übung, um Argumente auf Deutsch zu lernen.</b>\n(That is a good exercise for learning arguments in German.)"
+    ]
   },
   {
     "id": "yt25",
@@ -13727,7 +13823,11 @@
     "englisch": ["German regional public broadcasting channel"],
     "bangla": ["জার্মান আঞ্চলিক গণমাধ্যম চ্যানেল"],
     "meaning": "The official channel for Hesse’s state broadcaster (hr). Features regional news vlogs, consumer tips, local nature docs, and subtle Hessian dialect nuances, ideal for intermediate learners tracking regional cultures (B1-C1).",
-    "examples": ["Discover local traditions on Hessischer Rundfunk"]
+    "link": "https://www.youtube.com/@hessischerRundfunkARD",
+    "examples": [
+      "<b>(1) Der Kanal berichtet über aktuelle Themen aus einem bestimmten Bundesland.</b>\n(The channel reports on current topics from a specific federal state.)",
+      "<b>(2) Manchmal sprechen die älteren Personen mit einem kleinen Dialekt.</b>\n(Sometimes the older people speak with a slight dialect.)"
+    ]
   },
   {
     "id": "yt26",
@@ -13737,7 +13837,11 @@
     "englisch": ["German fashion, lifestyle, and video podcast channel"],
     "bangla": ["জার্মান ফ্যাশন, লাইফস্টাইল ও ভিডিও পডকাস্ট চ্যানেল"],
     "meaning": "A lifestyle channel featuring the video podcast 'à la carte'. Features intimate conversational interviews, fashion aesthetics, and casual youth vlogs, making it perfect for studying modern urban slang and native conversational flow (B1-C1).",
-    "examples": ["Listen to authentic interview conversations on riccarda greco"]
+    "link": "https://www.youtube.com/@riccardagreco",
+    "examples": [
+      "<b>(1) Sie macht interessante Vlogs über Mode und ihr tägliches Leben.</b>\n(She makes interesting vlogs about fashion and her daily life.)",
+      "<b>(2) Ihr Podcast ist perfekt, um die moderne Jugendsprache zu hören.</b>\n(Her podcast is perfect for hearing modern youth language.)"
+    ]
   },
   {
     "id": "yt27",
@@ -13747,7 +13851,11 @@
     "englisch": ["German career advice and application training channel"],
     "bangla": ["জার্মান ক্যারিয়ার পরামর্শ ও চাকরির আবেদন বিষয়ক চ্যানেল"],
     "meaning": "A highly practical career coaching space. Features expert video walkthroughs on building German resumes (Lebenslauf), mastering job interviews, and workplace etiquette, critical for professional learners (B1-C1).",
-    "examples": ["Prepare for your German job interview with Silke Koppitz: Karriereberatung"]
+    "link": "https://www.youtube.com/@SilkeKoppitz",
+    "examples": [
+      "<b>(1) Ihre Videos helfen mir, eine gute Bewerbung auf Deutsch zu schreiben.</b>\n(Her videos help me write a good application in German.)",
+      "<b>(2) Sie gibt tolle Tipps für ein erfolgreiches Vorstellungsgespräch.</b>\n(She gives great tips for a successful job interview.)"
+    ]
   },
   {
     "id": "yt28",
@@ -13757,7 +13865,11 @@
     "englisch": ["German entertainment and comedy vlog channel"],
     "bangla": ["জার্মান বিনোদন ও কমেডি ব্লগ চ্যানেল"],
     "meaning": "An entertaining channel run by Kelly MissesVlog. Features comedic challenges, personal travel vlogs, and self-experiments filled with rapid-fire native youth expressions, rapid speaking speeds, and popular slang (B2-C1).",
-    "examples": ["Watch a chaotic daily vlog on KELLY //missesvlog"]
+    "link": "https://www.youtube.com/@MissesVlog",
+    "examples": [
+      "<b>(1) Kelly macht sehr lustige und verrückte Videos auf YouTube.</b>\n(Kelly makes very funny and crazy videos on YouTube.)",
+      "<b>(2) Da sie extrem schnell spricht, muss ich mich beim Hören stark konzentrieren.</b>\n(Since she speaks extremely fast, I have to concentrate hard while listening.)"
+    ]
   },
   {
     "id": "yt29",
@@ -13767,7 +13879,11 @@
     "englisch": ["German personal development and spirituality channel"],
     "bangla": ["জার্মান ব্যক্তিত্ব বিকাশ ও আধ্যাত্মিকতা বিষয়ক চ্যানেল"],
     "meaning": "A motivational and self-growth coaching channel. Features emotional podcasts, calming meditation guides, and inspiring interviews focused on mindset, offering slow, uplifting, and beautifully articulated German (A2-C1).",
-    "examples": ["Boost your morning motivation with Laura Malina Seiler"]
+    "link": "https://www.youtube.com/@laura.malina.seiler",
+    "examples": [
+      "<b>(1) Ihre Podcasts sind sehr motivierend für meine persönliche Entwicklung.</b>\n(Her podcasts are very motivating for my personal development.)",
+      "<b>(2) Sie spricht sehr ruhig, deshalb kann man jedes Wort gut verstehen.</b>\n(She speaks very calmly, so you can understand every word well.)"
+    ]
   },
   {
     "id": "yt30",
@@ -13777,7 +13893,11 @@
     "englisch": ["German food review and family vlog channel"],
     "bangla": ["জার্মান ফুড রিভিউ ও ফ্যামিলি ব্লগ চ্যানেল"],
     "meaning": "A highly relaxed culinary testing channel. Features authentic family food tasting videos, supermarket snack hauls, and casual conversational reviews, making it a goldmine for daily kitchen and household vocabulary (A2-B2).",
-    "examples": ["Learn vocabulary for common groceries with Die Mampfies"]
+    "link": "https://www.youtube.com/@Mampfies",
+    "examples": [
+      "<b>(1) Eine nette Familie testet in den Videos neue Snacks aus dem Supermarkt.</b>\n(A nice family tests new snacks from the supermarket in the videos.)",
+      "<b>(2) Beim Zuschauen lerne ich viele nützliche Wörter über das Essen.</b>\n(While watching, I learn many useful words about food.)"
+    ]
   },
   {
     "id": "yt31",
@@ -13787,7 +13907,11 @@
     "englisch": ["German history and global politics channel"],
     "bangla": ["জার্মান ইতিহাস ও বৈশ্বিক রাজনীতি বিষয়ক চ্যানেল"],
     "meaning": "An educational channel hosted by Mirko Drotschmann. Features expertly structured whiteboard animations and commentary on historical events and geopolitics, highly recommended for building academic vocabulary (B1-C1).",
-    "examples": ["Understand complex historical conflicts on MrWissen2go"]
+    "link": "https://www.youtube.com/@MrWissen2go",
+    "examples": [
+      "<b>(1) Mirko erklärt komplizierte politische Themen auf eine einfache Weise.</b>\n(Mirko explains complicated political topics in a simple way.)",
+      "<b>(2) Ich nutze seine Videos oft, um mein Wissen über Geschichte zu verbessern.</b>\n(I often use his videos to improve my knowledge about history.)"
+    ]
   },
   {
     "id": "yt32",
@@ -13797,7 +13921,11 @@
     "englisch": ["German art illustration and design vlog channel"],
     "bangla": ["জার্মান আর্ট ইলাস্ট্রেশন ও ডিজাইন ব্লগ চ্যানেল"],
     "meaning": "A cozy, creative studio channel run by designer Gesa. Features aesthetic daily art vlogs, design project walkthroughs, and studio organization routines, great for soothing narrative listening and creative hobby vocabulary (A2-B2).",
-    "examples": ["Watch a creative design project vlog on Dino Dauer Kunst"]
+    "link": "https://www.youtube.com/@DinoDauerKunst",
+    "examples": [
+      "<b>(1) Die Künstlerin zeigt, wie sie ihre schönen Bilder zeichnet.</b>\n(The artist shows how she draws her beautiful pictures.)",
+      "<b>(2) Die ruhige Musik im Hintergrund hilft mir beim Entspannen.</b>\n(The calm music in the background helps me relax.)"
+    ]
   },
   {
     "id": "yt33",
@@ -13807,7 +13935,11 @@
     "englisch": ["German language learning channel"],
     "bangla": ["সহজে জার্মান শেখার চ্যানেল"],
     "meaning": "An accessible educational channel run by Flora. Features simplified video breakdowns of everyday grammar structures, speaking patterns, and pronunciation exercises explicitly designed for beginner to intermediate learners (A1-B2).",
-    "examples": ["Practice common conversation patterns with einfach Deutsch mit Flora"]
+    "link": "https://www.youtube.com/@EinfachDeutschde",
+    "examples": [
+      "<b>(1) Flora erklärt wichtige Grammatikregeln für das B1-Niveau.</b>\n(Flora explains important grammar rules for the B1 level.)",
+      "<b>(2) Die Beispiele in ihren Videos sind sehr praktisch für das Gespräch.</b>\n(The examples in her videos are very practical for conversation.)"
+    ]
   },
   {
     "id": "yt34",
@@ -13817,7 +13949,11 @@
     "englisch": ["German psychology and essay channel"],
     "bangla": ["জার্মান মনোবিজ্ঞান ও প্রবন্ধ বিষয়ক চ্যানেল"],
     "meaning": "An insightful thought-experiment and philosophy channel. Features highly produced animated video essays dealing with productivity, psychology, and lifestyle mindsets, making it wonderful for conceptual native vocabulary (B1-C1).",
-    "examples": ["Listen to philosophical reflections on Thoughts2go"]
+    "link": "https://www.youtube.com/@Thoughtstogo",
+    "examples": [
+      "<b>(1) Die Videos nutzen tolle Animationen, um über Psychologie zu sprechen.</b>\n(The videos use great animations to talk about psychology.)",
+      "<b>(2) Ich lerne hier, wie ich im Alltag produktiver arbeiten kann.</b>\n(I learn here how I can work more productively in everyday life.)"
+    ]
   },
   {
     "id": "yt35",
@@ -13827,7 +13963,11 @@
     "englisch": ["German phonetics and accent reduction channel"],
     "bangla": ["জার্মান ধ্বনিতত্ত্ব ও উচ্চারণ সংশোধন চ্যানেল"],
     "meaning": "A specialized linguistics training channel. Features targeted video courses on articulation, breathing techniques, and correcting difficult German vocal accents, essential for learners striving for native-sounding speech (A2-C1).",
-    "examples": ["Fine-tune your mouth articulation using Judithe Barthomeuf's guides"]
+    "link": "https://www.youtube.com/@JuditheBarthomeuf",
+    "examples": [
+      "<b>(1) Judithe zeigt genau, wie man die Lippen für bestimmte Laute bewegen muss.</b>\n(Judithe shows exactly how you have to move your lips for certain sounds.)",
+      "<b>(2) Mit ihren Übungen kann man den eigenen Akzent schnell reduzieren.</b>\n(With her exercises, you can quickly reduce your own accent.)"
+    ]
   },
   {
     "id": "yt36",
@@ -13837,17 +13977,347 @@
     "englisch": ["German communication and vocabulary channel"],
     "bangla": ["জার্মান যোগাযোগ ও শব্দভাণ্ডার শেখার চ্যানেল"],
     "meaning": "A practical language-immersion channel. Features video tips on essential colloquial adjustments, situational vocab lists, and quick speaking hacks tailored to upgrade intermediate confidence levels (A2-B2).",
-    "examples": ["Learn natural transition phrases on DarynasDeutsch"]
+    "link": "https://www.youtube.com/@DarynasDeutsch",
+    "examples": [
+      "<b>(1) Sie gibt gute Ratschläge, wie man flüssiger auf Deutsch sprechen kann.</b>\n(She gives good advice on how to speak more fluently in German.)",
+      "<b>(2) Ich mag ihre kurzen Videos mit wichtigen Vokabeln für den Beruf.</b>\n(I like her short videos with important vocabulary for work.)"
+    ]
   },
-  {
+{
     "id": "yt37",
-    "word": "Deutsch Meister",
+    "word": "KinoCheck",
     "type": "Channel",
     "category": "Best YT Kanäle",
-    "englisch": ["Comprehensive German grammar course channel"],
-    "bangla": ["বিস্তৃত জার্মান ব্যাকরণ কোর্স চ্যানেল"],
-    "meaning": "A structured educational channel focusing on core mechanics. Features organized whiteboard tutorials explaining sentence syntax, conjugation rules, and vocabulary matrices tailored for standard exam preparations (A1-B2).",
-    "examples": ["Review complex syntax layouts with Deutsch Meister"]
+    "englisch": ["German movie trailers and cinema news channel"],
+    "bangla": ["জার্মান সিনেমার ট্রেলার ও চলচ্চিত্র বিষয়ক সংবাদ চ্যানেল"],
+    "meaning": "A highly popular entertainment channel. Features the latest official movie trailers, exclusive teasers, and cinema reviews dubbed or subbed in German, perfect for learning casual entertainment and pop-culture vocabulary (B1-C1).",
+    "link": "https://www.youtube.com/@KinoCheck",
+    "examples": [
+      "<b>(1) Ich schaue mir oft die neuen Trailer auf KinoCheck an, um interessante Filme zu finden.</b>\n(I often watch the new trailers on KinoCheck to find interesting movies.)",
+      "<b>(2) Die Filmkritiken auf diesem Kanal helfen mir, mein Hörverstehen zu verbessern.</b>\n(The movie reviews on this channel help me improve my listening comprehension.)"
+    ]
+  },
+  {
+    "id": "yt38",
+    "word": "Deutsch - aber, klar",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German listening practice and podcast channel"],
+    "bangla": ["জার্মান শোনার দক্ষতা ও পডকাস্ট চ্যানেল"],
+    "meaning": "An engaging audio-focused learning space. Features thematic German podcast episodes, clear conversational dialogues, and real-world audio stories designed to boost listening comprehension and native immersion for intermediate learners (A2-B2).",
+    "link": "https://www.youtube.com/@Deutschaberklar",
+    "examples": [
+      "<b>(1) Ich höre diesen Podcast regelmäßig, um mein Hörverstehen im Alltag zu trainieren.</b>\n(I listen to this podcast regularly to train my listening comprehension for everyday life.)",
+      "<b>(2) Die Themen sind sehr interessant und die Pausen helfen beim Verstehen.</b>\n(The topics are very interesting and the pauses help with understanding.)"
+    ]
+  },
+  {
+    "id": "yt39",
+    "word": "DIE WG",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German youth reality and entertainment channel"],
+    "bangla": ["জার্মান যুব রিয়েলিটি ও বিনোদনমূলক চ্যানেল"],
+    "meaning": "A highly popular reality show format by ZDFtivi. Follows groups of teenagers or young adults moving into a shared apartment (Wohngemeinschaft) for the summer, providing exceptional exposure to native youth slang, casual everyday dialogues, and emotional peer interactions (B1-B2).",
+    "link": "https://www.youtube.com/@diewg",
+    "examples": [
+      "<b>(1) In dieser Serie wohnen Jugendliche einen Sommer lang ohne Eltern zusammen.</b>\n(In this series, teenagers live together for a summer without parents.)",
+      "<b>(2) Die Alltagssprache in den Videos hilft mir, besser mit Freunden zu sprechen.</b>\n(The everyday language in the videos helps me speak better with friends.)"
+    ]
+  },
+  {
+    "id": "yt40",
+    "word": "AllesJut",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German comedy, entertainment, and street interview channel"],
+    "bangla": ["জার্মান কৌতুক, বিনোদন ও স্ট্রিট ইন্টারভিউ চ্যানেল"],
+    "meaning": "An entertaining comedy and vlog platform. Features humorous social experiments, rapid-fire street interviews, and casual challenges filled with unscripted colloquial German, authentic Berlin/urban expressions, and fast-paced native banter (B2-C1).",
+    "link": "https://www.youtube.com/@AllesJut",
+    "examples": [
+      "<b>(1) Der Kanal zeigt lustige Interviews mit Passanten in deutschen Städten.</b>\n(The channel shows funny interviews with pedestrians in German cities.)",
+      "<b>(2) Die Leute sprechen sehr locker, weshalb man viel Umgangssprache lernt.</b>\n(The people speak very casually, which is why you learn a lot of slang.)"
+    ]
+  },
+  {
+    "id": "yt41",
+    "word": "visionagrar",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German agriculture, farming technology, and rural life channel"],
+    "bangla": ["জার্মান কৃষি, খামার প্রযুক্তি ও গ্রামীণ জীবন বিষয়ক চ্যানেল"],
+    "meaning": "A specialized documentary and showcase channel focusing on modern German agriculture. Features deep-dives into mega farming machinery, harvest routines, and sustainable farming life, excellent for learning technical, environmental, and industry-specific vocabulary (B1-C1).",
+    "link": "https://www.youtube.com/@visionagrar",
+    "examples": [
+      "<b>(1) Die Videos erklären die moderne Landwirtschaft und die Arbeit auf dem Feld.</b>\n(The videos explain modern agriculture and the work in the field.)",
+      "<b>(2) Wer sich für große Traktoren interessiert, findet hier viele Fachbegriffe.</b>\n(Anyone interested in big tractors will find many technical terms here.)"
+    ]
+  },
+  {
+    "id": "yt42",
+    "word": "katharinaxenia",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German lifestyle, aesthetic vlogs, and student life channel"],
+    "bangla": ["জার্মান লাইফস্টাইল, নান্দনিক ব্লগ ও ছাত্রজীবন বিষয়ক চ্যানেল"],
+    "meaning": "A cozy, aesthetic lifestyle channel run by Katharina. Features calming daily vlogs, university routines, productive study-with-me setups, and apartment organization, offering clear, gentle, and highly conversational authentic German narrative flow (A2-B2).",
+    "link": "https://www.youtube.com/@katharinaxenia",
+    "examples": [
+      "<b>(1) Sie macht sehr schöne und ruhige Videos über ihr Studium und ihren Alltag.</b>\n(She makes very beautiful and calm videos about her studies and her daily life.)",
+      "<b>(2) Ihre klare Aussprache ist ideal für Lernende, die noch nicht so gut Deutsch sprechen.</b>\n(Her clear pronunciation is ideal for learners who do not speak German very well yet.)"
+    ]
+  },
+  {
+    "id": "yt43",
+    "word": "Learn German Relaxed with Gabriel",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German comprehensive language immersion and story channel"],
+    "bangla": ["সহজে জার্মান ভাষা শিক্ষা ও গল্প বলার চ্যানেল"],
+    "meaning": "A dedicated language learning environment hosted by Gabriel. Focuses on intuitive acquisition through slow-spoken story telling, comprehensible input methods, and vocabulary-building breakdown sessions specifically designed to build confidence from upper beginner to intermediate levels (A2-B2).",
+    "link": "https://www.youtube.com/@GermanRelaxedGabriel",
+    "examples": [
+      "<b>(1) Gabriel erzählt interessante Geschichten auf Deutsch, aber extra langsam.</b>\n(Gabriel tells interesting stories in German, but extra slowly.)",
+      "<b>(2) Mit dieser Methode kann man sein Hörverständnis ohne Stress trainieren.</b>\n(With this method, you can train your listening comprehension without stress.)"
+    ]
+  },
+  {
+    "id": "yt44",
+    "word": "Deutsch mit Lari",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German learning channel focusing on comprehensible input"],
+    "bangla": ["সহজে বোঝার মতো জার্মান ভাষা শিক্ষা চ্যানেল"],
+    "meaning": "An engaging educational channel hosted by Lari, a trained foreign language teacher. Features natural daily life vlogs, cooking routines, and supermarket walkthroughs utilizing the comprehensible input method to build real-world listening confidence (A1-B2).",
+    "link": "https://www.youtube.com/@deutsch_mit_lari",
+    "examples": [
+      "<b>(1) Lari zeigt in ihren Videos, wie man im deutschen Supermarkt einkauft.</b>\n(Lari shows in her videos how to shop in a German supermarket.)",
+      "<b>(2) Die Methode hilft mir sehr, die Sprache ganz natürlich zu lernen.</b>\n(The method helps me a lot to learn the language very naturally.)"
+    ]
+  },
+  {
+    "id": "yt45",
+    "word": "Natasha Deutsch",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German language learning and storytelling channel"],
+    "bangla": ["জার্মান ভাষা শিক্ষা ও গল্প বলার চ্যানেল"],
+    "meaning": "A popular instructional channel that focuses on clear grammar explanations, essential vocabulary updates, and everyday conversational story integration designed to support lower-beginner to intermediate language learners (A1-B2).",
+    "link": "https://www.youtube.com/@natasha.deutsch",
+    "examples": [
+      "<b>(1) Auf diesem Kanal gibt es tolle Erklärungen für schwere Grammatikregeln.</b>\n(On this channel, there are great explanations for difficult grammar rules.)",
+      "<b>(2) Ich schaue die Videos regelmäßig, um neue Vokabeln zu wiederholen.</b>\n(I watch the videos regularly to review new vocabulary.)"
+    ]
+  },
+  {
+    "id": "yt46",
+    "word": "Georg",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German adventure, nature, and exploration channel"],
+    "bangla": ["জার্মান অ্যাডভেঞ্চার, প্রকৃতি ও অনুসন্ধান বিষয়ক চ্যানেল"],
+    "meaning": "A travel and nature showcase channel hosted by Georg. Features outdoor adventure diaries, global exploration clips, and environmental vlogs narrated in native standard German, great for practical narrative listening and geography vocabulary (B1-C1).",
+    "link": "https://www.youtube.com/@georgmoeller",
+    "examples": [
+      "<b>(1) Er berichtet in seinen kurzen Videos über spannende Reisen auf unserem Planeten.</b>\n(In his short videos, he reports on exciting travels on our planet.)",
+      "<b>(2) Man hört echtes Deutsch und sieht gleichzeitig wunderschöne Landschaften.</b>\n(You hear real German and see beautiful landscapes at the same time.)"
+    ]
+  },
+  {
+    "id": "yt47",
+    "word": "ARD GESUND mit Dr. Julia Fischer",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German medical, nutrition, and mental health channel"],
+    "bangla": ["জার্মান চিকিৎসা, পুষ্টি ও মানসিক স্বাস্থ্য বিষয়ক চ্যানেল"],
+    "meaning": "An official public broadcasting health channel. Features evidence-based video essays on nutrition, physical fitness, modern medicine, and mental well-being, utilizing clear and accessible language perfect for building academic health vocabulary (B1-C1).",
+    "link": "https://www.youtube.com/@ardgesund",
+    "examples": [
+      "<b>(1) Dr. Julia Fischer gibt wöchentlich nützliche Tipps für ein gesundes Leben.</b>\n(Dr. Julia Fischer gives useful tips for a healthy life on a weekly basis.)",
+      "<b>(2) Die medizinischen Themen werden in einer sehr verständlichen Sprache erklärt.</b>\n(The medical topics are explained in a very understandable language.)"
+    ]
+  },
+  {
+    "id": "yt48",
+    "word": "LerneDeutsch",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["Interactive German confidence and fluency training channel"],
+    "bangla": ["জার্মান আত্মবিশ্বাস ও সাবলীলতা বৃদ্ধির চ্যানেল"],
+    "meaning": "An encouraging and highly structured language learning platform hosted by Steffi. Features conversational phrase lists, speaking confidence hacks, and interactive daily scenario drills explicitly structured to take learners from baseline to upper-intermediate levels (A1-B2).",
+    "link": "url?id=0@LerneDeutsch",
+    "examples": [
+      "<b>(1) Steffi zeigt tolle Methoden, wie man endlich ohne Angst Deutsch sprechen kann.</b>\n(Steffi shows great methods on how to finally speak German without fear.)",
+      "<b>(2) Dieser Kanal bietet praktische Sätze, die man jeden Tag benutzen muss.</b>\n(This channel offers practical sentences that you have to use every day.)"
+    ]
+  },
+  {
+    "id": "yt49",
+    "word": "German Potato",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German culture and language channel through vlogs"],
+    "bangla": ["ব্লগের মাধ্যমে জার্মান সংস্কৃতি ও ভাষা শিক্ষার চ্যানেল"],
+    "meaning": "An engaging lifestyle and educational vlog channel hosted by a native speaker. Features casual cultural commentary, natural listening practices, street interviews, and insight into real-world German lifestyle terms (A2-B2).",
+    "link": "https://www.youtube.com/@germanpotato2",
+    "examples": [
+      "<b>(1) Sie macht sehr unterhaltsame Vlogs über die deutsche Kultur und das Leben in Deutschland.</b>\n(She makes very entertaining vlogs about German culture and life in Germany.)",
+      "<b>(2) Das Video über die typischen deutschen Gewohnheiten hat mir gut gefallen.</b>\n(I liked the video about typical German habits a lot.)"
+    ]
+  },
+  {
+    "id": "yt50",
+    "word": "tagesschau",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["Germany's premier daily news and current affairs channel"],
+    "bangla": ["জার্মানির প্রধান দৈনিক সংবাদ ও সমসাময়িক বিষয়ের চ্যানেল"],
+    "meaning": "The most widely watched public television news program in Germany. Features daily international reports, breaking news, and political overviews, including dedicated 'Einfache Sprache' editions that are perfect for standard formal vocabulary practice (B1-C1).",
+    "link": "url?id=0@tagesschau",
+    "examples": [
+      "<b>(1) Ich schaue jeden Abend die Tagesschau, um mich über das Weltgeschehen zu informieren.</b>\n(I watch the Tagesschau every evening to stay informed about world events.)",
+      "<b>(2) Die Videos in einfacher Sprache sind eine tolle Hilfe für mein B1-Zertifikat.</b>\n(The videos in simple language are a great help for my B1 certificate.)"
+    ]
+  },
+  {
+    "id": "yt51",
+    "word": "FluentU German",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German language learning channel through pop culture and media clips"],
+    "bangla": ["পপ সংস্কৃতি ও মিডিয়া ক্লিপের মাধ্যমে জার্মান শেখার চ্যানেল"],
+    "meaning": "An entertaining educational platform that contextualizes language learning. Features broken-down scene analyses from famous movies, TV shows, comedic sketches, and music videos to teach authentic modern phrasing and vocabulary (A1-B2).",
+    "link": "url?id=0@FluentUGerman",
+    "examples": [
+      "<b>(1) Auf diesem Kanal lernt man Deutsch mit Ausschnitten aus bekannten Filmen und Serien.</b>\n(On this channel, you learn German with clips from famous movies and series.)",
+      "<b>(2) Die Erklärungen helfen mir, die Alltagssprache der Muttersprachler besser zu verstehen.</b>\n(The explanations help me better understand the everyday language of native speakers.)"
+    ]
+  },
+  {
+    "id": "yt52",
+    "word": "ARD Kinder und Familie",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German educational children's shows and family documentaries"],
+    "bangla": ["জার্মান শিক্ষামূলক শিশুতোষ অনুষ্ঠান ও পারিবারিক তথ্যচিত্রের চ্যানেল"],
+    "meaning": "An official public network hub gathering premium children’s formats (like Checker Tobi or POV history diaries). Offers simple, clear, and engagingly structured standard German narration ideal for expanding basic conversational confidence (A2-B1).",
+    "link": "url?id=0@ARDKinderundFamilie",
+    "examples": [
+      "<b>(1) Die Wissenssendungen für Kinder sind ideal, weil die Erklärungen sehr einfach sind.</b>\n(The science shows for kids are ideal because the explanations are very simple.)",
+      "<b>(2) Ich schaue mir gerne die kurzen Dokumentationen an, um mein Hörverstehen zu trainieren.</b>\n(I like watching the short documentaries to train my listening comprehension.)"
+    ]
+  },
+  {
+    "id": "yt53",
+    "word": "ARD",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German mainstream public broadcasting documentary and media hub"],
+    "bangla": ["জার্মান মূলধারার সরকারি গণমাধ্যম ও তথ্যচিত্রের চ্যানেল"],
+    "meaning": "The main channel of Germany's primary public broadcasting consortium. Features high-quality investigative documentaries, investigative reports, tech analysis essays, and social experiments spoken in precise, standard high German (B2-C1).",
+    "link": "https://www.youtube.com/@ARD",
+    "examples": [
+      "<b>(1) Die ARD bietet viele anspruchsvolle Dokumentationen zu aktuellen gesellschaftlichen Themen.</b>\n(ARD offers many sophisticated documentaries on current social topics.)",
+      "<b>(2) Für mich ist das Sprachniveau auf diesem Kanal eine gute Herausforderung.</b>\n(For me, the language level on this channel is a good challenge.)"
+    ]
+  },
+  {
+    "id": "yt54",
+    "word": "Learn german with natives",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German street interviews and conversational practice channel"],
+    "bangla": ["বাস্তব জীবনের জার্মান কথোপকথন ও স্ট্রিট ইন্টারভিউ চ্যানেল"],
+    "meaning": "An excellent interactive language channel focused on authentic communication. Features spontaneous street interviews, cultural vocabulary quizzes, and phrase comparisons tailored for intermediate to advanced learners (A2-C1).",
+    "link": "https://www.youtube.com/@learn.german.with.natives",
+    "examples": [
+      "<b>(1) Dieser Kanal hilft mir, die echte Alltagssprache von deutschen Muttersprachlern zu lernen.</b>\n(This channel helps me learn the real everyday language of German native speakers.)",
+      "<b>(2) Die Straßeninterviews sind perfekt, um mein Hörverstehen für die Prüfung zu trainieren.</b>\n(The street interviews are perfect for training my listening comprehension for the exam.)"
+    ]
+  },
+  {
+    "id": "yt55",
+    "word": "Woozle Goozle",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German science, comedy, and educational show for kids"],
+    "bangla": ["জার্মান বিজ্ঞান, কৌতুক ও শিক্ষামূলক শিশুতোষ অনুষ্ঠান"],
+    "meaning": "A highly entertaining, high-energy popular science and comedy program by TOGGO. Explains complex everyday phenomena and scientific facts through funny experiments, puppet sketches, and clear, enthusiastic standard German (A2-B2).",
+    "link": "https://www.youtube.com/@WoozleGoozle",
+    "examples": [
+      "<b>(1) Woozle Goozle erklärt wissenschaftliche Themen auf eine sehr lustige und einfache Weise.</b>\n(Woozle Goozle explains scientific topics in a very funny and simple way.)",
+      "<b>(2) Obwohl es eine Kindersendung ist, kann ich hier viele nützliche Fachbegriffe lernen.</b>\n(Even though it is a children's show, I can learn many useful technical terms here.)"
+    ]
+  },
+  {
+    "id": "yt56",
+    "word": "Qamarunnisa",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German Islamic podcast and cultural discussion channel"],
+    "bangla": ["জার্মান ইসলামিক পডকাস্ট ও সামাজিক আলোচনা চ্যানেল"],
+    "meaning": "A welcoming conversational video podcast channel. Features deep discussions, personal stories, and community reflections about Islamic topics, spiritual life, and social perspectives, spoken in a very natural and emotional conversational flow (B1-C1).",
+    "link": "https://www.youtube.com/@Qamarunnisapodcast",
+    "examples": [
+      "<b>(1) In diesem Podcast sprechen die Frauen über wichtige religiöse und soziale Themen im Alltag.</b>\n(In this podcast, the women talk about important religious and social topics in everyday life.)",
+      "<b>(2) Ich höre das Gespräch gerne, weil die Teilnehmerinnen sehr ruhig und deutlich sprechen.</b>\n(I like listening to the conversation because the participants speak very calmly and clearly.)"
+    ]
+  },
+  {
+    "id": "yt57",
+    "word": "Würdest du? - von Victor & Farzam",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German comedic casual dialogue and hypothetical questions channel"],
+    "bangla": ["জার্মান কৌতুকপূর্ণ ও কাল্পনিক কথোপকথনের চ্যানেল"],
+    "meaning": "A highly casual entertainment and clip channel. Features humorous hypothetical debates, funny questions, and rapid-fire banter among hosts and guests, making it a goldmine for youth slang, raw modern expressions, and rapid conversational immersion (B2-C1).",
+    "link": "https://www.youtube.com/@VictorFarzamClips",
+    "examples": [
+      "<b>(1) Die beiden Moderatoren stellen sich gegenseitig extrem lustige und verrückte Fragen.</b>\n(The two hosts ask each other extremely funny and crazy questions.)",
+      "<b>(2) Man lernt hier die echte Jugendsprache und viele umgangssprachliche Witze.</b>\n(You learn real youth language and many colloquial jokes here.)"
+    ]
+  },
+  {
+    "id": "yt58",
+    "word": "Hotel Matze",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["Premium German interview podcast and human interest channel"],
+    "bangla": ["উচ্চমানের জার্মান সাক্ষাৎকার পডকাস্ট চ্যানেল"],
+    "meaning": "One of Germany's most famous and deeply philosophical interview podcasts hosted by Matze Hielscher. Features intimate, long-form night-bar style conversations with celebrities, experts, and artists, excellent for advanced narrative listening and complex societal vocabulary (B2-C1).",
+    "link": "https://www.youtube.com/@HotelMatze",
+    "examples": [
+      "<b>(1) Matze führt sehr lange und tiefgründige Gespräche mit bekannten Persönlichkeiten.</b>\n(Matze conducts very long and profound conversations with well-known personalities.)",
+      "<b>(2) Dieser Podcast ist eine fantastische Übung für mein fortgeschrittenes Hörverstehen.</b>\n(This podcast is a fantastic exercise for my advanced listening comprehension.)"
+    ]
+  },
+  {
+    "id": "yt59",
+    "word": "Guru talks",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German exam preparation and listening practice channel"],
+    "bangla": ["জার্মান পরীক্ষার প্রস্তুতি ও শোনার দক্ষতা বাড়ানোর চ্যানেল"],
+    "meaning": "A highly practical educational channel. Features real German exam model tests (Goethe/Start Deutsch from A1 to B2) with solutions, designed to help students simulate and practice their listening and reading skills.",
+    "link": "https://www.youtube.com/@guru_talks",
+    "examples": [
+      "<b>(1) Ich nutze die Modelltests von Guru talks, um mich auf die A1-Prüfung vorzubereiten.</b>\n(I use the model tests from Guru talks to prepare for the A1 exam.)",
+      "<b>(2) Die Videos zeigen die Lösungen am Ende, was beim Lernen sehr hilft.</b>\n(The videos show the solutions at the end, which helps a lot with learning.)"
+    ]
+  },
+  {
+    "id": "yt60",
+    "word": "Clare on Air Podcast",
+    "type": "Channel",
+    "category": "Best YT Kanäle",
+    "englisch": ["German lifestyle, youth comedy, and conversational video podcast channel"],
+    "bangla": ["জার্মান লাইফস্টাইল, কৌতুক ও কথোপকথনমূলক ভিডিও পডকাস্ট চ্যানেল"],
+    "meaning": "An entertaining and authentic talk podcast hosted by Yana Clare. Features raw, unscripted conversations about everyday struggles, friendships, self-love, and modern relationships, ideal for getting used to emotional native speed and modern urban expressions (B1-C1).",
+    "link": "https://www.youtube.com/@clareonairpodcast",
+    "examples": [
+      "<b>(1) Yana spricht in ihrem Podcast sehr offen über typische Probleme von jungen Menschen.</b>\n(Yana speaks very openly in her podcast about typical problems of young people.)",
+      "<b>(2) Ich höre diese Folgen gerne, um die lockere Alltagssprache besser zu verstehen.</b>\n(I like listening to these episodes to better understand the casual everyday language.)"
+    ]
   },
 {
     "id": "film1",

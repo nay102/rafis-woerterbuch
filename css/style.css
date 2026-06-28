@@ -420,7 +420,6 @@ body.dark .desktop-menu-btn {
 #wordCount:hover {
   opacity: 1;
 }
-
 .home-sprachwelt-cta {
   width: min(520px, 100%);
   min-height: 52px;
@@ -438,21 +437,25 @@ body.dark .desktop-menu-btn {
   line-height: 1.15;
   letter-spacing: 0;
   cursor: pointer;
-  box-shadow:
-    0 16px 34px rgba(42, 92, 255, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  /* 1. Apply the infinite border shine animation */
+  animation: border-shine 4s infinite alternate ease-in-out;
   transition:
-    transform 0.28s ease,
-    box-shadow 0.28s ease,
-    border-color 0.28s ease;
+    transform 0.30s ease,
+    box-shadow 0.30s ease,
+    border-color 0.30s ease;
+}
+
+/* 2. Define the shining border timeline */
+@keyframes border-shine {
+  0% { border-color: #ffffff; }
+  33% { border-color: #406dff; }
+  66% { border-color: #00ffea; }
+  100% { border-color: #ffffff; }
 }
 
 .home-sprachwelt-cta:hover {
   transform: translateY(-3px);
-  border-color: #ffffff;
-  box-shadow:
-    0 20px 42px rgba(42, 92, 255, 0.36),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  /* Retains hover styles smoothly */
 }
 
 .home-sprachwelt-cta:active {
@@ -1777,6 +1780,9 @@ body.dark input:focus {
   object-fit: cover;
   object-position: var(--photo-position, center);
   background: #e2e8f0;
+}
+.panel-page-card--sprachwelt .panel-page-photo {
+  aspect-ratio: auto;
 }
 
 .photo-fit-top {
@@ -5235,6 +5241,7 @@ body.dark .close-btn:hover {
   #categoryPage[data-category="Nomen-Verb Verbindung"] .two-column-wrapper,
   #categoryPage[data-category="Redewendungen"] .two-column-wrapper,
   #categoryPage[data-category="Sprichwörter"] .two-column-wrapper,
+  #categoryPage[data-category="Best YT Kanäle"] .two-column-wrapper,
   #categoryPage[data-category="Filme & Serien"] .two-column-wrapper,
   #categoryPage[data-category="Feste Wendungen"] .two-column-wrapper {
     grid-template-columns: 1fr !important;

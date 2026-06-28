@@ -462,6 +462,13 @@ function formatMeaningText(word) {
   escapedMeaning = escapedMeaning
     .replace(/&lt;b&gt;/gi, "<b>")
     .replace(/&lt;\/b&gt;/gi, "</b>");
+  // Allow links to YT Channels
+    const link = word?.link || word?.youtubeLink;
+  if (link) {
+    escapedMeaning += `<br><br><a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Open YouTube Channel</a>`;
+  }
+  // YT channel links
+
   const isVerb =
     String(word?.category || "").toLowerCase() === "verben" ||
     String(word?.type || "").toLowerCase() === "verb";
@@ -596,7 +603,7 @@ const sitePhotos = {
     ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
     bangladesh: "https://picsum.photos/seed/bangladesh/1200/500",
     germany: "https://picsum.photos/seed/germany/1200/500",
-    sprachwelt: "assets/Rafis%20pic/Rafis%20Sprachwelt.png",
+    sprachwelt: "assets/RafisSprachwelt.png",
     examZone: "https://picsum.photos/seed/option5/1200/500",
     proTools: "https://picsum.photos/seed/option6/1200/500",
     settings: "https://picsum.photos/seed/settings/1200/500"
@@ -634,7 +641,14 @@ const sitePhotos = {
     sightseeing: "assets/Bangladesh/sightseeing.jpg",
     religion: "assets/Bangladesh/religion.png",
     economy: "assets/Bangladesh/economy.jpg"
+  },
+    sprachwelt: {
+    a1: "assets/a1.png",
+    a2: "assets/a2.png",
+    b1: "assets/b1.png",
+    b2: "assets/b2.png",
   }
+
 };
 
 const panelPageContent = {
@@ -727,14 +741,38 @@ const panelPageContent = {
     ]
   },
   option4: {
-    title: "🎓 Rafis Sprachwelt",
+    title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
-    description: "Focused drills and revision practice for faster vocabulary retention.",
-    cards: [
-      "Topic-based quick practice sets for daily training.",
-      "Short grammar and vocabulary drills with real context.",
-      "Designed for frequent updates without changing page flow.",
-      "Designed."
+    description: "Willkommen! Let’s make German simple. Learning German doesn't have to be overwhelming. Whether you're a beginner or aiming for fluent conversation, I've broken everything down into practical, bite-sized pieces.Inside each level, you'll find structured study notes, essential materials, and interactive drills to build your confidence fast!👇Pick your level below, explore the lessons, and let’s start learning together!",
+cards: [
+  {
+    title: "German A1: Der perfekte Start (The Perfect Start)",
+    image: sitePhotos.sprachwelt.a1,
+    imagePosition: "center 40%",
+    body: "Jump into German with zero experience! Master essential daily vocabulary, basic greetings, and core sentence structures through quick, high-yield practice drills",
+    photo: "Deutsch A1"
+  },
+  {
+    title: "German A2: Mehr verstehen (Understand More)",
+    image: sitePhotos.sprachwelt.a2,
+    imagePosition: "center 40%",
+    body: "Move past the basics. Build real-world conversational confidence, unlock essential past-tense grammar, and expand your vocabulary with practical, context-based exercises.",
+    photo: "Deutsch A2"
+  },
+    {
+    title: "German B1: Sicher sprechen (Speak with Confidence)",
+    image: sitePhotos.sprachwelt.b1,
+    imagePosition: "center 40%",
+    body: "Bridge the gap to independence. Learn to express opinions, handle complex everyday situations, and master the fluid grammar needed for life and work in Germany.",
+    photo: "Deutsch B1"
+  },
+  {
+    title: "German B2: Fließend kommunizieren (Communicate Fluently)",
+    image: sitePhotos.sprachwelt.b2,
+    imagePosition: "center 40%",
+    body: "Refine your skills for professional and academic success. Dive into advanced idioms, complex sentence structures, and nuanced debates to express yourself like a pro.",
+    photo: "Deutsch B2"
+  }
     ]
   },
   option5: {
@@ -2977,9 +3015,11 @@ function renderPanelPage(pageKey) {
       const image = typeof card === "string" ? "" : card.image || "";
       const imageClass = typeof card === "string" ? "" : card.imageClass || "";
       const photoStyle = typeof card === "string" ? "" : buildPhotoStyle(card);
+      const isSprachweltCard = pageKey === "option4";
+      const sprachweltClass = isSprachweltCard ? "panel-page-card--sprachwelt" : "";
 
       return `
-        <article class="panel-page-card is-collapsed">
+        <article class="panel-page-card is-collapsed ${sprachweltClass}">
           ${
             image
               ? `<img class="panel-page-photo ${escapeHtml(imageClass)}" src="${escapeHtml(image)}" alt="${escapeHtml(photo || title)}" loading="lazy"${photoStyle}>`
