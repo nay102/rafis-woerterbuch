@@ -75,7 +75,7 @@ function buildEntry(word, meta, nextIds) {
     examples: [buildExample(word, meta)]
   };
 
-  if (meta.type === 'Verb' || meta.type === 'Adjektiv' || meta.type === 'Adverb') {
+  if (meta.type === 'Verb' || meta.type === 'Adjektiv' || meta.type === 'Adverb' || meta.type === 'Nomen') {
     entry.synonym = ['TODO'];
   }
 

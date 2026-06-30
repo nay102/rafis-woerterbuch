@@ -487,7 +487,8 @@ function shouldShowSynonym(word) {
   return (
     category === "verben" ||
     category === "adjektiven" ||
-    category === "adverbien"
+    category === "adverbien" ||
+    category === "nomen"
   );
 }
 
@@ -716,7 +717,8 @@ const panelPageContent = {
       "Required German level and interview vocabulary.",
       "Common Ausbildung domains and starter phrases.",
       "Preparation checklist for documents and communication."
-    ]
+    ],
+        footer: "© All rights reserved."
   },
   bangladesh: {
     title: "🇧🇩 Bangladesh",
@@ -773,7 +775,8 @@ cards: [
     body: "Refine your skills for professional and academic success. Dive into advanced idioms, complex sentence structures, and nuanced debates to express yourself like a pro.",
     photo: "Deutsch B2"
   }
-    ]
+    ],
+        footer: "© All rights reserved."
   },
   option5: {
     title: "📝 Exam Zone",
@@ -783,7 +786,8 @@ cards: [
       "Mock tasks and targeted exam vocabulary review.",
       "Pattern-based sentence practice for written and oral tests.",
       "Smart section for pre-exam confidence building."
-    ]
+    ],
+        footer: "© All rights reserved."
   },
   option6: {
     title: "🚀 Pro Tools",
@@ -793,7 +797,8 @@ cards: [
       "Scenario-driven learning blocks for applied German.",
       "High-value word packs grouped by practical situations.",
       "Built for deep practice and higher consistency."
-    ]
+    ],
+        footer: "© All rights reserved."
   },
   settings: {
     title: "⚙ Settings",
@@ -803,7 +808,8 @@ cards: [
       "Theme preference and display tuning options.",
       "Search behavior and accessibility-oriented controls.",
       "Account-linked personalization placeholders."
-    ]
+    ],
+        footer: "© All rights reserved."
   }
 };
 
