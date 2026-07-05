@@ -56,6 +56,7 @@ let openedFromFavorites = false;
 let schimpfWarningOpen = false;
 let germanyPageLanguage = "en";
 let bangladeshPageLanguage = "en";
+let aboutRafiPageLanguage = "en";
 
 const APP_SETTINGS_KEY = "rw_app_settings_v1";
 const LOCAL_FAVORITES_KEY_PREFIX = "rw_local_favorites_v1_";
@@ -428,7 +429,7 @@ function buildMissingWordPromptHTML(queryText, notFoundText = "Not added yet.") 
   return `
     ${escapeHtml(notFoundText)}<br>
     <button type="button" class="submit-word-hint-btn" data-missing-word="${escapedWord}">
-      Please Submit this word in Settings
+      Click here to Submit this new word
     </button>
   `;
 }
@@ -440,6 +441,22 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function formatPanelDescription(pageKey, description) {
+  if (pageKey !== "option4") {
+    return escapeHtml(description);
+  }
+
+  const lines = String(description || "").split("\n");
+  return lines
+    .map((line, index) => {
+      const escapedLine = escapeHtml(line);
+      return index === 0 || index === lines.length - 1
+        ? `<strong>${escapedLine}</strong>`
+        : escapedLine;
+    })
+    .join("<br>");
 }
 
 function buildPhotoStyle(item = {}) {
@@ -654,6 +671,8 @@ const sitePhotos = {
 
 const panelPageContent = {
   owner: {
+    toggleLabel: "Deutsch",
+    readMoreLabel: "Read more",
     title: "Welcome to My Profile",
     image: sitePhotos.panelHero.owner,
     imagePosition: "center 28%",
@@ -745,34 +764,35 @@ const panelPageContent = {
   option4: {
     title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
-    description: "Willkommen! Let’s make German simple. Learning German doesn't have to be overwhelming. Whether you're a beginner or aiming for fluent conversation, I've broken everything down into practical, bite-sized pieces.Inside each level, you'll find structured study notes, essential materials, and interactive drills to build your confidence fast!👇Pick your level below, explore the lessons, and let’s start learning together!",
+    description:
+      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming. 💡 Pick your level to access practical, bite-sized lessons, structured study notes 📝, and interactive drills 🎯 designed to build your confidence fast!\n👇 Choose your level below and let’s start learning together!",
 cards: [
   {
-    title: "German A1: Der perfekte Start (The Perfect Start)",
+    title: "German A1: Der perfekte Start",
     image: sitePhotos.sprachwelt.a1,
     imagePosition: "center 40%",
-    body: "Jump into German with zero experience! Master essential daily vocabulary, basic greetings, and core sentence structures through quick, high-yield practice drills",
+    body: "Master basic greetings, daily vocabulary, and core sentence structures from scratch. 🚀",
     photo: "Deutsch A1"
   },
   {
-    title: "German A2: Mehr verstehen (Understand More)",
+    title: "German A2: Mehr verstehen",
     image: sitePhotos.sprachwelt.a2,
     imagePosition: "center 40%",
-    body: "Move past the basics. Build real-world conversational confidence, unlock essential past-tense grammar, and expand your vocabulary with practical, context-based exercises.",
+    body: "Build real-world conversational confidence and unlock essential everyday grammar. 🗣️",
     photo: "Deutsch A2"
   },
     {
-    title: "German B1: Sicher sprechen (Speak with Confidence)",
+    title: "German B1: Sicher sprechen",
     image: sitePhotos.sprachwelt.b1,
     imagePosition: "center 40%",
-    body: "Bridge the gap to independence. Learn to express opinions, handle complex everyday situations, and master the fluid grammar needed for life and work in Germany.",
+    body: "Express your opinions smoothly and handle complex daily or work situations. 💼",
     photo: "Deutsch B1"
   },
   {
-    title: "German B2: Fließend kommunizieren (Communicate Fluently)",
+    title: "German B2: Fließend kommunizieren",
     image: sitePhotos.sprachwelt.b2,
     imagePosition: "center 40%",
-    body: "Refine your skills for professional and academic success. Dive into advanced idioms, complex sentence structures, and nuanced debates to express yourself like a pro.",
+    body: "Dive into advanced idioms and nuanced debates to speak like a professional. 🎓",
     photo: "Deutsch B2"
   }
     ],
@@ -810,6 +830,66 @@ cards: [
       "Account-linked personalization placeholders."
     ],
         footer: "© All rights reserved."
+  }
+};
+
+const ABOUT_RAFI_PAGE_COPY = {
+  de: {
+    toggleLabel: "English",
+    readMoreLabel: "Mehr lesen",
+    title: "Willkommen in meinem Profil",
+    image: sitePhotos.panelHero.owner,
+    imagePosition: "center 28%",
+    description:
+      "Mein Name ist Md Rafikul Islam, meist Rafi genannt. Ich bin ein leidenschaftlicher Sprachlerner, Entwickler und der Gründer von Rafis Wörterbuch. Diese Plattform erzählt meinen persönlichen Hintergrund, meinen intensiven Weg mit der deutschen Sprache und meine Vision, eine zugängliche Lernressource für angehende Studierende und Fachkräfte aufzubauen.",
+    cards: [
+      {
+        title: "Hintergrund & Werte",
+        image: sitePhotos.aboutRafi.backgroundValues,
+        imagePosition: "center 42%",
+        body:
+          "Meine familiären Wurzeln liegen ursprünglich in Mymensingh, aber ich wurde in Dhaka, Bangladesch, geboren und bin dort mit meinen Eltern aufgewachsen. Das Leben in der Hauptstadt hat meine Anpassungsfähigkeit und meinen Ehrgeiz geprägt, während mir die Werte meiner Familie harte Arbeit und Belastbarkeit vermittelt haben. Meine persönliche Entwicklung basiert auf Selbstdisziplin, ständigem Lernen und dem festen Willen, mich immer weiter zu verbessern. Ich glaube daran, dass praktische technische Fähigkeiten und interkulturelle Kommunikation gemeinsam neue globale Chancen eröffnen.",
+        photo: "Hintergrund und Werte"
+      },
+      {
+        title: "Akademischer Weg",
+        image: sitePhotos.aboutRafi.academicTrajectory,
+        body:
+          "Mein Higher Secondary Certificate (HSC) habe ich 2021 am Kabi Nazrul Govt. College abgeschlossen. Danach studierte ich von 2023 bis 2024 Informatik und Ingenieurwesen (CSE) am Institute of Science and Technology (IST), das der National University in Dhanmondi angegliedert ist. Nach dem erfolgreichen Abschluss meines ersten Jahres entschied ich mich bewusst für einen neuen beruflichen Fokus. Wegen der großen Chancen internationaler Berufsausbildung richtete ich meine ganze Energie auf intensives Deutschlernen und technische Vorbereitung für eine duale Ausbildung in Deutschland.",
+        photo: "Akademischer Weg"
+      },
+      {
+        title: "Mein Deutschlernweg",
+        image: sitePhotos.aboutRafi.germanJourney,
+        body:
+          "Mein intensives Deutschtraining begann am 13. August 2024. Mit starker Selbstdisziplin lernte ich von zu Hause aus eigenständig und arbeitete mich im Selbststudium von A1 bis B2 vor. Digitale Ressourcen wie YouTube und ChatGPT halfen mir dabei, Grammatik zu strukturieren und interaktiv zu üben. Deutsch wurde zu meinem täglichen Schwerpunkt. Um mehr Sicherheit beim Sprechen zu gewinnen, nutzte ich intensiv HelloTalk, um mit Muttersprachlern in Kontakt zu kommen. Ich empfehle dieses Werkzeug jedem ernsthaften Sprachlernenden. Mein Ziel ist eine sichere berufliche Sprachkompetenz für den Einstieg in eine deutsche Ausbildungs- und Arbeitsumgebung.",
+        photo: "Deutschlernweg"
+      },
+      {
+        title: "Sprachzertifikate",
+        image: sitePhotos.aboutRafi.languageCertifications,
+        imagePosition: "center 35%",
+        body:
+          "Mein Weg zur Sprachkompetenz und beruflichen Qualifikation ist geprägt von Ausdauer, klarer Zielsetzung und praktischem Lernen. Als wichtigen Meilenstein wagte ich im März 2025 direkt die Goethe-B1-Prüfung in Dhaka, obwohl ich die üblichen A1- und A2-Prüfungen übersprungen hatte. Beim ersten Versuch bestand ich zwei Module. Danach arbeitete ich gezielt an den offenen Teilen. Das Modul Lesen bestand ich im Mai 2025. Wegen begrenzter Termine in Bangladesch suchte ich aktiv nach Alternativen und legte das Modul Sprechen beim Goethe-Institut Kolkata in Indien ab, wo ich es mit 95 von 100 Punkten erfolgreich bestand.",
+        photo: "Sprachzertifikate"
+      },
+      {
+        title: "Meine erste Auslandsreise",
+        image: sitePhotos.aboutRafi.internationalJourney,
+        imagePosition: "center 35%",
+        body:
+          "Dieses Foto wurde in Indien aufgenommen und markiert meine allererste Reise ins Ausland. Um mein Ziel zu erreichen, organisierte ich die gesamte Reise selbst: vom Visum in einer politisch angespannten Zeit im August 2025 bis zur direkten Planung ohne Agentur. Dadurch erhielt ich mein Visum nur für die reguläre Bearbeitungsgebühr von 1.520 BDT. Ich bin Allah sehr dankbar für seine Führung auf diesem herausfordernden und zugleich wertvollen Weg. Alhamdulillah. Der Hauptgrund der Reise war meine B1-Sprechprüfung am Goethe-Institut Kolkata, die ich erfolgreich bestand. Zusätzlich blieb ich fünf Tage länger, um Kolkata zu erkunden. Diese Reise wurde zu einem unvergesslichen Schritt meiner persönlichen Entwicklung.",
+        photo: "Erste Auslandsreise"
+      },
+      {
+        title: "Ausbildung im Gesundheitsbereich",
+        image: sitePhotos.aboutRafi.healthcareTraining,
+        body:
+          "Nach dem Abschluss meiner B1-Prüfung im September 2025 nutzte ich bewusst eine fünfmonatige Übergangsphase, um praktische Einblicke in den Gesundheitsbereich zu gewinnen. In dieser Zeit absolvierte ich einen intensiven dreimonatigen Caregiver-Kurs bei UCEP Bangladesh. Diese Phase half mir, grundlegende Kenntnisse in Pflege, Patientenbetreuung und beruflicher Verantwortung aufzubauen. Die praktische Vorbereitung ist ein wichtiger Schritt auf meinem Weg zu einer Ausbildung als Pflegefachmann in Deutschland und stärkt meine Motivation, mit Erfahrung und klarer Zielrichtung in das Berufsleben einzusteigen.",
+        photo: "Gesundheitstraining"
+      }
+    ],
+    footer: "© Alle Rechte vorbehalten."
   }
 };
 
@@ -944,9 +1024,28 @@ const CATEGORY_SEARCH_LABELS = {
   "Filme & Serien": "movies and series"
 };
 
+const CATEGORY_SECTION_LABELS = {
+  Verben: "Verb",
+  Adjektiven: "Adjektiv",
+  Adverbien: "Adverb",
+  Nomen: "Nomen",
+  "Nomen-Verb Verbindung": "Nomen-Verb Verbindung",
+  Redewendungen: "Redewendung",
+  "Sprichwörter": "Sprichwort",
+  "Feste Wendungen": "Feste Wendung",
+  Slang: "Slang",
+  "Schimpfwörter": "Schimpfwort",
+  "Best YT Kanäle": "YouTube Kanal",
+  "Filme & Serien": "Film & Serie"
+};
+
 function getCategorySearchPlaceholder(categoryName) {
   const label = CATEGORY_SEARCH_LABELS[categoryName] || categoryName;
   return `Search ${label}`;
+}
+
+function getCategorySectionLabel(categoryName) {
+  return CATEGORY_SECTION_LABELS[categoryName] || categoryName;
 }
 
 const CATEGORY_EXPLANATIONS = {
@@ -2153,6 +2252,11 @@ if (words.length === 0) {
   /* ================= SECTION SYSTEM ================= */
 
   const sectionSize = 100;
+  const sectionCount = Math.ceil(words.length / sectionSize);
+  const initialSectionIndex =
+    Number.isInteger(savedSection) && savedSection >= 0 && savedSection < sectionCount
+      ? savedSection
+      : 0;
   let activeSectionIndex = null;
 
   const sectionContainer = document.createElement("div");
@@ -2242,7 +2346,7 @@ wordDisplay.appendChild(columnWrapper);
 
     const button = document.createElement("button");
     button.className = "section-btn";
-    button.textContent = `Section ${sectionIndex + 1} (${start}–${end})`;
+    button.textContent = `${getCategorySectionLabel(categoryName)} (${start}-${end})`;
 
     button.onclick = () => {
 
@@ -2265,13 +2369,11 @@ wordDisplay.appendChild(columnWrapper);
       renderSection(sectionIndex);
     };
 
-    if (savedSection !== undefined && savedSection === sectionIndex) {
-  activeSectionIndex = sectionIndex;
-  renderSection(sectionIndex);
-}
-
     sectionContainer.appendChild(button);
   }
+
+  activeSectionIndex = initialSectionIndex;
+  renderSection(initialSectionIndex);
 
 }
 
@@ -2791,10 +2893,12 @@ function openWordDetail(wordId, options = {}) {
 
   const card = document.createElement("div");
   card.className = "detail-card";
+  const homeSearchCategorySuffix =
+    openedFromHomeSearch && word.category ? ` (${escapeHtml(word.category)})` : "";
 
   card.innerHTML = `
   <h1 class="detail-title">
-    ${word.article ? word.article + " " : ""}${word.word}
+    ${word.article ? word.article + " " : ""}${word.word}${homeSearchCategorySuffix}
   </h1>
 
   <div class="detail-section">
@@ -2803,7 +2907,7 @@ function openWordDetail(wordId, options = {}) {
   </div>
 
   ${
-    isVerbWord(word)
+    isVerbWord(word) && String(word.category || "").toLowerCase() !== "verben"
       ? `
         <div class="detail-section">
           <h3>Conjugation Status</h3>
@@ -2985,6 +3089,35 @@ function goHomeWithoutRefresh() {
   showSection("homePage");
 }
 
+function getPanelPageData(pageKey) {
+  if (pageKey === "owner" && aboutRafiPageLanguage === "de") {
+    return ABOUT_RAFI_PAGE_COPY.de;
+  }
+
+  return panelPageContent[pageKey];
+}
+
+function buildPanelPageHeading(pageKey, page) {
+  const toggle =
+    pageKey === "owner"
+      ? `<button id="aboutRafiLanguageToggle" class="panel-language-toggle" type="button">${escapeHtml(page.toggleLabel || "Deutsch")}</button>`
+      : "";
+
+  return `
+    <div class="panel-page-heading">
+      <h1>${escapeHtml(page.title)}</h1>
+      ${toggle}
+    </div>
+  `;
+}
+
+function wireAboutRafiLanguageToggle() {
+  document.getElementById("aboutRafiLanguageToggle")?.addEventListener("click", () => {
+    aboutRafiPageLanguage = aboutRafiPageLanguage === "en" ? "de" : "en";
+    renderPanelPage("owner");
+  });
+}
+
 function renderPanelPage(pageKey) {
   if (pageKey === "about") {
     renderGermanyPage();
@@ -2996,7 +3129,7 @@ function renderPanelPage(pageKey) {
     return;
   }
 
-  const page = panelPageContent[pageKey];
+  const page = getPanelPageData(pageKey);
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage || !page) return;
 
@@ -3012,6 +3145,7 @@ function renderPanelPage(pageKey) {
 
   const isSprachweltHero = pageKey === "option4";
   const heroClassName = isSprachweltHero ? "panel-hero-image panel-hero-image--sprachwelt" : "panel-hero-image";
+  const cardGridClassName = isSprachweltHero ? "panel-page-cards panel-page-cards--sprachwelt" : "panel-page-cards";
 
   const cards = page.cards
     .map((card, idx) => {
@@ -3023,6 +3157,13 @@ function renderPanelPage(pageKey) {
       const photoStyle = typeof card === "string" ? "" : buildPhotoStyle(card);
       const isSprachweltCard = pageKey === "option4";
       const sprachweltClass = isSprachweltCard ? "panel-page-card--sprachwelt" : "";
+      const readMoreButton = isSprachweltCard
+        ? ""
+        : `
+          <button class="panel-card-read-more" type="button" data-panel-read-more aria-expanded="false">
+            ${escapeHtml(page.readMoreLabel || "Read more")}
+          </button>
+        `;
 
       return `
         <article class="panel-page-card is-collapsed ${sprachweltClass}">
@@ -3035,9 +3176,7 @@ function renderPanelPage(pageKey) {
           }
           <h3>${escapeHtml(title)}</h3>
           <p class="panel-card-body">${escapeHtml(body)}</p>
-          <button class="panel-card-read-more" type="button" data-panel-read-more aria-expanded="false">
-            Read more
-          </button>
+          ${readMoreButton}
         </article>
       `;
     })
@@ -3052,9 +3191,9 @@ function renderPanelPage(pageKey) {
           : ""
       }
       <div class="panel-page-content">
-        <h1>${escapeHtml(page.title)}</h1>
-        <p class="panel-page-description">${escapeHtml(page.description)}</p>
-        <div class="panel-page-cards">
+        ${buildPanelPageHeading(pageKey, page)}
+        <p class="panel-page-description">${formatPanelDescription(pageKey, page.description)}</p>
+        <div class="${cardGridClassName}">
           ${cards}
         </div>
         ${page.footer ? `<footer class="panel-page-footer">${escapeHtml(page.footer)}</footer>` : ""}
@@ -3063,6 +3202,7 @@ function renderPanelPage(pageKey) {
   `;
 
   wirePanelCardReadMore(desktopPage);
+  wireAboutRafiLanguageToggle();
 }
 
 function wirePanelCardReadMore(container) {
