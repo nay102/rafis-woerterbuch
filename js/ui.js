@@ -765,34 +765,34 @@ const panelPageContent = {
     title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
     description:
-      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming. 💡 Pick your level to access practical, bite-sized lessons, structured study notes 📝, and interactive drills 🎯 designed to build your confidence fast!\n👇 Choose your level below and let’s start learning together!",
+      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming. Pick your level to access practical, bite-sized lessons, structured study notes , and interactive drills designed to build your confidence fast!\n👇 Choose your level below and let’s start learning together!",
 cards: [
   {
     title: "German A1: Der perfekte Start",
     image: sitePhotos.sprachwelt.a1,
     imagePosition: "center 40%",
-    body: "Master basic greetings, daily vocabulary, and core sentence structures from scratch. 🚀",
+    body: "Master basic greetings, daily vocabulary, and core sentence structures from scratch.",
     photo: "Deutsch A1"
   },
   {
     title: "German A2: Mehr verstehen",
     image: sitePhotos.sprachwelt.a2,
     imagePosition: "center 40%",
-    body: "Build real-world conversational confidence and unlock essential everyday grammar. 🗣️",
+    body: "Build real-world conversational confidence and unlock essential everyday grammar.",
     photo: "Deutsch A2"
   },
     {
     title: "German B1: Sicher sprechen",
     image: sitePhotos.sprachwelt.b1,
     imagePosition: "center 40%",
-    body: "Express your opinions smoothly and handle complex daily or work situations. 💼",
+    body: "Express your opinions smoothly and handle complex daily or work situations.",
     photo: "Deutsch B1"
   },
   {
     title: "German B2: Fließend kommunizieren",
     image: sitePhotos.sprachwelt.b2,
     imagePosition: "center 40%",
-    body: "Dive into advanced idioms and nuanced debates to speak like a professional. 🎓",
+    body: "Dive into advanced idioms and nuanced debates to speak like a professional.",
     photo: "Deutsch B2"
   }
     ],
