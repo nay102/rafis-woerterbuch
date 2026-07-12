@@ -149,7 +149,7 @@ body {
 ========================================================= */
 
 .desktop-menu-btn {
-  width: 48px;
+  width: 58px;
   height: 48px;
 
   border-radius: 14px;
@@ -163,7 +163,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 6px;
+  gap: 5px;
 
   cursor: pointer;
 
@@ -240,7 +240,8 @@ body.dark .desktop-menu-btn {
 .header-controls button {
   padding: 8px 16px;
   border-radius: 12px;
-  border: none;
+  border: 1px solid #8364f5;
+  /* border: none; */
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -291,7 +292,7 @@ body.dark .desktop-menu-btn {
 .hero {
   text-align: center;
 
-  padding: 20px 20px 70px 20px;
+  padding: 20px 20px 20px 20px;
   position: relative;
   z-index: 1000;
   /* Soft premium background feel */
@@ -418,6 +419,47 @@ body.dark .desktop-menu-btn {
 
 #wordCount:hover {
   opacity: 1;
+}
+.home-sprachwelt-cta {
+  width: min(520px, 100%);
+  min-height: 52px;
+  margin: 18px auto 4px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.72);
+  border-radius: 30px;
+  background: linear-gradient(135deg, #2a5cff 0%, #6d4cff 58%, #17a886 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  cursor: pointer;
+  /* 1. Apply the infinite border shine animation */
+  animation: border-shine 4s infinite alternate ease-in-out;
+  transition:
+    transform 0.30s ease,
+    box-shadow 0.30s ease,
+    border-color 0.30s ease;
+}
+
+/* 2. Define the shining border timeline */
+@keyframes border-shine {
+  0% { border-color: #ffffff; }
+  33% { border-color: #406dff; }
+  66% { border-color: #00ffea; }
+  100% { border-color: #ffffff; }
+}
+
+.home-sprachwelt-cta:hover {
+  transform: translateY(-3px);
+  /* Retains hover styles smoothly */
+}
+
+.home-sprachwelt-cta:active {
+  transform: scale(0.97);
 }
 
 /* =========================================================
@@ -837,6 +879,182 @@ body.dark .category-explain-panel h4 {
   hyphens: auto;
 }
 
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.detail-top-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.conjugation-open-btn {
+  border: 1px solid #60a5fa;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.conjugation-open-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.45);
+}
+
+.conjugation-open-btn:active {
+  transform: translateY(0);
+}
+
+#conjugationPage {
+  background: rgb(224, 228, 235);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 20px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+  border: 2px solid #8fb8f9;
+}
+
+.conjugation-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.conjugation-topbar h1 {
+  font-size: 26px;
+  color: #1e3a8a;
+}
+
+.conjugation-explainer {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.conjugation-content {
+  display: grid;
+  gap: 14px;
+}
+
+.conjugation-mood {
+  border-radius: 16px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+  padding: 14px 0px;
+  animation: conjugationMoodIn 0.35s ease;
+}
+
+.conjugation-mood h2 {
+  font-size: 20px;
+  color: #1d4ed8;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.conjugation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+  /* justify-content: flex-start; */
+  justify-content: center ;
+}
+
+.conjugation-tense-card {
+  border-radius: 12px;
+  border: 1px solid #a2a2f3;
+  background: #ffffff;
+  padding: 10px 12px;
+  margin: 5px 40px;
+  height: auto;
+  align-self: start;
+  width: fit-content;
+  min-width: min(260px, 100%);
+  max-width: 100%;
+  flex: 0 1 380px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.conjugation-tense-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.12);
+}
+
+.conjugation-tense-card h3 {
+  font-size: 15px;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+
+.conjugation-person-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.conjugation-person-list li {
+  display: grid;
+  grid-template-columns: minmax(64px, 92px) auto;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px dashed #77aff8;
+  padding-bottom: 5px;
+}
+
+.conjugation-person-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.conjugation-person-list span {
+  font-size: 12px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.conjugation-person-list strong {
+  font-size: 13px;
+  color: #1d4ed8;
+  font-weight: 700;
+  text-align: left;
+}
+
+.conjugation-empty {
+  font-size: 12px;
+  color: #64748b;
+}
+
+@keyframes conjugationMoodIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* =========================================================
    🔟 BACK BUTTON
    Premium Pill Style Button
@@ -1099,19 +1317,41 @@ body.dark .category-explain-panel h4 {
 .footer {
   text-align: center;
 
-  padding: 20px 20px;
+  padding: 26px 20px 24px;
 
   margin-top: 100px;
 
-  background: rgba(255, 255, 255, 0.65);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(239, 246, 255, 0.74));
 
   backdrop-filter: blur(25px);
 
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(30, 64, 175, 0.12);
 
   border-radius: 40px 40px 0 0;
 
+  box-shadow: 0 -18px 42px rgba(30, 64, 175, 0.08);
+
   animation: footerFadeIn 0.8s ease;
+}
+
+.footer-brand {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+}
+
+.footer-brand strong {
+  color: #102a6b;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.footer-brand p {
+  margin: 0;
+  color: #53627a;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* Footer Animation */
@@ -1128,7 +1368,7 @@ body.dark .category-explain-panel h4 {
 
 /* Footer Links */
 .footer-links {
-  margin-top: 25px;
+  margin-top: 18px;
 
   display: flex;
 
@@ -1189,7 +1429,8 @@ body.dark .category-explain-panel h4 {
 /* Pages fade in smoothly */
 #homePage,
 #categoryPage,
-#wordDetailPage {
+#wordDetailPage,
+#conjugationPage {
   opacity: 0;
 
   transform: translateY(25px);
@@ -1202,7 +1443,8 @@ body.dark .category-explain-panel h4 {
 /* Active Page */
 #homePage.active,
 #categoryPage.active,
-#wordDetailPage.active {
+#wordDetailPage.active,
+#conjugationPage.active {
   opacity: 1;
 
   transform: translateY(0);
@@ -1383,7 +1625,7 @@ body.dark input:focus {
 /* Panel Container */
 .desktop-side-panel {
   position: fixed;
-  left: -320px;
+  right: -320px;
   top: 0;
   width: 300px;
   height: 100vh;
@@ -1397,15 +1639,15 @@ body.dark input:focus {
 
   z-index: 5000;
 
-  border-right: 1px solid rgba(195, 244, 253, 0.489);
+  border-left: 1px solid rgba(195, 244, 253, 0.489);
 
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
 /* Open State */
 .desktop-side-panel.active {
-  left: 0;
+  right: 0;
 }
 
 /* Panel Buttons */
@@ -1472,8 +1714,16 @@ body.dark input:focus {
    CUSTOM PANEL PAGES + USER PROFILE
 ========================================================= */
 
+:root {
+  --panel-hero-height: clamp(170px, 40vw, 400px);
+  --panel-card-photo-ratio: 16 / 22;
+  --panel-card-photo-height: auto;
+  --country-hero-height: clamp(320px, 36vw, 420px);
+  --country-card-photo-ratio: 16 / 10;
+  --country-card-photo-height: auto; 
+}
 .panel-page-wrap {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 22px auto;
   padding: 18px;
   border-radius: 18px;
@@ -1485,16 +1735,48 @@ body.dark input:focus {
 
 .panel-hero-image {
   width: 100%;
-  height: 220px;
+  height: var(--panel-hero-height);
   border-radius: 14px;
   background-size: cover;
-  background-position: center;
+  background-position: var(--photo-position, center);
   margin-bottom: 16px;
+}
+
+.panel-hero-image--sprachwelt {
+  height: clamp(220px, 40vw, 420px);
+  background-position: center 5%;
+}
+
+.panel-page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .panel-page-content h1 {
   font-size: 28px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+}
+
+.panel-language-toggle {
+  flex: 0 0 auto;
+  border: 1px solid rgba(30, 64, 175, 0.22);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1e40af;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(30, 64, 175, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel-language-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(30, 64, 175, 0.18);
 }
 
 .panel-page-description {
@@ -1505,8 +1787,14 @@ body.dark input:focus {
 
 .panel-page-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 14px;
+}
+
+.panel-page-cards--sprachwelt {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .panel-page-card {
@@ -1514,7 +1802,90 @@ body.dark input:focus {
   background: #f8fafc;
   border: 1px solid #dbe7ff;
   padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.panel-photo-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 138px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(30, 64, 175, 0.34);
+  background:
+    linear-gradient(135deg, rgba(219, 234, 254, 0.88), rgba(240, 249, 255, 0.92));
+  color: #1e3a8a;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 14px;
+}
+
+.panel-page-photo {
+  display: block;
+  width: 100%;
+  height: var(--photo-height, var(--panel-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--panel-card-photo-ratio));
+  margin-bottom: 12px;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: var(--photo-position, center);
+  background: #e2e8f0;
+}
+.panel-page-card--sprachwelt .panel-page-photo {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.panel-page-card--sprachwelt {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.panel-page-card--sprachwelt h3 {
+  font-size: clamp(12px, 1.15vw, 14px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.panel-page-card--sprachwelt .panel-card-body {
+  font-size: clamp(11px, 1vw, 12.5px);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.panel-page-card--sprachwelt .panel-card-read-more {
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+.photo-fit-top {
+  --photo-position: center top;
+}
+
+.photo-fit-center {
+  --photo-position: center;
+}
+
+.photo-fit-bottom {
+  --photo-position: center bottom;
+}
+
+.photo-square {
+  --photo-ratio: 1 / 1;
+}
+
+.photo-portrait {
+  --photo-ratio: 4 / 5;
+}
+
+.photo-wide {
+  --photo-ratio: 16 / 9;
 }
 
 .panel-page-card:hover {
@@ -1528,9 +1899,1234 @@ body.dark input:focus {
   color: #1e40af;
 }
 
-.panel-page-card p {
+.panel-page-card p,
+.panel-card-body {
   font-size: 14px;
   line-height: 1.6;
+}
+
+.panel-card-body {
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: max-height 0.28s ease;
+}
+
+.panel-page-card.is-collapsed .panel-card-body {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.panel-page-card.is-expanded .panel-card-body {
+  display: block;
+}
+
+.panel-card-read-more {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(30, 64, 175, 0.22);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e40af;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.panel-card-read-more:hover {
+  transform: translateY(-1px);
+  background: #1e40af;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
+}
+
+.panel-page-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.germany-page {
+  width: min(1180px, calc(100% - 28px));
+  margin: 20px auto 42px;
+  display: grid;
+  gap: 18px;
+  color: #162033;
+  animation: germanyPageIn 0.55s ease both;
+}
+
+.germany-page,
+.germany-page * {
+  box-sizing: border-box;
+}
+
+.germany-page.is-switching {
+  opacity: 0.82;
+  transform: translateY(3px) scale(0.998);
+  transition:
+    opacity 0.26s ease,
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.germany-page.has-switched {
+  animation: germanyLanguageIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bangladesh-page.has-switched {
+  animation: germanyLanguageIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.germany-hero {
+  min-height: var(--country-hero-height);
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 42px);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.24);
+}
+
+.germany-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(5, 10, 20, 0.08), rgba(5, 10, 20, 0.36)),
+    linear-gradient(90deg, rgba(5, 10, 20, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+.germany-hero-copy {
+  max-width: 720px;
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.46);
+}
+
+.germany-hero-side,
+.bangladesh-hero-side {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  width: min(360px, 100%);
+  flex: 0 1 360px;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+}
+
+.germany-hero-copy span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
+}
+
+.germany-hero-copy h1 {
+  margin: 12px 0 10px;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.germany-hero-copy p {
+  max-width: 650px;
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.germany-lang-toggle {
+  align-self: flex-start;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: #ffffff;
+  color: #111827;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 800;
+  line-height: 1;
+  min-height: 42px;
+  min-width: 104px;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  transform: translateY(0) scale(1);
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    background-color 0.34s ease,
+    border-color 0.34s ease,
+    color 0.34s ease;
+}
+
+.bangladesh-lang-toggle {
+  align-self: start;
+  margin-bottom: 10px;
+}
+
+.germany-lang-toggle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.65) 45%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.germany-lang-toggle:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #ffce2e;
+  color: #111827;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.germany-lang-toggle:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.germany-lang-toggle:hover::after {
+  transform: translateX(120%);
+}
+
+.germany-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.germany-flag-panel,
+.bangladesh-flag-panel {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(7, 25, 18, 0.26);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.germany-flag-art,
+.bangladesh-flag-art {
+  width: min(290px, 100%);
+  aspect-ratio: 5 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(0, 0, 0, 0.2);
+}
+
+.germany-flag-art {
+  background:
+    linear-gradient(180deg, #111827 0 33.33%, #d10f1f 33.33% 66.66%, #f0bf28 66.66%);
+}
+
+.germany-flag-art::after,
+.bangladesh-flag-art::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.germany-flag-label,
+.bangladesh-flag-label {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1;
+  letter-spacing: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.bangladesh-flag-art {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    #006a4e;
+}
+
+.germany-flag-art span {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 33.333%;
+}
+
+.germany-flag-art span:nth-child(1) {
+  top: 0;
+  background: #111827;
+}
+
+.germany-flag-art span:nth-child(2) {
+  top: 33.333%;
+  background: #d10f1f;
+}
+
+.germany-flag-art span:nth-child(3) {
+  top: 66.666%;
+  background: #f0bf28;
+}
+
+.germany-stat,
+.germany-block,
+.germany-feature,
+.bangladesh-stat,
+.bangladesh-block,
+.bangladesh-feature {
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+}
+
+.germany-stat {
+  border-radius: 8px;
+  padding: 18px;
+  display: grid;
+  gap: 5px;
+  animation: germanyCardIn 0.55s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.germany-stat:nth-child(1) {
+  border-top: 4px solid #111827;
+}
+
+.germany-stat:nth-child(2) {
+  border-top: 4px solid #d10f1f;
+}
+
+.germany-stat:nth-child(3) {
+  border-top: 4px solid #f0bf28;
+}
+
+.germany-stat:nth-child(4) {
+  border-top: 4px solid #2563eb;
+}
+
+.germany-stat:nth-child(5) {
+  border-top: 4px solid #16a34a;
+}
+
+.germany-stat:hover,
+.germany-block:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.42);
+  box-shadow: 0 24px 56px rgba(15, 23, 42, 0.14);
+}
+
+.germany-stat strong {
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1;
+  color: #101827;
+}
+
+.germany-stat span {
+  font-size: 13px;
+  color: #516070;
+  line-height: 1.35;
+}
+
+.germany-block {
+  border-radius: 8px;
+  padding: clamp(18px, 3vw, 28px);
+  animation: germanyCardIn 0.6s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.germany-section-head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.germany-section-head h2,
+.germany-feature h2 {
+  font-size: clamp(22px, 3vw, 34px);
+  color: #101827;
+  letter-spacing: 0;
+}
+
+.germany-section-head p,
+.germany-feature p {
+  color: #475569;
+  line-height: 1.72;
+  font-size: 15px;
+}
+
+.germany-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.germany-state-grid span {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.34);
+  background:
+    radial-gradient(circle at top right, rgba(240, 191, 40, 0.22), transparent 34%),
+    linear-gradient(135deg, #ffffff, #f8fafc);
+  padding: 13px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #27364a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  isolation: isolate;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  opacity: 0;
+  animation: germanyStateIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    border-color 0.34s ease,
+    background 0.34s ease;
+}
+
+.germany-state-grid span:nth-child(1) { animation-delay: 0.02s; }
+.germany-state-grid span:nth-child(2) { animation-delay: 0.04s; }
+.germany-state-grid span:nth-child(3) { animation-delay: 0.06s; }
+.germany-state-grid span:nth-child(4) { animation-delay: 0.08s; }
+.germany-state-grid span:nth-child(5) { animation-delay: 0.1s; }
+.germany-state-grid span:nth-child(6) { animation-delay: 0.12s; }
+.germany-state-grid span:nth-child(7) { animation-delay: 0.14s; }
+.germany-state-grid span:nth-child(8) { animation-delay: 0.16s; }
+.germany-state-grid span:nth-child(9) { animation-delay: 0.18s; }
+.germany-state-grid span:nth-child(10) { animation-delay: 0.2s; }
+.germany-state-grid span:nth-child(11) { animation-delay: 0.22s; }
+.germany-state-grid span:nth-child(12) { animation-delay: 0.24s; }
+.germany-state-grid span:nth-child(13) { animation-delay: 0.26s; }
+.germany-state-grid span:nth-child(14) { animation-delay: 0.28s; }
+.germany-state-grid span:nth-child(15) { animation-delay: 0.3s; }
+.germany-state-grid span:nth-child(16) { animation-delay: 0.32s; }
+
+.germany-state-grid span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: translateX(-120%);
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.germany-state-grid span:hover {
+  transform: translateY(-3px) scale(1.008);
+  border-color: rgba(209, 15, 31, 0.32);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+}
+
+.germany-state-grid span:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+.germany-state-grid span:hover::after {
+  transform: translateX(120%);
+}
+
+.germany-state-grid b {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #111827;
+  color: #ffce2e;
+  font-size: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  position: relative;
+  z-index: 1;
+}
+
+.germany-state-grid em {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+}
+
+.germany-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.germany-feature {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  animation: germanyCardIn 0.65s ease both;
+}
+
+.germany-feature:nth-child(2n) {
+  animation-delay: 0.05s;
+}
+
+.germany-feature:nth-child(3n) {
+  animation-delay: 0.1s;
+}
+
+.germany-feature:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(37, 99, 235, 0.36);
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.14);
+}
+
+.germany-feature img {
+  width: 100%;
+  height: var(--photo-height, var(--country-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--country-card-photo-ratio));
+  object-fit: cover;
+  object-position: var(--photo-position, center);
+  display: block;
+  background: #dbeafe;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.germany-feature:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.1) contrast(1.03);
+}
+
+.germany-feature div {
+  padding: 18px;
+  display: grid;
+  gap: 9px;
+}
+
+.germany-feature h2 {
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.germany-feature p {
+  font-size: 14px;
+}
+
+.germany-company-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.germany-company-list p {
+  position: relative;
+  margin: 0;
+  padding: 13px 13px 13px 42px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95)),
+    linear-gradient(90deg, #111827, #d10f1f, #f0bf28);
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  color: #334155;
+  line-height: 1.55;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.germany-company-list p::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #111827 0 33%, #d10f1f 33% 66%, #f0bf28 66%);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+}
+
+.germany-company-list p:hover {
+  transform: translateY(-4px);
+  border-color: rgba(209, 15, 31, 0.3);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+}
+
+.germany-note {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid #d10f1f;
+  background: #fff7ed;
+  color: #7c2d12;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bangladesh-page {
+  width: min(1180px, calc(100% - 28px));
+  margin: 20px auto 42px;
+  display: grid;
+  gap: 18px;
+  color: #123224;
+  animation: panelPageEnter 0.35s ease;
+}
+
+.bangladesh-page,
+.bangladesh-page * {
+  box-sizing: border-box;
+}
+
+.bangladesh-hero {
+  min-height: clamp(340px, 38vw, 450px);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 44px);
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 206, 46, 0.18), transparent 25%),
+    radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.12), transparent 20%),
+    linear-gradient(145deg, #0a5f45 0%, #064a38 48%, #042f24 100%);
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, center;
+  background-repeat: no-repeat;
+  box-shadow: 0 26px 60px rgba(10, 34, 27, 0.28);
+}
+
+.bangladesh-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.12), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.08)),
+    linear-gradient(180deg, rgba(2, 20, 14, 0.06), rgba(2, 20, 14, 0.28));
+  pointer-events: none;
+}
+
+.bangladesh-hero-copy {
+  max-width: 730px;
+  position: relative;
+  z-index: 1;
+  color: #fffef7;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bangladesh-hero-copy span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
+}
+
+.bangladesh-hero-copy h1 {
+  margin: 12px 0 10px;
+  font-size: clamp(38px, 6vw, 74px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.bangladesh-hero-copy p {
+  max-width: 670px;
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bangladesh-flag-panel {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  width: min(360px, 100%);
+  flex: 0 1 360px;
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(7, 25, 18, 0.26);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.bangladesh-flag-art {
+  width: min(290px, 100%);
+  aspect-ratio: 5 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    #006a4e;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 34px rgba(0, 0, 0, 0.2);
+}
+
+.bangladesh-flag-art::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.bangladesh-flag-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 26%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #f42a41;
+  box-shadow: 0 10px 24px rgba(244, 42, 65, 0.3);
+}
+
+.bangladesh-flag-label {
+  display: none;
+}
+
+.bangladesh-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.bangladesh-stat,
+.bangladesh-block,
+.bangladesh-feature {
+  border: 1px solid rgba(121, 162, 139, 0.26);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 18px 46px rgba(10, 34, 27, 0.08);
+}
+
+.bangladesh-stat {
+  border-radius: 8px;
+  padding: 18px;
+  display: grid;
+  gap: 5px;
+  animation: germanyCardIn 0.55s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.bangladesh-stat:nth-child(1) {
+  border-top: 4px solid #006a4e;
+}
+
+.bangladesh-stat:nth-child(2) {
+  border-top: 4px solid #f42a41;
+}
+
+.bangladesh-stat:nth-child(3) {
+  border-top: 4px solid #0f766e;
+}
+
+.bangladesh-stat:nth-child(4) {
+  border-top: 4px solid #f0bf28;
+}
+
+.bangladesh-stat:nth-child(5) {
+  border-top: 4px solid #1d4ed8;
+}
+
+.bangladesh-stat:hover,
+.bangladesh-block:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 95, 70, 0.38);
+  box-shadow: 0 24px 56px rgba(10, 34, 27, 0.14);
+}
+
+.bangladesh-stat strong {
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1;
+  color: #0e1f17;
+}
+
+.bangladesh-stat span {
+  font-size: 13px;
+  color: #54665d;
+  line-height: 1.35;
+}
+
+.bangladesh-block {
+  border-radius: 8px;
+  padding: clamp(18px, 3vw, 28px);
+  animation: germanyCardIn 0.6s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.bangladesh-section-head {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.bangladesh-section-head h2,
+.bangladesh-feature h2 {
+  font-size: clamp(22px, 3vw, 34px);
+  color: #0e1f17;
+  letter-spacing: 0;
+}
+
+.bangladesh-section-head p,
+.bangladesh-feature p {
+  color: #4b6258;
+  line-height: 1.72;
+  font-size: 15px;
+}
+
+.bangladesh-division-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 12px;
+}
+
+.bangladesh-division-grid span {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(121, 162, 139, 0.28);
+  background:
+    radial-gradient(circle at top right, rgba(6, 106, 78, 0.18), transparent 34%),
+    linear-gradient(135deg, #ffffff, #f8fbf9);
+  padding: 13px 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #273d33;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  isolation: isolate;
+  box-shadow: 0 10px 26px rgba(10, 34, 27, 0.06);
+  opacity: 0;
+  animation: germanyStateIn 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s ease,
+    border-color 0.34s ease,
+    background 0.34s ease;
+}
+
+.bangladesh-division-grid span:nth-child(1) { animation-delay: 0.02s; }
+.bangladesh-division-grid span:nth-child(2) { animation-delay: 0.04s; }
+.bangladesh-division-grid span:nth-child(3) { animation-delay: 0.06s; }
+.bangladesh-division-grid span:nth-child(4) { animation-delay: 0.08s; }
+.bangladesh-division-grid span:nth-child(5) { animation-delay: 0.1s; }
+.bangladesh-division-grid span:nth-child(6) { animation-delay: 0.12s; }
+.bangladesh-division-grid span:nth-child(7) { animation-delay: 0.14s; }
+.bangladesh-division-grid span:nth-child(8) { animation-delay: 0.16s; }
+
+.bangladesh-division-grid span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: translateX(-120%);
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bangladesh-division-grid span:hover {
+  transform: translateY(-3px) scale(1.008);
+  border-color: rgba(6, 106, 78, 0.32);
+  box-shadow: 0 18px 38px rgba(10, 34, 27, 0.12);
+}
+
+.bangladesh-division-grid span:active {
+  transform: translateY(-1px) scale(0.995);
+}
+
+.bangladesh-division-grid span:hover::after {
+  transform: translateX(120%);
+}
+
+.bangladesh-division-grid b {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #006a4e;
+  color: #f8fafc;
+  font-size: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  position: relative;
+  z-index: 1;
+}
+
+.bangladesh-division-grid em {
+  position: relative;
+  z-index: 1;
+  font-style: normal;
+}
+
+.bangladesh-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bangladesh-feature {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  animation: germanyCardIn 0.65s ease both;
+}
+
+.bangladesh-feature:nth-child(2n) {
+  animation-delay: 0.05s;
+}
+
+.bangladesh-feature:nth-child(3n) {
+  animation-delay: 0.1s;
+}
+
+.bangladesh-feature:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(6, 106, 78, 0.36);
+  box-shadow: 0 24px 54px rgba(10, 34, 27, 0.14);
+}
+
+.bangladesh-feature img {
+  width: 100%;
+  height: var(--photo-height, var(--country-card-photo-height));
+  aspect-ratio: var(--photo-ratio, var(--country-card-photo-ratio));
+  object-fit: cover;
+  object-position: var(--photo-position, center);
+  display: block;
+  background: #d1fae5;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.bangladesh-feature:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.bangladesh-feature div {
+  padding: 18px;
+  display: grid;
+  gap: 9px;
+}
+
+.bangladesh-feature h2 {
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.bangladesh-feature p {
+  font-size: 14px;
+}
+
+.bangladesh-snapshot-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.bangladesh-snapshot-list p {
+  position: relative;
+  margin: 0;
+  padding: 13px 13px 13px 42px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 249, 0.95)),
+    linear-gradient(90deg, #006a4e, #f42a41, #f0bf28);
+  border: 1px solid rgba(121, 162, 139, 0.28);
+  color: #31443b;
+  line-height: 1.55;
+  box-shadow: 0 10px 24px rgba(10, 34, 27, 0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.bangladesh-snapshot-list p::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #006a4e;
+  box-shadow: 0 0 0 4px rgba(244, 42, 65, 0.14);
+}
+
+.bangladesh-snapshot-list p:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 106, 78, 0.34);
+  box-shadow: 0 18px 38px rgba(10, 34, 27, 0.12);
+}
+
+.bangladesh-note {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid #006a4e;
+  background: #ecfdf5;
+  color: #14532d;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+body.dark .germany-page {
+  color: #e5e7eb;
+}
+
+body.dark .germany-hero {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.46);
+}
+
+body.dark .germany-hero::before {
+  background:
+    linear-gradient(180deg, rgba(2, 6, 14, 0.16), rgba(2, 6, 14, 0.5)),
+    linear-gradient(90deg, rgba(2, 6, 14, 0.32), transparent 68%);
+}
+
+body.dark .germany-flag-panel {
+  background:
+    linear-gradient(180deg, rgba(10, 16, 28, 0.88), rgba(4, 8, 18, 0.94));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark .germany-flag-art {
+  background:
+    linear-gradient(180deg, #05070c 0 33.33%, #7f1120 33.33% 66.66%, #8d6a10 66.66%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+body.dark .germany-flag-art::after {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .germany-flag-label {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
+}
+
+body.dark .germany-lang-toggle {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: rgba(248, 250, 252, 0.72);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+}
+
+body.dark .germany-lang-toggle:hover {
+  background: #ffce2e;
+  border-color: #ffce2e;
+  color: #111827;
+}
+
+body.dark .germany-stat,
+body.dark .germany-block,
+body.dark .germany-feature {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92));
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.32);
+}
+
+body.dark .germany-stat:hover,
+body.dark .germany-block:hover,
+body.dark .germany-feature:hover {
+  border-color: rgba(147, 197, 253, 0.46);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.44);
+}
+
+body.dark .germany-stat strong,
+body.dark .germany-section-head h2,
+body.dark .germany-feature h2 {
+  color: #f8fafc;
+}
+
+body.dark .germany-stat span,
+body.dark .germany-section-head p,
+body.dark .germany-feature p {
+  color: #cbd5e1;
+}
+
+body.dark .germany-state-grid span,
+body.dark .germany-company-list p {
+  background:
+    radial-gradient(circle at top right, rgba(255, 206, 46, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.94));
+  border-color: rgba(148, 163, 184, 0.32);
+  color: #f1f5f9;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .germany-state-grid span:hover,
+body.dark .germany-company-list p:hover {
+  border-color: rgba(255, 206, 46, 0.4);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+}
+
+body.dark .germany-state-grid b {
+  background: #ffce2e;
+  color: #111827;
+  box-shadow:
+    inset 0 0 0 1px rgba(17, 24, 39, 0.16),
+    0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+body.dark .germany-company-list p::before {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.32);
+}
+
+body.dark .germany-note {
+  background: rgba(120, 53, 15, 0.32);
+  color: #ffedd5;
+  border-left-color: #ffce2e;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+body.dark .bangladesh-page {
+  color: #e5e7eb;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.14), rgba(2, 6, 23, 0));
+}
+
+body.dark .bangladesh-hero {
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.46);
+}
+
+body.dark .bangladesh-hero::before {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.05)),
+    linear-gradient(180deg, rgba(2, 20, 14, 0.12), rgba(2, 20, 14, 0.48));
+}
+
+body.dark .bangladesh-flag-panel {
+  background:
+    linear-gradient(180deg, rgba(6, 23, 18, 0.86), rgba(2, 12, 10, 0.92));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark .bangladesh-flag-art {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%),
+    #004f3b;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+body.dark .bangladesh-flag-circle {
+  box-shadow: 0 10px 24px rgba(244, 42, 65, 0.38);
+}
+
+body.dark .bangladesh-stat,
+body.dark .bangladesh-block,
+body.dark .bangladesh-feature {
+  background:
+    linear-gradient(145deg, rgba(8, 15, 31, 0.98), rgba(5, 10, 22, 0.94));
+  border-color: rgba(148, 163, 184, 0.24);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+body.dark .bangladesh-stat:hover,
+body.dark .bangladesh-block:hover,
+body.dark .bangladesh-feature:hover {
+  border-color: rgba(110, 231, 183, 0.34);
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.44);
+}
+
+body.dark .bangladesh-stat strong,
+body.dark .bangladesh-section-head h2,
+body.dark .bangladesh-feature h2 {
+  color: #f8fafc;
+}
+
+body.dark .bangladesh-stat span,
+body.dark .bangladesh-section-head p,
+body.dark .bangladesh-feature p {
+  color: #cbd5e1;
+}
+
+body.dark .bangladesh-division-grid span,
+body.dark .bangladesh-snapshot-list p {
+  background:
+    radial-gradient(circle at top right, rgba(244, 42, 65, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(11, 20, 36, 0.98), rgba(4, 9, 20, 0.96));
+  border-color: rgba(148, 163, 184, 0.24);
+  color: #f1f5f9;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+body.dark .bangladesh-division-grid span:hover,
+body.dark .bangladesh-snapshot-list p:hover {
+  border-color: rgba(110, 231, 183, 0.36);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+}
+
+body.dark .bangladesh-division-grid b {
+  background: #f0bf28;
+  color: #111827;
+}
+
+body.dark .bangladesh-note {
+  background: rgba(5, 20, 14, 0.72);
+  color: #d1fae5;
+  border-left-color: #f0bf28;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================================================
@@ -2121,6 +3717,50 @@ body.reduce-motion *::after {
     transform: translateY(0);
   }
 }
+
+@keyframes germanyPageIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes germanyCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes germanyStateIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes germanyLanguageIn {
+  from {
+    opacity: 0.82;
+    transform: translateY(3px) scale(0.998);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ===============================
    SEARCH SUGGESTIONS
 ================================ */
@@ -2238,6 +3878,7 @@ body,
 #homePage,
 #categoryPage,
 #wordDetailPage,
+#conjugationPage,
 .footer,
 button,
 input,
@@ -2331,6 +3972,14 @@ body.dark .hero h1 {
 
 body.dark .hero p {
   color: #94a3b8;
+}
+
+body.dark .home-sprachwelt-cta {
+  border-color: rgba(96, 165, 250, 0.72);
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 58%, #059669 100%);
+  box-shadow:
+    0 16px 34px rgba(37, 99, 235, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 /* Search Input */
@@ -2444,6 +4093,57 @@ body.dark #wordDetailPage em {
   color: #8695aa;
 }
 
+body.dark #conjugationPage {
+  background: rgb(20, 31, 52);
+  border: 2px solid #1f2937;
+}
+
+body.dark .conjugation-topbar h1 {
+  color: #93c5fd;
+}
+
+body.dark .conjugation-mood {
+  background: #111a2b;
+  border-color: #334155;
+}
+
+body.dark .conjugation-mood h2,
+body.dark .conjugation-tense-card h3 {
+  color: #7fb0ff;
+}
+
+body.dark .conjugation-tense-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.dark .conjugation-person-list li {
+  border-bottom-color: #233147;
+}
+
+body.dark .conjugation-person-list span {
+  color: #e2e8f0;
+}
+
+body.dark .conjugation-person-list strong {
+  color: #60a5fa;
+}
+
+body.dark .conjugation-empty {
+  color: #94a3b8;
+}
+
+body.dark .conjugation-open-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-color: #60a5fa;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.4);
+}
+
+body.dark .conjugation-open-btn:hover {
+  filter: brightness(1.1);
+}
+
 /* ======================================================
    AUTH MODAL
 ====================================================== */
@@ -2453,8 +4153,18 @@ body.dark #wordDetailPage em {
 ====================================================== */
 
 body.dark .footer {
-  background: #0b1120;
-  border-top: 1px solid #1f2937;
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92));
+  border-top: 1px solid rgba(96, 165, 250, 0.18);
+  color: #94a3b8;
+  box-shadow: 0 -18px 42px rgba(0, 0, 0, 0.28);
+}
+
+body.dark .footer-brand strong {
+  color: #dbeafe;
+}
+
+body.dark .footer-brand p {
   color: #94a3b8;
 }
 
@@ -2520,6 +4230,12 @@ body.dark .panel-page-content h1 {
   color: #e2e8f0;
 }
 
+body.dark .panel-language-toggle {
+  background: #111a2b;
+  border-color: rgba(147, 197, 253, 0.24);
+  color: #bfdbfe;
+}
+
 body.dark .panel-page-description {
   color: #cbd5e1;
 }
@@ -2529,12 +4245,36 @@ body.dark .panel-page-card {
   border: 1px solid #334155;
 }
 
+body.dark .panel-photo-placeholder {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.94));
+  border-color: rgba(96, 165, 250, 0.38);
+  color: #bfdbfe;
+}
+
 body.dark .panel-page-card h3 {
   color: #93c5fd;
 }
 
 body.dark .panel-page-card p {
   color: #e2e8f0;
+}
+
+body.dark .panel-card-read-more {
+  background: #1e293b;
+  border-color: rgba(147, 197, 253, 0.24);
+  color: #bfdbfe;
+}
+
+body.dark .panel-card-read-more:hover {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
+}
+
+body.dark .panel-page-footer {
+  border-top-color: rgba(148, 163, 184, 0.22);
+  color: #94a3b8;
 }
 
 body.dark .user-info-row {
@@ -2802,6 +4542,21 @@ body.dark .close-btn:hover {
 ========================================================= */
 
 @media (max-width: 1200px) {
+  :root {
+    --panel-hero-height: clamp(170px, 40vw, 400px);
+    --country-card-photo-ratio: 16 / 9;
+    
+  }
+  .panel-hero-image--sprachwelt {
+  height: clamp(370px, 30vw, 200px);
+  background-position: center 10%;
+}
+
+  .germany-feature-grid,
+  .bangladesh-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .container {
     max-width: 1120px;
     padding: 0 20px;
@@ -2820,6 +4575,16 @@ body.dark .close-btn:hover {
     gap: 10px;
   }
 
+  #conjugationPage {
+    margin: 16px 14px;
+    padding: 20px 16px;
+  }
+
+  .conjugation-tense-card {
+    margin: 5px 18px;
+    flex: 0 1 340px;
+  }
+
   body.dark .header,
   body.dark .footer,
   body.dark .detail-card {
@@ -2828,6 +4593,45 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 992px) {
+  :root {
+    --panel-hero-height: clamp(170px, 40vw, 300px);
+    --country-hero-height: 340px;
+  }
+  .panel-hero-image--sprachwelt {
+  height: clamp(270px, 30vw, 200px);
+  background-position: center 10%;
+}
+
+  .germany-page,
+  .bangladesh-page {
+    width: min(100% - 24px, 900px);
+    gap: 14px;
+  }
+
+  .germany-hero,
+  .bangladesh-hero {
+    min-height: 340px;
+  }
+
+  .germany-stats,
+  .bangladesh-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel-page-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .panel-page-cards--sprachwelt {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .germany-state-grid,
+  .bangladesh-division-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .container {
     max-width: 960px;
     padding: 0 18px;
@@ -2877,9 +4681,48 @@ body.dark .close-btn:hover {
   body.dark #categoryPage .vertical-word-item {
     border-color: #334155;
   }
+
+  #conjugationPage {
+    margin: 14px 12px;
+    padding: 18px 14px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 22px;
+  }
+
+  .conjugation-grid {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .conjugation-tense-card {
+    margin: 5px 12px;
+    flex: 0 1 320px;
+  }
 }
 
 @media (max-width: 768px) {
+
+  .panel-page-cards--sprachwelt {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .panel-page-card--sprachwelt {
+    padding: 9px;
+  }
+
+  .panel-page-card--sprachwelt h3 {
+    font-size: 12.5px;
+    line-height: 1.22;
+  }
+
+  .panel-page-card--sprachwelt .panel-card-body {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
   .container {
     padding: 0 14px;
   }
@@ -2887,6 +4730,17 @@ body.dark .close-btn:hover {
   .header-inner {
     grid-template-columns: auto 1fr auto;
     gap: 10px;
+  }
+
+  .logo-area {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .header-controls {
+    grid-column: 3;
+    justify-self: end;
+    justify-content: flex-end;
   }
 
   .site-title {
@@ -2903,7 +4757,9 @@ body.dark .close-btn:hover {
   }
 
   .mobile-menu-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .desktop-menu-btn {
@@ -2911,7 +4767,7 @@ body.dark .close-btn:hover {
   }
 
   .hero {
-    padding: 18px 14px 36px;
+    padding: 18px 14px 20px;
   }
 
   .hero h1 {
@@ -2925,6 +4781,14 @@ body.dark .close-btn:hover {
 
   #searchInput {
     padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .home-sprachwelt-cta {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 16px;
+    padding: 13px 18px;
     font-size: 15px;
   }
 
@@ -2961,17 +4825,17 @@ body.dark .close-btn:hover {
   }
 
   .vertical-word-item {
-    font-size: 14px;
-    padding: 12px;
+    font-size: 13px;
+    padding: 11px;
   }
 
   .word-number {
     width: 38px;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .word-text {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   #wordDetailPage {
@@ -3029,17 +4893,153 @@ body.dark .close-btn:hover {
     color: #d4deec;
   }
 
+  #conjugationPage {
+    margin: 12px 10px;
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 20px;
+  }
+
+  .conjugation-grid {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .conjugation-tense-card {
+    width: 100%;
+    min-width: 0;
+    margin: 4px 0;
+    /* flex: 1 1 100%; */
+  }
+
   .panel-page-wrap {
     margin: 12px auto;
     padding: 12px;
   }
 
   .panel-hero-image {
-    height: 180px;
+    height: 200px;
   }
 
   .panel-page-content h1 {
     font-size: 24px;
+  }
+
+  .panel-page-heading {
+    align-items: flex-start;
+  }
+
+  .panel-language-toggle {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .germany-page,
+  .bangladesh-page {
+    width: min(100% - 18px, 720px);
+    margin-top: 12px;
+    gap: 12px;
+  }
+
+  .germany-hero,
+  .bangladesh-hero {
+    min-height: min(390px, calc(100svh - 120px));
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 18px;
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .germany-hero-copy,
+  .bangladesh-hero-copy {
+    width: 100%;
+  }
+
+  .germany-hero-side,
+  .bangladesh-hero-side {
+    width: 100%;
+    flex-basis: auto;
+    margin-left: 0;
+  }
+
+  .germany-hero-copy span,
+  .bangladesh-hero-copy span {
+    font-size: 11px;
+    min-height: 26px;
+    padding: 4px 9px;
+  }
+
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
+    font-size: clamp(34px, 10vw, 52px);
+    line-height: 1;
+  }
+
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .germany-lang-toggle {
+    align-self: flex-end;
+    min-height: 40px;
+    padding: 9px 14px;
+  }
+
+  .bangladesh-flag-panel {
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .germany-flag-panel {
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(260px, 100%);
+  }
+
+  .germany-flag-art {
+    width: min(260px, 100%);
+  }
+
+  .germany-stats,
+  .bangladesh-stats,
+  .germany-feature-grid,
+  .bangladesh-feature-grid,
+  .germany-company-list,
+  .bangladesh-snapshot-list {
+    grid-template-columns: 1fr;
+  }
+
+  .germany-state-grid,
+  .bangladesh-division-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .germany-state-grid span,
+  .bangladesh-division-grid span {
+    min-height: 52px;
+    padding: 11px 10px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .germany-state-grid b,
+  .bangladesh-division-grid b {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
   .settings-wrap {
@@ -3194,12 +5194,27 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 480px) {
+  :root {
+    --panel-hero-height: 150px;
+    --panel-card-photo-ratio: 16 / 20;
+    --country-hero-height: min(390px, calc(100svh - 120px));
+  }
+  .panel-hero-image--sprachwelt {
+  height: clamp(200px, 30vw, 200px);
+  /* background-position: center 10%; */
+}
   .container {
     padding: 0 12px;
   }
 
   .header-inner {
+    grid-template-columns: auto 1fr auto;
     gap: 8px;
+  }
+
+  .header-controls {
+    grid-column: 3;
+    justify-self: end;
   }
 
   .site-title {
@@ -3212,7 +5227,7 @@ body.dark .close-btn:hover {
   }
 
   .hero {
-    padding: 14px 10px 30px;
+    padding: 14px 10px 20px;
   }
 
   .hero h1 {
@@ -3228,6 +5243,101 @@ body.dark .close-btn:hover {
   #searchInput {
     font-size: 14px;
     padding: 10px 12px;
+  }
+
+  .germany-hero,
+  .bangladesh-hero {
+    min-height: min(360px, calc(100svh - 112px));
+    padding: 14px;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
+    font-size: clamp(32px, 11vw, 42px);
+  }
+
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .germany-lang-toggle {
+    min-height: 38px;
+    min-width: 92px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .bangladesh-flag-panel {
+    padding: 12px;
+  }
+
+  .germany-flag-panel {
+    padding: 12px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(240px, 100%);
+    border-radius: 20px;
+  }
+
+  .germany-flag-art {
+    width: min(240px, 100%);
+    border-radius: 20px;
+  }
+
+  .bangladesh-flag-label {
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .germany-flag-label {
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .germany-stats,
+  .bangladesh-stats {
+    gap: 9px;
+  }
+
+  .germany-state-grid,
+  .bangladesh-division-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .germany-block,
+  .germany-feature div,
+  .germany-stat,
+  .bangladesh-block,
+  .bangladesh-feature div,
+  .bangladesh-stat {
+    padding: 14px;
+  }
+
+  .germany-section-head,
+  .bangladesh-section-head {
+    margin-bottom: 14px;
+  }
+
+  .germany-section-head h2,
+  .germany-feature h2,
+  .bangladesh-section-head h2,
+  .bangladesh-feature h2 {
+    font-size: clamp(19px, 6vw, 24px);
+  }
+
+  .germany-section-head p,
+  .germany-feature p,
+  .germany-company-list p,
+  .germany-note,
+  .bangladesh-section-head p,
+  .bangladesh-feature p,
+  .bangladesh-snapshot-list p,
+  .bangladesh-note {
+    font-size: 13px;
+    line-height: 1.58;
   }
 
   .category-explainer {
@@ -3254,6 +5364,25 @@ body.dark .close-btn:hover {
   .two-column-wrapper {
     grid-template-columns: 1fr 1fr !important;
     gap: 8px;
+  }
+
+  #categoryPage[data-category="Nomen-Verb Verbindung"] .two-column-wrapper,
+  #categoryPage[data-category="Redewendungen"] .two-column-wrapper,
+  #categoryPage[data-category="Sprichwörter"] .two-column-wrapper,
+  #categoryPage[data-category="Best YT Kanäle"] .two-column-wrapper,
+  #categoryPage[data-category="Filme & Serien"] .two-column-wrapper,
+  #categoryPage[data-category="Feste Wendungen"] .two-column-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+
+  .detail-top-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-top-actions .favorite-btn {
+    margin-left: 0;
   }
 
   .vertical-word-item {
@@ -3292,6 +5421,47 @@ body.dark .close-btn:hover {
   .detail-title {
     font-size: 22px;
     margin-bottom: 12px;
+  }
+
+  #conjugationPage {
+    margin: 8px 6px;
+    padding: 12px 8px;
+    border-radius: 14px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 17px;
+  }
+
+  .conjugation-mood {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .conjugation-mood h2 {
+    font-size: 16px;
+  }
+
+  .conjugation-tense-card {
+    padding: 8px 9px;
+  }
+
+  .conjugation-tense-card h3 {
+    font-size: 13px;
+  }
+
+  .conjugation-person-list span,
+  .conjugation-person-list strong {
+    font-size: 12px;
+  }
+
+  .conjugation-person-list li {
+    grid-template-columns: minmax(58px, 82px) auto;
+    gap: 6px;
+  }
+
+  .conjugation-tense-card {
+    margin: 4px 0;
   }
 
   .settings-head {
@@ -3385,12 +5555,38 @@ body.dark .close-btn:hover {
     font-weight: 500;
   }
 
-  .panel-hero-image {
-    height: 150px;
-  }
-
   .panel-page-cards {
     grid-template-columns: 1fr;
+  }
+
+  .panel-page-cards--sprachwelt {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .panel-page-card--sprachwelt {
+    padding: 8px;
+  }
+
+  .panel-page-card--sprachwelt .panel-page-photo {
+    margin-bottom: 8px;
+  }
+
+  .panel-page-card--sprachwelt h3 {
+    font-size: 11.5px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .panel-page-card--sprachwelt .panel-card-body {
+    font-size: 10.5px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .panel-page-card--sprachwelt .panel-card-read-more {
+    padding: 6px 8px;
+    font-size: 10.5px;
   }
 
   .mobile-side-panel {
@@ -3441,6 +5637,108 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 360px) {
+  :root {
+    --panel-hero-height: 135px;
+    --country-hero-height: min(330px, calc(100svh - 104px));
+  }
+
+  .germany-page,
+  .bangladesh-page {
+    width: min(100% - 12px, 348px);
+    margin-top: 8px;
+    gap: 10px;
+  }
+
+  .germany-hero,
+  .bangladesh-hero {
+    min-height: min(330px, calc(100svh - 104px));
+    padding: 12px;
+    border-radius: 7px;
+  }
+
+  .germany-hero-copy h1,
+  .bangladesh-hero-copy h1 {
+    font-size: clamp(28px, 12vw, 34px);
+  }
+
+  .germany-hero-copy p,
+  .bangladesh-hero-copy p {
+    font-size: 12px;
+  }
+
+  .germany-hero-copy span,
+  .bangladesh-hero-copy span {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .germany-lang-toggle {
+    min-height: 36px;
+    min-width: 86px;
+    padding: 7px 10px;
+    font-size: 11.5px;
+  }
+
+  .bangladesh-flag-panel {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .germany-flag-panel {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .bangladesh-flag-art {
+    width: min(220px, 100%);
+    border-radius: 16px;
+  }
+
+  .germany-flag-art {
+    width: min(220px, 100%);
+    border-radius: 16px;
+  }
+
+  .bangladesh-stats,
+  .germany-stats,
+  .germany-feature-grid,
+  .bangladesh-feature-grid,
+  .germany-company-list,
+  .bangladesh-snapshot-list,
+  .germany-state-grid,
+  .bangladesh-division-grid {
+    gap: 8px;
+  }
+
+  .germany-state-grid span,
+  .bangladesh-division-grid span {
+    min-height: 46px;
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .germany-state-grid b,
+  .bangladesh-division-grid b {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+    font-size: 11px;
+  }
+
+  .germany-block,
+  .germany-feature div,
+  .germany-stat,
+  .bangladesh-block,
+  .bangladesh-feature div,
+  .bangladesh-stat {
+    padding: 12px;
+  }
+
+  .germany-company-list p,
+  .bangladesh-snapshot-list p {
+    padding: 11px 11px 11px 36px;
+  }
+
   .container {
     padding: 0 10px;
   }
@@ -3497,6 +5795,32 @@ body.dark .close-btn:hover {
     grid-template-columns: 1fr !important;
   }
 
+  #categoryPage[data-category="Slang"] .four-column-wrapper,
+  #categoryPage[data-category="Nomen"] .four-column-wrapper,
+  #categoryPage[data-category="Schimpfwörter"] .four-column-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  #categoryPage[data-category="Slang"] .vertical-word-item,
+  #categoryPage[data-category="Nomen"] .vertical-word-item,
+  #categoryPage[data-category="Schimpfwörter"] .vertical-word-item {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  #categoryPage[data-category="Slang"] .word-number,
+  #categoryPage[data-category="Nomen"] .word-number,
+  #categoryPage[data-category="Schimpfwörter"] .word-number {
+    width: 24px;
+    font-size: 10px;
+  }
+
+  #categoryPage[data-category="Slang"] .word-text,
+  #categoryPage[data-category="Nomen"] .word-text,
+  #categoryPage[data-category="Schimpfwörter"] .word-text {
+    font-size: 12px;
+  }
+
   .vertical-word-item {
     font-size: 12px;
     padding: 9px;
@@ -3530,6 +5854,37 @@ body.dark .close-btn:hover {
 
   .detail-title {
     font-size: 20px;
+  }
+
+  #conjugationPage {
+    margin: 6px 4px;
+    padding: 10px 6px;
+    border-radius: 12px;
+  }
+
+  .conjugation-topbar h1 {
+    font-size: 15px;
+  }
+
+  .conjugation-mood {
+    padding: 8px;
+  }
+
+  .conjugation-mood h2 {
+    font-size: 14px;
+  }
+
+  .conjugation-tense-card h3 {
+    font-size: 12px;
+  }
+
+  .conjugation-person-list li {
+    grid-template-columns: minmax(54px, 76px) auto;
+    gap: 6px;
+  }
+
+  .conjugation-tense-card {
+    margin: 4px 0;
   }
 
   .settings-head h1 {
@@ -3635,6 +5990,17 @@ body.dark .close-btn:hover {
     font-size: 20px;
   }
 
+  .panel-page-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .panel-language-toggle {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
   .section-btn,
   .back-btn {
     font-size: 11px;
@@ -3687,3 +6053,4 @@ body.dark .close-btn:hover {
     background: #111827;
   }
 }
+

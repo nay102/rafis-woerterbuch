@@ -39,11 +39,6 @@
         <!-- LEFT: Logo + Site Name -->
 
         <div class="logo-area" id="logoHome">
-          <button id="desktopMenuBtn" class="desktop-menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
           <img src="assets/logo.png" alt="Logo" class="logo" />
           <span id="titleHome" class="site-title"> Rafi’s Wörterbuch</span>
         </div>
@@ -55,6 +50,11 @@
         <div class="header-controls">
           <button id="darkToggle" aria-label="Toggle Dark Mode">🌙</button>
           <button id="loginBtn">Login</button>
+          <button id="desktopMenuBtn" class="desktop-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <button id="mobileMenuBtn" class="mobile-menu-btn">☰</button>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="hero-title">
         <h1>Rafi’s Wörterbuch</h1>
         <!-- <p>Deutsch einfach erklärt – auf Deutsch, Englisch und Bengali</p> -->
-        <p>Ausführliche Erklärungen auf Deutsch, Englisch und Bengali</p>
+        <p>Ausführliche Erklärungen auf Deutsch, Englisch und Bengalisch</p>
       </div>
 
       <!-- ================= SEARCH AREA ================= -->
@@ -89,6 +89,9 @@
 
       <!-- Word Counter -->
       <div id="wordCount" class="word-counter"></div>
+      <button id="sprachweltHomeCta" class="home-sprachwelt-cta" type="button">
+        ✨ Rafis Sprachwelt
+      </button>
       <!-- ================= JSON IMPORT ================= -->
 
       <div id="importMessage"></div>
@@ -113,6 +116,7 @@
     <!-- ================= WORD DETAIL PAGE ====================== -->
     <!-- ========================================================= -->
     <section id="wordDetailPage" style="display: none"></section>
+    <section id="conjugationPage" style="display: none"></section>
     <section id="desktopPage" style="display: none"></section>
 
     <!-- ========================================================= -->
@@ -149,12 +153,18 @@
         </p>
       </div>
     </div>
+    
+
+    
 
     <!-- ========================================================= -->
     <!-- ===================== FOOTER ============================ -->
     <!-- ========================================================= -->
     <footer class="footer">
-      <p>Thanks for visiting ❤️</p>
+      <div class="footer-brand">
+        <strong>Rafi’s Wörterbuch</strong>
+        <!-- <p>© 2026 Rafi’s Wörterbuch. All rights reserved.</p> -->
+      </div>
 
       <div class="footer-links">
         <a
@@ -175,9 +185,6 @@
           rel="noopener"
           >TikTok</a
         >
-        <a href="https://wa.me/8801988064328" target="_blank" rel="noopener"
-          >WhatsApp</a
-        >
         <a href="https://x.com/nayeem_i44487" target="_blank" rel="noopener"
           >X</a
         >
@@ -193,13 +200,17 @@
         <span id="desktopClosePanel" class="desktop-close">✖</span>
 
         <button data-page="home">🏠 Home</button>
-        <button data-page="owner">👑 Owner</button>
-        <button data-page="ausbildung">📚 Ausbildung</button>
+        <button data-page="owner">👑 About Rafi</button>
         <button data-page="about">🇩🇪 Germany</button>
-        <button data-page="option4">🧠 Practice Lab</button>
+        <button data-page="bangladesh">🇧🇩 Bangladesh</button>
+        <button data-page="ausbildung">📚 Ausbildung</button>
         <button data-page="option5">📝 Exam Zone</button>
         <button data-page="option6">🚀 Pro Tools</button>
-        <button id="desktopInstallBtn" class="install-app-btn hidden" type="button">
+        <button
+          id="desktopInstallBtn"
+          class="install-app-btn hidden"
+          type="button"
+        >
           📲 Install App
         </button>
         <!-- Account utility pages -->
@@ -214,22 +225,25 @@
         <span id="closePanel" class="close-panel">✖</span>
 
         <button data-page="home">🏠 Home</button>
-        <button data-page="owner">👑 Owner</button>
-        <button data-page="ausbildung">📚 Ausbildung</button>
+        <button data-page="owner">👑 About Rafi</button>
         <button data-page="about">🇩🇪 Germany</button>
-        <button data-page="option4">🧠 Practice Lab</button>
+        <button data-page="bangladesh">🇧🇩 Bangladesh</button>
+        <button data-page="ausbildung">📚 Ausbildung</button>
         <button data-page="option5">📝 Exam Zone</button>
         <button data-page="option6">🚀 Pro Tools</button>
 
         <button id="panelDarkToggle">🌙 Dark Mode</button>
         <button id="panelLoginBtn">Login</button>
-        <button id="panelInstallBtn" class="install-app-btn hidden" type="button">
+        <button
+          id="panelInstallBtn"
+          class="install-app-btn hidden"
+          type="button"
+        >
           📲 Install App
         </button>
 
-        
         <!-- Account utility pages -->
-         <button data-page="favorites">⭐ Favorites</button>
+        <button data-page="favorites">⭐ Favorites</button>
         <button data-page="settings">⚙ Settings</button>
         <button data-page="logout">🚪 Logout</button>
       </div>
@@ -259,10 +273,18 @@
           এই শব্দগুলো অপমানজনক; খুব সতর্কতার সাথে ব্যবহার করা উচিত।
         </p>
         <div class="warning-modal-actions">
-          <button id="cancelSchimpfWarning" type="button" class="settings-secondary">
+          <button
+            id="cancelSchimpfWarning"
+            type="button"
+            class="settings-secondary"
+          >
             Cancel
           </button>
-          <button id="confirmSchimpfWarning" type="button" class="settings-primary">
+          <button
+            id="confirmSchimpfWarning"
+            type="button"
+            class="settings-primary"
+          >
             Confirm
           </button>
         </div>
