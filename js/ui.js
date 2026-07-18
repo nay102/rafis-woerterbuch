@@ -770,31 +770,35 @@ const panelPageContent = {
     title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
     description:
-      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming. Pick your level to access practical, bite-sized lessons, structured study notes , and interactive drills designed to build your confidence fast!\n👇 Choose your level below and let’s start learning together!",
+      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming.\n👇 Choose your level below, explore the lessons, and let’s start learning together!",
 cards: [
   {
-    title: "German A1: Der perfekte Start",
+    title: "German A1: \nDer perfekte Start",
+    href: "pages/a1.html",
     image: sitePhotos.sprachwelt.a1,
     imagePosition: "center 40%",
-    body: "Master basic greetings, daily vocabulary, and core sentence structures from scratch.",
+    body: "Master the basics: greetings, core vocabulary, and simple grammar from scratch.",
     photo: "Deutsch A1"
   },
   {
-    title: "German A2: Mehr verstehen",
+    title: "German A2: \nMehr verstehen",
+    href: "pages/a2.html",
     image: sitePhotos.sprachwelt.a2,
     imagePosition: "center 40%",
     body: "Build real-world conversational confidence and unlock essential everyday grammar.",
     photo: "Deutsch A2"
   },
     {
-    title: "German B1: Sicher sprechen",
+    title: "German B1:\nSicher sprechen",
+    href: "pages/b1.html",
     image: sitePhotos.sprachwelt.b1,
     imagePosition: "center 40%",
     body: "Express your opinions smoothly and handle complex daily or work situations.",
     photo: "Deutsch B1"
   },
   {
-    title: "German B2: Fließend kommunizieren",
+    title: "German B2: \nFließend kommunizieren",
+    href: "pages/b2.html",
     image: sitePhotos.sprachwelt.b2,
     imagePosition: "center 40%",
     body: "Dive into advanced idioms and nuanced debates to speak like a professional.",
@@ -3180,9 +3184,13 @@ function renderPanelPage(pageKey) {
       const photo = typeof card === "string" ? "" : card.photo || "";
       const image = typeof card === "string" ? "" : card.image || "";
       const imageClass = typeof card === "string" ? "" : card.imageClass || "";
+      const href = typeof card === "string" ? "" : card.href || "";
       const photoStyle = typeof card === "string" ? "" : buildPhotoStyle(card);
       const isSprachweltCard = pageKey === "sprachwelt";
       const sprachweltClass = isSprachweltCard ? "panel-page-card--sprachwelt" : "";
+      const linkClass = href ? "panel-page-card-link" : "";
+      const cardTag = href ? "a" : "article";
+      const hrefAttr = href ? ` href="${escapeHtml(href)}"` : "";
       const readMoreButton = isSprachweltCard
         ? ""
         : `
@@ -3192,7 +3200,7 @@ function renderPanelPage(pageKey) {
         `;
 
       return `
-        <article class="panel-page-card is-collapsed ${sprachweltClass}">
+        <${cardTag} class="panel-page-card is-collapsed ${sprachweltClass} ${linkClass}"${hrefAttr}>
           ${
             image
               ? `<img class="panel-page-photo ${escapeHtml(imageClass)}" src="${escapeHtml(image)}" alt="${escapeHtml(photo || title)}" loading="lazy"${photoStyle}>`
@@ -3203,7 +3211,7 @@ function renderPanelPage(pageKey) {
           <h3>${escapeHtml(title)}</h3>
           <p class="panel-card-body">${escapeHtml(body)}</p>
           ${readMoreButton}
-        </article>
+        </${cardTag}>
       `;
     })
     .join("");

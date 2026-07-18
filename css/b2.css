@@ -1,0 +1,7 @@
+@import url("./a1.css");
+
+.level-page--b2 {
+  --level-accent: #be123c;
+  --level-accent-dark: #9f1239;
+  --level-soft: #fff1f2;
+}
