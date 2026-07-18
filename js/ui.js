@@ -11,6 +11,7 @@ import {
   ensureUserProfile,
   touchUserLastLogin,
   getUserProfile,
+  resetPasswordByEmail,
   changePasswordWithConfirmation,
   deleteAccountWithPassword,
   saveUserAppSettings,
@@ -443,8 +444,12 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+function normalizePanelPageKey(pageKey) {
+  return pageKey === "option4" ? "sprachwelt" : pageKey;
+}
+
 function formatPanelDescription(pageKey, description) {
-  if (pageKey !== "option4") {
+  if (pageKey !== "sprachwelt") {
     return escapeHtml(description);
   }
 
@@ -761,7 +766,7 @@ const panelPageContent = {
       "Integration tips and common social communication styles."
     ]
   },
-  option4: {
+  sprachwelt: {
     title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
     description:
@@ -924,6 +929,7 @@ export async function initUI() {
   setupLogoNavigation();
   setupHomeSearch();
   setupHomeSprachweltCta();
+  setupFooterNavigation();
 
   window.addEventListener("popstate", handleRouting);
 }
@@ -1805,8 +1811,21 @@ function generateCategories() {
 
 function setupHomeSprachweltCta() {
   document.getElementById("sprachweltHomeCta")?.addEventListener("click", () => {
-    setSingleRouteParam("page", "option4");
-    renderPanelPage("option4");
+    setSingleRouteParam("page", "sprachwelt");
+    renderPanelPage("sprachwelt");
+  });
+}
+
+function setupFooterNavigation() {
+  document.querySelectorAll("[data-footer-page]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const page = normalizePanelPageKey(btn.dataset.footerPage);
+      if (!page) return;
+
+      setSingleRouteParam("page", page);
+      renderPanelPage(page);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   });
 }
 
@@ -1847,8 +1866,13 @@ function handleRouting() {
     return;
   }
 
-  if (page && panelPageContent[page] && page !== "settings") {
-    renderPanelPage(page);
+  const normalizedPage = normalizePanelPageKey(page);
+
+  if (normalizedPage && panelPageContent[normalizedPage] && normalizedPage !== "settings") {
+    if (normalizedPage !== page) {
+      setSingleRouteParam("page", normalizedPage);
+    }
+    renderPanelPage(normalizedPage);
     return;
   }
 
@@ -3119,6 +3143,8 @@ function wireAboutRafiLanguageToggle() {
 }
 
 function renderPanelPage(pageKey) {
+  pageKey = normalizePanelPageKey(pageKey);
+
   if (pageKey === "about") {
     renderGermanyPage();
     return;
@@ -3143,7 +3169,7 @@ function renderPanelPage(pageKey) {
   const hero = document.getElementById("heroSection");
   if (hero) hero.style.display = "none";
 
-  const isSprachweltHero = pageKey === "option4";
+  const isSprachweltHero = pageKey === "sprachwelt";
   const heroClassName = isSprachweltHero ? "panel-hero-image panel-hero-image--sprachwelt" : "panel-hero-image";
   const cardGridClassName = isSprachweltHero ? "panel-page-cards panel-page-cards--sprachwelt" : "panel-page-cards";
 
@@ -3155,7 +3181,7 @@ function renderPanelPage(pageKey) {
       const image = typeof card === "string" ? "" : card.image || "";
       const imageClass = typeof card === "string" ? "" : card.imageClass || "";
       const photoStyle = typeof card === "string" ? "" : buildPhotoStyle(card);
-      const isSprachweltCard = pageKey === "option4";
+      const isSprachweltCard = pageKey === "sprachwelt";
       const sprachweltClass = isSprachweltCard ? "panel-page-card--sprachwelt" : "";
       const readMoreButton = isSprachweltCard
         ? ""
@@ -3793,9 +3819,11 @@ function setupAuthModal() {
   const errorBox = document.getElementById("authError");
 
   const authTitle = document.getElementById("authTitle");
+  const authSubtitle = document.getElementById("authSubtitle");
   const authSubmitBtn = document.getElementById("authSubmitBtn");
   const switchText = document.getElementById("switchText");
   const switchBtn = document.getElementById("switchModeBtn");
+  const forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
 
   let isLoginMode = true;
 
@@ -3825,6 +3853,24 @@ function setupAuthModal() {
 
     setAuthMode(isLoginMode);
 
+  });
+
+  forgotPasswordBtn?.addEventListener("click", async () => {
+    errorBox.textContent = "";
+    forgotPasswordBtn.disabled = true;
+
+    try {
+      await resetPasswordByEmail(emailInput.value);
+      errorBox.textContent =
+        "Password reset email sent. Check your inbox or spam folder, then follow the link to set a new password.";
+      errorBox.style.color = "#16a34a";
+      showToast("Password reset email sent.", "success");
+    } catch (error) {
+      errorBox.textContent = error.message;
+      errorBox.style.color = "#ff4d4d";
+    } finally {
+      forgotPasswordBtn.disabled = false;
+    }
   });
 
   /* ================= FORM SUBMIT ================= */
@@ -3873,7 +3919,8 @@ function setupAuthModal() {
 
     if (loginMode) {
 
-      authTitle.textContent = "Login";
+      authTitle.textContent = "Welcome back";
+      authSubtitle.textContent = "Log in to continue learning German";
       authSubmitBtn.textContent = "Login";
 
       switchText.textContent = "Don't have an account?";
@@ -3881,7 +3928,9 @@ function setupAuthModal() {
 
     } else {
 
-      authTitle.textContent = "Sign Up";
+      authTitle.textContent = "Sign up for free";
+      authSubtitle.textContent =
+        "Save and view vocabulary, check personal notes, and more...";
       authSubmitBtn.textContent = "Sign Up";
 
       switchText.textContent = "Already have an account?";
@@ -4356,37 +4405,73 @@ function updateActive(items) {
 // panel buttons
 const mobileBtn = document.getElementById("mobileMenuBtn");
 const panel = document.getElementById("mobileSidePanel");
-const closePanel = document.getElementById("closePanel");
-
-mobileBtn?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  panel?.classList.add("active");
-});
-
-closePanel?.addEventListener("click", () => {
-  panel?.classList.remove("active");
-});
 /* =========================================================
    DESKTOP/MOBILE PANEL LOGIC
 ========================================================= */
 
 const desktopBtn = document.getElementById("desktopMenuBtn");
 const desktopPanel = document.getElementById("desktopSidePanel");
-const desktopClose = document.getElementById("desktopClosePanel");
 
-desktopBtn?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  desktopPanel?.classList.toggle("active");
-});
+function syncPanelButtonState() {
+  const desktopOpen = desktopPanel?.classList.contains("active");
+  const mobileOpen = panel?.classList.contains("active");
 
-desktopClose?.addEventListener("click", () => {
-  desktopPanel?.classList.remove("active");
-});
+  desktopBtn?.classList.toggle("is-active", Boolean(desktopOpen));
+  mobileBtn?.classList.toggle("is-active", Boolean(mobileOpen));
+  desktopBtn?.setAttribute("aria-expanded", String(Boolean(desktopOpen)));
+  mobileBtn?.setAttribute("aria-expanded", String(Boolean(mobileOpen)));
+  desktopBtn?.setAttribute(
+    "aria-label",
+    desktopOpen ? "Close desktop menu" : "Open desktop menu"
+  );
+  mobileBtn?.setAttribute(
+    "aria-label",
+    mobileOpen ? "Close mobile menu" : "Open mobile menu"
+  );
+}
+
+function updateHeaderOffset() {
+  const header = document.querySelector(".header");
+  const height = header?.getBoundingClientRect().height || 78;
+  document.documentElement.style.setProperty("--header-offset", `${Math.ceil(height)}px`);
+}
 
 function closeAllPanels() {
   desktopPanel?.classList.remove("active");
   panel?.classList.remove("active");
+  syncPanelButtonState();
 }
+
+function toggleDesktopPanel() {
+  const shouldOpen = !desktopPanel?.classList.contains("active");
+  panel?.classList.remove("active");
+  desktopPanel?.classList.toggle("active", shouldOpen);
+  syncPanelButtonState();
+}
+
+function toggleMobilePanel() {
+  const shouldOpen = !panel?.classList.contains("active");
+  desktopPanel?.classList.remove("active");
+  panel?.classList.toggle("active", shouldOpen);
+  syncPanelButtonState();
+}
+
+updateHeaderOffset();
+syncPanelButtonState();
+
+window.addEventListener("resize", updateHeaderOffset);
+
+mobileBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  updateHeaderOffset();
+  toggleMobilePanel();
+});
+
+desktopBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  updateHeaderOffset();
+  toggleDesktopPanel();
+});
 
 async function handleSidePanelAction(page) {
   if (!page) return;
@@ -4468,6 +4553,7 @@ function closePanelsOnOutsideClick(e) {
     !desktopBtn?.contains(target)
   ) {
     desktopPanel.classList.remove("active");
+    syncPanelButtonState();
   }
 
   if (
@@ -4476,6 +4562,7 @@ function closePanelsOnOutsideClick(e) {
     !mobileBtn?.contains(target)
   ) {
     panel.classList.remove("active");
+    syncPanelButtonState();
   }
 }
 

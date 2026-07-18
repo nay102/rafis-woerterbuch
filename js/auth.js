@@ -8,7 +8,8 @@ import {
   EmailAuthProvider,
   reauthenticateWithCredential,
   deleteUser,
-  sendEmailVerification
+  sendEmailVerification,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import {
   addDoc,
@@ -272,6 +273,27 @@ export async function resendVerificationEmail(user) {
   if (!user) throw new Error("No active user.");
   if (user.emailVerified) return;
   await sendEmailVerification(user);
+}
+
+export async function resetPasswordByEmail(email) {
+  const cleanEmail = String(email || "").trim();
+  if (!cleanEmail) {
+    throw new Error("Enter your email first, then tap Forgot Password.");
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, cleanEmail);
+  } catch (error) {
+    if (error.code === "auth/invalid-email") {
+      throw new Error("Enter a valid email address.");
+    }
+
+    if (error.code === "auth/user-not-found") {
+      throw new Error("No account found with this email.");
+    }
+
+    throw new Error("Password reset email could not be sent. Try again.");
+  }
 }
 
 export async function changePasswordWithConfirmation(
