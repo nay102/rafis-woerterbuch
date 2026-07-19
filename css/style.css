@@ -3,6 +3,18 @@
    Premium Clean Base
 ========================================================= */
 
+/* =========================================================
+   FILE GUIDE
+   01. Global foundation and reusable layout
+   02. Header, navigation, hero, and search
+   03. Categories, word lists, and word details
+   04. Authentication, footer, and page transitions
+   05. Panels, country pages, profile, and settings
+   06. Search suggestions
+   07. Shared theme-transition support
+   08. Responsive breakpoints (always kept at the end)
+========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -175,9 +187,6 @@ body {
 
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
-body.dark .desktop-menu-btn {
-  background: linear-gradient(145deg, #010101, #383a3e);
-}
 
 /* Bars */
 .desktop-menu-btn span {
@@ -216,8 +225,6 @@ body.dark .desktop-menu-btn {
   text-align: center;
   font-size: 18px;
   font-weight: 700;
-
-  /* background: linear-gradient(90deg, #0039f6, #044df6); */
   background: #4704ff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -245,7 +252,6 @@ body.dark .desktop-menu-btn {
   padding: 8px 16px;
   border-radius: 12px;
   border: 1px solid #8364f5;
-  /* border: none; */
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -761,42 +767,6 @@ body.dark .desktop-menu-btn {
   border-width: 0;
 }
 
-body.dark .category-explainer {
-  background: linear-gradient(145deg, #111b2e, #0b1628);
-  border-color: #334155;
-}
-
-body.dark .category-explainer h3 {
-  color: #93c5fd;
-}
-
-body.dark .category-explainer-de,
-body.dark .category-explain-panel p {
-  color: #dbe7fb;
-}
-
-body.dark .category-explain-btn {
-  background: #0f172a;
-  color: #93c5fd;
-  border-color: #334155;
-}
-
-body.dark .category-explain-btn:hover,
-body.dark .category-explain-btn.active {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  color: #ffffff;
-}
-
-body.dark .category-explain-panel {
-  background: #0f172a;
-  border-color: #334155;
-}
-
-body.dark .category-explain-panel h4 {
-  color: #93c5fd;
-}
-
 /* =========================================================
    9️⃣ WORD DETAIL PAGE
    Premium Glass Card Style
@@ -979,7 +949,6 @@ body.dark .category-explain-panel h4 {
   flex-wrap: wrap;
   gap: 10px;
   align-items: start;
-  /* justify-content: flex-start; */
   justify-content: center ;
 }
 
@@ -1569,7 +1538,8 @@ body.dark .category-explain-panel h4 {
   transform: translateY(0);
 }
 /* =========================================================
-   1️⃣4️⃣ DARK MODE (PROFESSIONAL + SMOOTH)
+   GLOBAL THEME TRANSITION
+   Animates visual theme changes; theme colors live in dark.css.
 ========================================================= */
 
 body {
@@ -1578,30 +1548,6 @@ body {
     color 0.5s ease;
 }
 
-/* Header + Footer + Cards in Dark */
-body.dark .header,
-body.dark .footer,
-body.dark .detail-card,
-body.dark .modal-box {
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(20px);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s ease;
-}
-
-/* Inputs inside Dark Mode */
-body.dark input {
-  background: #1e293b;
-  color: white;
-  border: 1px solid #334155;
-  transition: all 0.3s ease;
-}
-
-body.dark input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-}
 /* =========================================================
    SECTION BUTTONS (Premium Look)
 ========================================================= */
@@ -1839,7 +1785,7 @@ body.dark input:focus {
   --panel-card-photo-height: auto;
   --country-hero-height: clamp(320px, 36vw, 420px);
   --country-card-photo-ratio: 16 / 10;
-  --country-card-photo-height: auto; 
+  --country-card-photo-height: auto;
 }
 .panel-page-wrap {
   max-width: 1500px;
@@ -1973,6 +1919,80 @@ body.dark input:focus {
 .panel-page-card--sprachwelt {
   padding: 10px;
   overflow: hidden;
+}
+
+/* Sprachwelt level cards behave visually like large navigation buttons. */
+.panel-page-card--sprachwelt.panel-page-card-link {
+  position: relative;
+  border: 2px solid #93b4f5;
+  background: linear-gradient(145deg, #ffffff, #edf4ff);
+  box-shadow:
+    0 6px 0 #c7d8f7,
+    0 12px 24px rgba(30, 64, 175, 0.12);
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.panel-page-card--sprachwelt .panel-level-action {
+  display: block;
+  align-self: stretch;
+  margin-top: auto;
+  padding: 8px 10px;
+  border: 1px solid #2563eb;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link .panel-page-photo {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link:hover {
+  border-color: #2563eb;
+  background: linear-gradient(145deg, #ffffff, #e3efff);
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 0 #8eb2ed,
+    0 18px 32px rgba(30, 64, 175, 0.2);
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link:hover .panel-level-action {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(37, 99, 235, 0.28);
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link:hover .panel-page-photo {
+  transform: scale(1.025);
+  filter: saturate(1.08);
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link:active {
+  transform: translateY(1px) scale(0.985);
+  box-shadow:
+    0 2px 0 #8eb2ed,
+    0 7px 15px rgba(30, 64, 175, 0.16);
+  transition-duration: 0.12s;
+}
+
+.panel-page-card--sprachwelt.panel-page-card-link:focus-visible {
+  border-color: #1d4ed8;
+  outline: 3px solid rgba(37, 99, 235, 0.28);
+  outline-offset: 4px;
 }
 
 .panel-page-card--sprachwelt h3 {
@@ -3048,217 +3068,6 @@ body.dark input:focus {
   line-height: 1.5;
 }
 
-body.dark .germany-page {
-  color: #e5e7eb;
-}
-
-body.dark .germany-hero {
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.46);
-}
-
-body.dark .germany-hero::before {
-  background:
-    linear-gradient(180deg, rgba(2, 6, 14, 0.16), rgba(2, 6, 14, 0.5)),
-    linear-gradient(90deg, rgba(2, 6, 14, 0.32), transparent 68%);
-}
-
-body.dark .germany-flag-panel {
-  background:
-    linear-gradient(180deg, rgba(10, 16, 28, 0.88), rgba(4, 8, 18, 0.94));
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-body.dark .germany-flag-art {
-  background:
-    linear-gradient(180deg, #05070c 0 33.33%, #7f1120 33.33% 66.66%, #8d6a10 66.66%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 20px 38px rgba(0, 0, 0, 0.34);
-}
-
-body.dark .germany-flag-art::after {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark .germany-flag-label {
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
-}
-
-body.dark .germany-lang-toggle {
-  background: #f8fafc;
-  color: #0f172a;
-  border-color: rgba(248, 250, 252, 0.72);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
-}
-
-body.dark .germany-lang-toggle:hover {
-  background: #ffce2e;
-  border-color: #ffce2e;
-  color: #111827;
-}
-
-body.dark .germany-stat,
-body.dark .germany-block,
-body.dark .germany-feature {
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92));
-  border-color: rgba(148, 163, 184, 0.3);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.32);
-}
-
-body.dark .germany-stat:hover,
-body.dark .germany-block:hover,
-body.dark .germany-feature:hover {
-  border-color: rgba(147, 197, 253, 0.46);
-  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.44);
-}
-
-body.dark .germany-stat strong,
-body.dark .germany-section-head h2,
-body.dark .germany-feature h2 {
-  color: #f8fafc;
-}
-
-body.dark .germany-stat span,
-body.dark .germany-section-head p,
-body.dark .germany-feature p {
-  color: #cbd5e1;
-}
-
-body.dark .germany-state-grid span,
-body.dark .germany-company-list p {
-  background:
-    radial-gradient(circle at top right, rgba(255, 206, 46, 0.18), transparent 35%),
-    linear-gradient(135deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.94));
-  border-color: rgba(148, 163, 184, 0.32);
-  color: #f1f5f9;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-}
-
-body.dark .germany-state-grid span:hover,
-body.dark .germany-company-list p:hover {
-  border-color: rgba(255, 206, 46, 0.4);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
-}
-
-body.dark .germany-state-grid b {
-  background: #ffce2e;
-  color: #111827;
-  box-shadow:
-    inset 0 0 0 1px rgba(17, 24, 39, 0.16),
-    0 8px 18px rgba(0, 0, 0, 0.28);
-}
-
-body.dark .germany-company-list p::before {
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.32);
-}
-
-body.dark .germany-note {
-  background: rgba(120, 53, 15, 0.32);
-  color: #ffedd5;
-  border-left-color: #ffce2e;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
-}
-
-body.dark .bangladesh-page {
-  color: #e5e7eb;
-  background: linear-gradient(180deg, rgba(2, 6, 23, 0.14), rgba(2, 6, 23, 0));
-}
-
-body.dark .bangladesh-hero {
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.46);
-}
-
-body.dark .bangladesh-hero::before {
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 30%, transparent 70%, rgba(255, 255, 255, 0.05)),
-    linear-gradient(180deg, rgba(2, 20, 14, 0.12), rgba(2, 20, 14, 0.48));
-}
-
-body.dark .bangladesh-flag-panel {
-  background:
-    linear-gradient(180deg, rgba(6, 23, 18, 0.86), rgba(2, 12, 10, 0.92));
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-body.dark .bangladesh-flag-art {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 30%),
-    #004f3b;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 20px 38px rgba(0, 0, 0, 0.34);
-}
-
-body.dark .bangladesh-flag-circle {
-  box-shadow: 0 10px 24px rgba(244, 42, 65, 0.38);
-}
-
-body.dark .bangladesh-stat,
-body.dark .bangladesh-block,
-body.dark .bangladesh-feature {
-  background:
-    linear-gradient(145deg, rgba(8, 15, 31, 0.98), rgba(5, 10, 22, 0.94));
-  border-color: rgba(148, 163, 184, 0.24);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
-body.dark .bangladesh-stat:hover,
-body.dark .bangladesh-block:hover,
-body.dark .bangladesh-feature:hover {
-  border-color: rgba(110, 231, 183, 0.34);
-  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.44);
-}
-
-body.dark .bangladesh-stat strong,
-body.dark .bangladesh-section-head h2,
-body.dark .bangladesh-feature h2 {
-  color: #f8fafc;
-}
-
-body.dark .bangladesh-stat span,
-body.dark .bangladesh-section-head p,
-body.dark .bangladesh-feature p {
-  color: #cbd5e1;
-}
-
-body.dark .bangladesh-division-grid span,
-body.dark .bangladesh-snapshot-list p {
-  background:
-    radial-gradient(circle at top right, rgba(244, 42, 65, 0.18), transparent 35%),
-    linear-gradient(135deg, rgba(11, 20, 36, 0.98), rgba(4, 9, 20, 0.96));
-  border-color: rgba(148, 163, 184, 0.24);
-  color: #f1f5f9;
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
-body.dark .bangladesh-division-grid span:hover,
-body.dark .bangladesh-snapshot-list p:hover {
-  border-color: rgba(110, 231, 183, 0.36);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
-}
-
-body.dark .bangladesh-division-grid b {
-  background: #f0bf28;
-  color: #111827;
-}
-
-body.dark .bangladesh-note {
-  background: rgba(5, 20, 14, 0.72);
-  color: #d1fae5;
-  border-left-color: #f0bf28;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
-}
-
 /* =========================================================
    SETTINGS + ACCOUNT EXPERIENCE (DESKTOP)
 ========================================================= */
@@ -3898,7 +3707,6 @@ body.reduce-motion *::after {
 .search-container {
   position: relative;
   z-index: 3000;
-  /* z-index: 100000; */
 }
 
 /* ===============================
@@ -3927,12 +3735,6 @@ body.reduce-motion *::after {
   z-index: 9999;
 
   pointer-events: auto;
-}
-body.dark .suggestions-box {
-  background: #070707;
-}
-body.dark .suggestion-item:hover {
-  background: #333536cb;
 }
 
 /* Active state */
@@ -3979,28 +3781,10 @@ body.dark .suggestion-item:hover {
   background: #dbeafe;
 }
 
-body.dark .submit-word-hint-btn {
-  border-color: #334155;
-  background: #1e293b;
-  color: #93c5fd;
-}
-
-body.dark .submit-word-hint-btn:hover {
-  background: #263447;
-}
-
-/* ======================================================
-   PROFESSIONAL DARK MODE – FULL SITE
-   Activated when body has class "dark"
-====================================================== */
-
-body.dark {
-  background: linear-gradient(135deg, #0f172a, #0b1120);
-  color: #e2e8f0;
-}
-/* ======================================================
-   🌙 GLOBAL SMOOTH TRANSITION (FIXED & PROFESSIONAL)
-====================================================== */
+/* =========================================================
+   THEME TRANSITION SUPPORT
+   Shared motion only; dark colors now live in dark.css.
+========================================================= */
 
 body,
 .header,
@@ -4024,708 +3808,7 @@ input,
     transform 0.25s ease;
 }
 
-/* ======================================================
-   HEADER
-====================================================== */
-
-body.dark .header {
-  background: rgba(15, 23, 42, 0.9);
-  border-bottom: 1px solid #1f2937;
-}
-
-body.dark .branding {
-  color: #fffefe;
-}
-
-body.dark .site-title {
-  color: #ffffff;
-}
-
-body.dark .desktop-panel-content,
-body.dark .panel-content {
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.9)),
-    rgba(15, 23, 42, 0.88);
-  border-color: rgba(96, 165, 250, 0.18);
-  box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(148, 163, 184, 0.16);
-}
-
-body.dark .desktop-panel-content button,
-body.dark .panel-content button {
-  background: rgba(15, 23, 42, 0.78);
-  border-color: rgba(96, 165, 250, 0.18);
-  color: #dbeafe;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-}
-
-body.dark .desktop-panel-content button:hover,
-body.dark .desktop-panel-content button:focus-visible,
-body.dark .panel-content button:hover,
-body.dark .panel-content button:focus-visible {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  border-color: rgba(147, 197, 253, 0.3);
-  color: #ffffff;
-}
-/* ================================
-   DARK MODE – HEADER BUTTONS
-================================ */
-
-body.dark #darkToggle,
-body.dark #loginBtn {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  color: #f8fafc;
-  border: 1px solid rgba(71, 85, 105, 0.5);
-  border-radius: 12px;
-  padding: 8px 16px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  /* transition: all 0.3s ease; */
-}
-
-body.dark #loginBtn.profile-btn {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  padding: 0;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  color: #ffffff;
-  border: 1px solid rgba(148, 163, 184, 0.55);
-}
-
-/* Hover Effect */
-body.dark #darkToggle:hover,
-body.dark #loginBtn:hover {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  border-color: #3b82f6;
-  box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Click Effect */
-body.dark #darkToggle:active,
-body.dark #loginBtn:active {
-  transform: translateY(0px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* ======================================================
-   HERO SECTION
-====================================================== */
-
-body.dark .hero {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
-  border-radius: 20px;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
-}
-
-body.dark .hero h1 {
-  color: #ffffff;
-}
-
-body.dark .hero p {
-  color: #94a3b8;
-}
-
-body.dark .home-sprachwelt-cta {
-  border-color: rgba(96, 165, 250, 0.72);
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 58%, #059669 100%);
-  box-shadow:
-    0 16px 34px rgba(37, 99, 235, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-/* Search Input */
-body.dark #searchInput {
-  background: #1e293b;
-  color: #f1f5f9;
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 10px 14px;
-}
-
-body.dark #searchInput:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-  outline: none;
-}
-
-body.dark .search-message {
-  color: #94a3b8;
-}
-
-body.dark .word-counter {
-  color: #60a5fa;
-}
-
-/* ======================================================
-   HOME PAGE CATEGORY NAV
-====================================================== */
-
-body.dark .category-nav button {
-  background: rgba(30, 41, 59, 0.8);
-  color: #e2e8f0;
-  border: 1px solid #334155;
-  border-radius: 14px;
-  padding: 12px 20px;
-  margin: 6px;
-}
-
-body.dark .category-nav button:hover {
-  background: #0752cb;
-  border-color: #0b1019;
-  transform: translateY(-3px);
-}
-
-/* ======================================================
-   CATEGORY PAGE
-====================================================== */
-
-body.dark #categoryPage {
-  background: transparent;
-  padding: 30px 10px;
-}
-
-body.dark #categoryPage .vertical-word-item {
-  background: #1f2937;
-  border: 1px solid #334155;
-  border-radius: 14px;
-  padding: 12px 16px;
-  margin-bottom: 10px;
-  color: #e5e7eb;
-}
-
-body.dark .install-app-btn {
-  background: linear-gradient(135deg, #0a2a62, #2563eb) !important;
-  border: 1px solid rgba(148, 163, 184, 0.55);
-  color: #ffffff !important;
-}
-
-body.dark #categoryPage .vertical-word-item:hover {
-  background: #111827;
-  cursor: pointer;
-}
-
-/* ======================================================
-   WORD DETAIL PAGE (IMPORTANT FIX)
-====================================================== */
-
-body.dark #wordDetailPage {
-  background: rgb(20, 31, 52);
-  border-radius: 20px;
-  padding: 35px;
-  margin: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  border: 2px solid #1f2937;
-}
-
-/* All text inside word detail */
-body.dark #wordDetailPage h1,
-body.dark #wordDetailPage h2,
-body.dark #wordDetailPage h3 {
-  color: #0202fa;
-}
-
-body.dark #wordDetailPage p,
-body.dark #wordDetailPage span,
-body.dark #wordDetailPage li {
-  color: #eef0f3;
-  line-height: 1.7;
-}
-
-/* Meaning block look */
-body.dark #wordDetailPage p {
-  background: #090c10;
-  padding: 14px 16px;
-  border-radius: 12px;
-  margin-bottom: 14px;
-}
-
-/* Example styling */
-body.dark #wordDetailPage em {
-  color: #8695aa;
-}
-
-body.dark #conjugationPage {
-  background: rgb(20, 31, 52);
-  border: 2px solid #1f2937;
-}
-
-body.dark .conjugation-topbar h1 {
-  color: #93c5fd;
-}
-
-body.dark .conjugation-mood {
-  background: #111a2b;
-  border-color: #334155;
-}
-
-body.dark .conjugation-mood h2,
-body.dark .conjugation-tense-card h3 {
-  color: #7fb0ff;
-}
-
-body.dark .conjugation-tense-card {
-  background: #0f172a;
-  border-color: #334155;
-}
-
-body.dark .conjugation-person-list li {
-  border-bottom-color: #233147;
-}
-
-body.dark .conjugation-person-list span {
-  color: #e2e8f0;
-}
-
-body.dark .conjugation-person-list strong {
-  color: #60a5fa;
-}
-
-body.dark .conjugation-empty {
-  color: #94a3b8;
-}
-
-body.dark .conjugation-open-btn {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  border-color: #60a5fa;
-  color: #ffffff;
-  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.4);
-}
-
-body.dark .conjugation-open-btn:hover {
-  filter: brightness(1.1);
-}
-
-/* ======================================================
-   AUTH MODAL
-====================================================== */
-
-/* ======================================================
-   FOOTER
-====================================================== */
-
-body.dark .footer {
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92));
-  border-color: rgba(96, 165, 250, 0.18);
-  color: #94a3b8;
-  box-shadow: 0 -18px 42px rgba(0, 0, 0, 0.28);
-}
-
-body.dark .footer-shell {
-  background:
-    radial-gradient(circle at 10% 15%, rgba(96, 165, 250, 0.12), transparent 34%),
-    rgba(15, 23, 42, 0.34);
-}
-
-body.dark .footer-brand strong {
-  color: #dbeafe;
-}
-
-body.dark .footer-social h2 {
-  color: #dbeafe;
-}
-
-body.dark .footer-email,
-body.dark .footer-copy {
-  color: #94a3b8;
-}
-
-body.dark .footer-action {
-  background:
-    linear-gradient(135deg, rgba(96, 165, 250, 0.14), rgba(34, 197, 94, 0.08)),
-    rgba(15, 23, 42, 0.76);
-  border-color: rgba(96, 165, 250, 0.2);
-  color: #dbeafe;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
-}
-
-body.dark .footer-action:hover,
-body.dark .footer-action:focus-visible {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: #ffffff;
-}
-
-body.dark .footer-email:hover,
-body.dark .footer-email:focus-visible {
-  color: #60a5fa;
-}
-
-body.dark .footer-social-icons a {
-  background: rgba(15, 23, 42, 0.78);
-  border-color: rgba(96, 165, 250, 0.18);
-  color: #dbeafe;
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
-}
-
-body.dark .footer-copy {
-  border-top-color: rgba(148, 163, 184, 0.16);
-}
-
-/* ======================================================
-   SCROLLBAR
-====================================================== */
-
-body.dark ::-webkit-scrollbar {
-  width: 8px;
-}
-
-body.dark ::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-
-body.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-
-body.dark ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
-}
-/* =========================================
-   DARK MODE – PREMIUM LOGIN MODAL
-========================================= */
-
-/* Overlay background */
-body.dark .modal-overlay {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
-}
-
-/* Modal box */
-body.dark .modal-box {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
-  border: 1px solid rgba(71, 85, 105, 0.4);
-  border-radius: 20px;
-  padding: 35px 30px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-  color: #f1f5f9;
-  animation: fadeInModal 0.3s ease;
-}
-
-body.dark #loginBtn.profile-btn:hover {
-  background: linear-gradient(135deg, #2563eb, #0891b2);
-}
-
-body.dark .panel-page-wrap {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid #334155;
-}
-
-body.dark .panel-page-content h1 {
-  color: #e2e8f0;
-}
-
-body.dark .panel-language-toggle {
-  background: #111a2b;
-  border-color: rgba(147, 197, 253, 0.24);
-  color: #bfdbfe;
-}
-
-body.dark .panel-page-description {
-  color: #cbd5e1;
-}
-
-body.dark .panel-page-card {
-  background: #0f172a;
-  border: 1px solid #334155;
-}
-
-body.dark .panel-photo-placeholder {
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.94));
-  border-color: rgba(96, 165, 250, 0.38);
-  color: #bfdbfe;
-}
-
-body.dark .panel-page-card h3 {
-  color: #93c5fd;
-}
-
-body.dark .panel-page-card p {
-  color: #e2e8f0;
-}
-
-body.dark .panel-card-read-more {
-  background: #1e293b;
-  border-color: rgba(147, 197, 253, 0.24);
-  color: #bfdbfe;
-}
-
-body.dark .panel-card-read-more:hover {
-  background: #2563eb;
-  color: #ffffff;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
-}
-
-body.dark .panel-page-footer {
-  border-top-color: rgba(148, 163, 184, 0.22);
-  color: #94a3b8;
-}
-
-body.dark .user-info-row {
-  background: #0f172a;
-  border: 1px solid #334155;
-  color: #e2e8f0;
-}
-
-body.dark .user-card-head {
-  background: #0f172a;
-  border: 1px solid #334155;
-}
-
-body.dark #closeUserInfo {
-  background: rgba(148, 163, 184, 0.2);
-  color: #f8fafc;
-}
-
-body.dark .password-preview-wrap input {
-  background: #020617;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .password-preview-wrap button {
-  background: #2563eb;
-}
-
-body.dark .settings-head {
-  background: linear-gradient(145deg, #111b2e, #0b1628);
-  border-color: #334155;
-}
-
-body.dark .settings-head p {
-  color: #cbd5e1;
-}
-
-body.dark .settings-card {
-  background: #0f172a;
-  border-color: #334155;
-}
-
-body.dark .settings-card h3 {
-  color: #93c5fd;
-}
-
-body.dark .settings-card label {
-  color: #e2e8f0;
-}
-
-body.dark .settings-help,
-body.dark .settings-empty {
-  color: #94a3b8;
-}
-
-body.dark .settings-card select,
-body.dark .settings-card input {
-  background: #020617;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .settings-textarea,
-body.dark .word-note-input {
-  background: #020617;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .kpi-item {
-  background: #111827;
-  border-color: #334155;
-}
-
-body.dark .kpi-item strong {
-  color: #93c5fd;
-}
-
-body.dark .kpi-item span {
-  color: #cbd5e1;
-}
-
-body.dark .settings-secondary {
-  background: #1e293b;
-  color: #e2e8f0;
-}
-
-body.dark .settings-word-item {
-  background: #111827;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-
-body.dark .settings-word-item:hover {
-  background: #1f2937;
-}
-
-body.dark .settings-history-item {
-  background: #0f172a;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .settings-history-item:hover {
-  background: #1e293b;
-}
-
-body.dark .favorite-btn {
-  background: #0f172a;
-  border-color: #334155;
-  color: #e2e8f0;
-}
-
-body.dark .favorite-btn.active {
-  background: #3f2c0f;
-  border-color: #f59e0b;
-  color: #fcd34d;
-}
-
-body.dark .learned-btn.active {
-  background: #123123;
-  border-color: #16a34a;
-  color: #86efac;
-}
-
-body.dark .compact-toggle-btn {
-  background: #0f172a;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .user-action-grid input {
-  background: #020617;
-  color: #e2e8f0;
-  border-color: #334155;
-}
-
-body.dark .user-action-btn {
-  background: #1d4ed8;
-}
-
-body.dark .danger-btn {
-  background: #b91c1c;
-}
-
-body.dark .warning-modal-text {
-  color: #cbd5e1;
-}
-
-/* Title */
-body.dark .modal-box h2 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #ffffff;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
-body.dark .auth-subtitle {
-  color: #94a3b8;
-}
-
-/* Inputs */
-body.dark .modal-box input {
-  width: 100%;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-bottom: 15px;
-  font-size: 14px;
-  color: #f8fafc;
-  /* transition: all 0.3s ease; */
-}
-
-body.dark .modal-box input::placeholder {
-  color: #64748b;
-}
-
-body.dark .modal-box input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
-  outline: none;
-}
-
-/* Submit button */
-body.dark .modal-box button[type="submit"] {
-  width: 100%;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  border: none;
-  border-radius: 12px;
-  padding: 12px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-  /* transition: all 0.3s ease; */
-}
-
-body.dark .modal-box button[type="submit"]:hover {
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
-  box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Error message */
-body.dark .auth-error {
-  background: linear-gradient(145deg, #1e293b, #1e293b00);
-  border: linear-gradient(145deg, #1e293b, #1e293b00);
-  padding: 8px 12px;
-  border-radius: 10px;
-  color: #f87171;
-  margin-bottom: 15px;
-  font-size: 13px;
-}
-
-/* Switch text */
-body.dark .switch-text {
-  text-align: center;
-  margin-top: 18px;
-  color: #94a3b8;
-  font-size: 13px;
-}
-
-body.dark #switchModeBtn {
-  background: none;
-  border: none;
-  color: #60a5fa;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-body.dark #switchModeBtn:hover {
-  text-decoration: underline;
-}
-
-body.dark .forgot-password-btn {
-  color: #60a5fa;
-}
-
-body.dark .forgot-password-btn:hover,
-body.dark .forgot-password-btn:focus-visible {
-  color: #93c5fd;
-}
-
-/* Close button */
-body.dark .close-btn {
-  color: #94a3b8;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-body.dark .close-btn:hover {
-  color: #f87171;
-}
-
-/* Optional animation */
+/* Authentication modal entrance animation. */
 @keyframes fadeInModal {
   from {
     opacity: 0;
@@ -4750,7 +3833,7 @@ body.dark .close-btn:hover {
   :root {
     --panel-hero-height: clamp(170px, 40vw, 400px);
     --country-card-photo-ratio: 16 / 9;
-    
+
   }
   .panel-hero-image--sprachwelt {
   height: clamp(370px, 30vw, 200px);
@@ -4790,11 +3873,6 @@ body.dark .close-btn:hover {
     flex: 0 1 340px;
   }
 
-  body.dark .header,
-  body.dark .footer,
-  body.dark .detail-card {
-    border-color: rgba(148, 163, 184, 0.22);
-  }
 }
 
 @media (max-width: 992px) {
@@ -4878,20 +3956,7 @@ body.dark .close-btn:hover {
     line-height: 1.75;
   }
 
-  body.dark #wordDetailPage p {
-    padding: 12px 14px;
-    border-radius: 10px;
-  }
-
-  body.dark .category-nav button {
-    border-color: #3b475c;
-  }
-
-  body.dark #categoryPage .vertical-word-item {
-    border-color: #334155;
-  }
-
-  #conjugationPage {
+#conjugationPage {
     margin: 14px 12px;
     padding: 18px 14px;
   }
@@ -5100,13 +4165,7 @@ body.dark .close-btn:hover {
     padding: 20px 14px;
   }
 
-  /* Keep dark-mode container spacing equal to light mode on mobile/tablet */
-  body.dark #wordDetailPage {
-    margin: 12px 10px;
-    padding: 20px 14px;
-    border-width: 1px;
-    border-radius: 16px;
-  }
+  /* Keep container spacing consistent on mobile and tablet */
 
   .detail-card {
     max-width: 100%;
@@ -5126,31 +4185,7 @@ body.dark .close-btn:hover {
     font-weight: 500;
   }
 
-  body.dark #wordDetailPage .detail-section {
-    background: #111a2b;
-    border: 1px solid #24344d;
-    border-radius: 12px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-  }
-
-  body.dark #wordDetailPage .detail-section:hover {
-    background: #14223a;
-    transform: translateX(4px);
-  }
-
-  body.dark #wordDetailPage .detail-section h3 {
-    color: #7fb0ff;
-  }
-
-  body.dark #wordDetailPage .detail-section p {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    margin-bottom: 0;
-    color: #d4deec;
-  }
-
-  #conjugationPage {
+#conjugationPage {
     margin: 12px 10px;
     padding: 16px 12px;
     border-radius: 16px;
@@ -5169,7 +4204,6 @@ body.dark .close-btn:hover {
     width: 100%;
     min-width: 0;
     margin: 4px 0;
-    /* flex: 1 1 100%; */
   }
 
   .panel-page-wrap {
@@ -5439,15 +4473,6 @@ body.dark .close-btn:hover {
     min-width: 0;
   }
 
-  body.dark #categoryPage .vertical-word-item {
-    background: #1f2937;
-    border: 1px solid #334155;
-    color: #e5e7eb;
-  }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-    background: #111827;
-  }
 }
 
 @media (max-width: 480px) {
@@ -5472,7 +4497,6 @@ body.dark .close-btn:hover {
   }
   .panel-hero-image--sprachwelt {
   height: clamp(200px, 30vw, 200px);
-  /* background-position: center 10%; */
 }
   .container {
     padding: 0 12px;
@@ -5677,14 +4701,7 @@ body.dark .close-btn:hover {
     border-radius: 14px;
   }
 
-  body.dark #wordDetailPage {
-    margin: 8px 6px;
-    padding: 12px 8px;
-    border-radius: 14px;
-    border-width: 1px;
-  }
-
-  .detail-card {
+.detail-card {
     padding: 14px 12px;
     border-radius: 14px;
   }
@@ -5896,15 +4913,6 @@ body.dark .close-btn:hover {
     line-height: 1.55;
   }
 
-  body.dark #categoryPage .vertical-word-item {
-    background: #1f2937;
-    border: 1px solid #334155;
-    color: #e5e7eb;
-  }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-    background: #111827;
-  }
 }
 
 @media (max-width: 360px) {
@@ -6126,14 +5134,7 @@ body.dark .close-btn:hover {
     padding: 10px 6px;
   }
 
-  body.dark #wordDetailPage {
-    margin: 6px 4px;
-    padding: 10px 6px;
-    border-width: 1px;
-    border-radius: 12px;
-  }
-
-  .detail-card {
+.detail-card {
     padding: 12px 10px;
     border-radius: 12px;
   }
@@ -6329,17 +5330,7 @@ body.dark .close-btn:hover {
     line-height: 1.5;
   }
 
-  body.dark #categoryPage .vertical-word-item {
-    background: #1f2937;
-    border: 1px solid #334155;
-    color: #e5e7eb;
-  }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-    background: #111827;
-  }
-    .footer-action {
+.footer-action {
     flex: 1 1 10%;
   }
 }
-

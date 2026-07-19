@@ -236,6 +236,15 @@ function applyAppSettings(settings, { persist = true } = {}) {
     (currentAppSettings.theme === "system" && prefersDark);
   body.classList.toggle("dark", shouldUseDark);
 
+  const panelThemeToggle = document.getElementById("panelDarkToggle");
+  if (panelThemeToggle) {
+    panelThemeToggle.textContent = shouldUseDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    panelThemeToggle.setAttribute(
+      "aria-label",
+      shouldUseDark ? "Switch to Light Mode" : "Switch to Dark Mode"
+    );
+  }
+
   body.classList.remove("text-compact", "text-large");
   if (currentAppSettings.textSize === "compact") body.classList.add("text-compact");
   if (currentAppSettings.textSize === "large") body.classList.add("text-large");
@@ -767,10 +776,9 @@ const panelPageContent = {
     ]
   },
   sprachwelt: {
-    title: "✨ Rafis Sprachwelt",
     image: sitePhotos.panelHero.sprachwelt,
     description:
-      "🚀 Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming.\n👇 Choose your level below, explore the lessons, and let’s start learning together!",
+      "🚀✨Willkommen! Let’s make German simple.\nLrning German doesn't have to be overwhelming.\n👇 Choose your level below and click on it to explore lessons.",
 cards: [
   {
     title: "German A1: \nDer perfekte Start",
@@ -2818,15 +2826,16 @@ function openWordDetail(wordId, options = {}) {
       setSingleRouteParam("page", "favorites");
       renderFavoritesPage();
     };
-  } else if (openedFromCategory && !openedFromHomeSearch) {
+  } else if (!openedFromHomeSearch && (openedFromCategory || word.category)) {
 
   backBtn.textContent = "← Back to Category";
 
   backBtn.onclick = () => {
 
-    setSingleRouteParam("category", currentCategory);
+    const targetCategory = currentCategory || word.category;
+    setSingleRouteParam("category", targetCategory);
 
-    openCategoryPage(currentCategory, { requireEntryWarning: false });
+    openCategoryPage(targetCategory, { requireEntryWarning: false });
 
   };
 
@@ -3126,6 +3135,8 @@ function getPanelPageData(pageKey) {
 }
 
 function buildPanelPageHeading(pageKey, page) {
+  if (!page.title) return "";
+
   const toggle =
     pageKey === "owner"
       ? `<button id="aboutRafiLanguageToggle" class="panel-language-toggle" type="button">${escapeHtml(page.toggleLabel || "Deutsch")}</button>`
@@ -3198,6 +3209,9 @@ function renderPanelPage(pageKey) {
             ${escapeHtml(page.readMoreLabel || "Read more")}
           </button>
         `;
+      const levelAction = isSprachweltCard && href
+        ? `<span class="panel-level-action">Open level <span aria-hidden="true">→</span></span>`
+        : "";
 
       return `
         <${cardTag} class="panel-page-card is-collapsed ${sprachweltClass} ${linkClass}"${hrefAttr}>
@@ -3211,6 +3225,7 @@ function renderPanelPage(pageKey) {
           <h3>${escapeHtml(title)}</h3>
           <p class="panel-card-body">${escapeHtml(body)}</p>
           ${readMoreButton}
+          ${levelAction}
         </${cardTag}>
       `;
     })

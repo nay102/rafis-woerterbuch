@@ -27,7 +27,17 @@ function saveTheme(theme) {
 function applyTheme() {
   const theme = getSettings().theme;
   const systemDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-  document.body.classList.toggle("dark", theme === "dark" || (theme === "system" && systemDark));
+  const isDark = theme === "dark" || (theme === "system" && systemDark);
+  document.body.classList.toggle("dark", isDark);
+
+  const panelThemeToggle = document.getElementById("panelDarkToggle");
+  if (panelThemeToggle) {
+    panelThemeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    panelThemeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to Light Mode" : "Switch to Dark Mode"
+    );
+  }
 }
 
 function setLoginButton(email = "") {

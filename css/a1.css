@@ -353,56 +353,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-  }
-
-  .hero-content {
-    align-items: center;
-  }
-
-  .hero-description {
-    max-width: 700px;
-  }
-
-  .course-stats {
-    max-width: 700px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 90px 0;
-  }
-
-  .course-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-buttons {
-    width: 100%;
-
-    flex-direction: column;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-  }
-}
-
-@media (max-width: 500px) {
-  .course-stats {
-    grid-template-columns: 1fr;
-  }
-}
-/* ==========================================
    COURSE OVERVIEW
 ========================================== */
 
@@ -447,7 +397,7 @@
 }
 
 .section-header h2 {
-  font-size: clamp(2.3rem, 4vw, 3.3rem);
+  font-size: clamp(1.8rem, 4vw, 3.3rem);
 
   color: #0f172a;
 
@@ -537,14 +487,14 @@
 .information-card h3 {
   margin-bottom: 12px;
 
-  font-size: 1.25rem;
+  font-size:1rem;
 
   color: #0f172a;
 }
 
 .information-card p {
   color: #64748b;
-
+font-size: small;
   line-height: 1.7;
 }
 
@@ -627,7 +577,7 @@
 
   gap: 18px;
 
-  padding: 22px 24px;
+  padding: 10px 24px;
 
   background: #ffffff;
 
@@ -682,37 +632,6 @@
   line-height: 1.6;
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .course-information {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .learning-outcomes {
-    grid-template-columns: 1fr;
-  }
-
-  .outcomes-content {
-    position: static;
-  }
-}
-
-@media (max-width: 768px) {
-  .course-information {
-    grid-template-columns: 1fr;
-  }
-
-  .outcomes-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-section {
-    padding: 50px 0;
-  }
-}
 /* ==========================================
    WHY LEARN WITH RAFIS SPRACHWELT
 ========================================== */
@@ -897,7 +816,6 @@
   overflow: hidden;
 
   position: relative;
-
   box-shadow: 0 35px 70px rgba(37, 99, 235, 0.25);
 }
 
@@ -1011,39 +929,6 @@
   background: rgba(255, 255, 255, 0.18);
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .learning-highlight {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .features-section {
-    padding: 50px 0;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .learning-highlight {
-    padding: 40px 30px;
-
-    gap: 40px;
-  }
-
-  .highlight-content h3 {
-    font-size: 1.8rem;
-  }
-}
 /* ==========================================
    LEARNING ROADMAP
 ========================================== */
@@ -1404,91 +1289,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 992px) {
-  .roadmap::before {
-    left: 35px;
-  }
-
-  .roadmap-card {
-    grid-template-columns: 70px 1fr;
-
-    gap: 24px;
-  }
-
-  .module-number {
-    width: 70px;
-
-    height: 70px;
-
-    font-size: 1.2rem;
-  }
-
-  .module-content {
-    padding: 20px;
-  }
-
-  .module-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .roadmap-section {
-    padding: 50px 0;
-  }
-
-  .roadmap {
-    gap: 30px;
-  }
-
-  .roadmap::before {
-    display: none;
-  }
-
-  .roadmap-card {
-    grid-template-columns: 1fr;
-  }
-
-  .module-number {
-    margin: 0 auto;
-  }
-
-  .module-content {
-    text-align: center;
-  }
-
-  .module-list {
-    text-align: left;
-  }
-
-  .module-meta {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 576px) {
-  .module-content {
-    padding: 24px;
-  }
-
-  .module-content h3 {
-    font-size: 1.45rem;
-  }
-
-  .module-meta {
-    flex-direction: column;
-
-    align-items: stretch;
-  }
-
-  .module-meta span {
-    justify-content: center;
-  }
-}
-/* ==========================================
    COURSE MODULES
 ========================================== */
 
@@ -1797,7 +1597,6 @@
   flex: 1;
 
   display: flex;
-
   justify-content: center;
 
   align-items: center;
@@ -1901,39 +1700,6 @@
   }
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .modules-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .modules-section {
-    padding: 50px 0;
-  }
-
-  .modules-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .module-card {
-    padding: 28px;
-  }
-}
-
-@media (max-width: 576px) {
-  .module-details {
-    grid-template-columns: 1fr;
-  }
-
-  .module-buttons {
-    flex-direction: column;
-  }
-}
 /* ==========================================
    GRAMMAR LIBRARY
 ========================================== */
@@ -2141,35 +1907,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .library-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .library-block {
-    margin-top: 90px;
-  }
-
-  .library-heading {
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-
-  .library-heading h3 {
-    font-size: 1.9rem;
-  }
-
-  .library-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* ==========================================
    SECOND LIBRARY SPACING
 ========================================== */
 
@@ -2194,256 +1931,6 @@
   overflow: hidden;
 }
 
-/* ==========================================
-   DAILY CHALLENGE
-========================================== */
-
-.daily-challenge {
-  margin-top: 70px;
-
-  display: grid;
-
-  grid-template-columns: 1.2fr 0.8fr;
-
-  align-items: center;
-
-  gap: 40px;
-
-  padding: 55px;
-
-  border-radius: 32px;
-
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-
-  position: relative;
-
-  overflow: hidden;
-
-  box-shadow: 0 30px 70px rgba(37, 99, 235, 0.25);
-}
-
-/* Decorative Glow */
-
-.daily-challenge::before {
-  content: "";
-
-  position: absolute;
-
-  width: 320px;
-
-  height: 320px;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  border-radius: 50%;
-
-  top: -150px;
-
-  right: -120px;
-}
-
-.daily-challenge::after {
-  content: "";
-
-  position: absolute;
-
-  width: 220px;
-
-  height: 220px;
-
-  background: rgba(255, 255, 255, 0.06);
-
-  border-radius: 50%;
-
-  bottom: -100px;
-
-  left: -80px;
-}
-
-/* ==========================================
-   LEFT CONTENT
-========================================== */
-
-.challenge-content {
-  position: relative;
-
-  z-index: 2;
-}
-
-.challenge-badge {
-  display: inline-flex;
-
-  align-items: center;
-
-  padding: 10px 18px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.16);
-
-  color: #ffffff;
-
-  font-size: 0.9rem;
-
-  font-weight: 700;
-
-  margin-bottom: 22px;
-}
-
-.challenge-content h3 {
-  font-size: 2.3rem;
-
-  color: #ffffff;
-
-  margin-bottom: 20px;
-}
-
-.challenge-content p {
-  color: rgba(255, 255, 255, 0.92);
-
-  line-height: 1.9;
-
-  max-width: 620px;
-
-  margin-bottom: 32px;
-}
-
-/* ==========================================
-   BUTTON
-========================================== */
-
-.challenge-content a {
-  display: inline-flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  padding: 16px 32px;
-
-  border-radius: 999px;
-
-  background: #ffffff;
-
-  color: #2563eb;
-
-  font-weight: 700;
-
-  text-decoration: none;
-
-  transition: all 0.35s ease;
-
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-.challenge-content a:hover {
-  transform: translateY(-5px);
-
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
-}
-
-/* ==========================================
-   XP CARD
-========================================== */
-
-.challenge-score {
-  position: relative;
-
-  z-index: 2;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  align-items: center;
-
-  padding: 40px;
-
-  border-radius: 28px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  backdrop-filter: blur(18px);
-
-  -webkit-backdrop-filter: blur(18px);
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  text-align: center;
-}
-
-.challenge-score h2 {
-  font-size: 3.5rem;
-
-  color: #ffffff;
-
-  margin-bottom: 12px;
-
-  font-weight: 800;
-}
-
-.challenge-score p {
-  color: rgba(255, 255, 255, 0.9);
-
-  font-size: 1rem;
-
-  font-weight: 600;
-}
-
-/* ==========================================
-   FLOAT ANIMATION
-========================================== */
-
-.challenge-score {
-  animation: challengeFloat 5s ease-in-out infinite;
-}
-
-@keyframes challengeFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-12px);
-  }
-}
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 992px) {
-  .daily-challenge {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-  }
-
-  .challenge-content p {
-    margin-inline: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .exercise-section {
-    padding: 50px 0;
-  }
-
-  .daily-challenge {
-    padding: 36px;
-  }
-
-  .challenge-content h3 {
-    font-size: 1.9rem;
-  }
-
-  .challenge-score h2 {
-    font-size: 2.8rem;
-  }
-}
 /* ==========================================
    EXERCISE FILTER
 ========================================== */
@@ -2834,65 +2321,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1200px) {
-  .exercise-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .exercise-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .exercise-filter {
-    justify-content: flex-start;
-
-    overflow-x: auto;
-
-    flex-wrap: nowrap;
-
-    padding-bottom: 10px;
-
-    scrollbar-width: none;
-  }
-
-  .exercise-filter::-webkit-scrollbar {
-    display: none;
-  }
-
-  .exercise-filter button {
-    flex-shrink: 0;
-  }
-
-  .exercise-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .exercise-card {
-    padding: 28px;
-  }
-}
-
-@media (max-width: 576px) {
-  .exercise-meta {
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-
-  .exercise-meta span {
-    width: 100%;
-
-    justify-content: center;
-  }
-}
-/* ==========================================
    EXERCISE BOTTOM CTA
 ========================================== */
 
@@ -3078,23 +2506,6 @@
   filter: blur(30px);
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 768px) {
-  .exercise-bottom {
-    padding: 50px 30px;
-  }
-
-  .exercise-bottom h3 {
-    font-size: 1.9rem;
-  }
-
-  .resources-section {
-    padding: 50px 0;
-  }
-}
 /* ==========================================
    RESOURCE CATEGORY
 ========================================== */
@@ -3282,28 +2693,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .resource-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .category-header {
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================
    STUDY SUPPORT SECTION
 ========================================== */
 
@@ -3341,11 +2730,6 @@
   margin-top: 0;
 }
 
-@media (max-width: 768px) {
-  .study-support-section {
-    padding: 90px 0;
-  }
-}
 /* ==========================================
    STUDY TIPS
 ========================================== */
@@ -3517,29 +2901,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .tips-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .study-tips {
-    padding: 40px 28px;
-  }
-
-  .tips-content h3 {
-    font-size: 1.9rem;
-  }
-
-  .tips-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* ==========================================
    FAQ SECTION
 ========================================== */
 
@@ -3597,7 +2958,6 @@
   display: flex;
 
   justify-content: space-between;
-
   align-items: center;
 }
 
@@ -3888,38 +3248,6 @@
 }
 
 /* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 1100px) {
-  .cta-section .container {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .cta-section {
-    padding: 90px 0;
-  }
-
-  .cta-content h2 {
-    font-size: 2.2rem;
-  }
-
-  .cta-features {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-  }
-
-  .cta-card {
-    padding: 30px;
-  }
-}
-
-/* ==========================================
    LEVEL INTERACTIONS
 ========================================== */
 
@@ -3928,7 +3256,7 @@
 }
 
 .back-to-sprachwelt {
-  position: fixed;
+  position: absolute;
   top: 96px;
   left: 24px;
   z-index: 900;
@@ -4033,19 +3361,1304 @@
   outline-offset: 4px;
 }
 
+/* ==========================================
+   SIMPLE DARK MODE
+   Course-page colors only; structure and spacing remain unchanged.
+========================================== */
+
+body.dark {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+body.dark .hero-section,
+body.dark .course-overview,
+body.dark .features-section,
+body.dark .roadmap-section,
+body.dark .modules-section,
+body.dark .grammar-library,
+body.dark .exercise-section,
+body.dark .resources-section,
+body.dark .study-support-section,
+body.dark .faq-section,
+body.dark .cta-section {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark .hero-container,
+body.dark .course-information,
+body.dark .learning-outcomes,
+body.dark .learning-highlight,
+body.dark .roadmap-card,
+body.dark .module-card,
+body.dark .library-block,
+body.dark .library-card,
+body.dark .exercise-card,
+body.dark .exercise-bottom,
+body.dark .resource-category,
+body.dark .resource-card,
+body.dark .study-tips,
+body.dark .tip-card,
+body.dark .faq-item,
+body.dark .cta-section .container,
+body.dark .cta-card {
+  background: #111c2e;
+  border-color: #334155;
+  color: #e5e7eb;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 { color: #dbeafe; }
+
+body.dark p,
+body.dark li,
+body.dark .hero-description,
+body.dark .section-header p { color: #cbd5e1; }
+
+body.dark .information-card,
+body.dark .outcome-card,
+body.dark .feature-card,
+body.dark .module-content,
+body.dark .module-details,
+body.dark .exercise-filter,
+body.dark .exercise-meta,
+body.dark .resource-card,
+body.dark .tip-card {
+  background-color: #17243a;
+  border-color: #3b4d66;
+}
+
+body.dark .progress-bar,
+body.dark .module-progress,
+body.dark .exercise-progress { background: #263449; }
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #111827;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder { color: #94a3b8; }
+
+body.dark .btn-primary,
+body.dark .exercise-btn,
+body.dark .resource-btn,
+body.dark .cta-primary {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+body.dark .btn-secondary,
+body.dark .cta-secondary,
+body.dark .back-to-sprachwelt,
+body.dark .back-to-top {
+  background: #17243a;
+  border-color: #60a5fa;
+  color: #bfdbfe;
+}
+
+body.dark a { color: #93c5fd; }
+
+body.dark .roadmap-card:hover,
+body.dark .module-card:hover,
+body.dark .library-card:hover,
+body.dark .exercise-card:hover,
+body.dark .resource-card:hover,
+body.dark .tip-card:hover {
+  background: #1b2b44;
+  border-color: #60a5fa;
+}
+
+/* ==========================================
+   RESPONSIVE STYLES
+   Matches the main stylesheet breakpoints and stays at the file end.
+========================================== */
+
+@media (max-width: 1200px) {
+  .exercise-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+      grid-template-columns: 1fr;
+
+      text-align: center;
+    }
+
+    .hero-content {
+      align-items: center;
+    }
+
+    .hero-description {
+      max-width: 700px;
+    }
+
+    .course-stats {
+      max-width: 700px;
+    }
+
+  .course-information {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .learning-outcomes {
+      grid-template-columns: 1fr;
+    }
+
+    .outcomes-content {
+      position: static;
+    }
+
+  .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .learning-highlight {
+      grid-template-columns: 1fr;
+    }
+
+  .roadmap::before {
+      left: 35px;
+    }
+
+    .roadmap-card {
+      grid-template-columns: 70px 1fr;
+
+      gap: 24px;
+    }
+
+    .module-number {
+      width: 70px;
+
+      height: 70px;
+
+      font-size: 1.2rem;
+    }
+
+    .module-content {
+      padding: 20px;
+    }
+
+    .module-list {
+      grid-template-columns: 1fr;
+    }
+
+  .modules-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  .library-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  .exercise-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  .resource-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  .tips-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  .cta-section .container {
+      grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
+  .hero-section {
+      padding: 90px 0;
+    }
+
+    .course-stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .stat-card {
+      min-width: 0;
+      padding: 14px 8px;
+    }
+
+    .hero-buttons {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: auto;
+      min-width: 0;
+      flex: 1 1 0;
+      justify-content: center;
+    }
+
+  .course-information {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .outcomes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .overview-section {
+      padding: 50px 0;
+    }
+
+  .features-section {
+      padding: 50px 0;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .learning-highlight {
+      padding: 40px 30px;
+
+      gap: 40px;
+    }
+
+    .highlight-content h3 {
+      font-size: 1.8rem;
+    }
+
+  .roadmap-section {
+      padding: 50px 0;
+    }
+
+    .roadmap {
+      gap: 30px;
+    }
+
+    .roadmap::before {
+      display: none;
+    }
+
+    .roadmap-card {
+      grid-template-columns: 1fr;
+    }
+
+    .module-number {
+      margin: 0 auto;
+    }
+
+    .module-content {
+      text-align: center;
+    }
+
+    .module-list {
+      text-align: left;
+    }
+
+    .module-meta {
+      justify-content: center;
+    }
+
+  .modules-section {
+      padding: 50px 0;
+    }
+
+    .modules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .module-card {
+      padding: 28px;
+    }
+
+  .library-block {
+      margin-top: 90px;
+    }
+
+    .library-heading {
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+
+    .library-heading h3 {
+      font-size: 1.9rem;
+    }
+
+    .library-grid {
+      grid-template-columns: 1fr;
+    }
+
+  .exercise-section {
+      padding: 50px 0;
+    }
+
+  .exercise-filter {
+      justify-content: flex-start;
+
+      overflow-x: auto;
+
+      flex-wrap: nowrap;
+
+      padding-bottom: 10px;
+
+      scrollbar-width: none;
+    }
+
+    .exercise-filter::-webkit-scrollbar {
+      display: none;
+    }
+
+    .exercise-filter button {
+      flex-shrink: 0;
+    }
+
+    .exercise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .exercise-card {
+      padding: 28px;
+    }
+
+  .exercise-bottom {
+      padding: 50px 30px;
+    }
+
+    .exercise-bottom h3 {
+      font-size: 1.9rem;
+    }
+
+    .resources-section {
+      padding: 50px 0;
+    }
+
+  .category-header {
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+
+  .study-support-section {
+      padding: 90px 0;
+    }
+
+  .study-tips {
+      padding: 40px 28px;
+    }
+
+    .tips-content h3 {
+      font-size: 1.9rem;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+  .cta-section {
+      padding: 90px 0;
+    }
+
+    .cta-content h2 {
+      font-size: 2.2rem;
+    }
+
+    .cta-features {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-card {
+      padding: 30px;
+    }
+
   .back-to-sprachwelt {
-    top: 82px;
-    left: 14px;
-    padding: 10px 14px;
+      top: 82px;
+      left: 14px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+    }
+
+    .back-to-top {
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      font-size: 1.3rem;
+    }
+}
+
+/* Two-column card layout for medium mobile and small tablet screens only. */
+@media (min-width: 481px) and (max-width: 768px) {
+  .faq-section {
+    margin-top: 64px;
+  }
+
+  .faq-list {
+    max-width: 100%;
+    margin-top: 32px;
+  }
+
+  .faq-item {
+    min-width: 0;
+    margin-bottom: 12px;
+    border-radius: 15px;
+  }
+
+  .faq-question {
+    gap: 12px;
+    min-width: 0;
+    padding: 16px 18px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-question::after {
+    flex: 0 0 auto;
+    font-size: 1.15rem;
+  }
+
+  .faq-answer p {
+    max-width: 100%;
+    padding: 0 18px 18px;
     font-size: 0.82rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-section {
+    padding: 64px 0;
+  }
+
+  .cta-section .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .cta-content,
+  .cta-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .cta-content h2 {
+    margin: 12px 0;
+    font-size: 1.55rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-content > p {
+    margin-bottom: 20px;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .cta-buttons a {
+    min-width: 0;
+    padding: 10px 12px;
+    font-size: 0.76rem;
+    line-height: 1.3;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-features {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .cta-feature {
+    min-width: 0;
+    gap: 8px;
+    padding: 10px 11px;
+  }
+
+  .cta-feature span {
+    flex: 0 0 auto;
+    font-size: 1.2rem;
+  }
+
+  .cta-feature p {
+    min-width: 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-card {
+    display: flex;
+    flex-direction: column;
+    padding: 22px 16px;
+    border-radius: 20px;
+  }
+
+  .card-badge {
+    align-self: flex-start;
+    max-width: 100%;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.12rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-card ul {
+    margin-bottom: 18px;
+  }
+
+  .cta-card li {
+    padding: 8px 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .course-button {
+    margin-top: auto;
+    padding: 11px;
+    font-size: 0.78rem;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .roadmap::before {
+    display: none;
+  }
+
+  .roadmap-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .module-number {
+    align-self: center;
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .module-number::before {
+    inset: 5px;
+    border-width: 1px;
+  }
+
+  .module-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 18px 14px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .module-badge {
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    font-size: 0.68rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .module-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .module-content > p {
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .module-list {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin-bottom: 16px;
+    min-width: 0;
+  }
+
+  .module-list li {
+    gap: 6px;
+    min-width: 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .module-meta {
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 12px;
+    min-width: 0;
+  }
+
+  .module-meta span {
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 9px;
+    font-size: 0.72rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .module-content *,
+  .module-list li,
+  .module-meta span {
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .features-grid,
+  .library-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .feature-card,
+  .library-card {
+    min-width: 0;
+    padding: 22px 18px;
+  }
+
+  .feature-icon,
+  .library-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    font-size: 1.55rem;
+  }
+
+  .feature-card h3,
+  .library-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .feature-card p,
+  .library-card p {
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .library-card a {
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+  }
+
+  .exercise-grid,
+  .resource-grid,
+  .tips-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .exercise-card,
+  .resource-card,
+  .tip-card {
+    min-width: 0;
+    max-width: 100%;
+    padding: 22px 16px;
+    overflow: hidden;
+  }
+
+  .exercise-type,
+  .difficulty {
+    max-width: 100%;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    font-size: 0.68rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .exercise-card h3,
+  .resource-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .exercise-card p,
+  .resource-card p,
+  .tip-card p {
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .exercise-meta {
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+
+  .exercise-meta span {
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 9px;
+    font-size: 0.7rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .resource-icon,
+  .tip-card span {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 14px;
+    border-radius: 15px;
+    font-size: 1.45rem;
+  }
+
+  .exercise-card a,
+  .resource-card a {
+    max-width: 100%;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .exercise-card *,
+  .resource-card *,
+  .tip-card * {
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      flex: none;
+    }
+
+  .course-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .course-information {
+      grid-template-columns: 1fr;
+    }
+
+  .module-content {
+      padding: 24px;
+    }
+
+    .module-content h3 {
+      font-size: 1.45rem;
+    }
+
+    .module-meta {
+      flex-direction: column;
+
+      align-items: stretch;
+    }
+
+    .module-meta span {
+      justify-content: center;
+    }
+
+  .module-details {
+      grid-template-columns: 1fr;
+    }
+
+    .module-buttons {
+      flex-direction: column;
+    }
+
+  .exercise-meta {
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+
+    .exercise-meta span {
+      width: 100%;
+
+      justify-content: center;
+    }
+}
+
+/* Compact two-column card system for standard mobile screens only. */
+@media (min-width: 361px) and (max-width: 480px) {
+  .course-stats,
+  .course-information,
+  .outcomes-grid,
+  .features-grid,
+  .roadmap,
+  .modules-grid,
+  .library-grid,
+  .exercise-grid,
+  .resource-grid,
+  .tips-grid,
+  .faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .faq-list {
+    margin-top: 26px;
+  }
+
+  .outcomes-grid,
+  .modules-grid,
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .stat-card,
+  .information-card,
+  .outcome-card,
+  .feature-card,
+  .roadmap-card,
+  .module-card,
+  .library-card,
+  .exercise-card,
+  .resource-card,
+  .tip-card,
+  .faq-item,
+  .cta-card {
+    min-width: 0;
+    max-width: 100%;
+    padding: 5px 10px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .faq-item {
+    margin-bottom: 0;
+  }
+
+  .faq-question {
+    gap: 7px;
+    padding: 11px 10px;
+    font-size: 0.7rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .faq-question::after {
+    flex: 0 0 auto;
+    font-size: 0.9rem;
+  }
+
+  .faq-answer p {
+    padding: 0 10px 11px;
+    font-size: 0.64rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-section {
+    padding: 52px 0;
+  }
+
+  .cta-content,
+  .cta-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .cta-content h2 {
+    font-size: 1.15rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-content > p,
+  .cta-feature p {
+    font-size: 0.66rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-buttons {
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .cta-buttons a,
+  .course-button {
+    min-width: 0;
+    padding: 7px 8px;
+    font-size: 0.62rem;
+    overflow-wrap: anywhere;
+  }
+
+  .cta-feature {
+    min-width: 0;
+    gap: 6px;
+    padding: 3px;
+  }
+
+  .cta-card h3 {
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+
+  .roadmap {
+    margin-top: 38px;
+  }
+
+  .roadmap::before {
+    display: none;
+  }
+
+  .roadmap-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .module-number {
+    align-self: center;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    font-size: 0.78rem;
+  }
+
+  .module-number::before {
+    inset: 4px;
+    border-width: 1px;
+  }
+
+  .module-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 10px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .feature-icon,
+  .library-icon,
+  .resource-icon,
+  .tip-card span,
+  .info-icon,
+  .outcome-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+  }
+
+  .stat-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .stat-card p,
+  .information-card p,
+  .outcome-card p,
+  .feature-card p,
+  .module-content > p,
+  .module-card p,
+  .library-card p,
+  .exercise-card p,
+  .resource-card p,
+  .tip-card p {
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+    line-height: 1.42;
+    overflow-wrap: anywhere;
+  }
+
+  .information-card h3,
+  .outcome-card h3,
+  .feature-card h3,
+  .module-content h3,
+  .module-card h3,
+  .library-card h4,
+  .exercise-card h3,
+  .resource-card h4 {
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .module-badge,
+  .exercise-type,
+  .difficulty,
+  .status-badge,
+  .card-badge {
+    max-width: 100%;
+    margin-bottom: 8px;
+    padding: 5px 7px;
+    font-size: 0.58rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .module-list {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .module-list li,
+  .cta-card li {
+    min-width: 0;
+    padding-block: 5px;
+    font-size: 0.64rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .module-meta,
+  .exercise-meta,
+  .module-details {
+    gap: 5px;
+    min-width: 0;
+    margin-bottom: 10px;
+    padding-top: 8px;
+  }
+
+  .module-meta span,
+  .exercise-meta span,
+  .module-details span {
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+    padding: 5px 7px;
+    font-size: 0.6rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .module-buttons,
+  .exercise-card a,
+  .library-card a,
+  .resource-card a {
+    max-width: 100%;
+    font-size: 0.66rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .module-buttons a,
+  .module-buttons button {
+    min-width: 0;
+    padding: 7px 8px;
+    font-size: 0.62rem;
+  }
+
+  .stat-card *,
+  .information-card *,
+  .outcome-card *,
+  .feature-card *,
+  .roadmap-card *,
+  .module-card *,
+  .library-card *,
+  .exercise-card *,
+  .resource-card *,
+  .tip-card *,
+  .faq-item *,
+  .cta-card * {
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 360px) {
+  .container { padding-inline: 12px; }
+
+  .hero-content h1,
+  .section-header h2,
+  .cta-content h2 { overflow-wrap: anywhere; }
+
+  .hero-buttons,
+  .cta-buttons { gap: 12px; }
+
+  .btn-primary,
+  .btn-secondary,
+  .course-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .roadmap-card,
+  .module-card,
+  .library-card,
+  .exercise-card,
+  .resource-card,
+  .study-tips,
+  .cta-card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .course-stats,
+  .course-information,
+  .library-grid,
+  .resource-grid,
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .stat-card,
+  .information-card,
+  .library-card,
+  .resource-card,
+  .tip-card {
+    min-width: 0;
+    max-width: 100%;
+    padding: 12px 8px;
+    border-radius: 13px;
+    overflow: hidden;
+  }
+
+  .card-icon,
+  .library-icon,
+  .resource-icon,
+  .tip-card span {
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 8px;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .stat-card h3 {
+    margin-bottom: 4px;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .information-card h3,
+  .library-card h4,
+  .resource-card h4 {
+    margin-bottom: 6px;
+    font-size: 0.76rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .stat-card p,
+  .information-card p,
+  .library-card p,
+  .resource-card p,
+  .tip-card p {
+    margin-bottom: 8px;
+    font-size: 0.61rem;
+    line-height: 1.38;
+    overflow-wrap: anywhere;
+  }
+
+  .library-card a,
+  .resource-card a {
+    max-width: 100%;
+    gap: 3px;
+    font-size: 0.6rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .stat-card *,
+  .information-card *,
+  .library-card *,
+  .resource-card *,
+  .tip-card * {
+    min-width: 0;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+
+  .back-to-sprachwelt {
+    left: 10px;
+    max-width: calc(100vw - 20px);
   }
 
   .back-to-top {
-    right: 18px;
-    bottom: 18px;
-    width: 46px;
-    height: 46px;
-    font-size: 1.3rem;
+    right: 12px;
+    bottom: 12px;
   }
 }
