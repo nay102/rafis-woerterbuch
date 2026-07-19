@@ -1,8 +1,8 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
-const WORDS_PATH = path.join(__dirname, 'js', 'words.json');
-const NEW_WORDS_PATH = path.join(__dirname, 'new_words.json');
+const WORDS_PATH = path.join(__dirname, '..', 'js', 'words.json');
+const NEW_WORDS_PATH = path.join(__dirname, 'data', 'new_words.json');
 
 const ADVERB_LIST = new Set([
   'leider','gestern','heute','morgen','dort','hier','da','oft','sehr','nicht','nie','immer','schon','bald','gern','fast','auch','nur','noch','vielleicht'

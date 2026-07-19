@@ -1,4 +1,5 @@
-﻿$data = Get-Content js/words.json -Raw | ConvertFrom-Json
+﻿$wordsPath = Join-Path $PSScriptRoot '..\js\words.json'
+$data = Get-Content -LiteralPath $wordsPath -Raw | ConvertFrom-Json
 
 $irregular = @(
   'sein','haben','werden','gehen','kommen','sehen','geben','nehmen','helfen','sprechen','fahren','tragen','lesen','schreiben','essen','trinken','denken','finden','bringen','laufen','bleiben','liegen','sitzen','stehen','heißen','wissen','dürfen','können','muessen','müssen','mögen','sollen','wollen','tun','lassen','halten','schlafen','treffen','ziehen','binden','bitten','fliegen','fliehen','schneiden','singen','springen','schwimmen','verlieren','gewinnen','fallen','fressen','vergessen','beginnen','gelingen','genießen','verstehen','steigen','treten','werfen','rufen','reiten','scheinen','schieben','schießen','schließen','schweigen','schwören','sinken','stechen','stehlen','sterben','stinken','streiten','verderben','verdrießen','wachsen','waschen','weichen','weisen','wenden','werben','wiegen','zwingen'
@@ -483,7 +484,7 @@ foreach ($entry in $data) {
   if ($isReflexive) { $addedReflexive++ } else { $addedRegular++ }
 }
 
-$data | ConvertTo-Json -Depth 15 | Set-Content -Encoding UTF8 js/words.json
+$data | ConvertTo-Json -Depth 15 | Set-Content -Encoding UTF8 -LiteralPath $wordsPath
 
 "added_regular=$addedRegular"
 "added_reflexive=$addedReflexive"
