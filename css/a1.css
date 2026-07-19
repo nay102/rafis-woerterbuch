@@ -1,5 +1,20 @@
 /* ==========================================
-   MAIN
+   RAFI'S SPRACHWELT — SHARED A1–B2 STYLES
+
+   01. Hero
+   02. Course overview
+   03. Learning features
+   04. Learning roadmap
+   05. Course modules
+   06. Grammar library
+   07. Exercise center
+   08. Resources
+   09. Study support
+   10. FAQ
+   11. Final CTA
+   12. Level interactions
+   13. Simple dark mode
+   14. Responsive styles
 ========================================== */
 
 .course-page {
@@ -7,7 +22,23 @@
 }
 
 /* ==========================================
-   HERO SECTION
+   LEVEL TITLE IN THE SHARED HEADER
+   Keeps “Rafis Sprachwelt - A1/A2/B1/B2” in the middle header
+   slot, directly before the controls on the right.
+========================================== */
+
+.branding {
+  display: block;
+  min-width: 0;
+  justify-self: center;
+  font-size: clamp(0.72rem, 1.2vw, 0.88rem);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   01. HERO SECTION
 ========================================== */
 
 .hero-section {
@@ -86,7 +117,7 @@
 }
 
 .hero-content h1 {
-  font-size: clamp(3rem, 5vw, 4.8rem);
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
 
   line-height: 1.1;
 
@@ -100,7 +131,7 @@
 .hero-description {
   max-width: 650px;
 
-  font-size: 1.1rem;
+  font-size:1rem;
 
   line-height: 1.9;
 
@@ -353,7 +384,7 @@
 }
 
 /* ==========================================
-   COURSE OVERVIEW
+   02. COURSE OVERVIEW
 ========================================== */
 
 .overview-section {
@@ -397,7 +428,7 @@
 }
 
 .section-header h2 {
-  font-size: clamp(1.8rem, 4vw, 3.3rem);
+  font-size: clamp(1.5rem, 4vw, 3.3rem);
 
   color: #0f172a;
 
@@ -405,7 +436,7 @@
 }
 
 .section-header p {
-  font-size: 1.08rem;
+  font-size: 1rem;
 
   line-height: 1.9;
 
@@ -503,7 +534,7 @@ font-size: small;
 ========================================== */
 
 .learning-outcomes {
-  margin-top: 120px;
+  margin-top: 50px;
 
   display: grid;
 
@@ -541,7 +572,7 @@ font-size: small;
 }
 
 .outcomes-content h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   margin-bottom: 22px;
 
@@ -633,7 +664,7 @@ font-size: small;
 }
 
 /* ==========================================
-   WHY LEARN WITH RAFIS SPRACHWELT
+   03. WHY LEARN WITH RAFIS SPRACHWELT
 ========================================== */
 
 .features-section {
@@ -790,147 +821,9 @@ font-size: small;
   line-height: 1.8;
 }
 
-/* ==========================================
-   HIGHLIGHT BANNER
-========================================== */
-
-.learning-highlight {
-  margin-top: 110px;
-
-  display: grid;
-
-  grid-template-columns: 1.1fr 0.9fr;
-
-  gap: 60px;
-
-  align-items: center;
-
-  padding: 60px;
-
-  border-radius: 34px;
-
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-
-  color: #fff;
-
-  overflow: hidden;
-
-  position: relative;
-  box-shadow: 0 35px 70px rgba(37, 99, 235, 0.25);
-}
-
-.learning-highlight::before {
-  content: "";
-
-  position: absolute;
-
-  width: 320px;
-
-  height: 320px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  top: -150px;
-
-  right: -80px;
-}
-
-.learning-highlight::after {
-  content: "";
-
-  position: absolute;
-
-  width: 240px;
-
-  height: 240px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.05);
-
-  bottom: -120px;
-
-  left: -80px;
-}
 
 /* ==========================================
-   HIGHLIGHT CONTENT
-========================================== */
-
-.highlight-content {
-  position: relative;
-
-  z-index: 2;
-}
-
-.highlight-content .section-tag {
-  background: rgba(255, 255, 255, 0.15);
-
-  color: #ffffff;
-}
-
-.highlight-content h3 {
-  font-size: 2.2rem;
-
-  margin: 22px 0;
-
-  color: #ffffff;
-}
-
-.highlight-content p {
-  color: rgba(255, 255, 255, 0.92);
-
-  line-height: 1.9;
-}
-
-/* ==========================================
-   HIGHLIGHT LIST
-========================================== */
-
-.highlight-list {
-  position: relative;
-
-  z-index: 2;
-
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 18px;
-}
-
-.highlight-item {
-  display: flex;
-
-  align-items: center;
-
-  padding: 18px 22px;
-
-  border-radius: 18px;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  backdrop-filter: blur(12px);
-
-  -webkit-backdrop-filter: blur(12px);
-
-  color: #ffffff;
-
-  font-weight: 600;
-
-  transition: 0.35s ease;
-}
-
-.highlight-item:hover {
-  transform: translateX(8px);
-
-  background: rgba(255, 255, 255, 0.18);
-}
-
-/* ==========================================
-   LEARNING ROADMAP
+   04. LEARNING ROADMAP
 ========================================== */
 
 .roadmap-section {
@@ -1289,7 +1182,7 @@ font-size: small;
 }
 
 /* ==========================================
-   COURSE MODULES
+   05. COURSE MODULES
 ========================================== */
 
 .modules-section {
@@ -1533,53 +1426,6 @@ font-size: small;
   color: #2563eb;
 }
 
-/* ==========================================
-   MODULE PROGRESS
-========================================== */
-
-.module-progress {
-  margin-bottom: 30px;
-}
-
-.module-progress span {
-  display: block;
-
-  margin-top: 10px;
-
-  font-size: 0.9rem;
-
-  font-weight: 600;
-
-  color: #64748b;
-}
-
-/* ==========================================
-   PROGRESS BAR
-========================================== */
-
-.progress-bar {
-  width: 100%;
-
-  height: 10px;
-
-  background: #e2e8f0;
-
-  border-radius: 999px;
-
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-
-  width: 0;
-
-  border-radius: 999px;
-
-  background: linear-gradient(90deg, #2563eb, #14b8a6);
-
-  transition: width 1s ease;
-}
 
 /* ==========================================
    MODULE BUTTONS
@@ -1628,26 +1474,6 @@ font-size: small;
   transform: translateY(-4px);
 
   box-shadow: 0 20px 40px rgba(37, 99, 235, 0.35);
-}
-
-/* Second Button */
-
-.module-buttons a:last-child {
-  background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-
-  color: #0f172a;
-}
-
-.module-buttons a:last-child:hover {
-  background: #f8fafc;
-
-  border-color: #2563eb;
-
-  color: #2563eb;
-
-  transform: translateY(-4px);
 }
 
 /* ==========================================
@@ -1701,7 +1527,7 @@ font-size: small;
 }
 
 /* ==========================================
-   GRAMMAR LIBRARY
+   06. GRAMMAR LIBRARY
 ========================================== */
 
 .learning-library {
@@ -1731,7 +1557,7 @@ font-size: small;
 
   gap: 30px;
 
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .library-heading h3 {
@@ -1740,26 +1566,6 @@ font-size: small;
   font-size: 2.2rem;
 
   color: #0f172a;
-}
-
-.library-heading a {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 8px;
-
-  text-decoration: none;
-
-  color: #2563eb;
-
-  font-weight: 700;
-
-  transition: 0.3s ease;
-}
-
-.library-heading a:hover {
-  transform: translateX(6px);
 }
 
 /* ==========================================
@@ -1911,14 +1717,14 @@ font-size: small;
 ========================================== */
 
 .library-block + .library-block {
-  margin-top: 140px;
+  margin-top:  50px;
 
-  padding-top: 30px;
+  padding-top: 10px;
 
   border-top: 1px solid #e2e8f0;
 }
 /* ==========================================
-   INTERACTIVE EXERCISE CENTER
+   07. INTERACTIVE EXERCISE CENTER
 ========================================== */
 
 .exercise-section {
@@ -2320,138 +2126,9 @@ font-size: small;
   }
 }
 
-/* ==========================================
-   EXERCISE BOTTOM CTA
-========================================== */
-
-.exercise-bottom {
-  margin-top: 90px;
-
-  padding: 70px 50px;
-
-  text-align: center;
-
-  border-radius: 32px;
-
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-
-  position: relative;
-
-  overflow: hidden;
-
-  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
-}
-
-/* Decorative Glow */
-
-.exercise-bottom::before {
-  content: "";
-
-  position: absolute;
-
-  width: 340px;
-
-  height: 340px;
-
-  border-radius: 50%;
-
-  background: rgba(37, 99, 235, 0.12);
-
-  top: -170px;
-
-  left: -120px;
-}
-
-.exercise-bottom::after {
-  content: "";
-
-  position: absolute;
-
-  width: 260px;
-
-  height: 260px;
-
-  border-radius: 50%;
-
-  background: rgba(20, 184, 166, 0.1);
-
-  bottom: -130px;
-
-  right: -80px;
-}
 
 /* ==========================================
-   CONTENT
-========================================== */
-
-.exercise-bottom h3 {
-  position: relative;
-
-  z-index: 2;
-
-  font-size: 2.4rem;
-
-  color: #ffffff;
-
-  margin-bottom: 22px;
-}
-
-.exercise-bottom p {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 720px;
-
-  margin: 0 auto 36px;
-
-  color: rgba(255, 255, 255, 0.88);
-
-  line-height: 1.9;
-
-  font-size: 1.05rem;
-}
-
-/* ==========================================
-   BUTTON
-========================================== */
-
-.exercise-bottom a {
-  position: relative;
-
-  z-index: 2;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 18px 36px;
-
-  border-radius: 999px;
-
-  background: #ffffff;
-
-  color: #2563eb;
-
-  text-decoration: none;
-
-  font-weight: 700;
-
-  transition: all 0.35s ease;
-
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
-}
-
-.exercise-bottom a:hover {
-  transform: translateY(-5px);
-
-  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.25);
-}
-
-/* ==========================================
-   RESOURCES SECTION
+   08. RESOURCES SECTION
 ========================================== */
 
 .resources-section {
@@ -2693,7 +2370,7 @@ font-size: small;
 }
 
 /* ==========================================
-   STUDY SUPPORT SECTION
+   09. STUDY SUPPORT SECTION
 ========================================== */
 
 .study-support-section {
@@ -2901,7 +2578,7 @@ font-size: small;
 }
 
 /* ==========================================
-   FAQ SECTION
+   10. FAQ SECTION
 ========================================== */
 
 .faq-section {
@@ -2996,7 +2673,7 @@ font-size: small;
 }
 
 /* ==========================================
-   FINAL CTA
+   11. FINAL CTA
 ========================================== */
 
 .cta-section {
@@ -3248,7 +2925,7 @@ font-size: small;
 }
 
 /* ==========================================
-   LEVEL INTERACTIONS
+   12. LEVEL INTERACTIONS
 ========================================== */
 
 .exercise-card[hidden] {
@@ -3362,7 +3039,7 @@ font-size: small;
 }
 
 /* ==========================================
-   SIMPLE DARK MODE
+   13. SIMPLE DARK MODE
    Course-page colors only; structure and spacing remain unchanged.
 ========================================== */
 
@@ -3389,13 +3066,11 @@ body.dark .cta-section {
 body.dark .hero-container,
 body.dark .course-information,
 body.dark .learning-outcomes,
-body.dark .learning-highlight,
 body.dark .roadmap-card,
 body.dark .module-card,
 body.dark .library-block,
 body.dark .library-card,
 body.dark .exercise-card,
-body.dark .exercise-bottom,
 body.dark .resource-category,
 body.dark .resource-card,
 body.dark .study-tips,
@@ -3431,10 +3106,6 @@ body.dark .tip-card {
   background-color: #17243a;
   border-color: #3b4d66;
 }
-
-body.dark .progress-bar,
-body.dark .module-progress,
-body.dark .exercise-progress { background: #263449; }
 
 body.dark input,
 body.dark select,
@@ -3478,16 +3149,18 @@ body.dark .tip-card:hover {
 }
 
 /* ==========================================
-   RESPONSIVE STYLES
+   14. RESPONSIVE STYLES
    Matches the main stylesheet breakpoints and stays at the file end.
 ========================================== */
 
+/* Large desktop and laptop adjustments. */
 @media (max-width: 1200px) {
   .exercise-grid {
       grid-template-columns: repeat(3, 1fr);
     }
 }
 
+/* Tablet and compact-desktop adjustments. */
 @media (max-width: 992px) {
   .hero-container {
       grid-template-columns: 1fr;
@@ -3523,11 +3196,7 @@ body.dark .tip-card:hover {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .learning-highlight {
-      grid-template-columns: 1fr;
-    }
-
-  .roadmap::before {
+    .roadmap::before {
       left: 35px;
     }
 
@@ -3578,9 +3247,15 @@ body.dark .tip-card:hover {
     }
 }
 
+/* Standard tablet and mobile foundation. */
 @media (max-width: 768px) {
+  .branding {
+    display: block;
+    font-size: 0.68rem;
+  }
+
   .hero-section {
-      padding: 90px 0;
+      padding: 50px 0;
     }
 
     .course-stats {
@@ -3626,16 +3301,6 @@ body.dark .tip-card:hover {
 
     .features-grid {
       grid-template-columns: 1fr;
-    }
-
-    .learning-highlight {
-      padding: 40px 30px;
-
-      gap: 40px;
-    }
-
-    .highlight-content h3 {
-      font-size: 1.8rem;
     }
 
   .roadmap-section {
@@ -3693,7 +3358,7 @@ body.dark .tip-card:hover {
     }
 
     .library-heading h3 {
-      font-size: 1.9rem;
+      font-size:1.5rem;
     }
 
     .library-grid {
@@ -3732,14 +3397,6 @@ body.dark .tip-card:hover {
       padding: 28px;
     }
 
-  .exercise-bottom {
-      padding: 50px 30px;
-    }
-
-    .exercise-bottom h3 {
-      font-size: 1.9rem;
-    }
-
     .resources-section {
       padding: 50px 0;
     }
@@ -3755,7 +3412,7 @@ body.dark .tip-card:hover {
     }
 
   .study-support-section {
-      padding: 90px 0;
+      padding: 50px 0;
     }
 
   .study-tips {
@@ -3771,7 +3428,7 @@ body.dark .tip-card:hover {
     }
 
   .cta-section {
-      padding: 90px 0;
+      padding: 50px 0;
     }
 
     .cta-content h2 {
@@ -3791,9 +3448,9 @@ body.dark .tip-card:hover {
     }
 
   .back-to-sprachwelt {
-      top: 82px;
-      left: 14px;
-      padding: 10px 14px;
+      top: 72px;
+      left: 10px;
+      padding: 5px;
       font-size: 0.82rem;
     }
 
@@ -3806,7 +3463,7 @@ body.dark .tip-card:hover {
     }
 }
 
-/* Two-column card layout for medium mobile and small tablet screens only. */
+/* Medium mobile/small tablet refinements: 481–768px only. */
 @media (min-width: 481px) and (max-width: 768px) {
   .faq-section {
     margin-top: 64px;
@@ -4188,7 +3845,13 @@ body.dark .tip-card:hover {
   }
 }
 
+/* Standard phone foundation. */
 @media (max-width: 480px) {
+  .branding {
+    font-size: 0.62rem;
+    letter-spacing: -0.1px;
+  }
+
   .hero-buttons {
       flex-direction: column;
     }
@@ -4246,7 +3909,7 @@ body.dark .tip-card:hover {
     }
 }
 
-/* Compact two-column card system for standard mobile screens only. */
+/* Standard-phone card refinements: 361–480px only. */
 @media (min-width: 361px) and (max-width: 480px) {
   .course-stats,
   .course-information,
@@ -4295,7 +3958,7 @@ body.dark .tip-card:hover {
   .cta-card {
     min-width: 0;
     max-width: 100%;
-    padding: 5px 10px;
+    padding: 5px;
     border-radius: 15px;
     overflow: hidden;
   }
@@ -4422,7 +4085,7 @@ body.dark .tip-card:hover {
   .outcome-icon {
     width: 44px;
     height: 44px;
-    margin: 0 auto 10px;
+    /* margin: 0 ; */
     border-radius: 12px;
     font-size: 1.2rem;
   }
@@ -4544,7 +4207,13 @@ body.dark .tip-card:hover {
   }
 }
 
+/* Extra-small phone adjustments. */
 @media (max-width: 360px) {
+  .branding {
+    font-size: 0.56rem;
+    letter-spacing: -0.2px;
+  }
+
   .container { padding-inline: 12px; }
 
   .hero-content h1,
@@ -4601,7 +4270,7 @@ body.dark .tip-card:hover {
   .tip-card span {
     width: 38px;
     height: 38px;
-    margin: 0 auto 8px;
+    margin: 0;
     border-radius: 10px;
     font-size: 1rem;
   }

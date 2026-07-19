@@ -1,5 +1,18 @@
 ﻿/* =========================================================
-   ui.js - CLEAN PROFESSIONAL VERSION
+   UI CONTROLLER
+
+   This module connects the word database and authentication
+   services to the page. Its responsibilities are grouped in
+   this order:
+
+   1. Shared application state and browser storage
+   2. Learning progress, search, and formatting helpers
+   3. Static content used by categories and information pages
+   4. Routing and page rendering
+   5. Word details and conjugation
+   6. Account, settings, authentication, and theme controls
+   7. Header, search, and side-panel interactions
+   8. Application initialization
 ========================================================= */
 
 import { getAllWords, loadWords } from "./words.js";
@@ -24,41 +37,59 @@ import {
 
 /* =========================================================
    GLOBAL STATE
+
+   Values in this section describe the current UI session, so
+   every renderer and event handler reads the same information.
 ========================================================= */
 
+// Category currently displayed on the category page.
 let currentCategory = null;
+// Remembers the expanded word-list section for each category.
 let activeSectionMemory = {};
+// Identifies the main view currently shown to the visitor.
 let currentView = "home";
+// Navigation-source flags determine the correct Back button destination.
 let openedFromHomeSearch = false;
 let openedFromCategory = false;
+// Cleanup callback for the category search's outside-click listener.
 let detachCategorySearchOutsideClose = null;
+// Signed-in user and already fetched profile data.
 let currentUser = null;
 const userProfileCache = new Map();
+// Active appearance, accessibility, and synchronization preferences.
 let currentAppSettings = null;
+// Fast lookup collections for favorite and learned word IDs.
 const favoriteWordIds = new Set();
 const learnedWordIds = new Set();
+// User-created study lists grouped by internal list key.
 const customListWordIds = {
   myVerbs: new Set(),
   examPrep: new Set()
 };
+// Notes and recently searched terms for the current account.
 let wordNotesMap = {};
 let searchHistoryItems = [];
+// Learning counters displayed on progress and account screens.
 let progressStats = {
   wordsOpened: 0,
   daysActive: 0,
   streak: 0,
   lastActiveDate: ""
 };
+// Last category location used when returning from a word page.
 let lastContext = {
   category: "",
   section: null
 };
+// Additional navigation and warning-modal state.
 let openedFromFavorites = false;
 let schimpfWarningOpen = false;
+// Selected languages for multilingual information pages.
 let germanyPageLanguage = "en";
 let bangladeshPageLanguage = "en";
 let aboutRafiPageLanguage = "en";
 
+// Browser-storage keys and default application preferences.
 const APP_SETTINGS_KEY = "rw_app_settings_v1";
 const LOCAL_FAVORITES_KEY_PREFIX = "rw_local_favorites_v1_";
 const LOCAL_LEARNING_KEY_PREFIX = "rw_local_learning_v1_";
@@ -68,10 +99,14 @@ const DEFAULT_APP_SETTINGS = Object.freeze({
   reducedMotion: false,
   cloudSync: true
 });
+// Prevents saved search history from growing without limit.
 const MAX_SEARCH_HISTORY = 40;
 
 /* =========================================================
-   URL ROUTING HELPERS (GitHub Pages Safe)
+   ROUTING, STORAGE, AND APPLICATION SETTINGS
+
+   Route helpers support local hosting and GitHub Pages. Storage
+   helpers provide local fallback data and signed-in cloud sync.
 ========================================================= */
 
 function getBasePath() {
@@ -280,6 +315,8 @@ async function persistFavoritesIfLoggedIn() {
 
 /* =========================================================
    ACCOUNT-BOUND LEARNING STATE HELPERS
+
+   Updates history, notes, lists, progress counters, and cloud data.
 ========================================================= */
 function getTodayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -617,7 +654,9 @@ function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
 }
 
 /* =========================================================
-   SIDE PANEL CONTENT DATA
+   STATIC PAGE CONTENT AND MEDIA
+
+   Text and image paths live here so renderers focus on markup.
 ========================================================= */
 
 const sitePhotos = {
@@ -778,7 +817,7 @@ const panelPageContent = {
   sprachwelt: {
     image: sitePhotos.panelHero.sprachwelt,
     description:
-      "🚀✨Willkommen! Let’s make German simple.\nLrning German doesn't have to be overwhelming.\n👇 Choose your level below and click on it to explore lessons.",
+      "🚀✨Willkommen! Let’s make German simple.\nLearning German doesn't have to be overwhelming.\n👇 Choose your level below and click on it to explore lessons.",
 cards: [
   {
     title: "German A1: \nDer perfekte Start",
@@ -911,42 +950,9 @@ const ABOUT_RAFI_PAGE_COPY = {
 };
 
 /* =========================================================
-   INIT
-========================================================= */
+   HOME WORD COUNTER AND DATA QUALITY CHECK
 
-export async function initUI() {
-
-  try {
-    await loadWords();
-  } catch (error) {
-    console.error("Failed to load words/irregulars JSON.", error);
-  }
-  restoreGitHubFallbackRoute();
-
-  generateCategories();
-
-  // 🔥 Show Home + Hero on first load
-  showSection("homePage");
-
-  // Update word counter
-  updateWordCounter();
-  reportDuplicateWords();
-
-  applyAppSettings(getStoredSettings(), { persist: false });
-  setupDarkMode();
-  setupAuthModal();
-  setupUserInfoModal();
-  handleAuthState();
-  handleRouting();
-  setupLogoNavigation();
-  setupHomeSearch();
-  setupHomeSprachweltCta();
-  setupFooterNavigation();
-
-  window.addEventListener("popstate", handleRouting);
-}
-/* =========================================================
-   WORD COUNTER (HERO)
+   Updates the hero total and reports duplicate database entries.
 ========================================================= */
 
 function updateWordCounter() {
@@ -1009,7 +1015,9 @@ function reportDuplicateWords() {
 }
 
 /* =========================================================
-   CATEGORY LIST
+   CATEGORY DEFINITIONS AND INFORMATION-PAGE CONTENT
+
+   Defines category labels, explanations, and translated page copy.
 ========================================================= */
 
 const categories = [
@@ -1842,7 +1850,10 @@ function setupFooterNavigation() {
 }
 
 /* =========================================================
-   ROUTING
+   ROUTE RESOLUTION
+
+   Opens the word, category, information page, settings, or home
+   view requested by the browser's current query string.
 ========================================================= */
 
 function handleRouting() {
@@ -1904,7 +1915,9 @@ function handleRouting() {
 }
 
 /* =========================================================
-   SECTION SWITCH (SMOOTH)
+   MAIN VIEW SWITCHING
+
+   Shows one primary page section and coordinates hero visibility.
 ========================================================= */
 
 function showSection(id) {
@@ -1938,7 +1951,9 @@ function showSection(id) {
 }
 
 /* =========================================================
-   OPEN CATEGORY
+   CATEGORY PAGE RENDERING
+
+   Builds the selected category and restores its previous section.
 ========================================================= */
 
 function openCategoryPage(categoryName, options = {}) {
@@ -2002,9 +2017,12 @@ function openCategoryPage(categoryName, options = {}) {
   categoryPage.appendChild(topBar);
 
 /* =========================================================
-   CATEGORY SEARCH (PRO VERSION)
+   CATEGORY SEARCH INTERFACE
+
+   Creates a search field whose suggestions stay within the open
+   category.
 ========================================================= */
-/* ================= CATEGORY SEARCH WRAPPER ================= */
+/* Search controls inserted into the category page. */
 
 const searchWrapper = document.createElement("div");
 searchWrapper.style.position = "relative";
@@ -2106,7 +2124,9 @@ detachCategorySearchOutsideClose = () => {
 };
 
 /* =========================================================
-   CATEGORY SEARCH → OPEN WORD DIRECTLY (NO LIST)
+   CATEGORY SEARCH RESULTS AND KEYBOARD CONTROL
+
+   Filters words, renders suggestions, and supports keyboard input.
 ========================================================= */
 
   /* ================= GET CATEGORY WORDS ================= */
@@ -2115,7 +2135,7 @@ detachCategorySearchOutsideClose = () => {
     w => (w.category || "").trim() === categoryName.trim()
   );
   /* =========================================================
-   CATEGORY SUGGESTIONS (PRO VERSION)
+   CATEGORY SUGGESTION RENDERING
 ========================================================= */
 
 let selectedIndex = -1;
@@ -2753,15 +2773,15 @@ function openConjugationPage(wordId) {
 }
 
 /* =========================================================
-   WORD DETAIL (CLEAN VERSION)
+   WORD DETAIL PAGE
+
+   Renders word data and connects notes, favorites, pronunciation,
+   sharing, reports, conjugation, and context-aware navigation.
 ========================================================= */
 
 function openWordDetail(wordId, options = {}) {
 
   const allWords = getAllWords();
-
-  console.log("DEBUG: Word ID Requested →", wordId);
-  console.log("DEBUG: Available Words →", allWords);
 
   const word = allWords.find(w => w.id === wordId);
 
@@ -3115,6 +3135,9 @@ function openWordDetail(wordId, options = {}) {
 
 /* =========================================================
    SHARED PAGE/PANEL HELPERS
+
+   Shared navigation and rendering for information pages, favorites,
+   settings, and expandable cards.
 ========================================================= */
 
 function goHomeWithoutRefresh() {
@@ -3829,6 +3852,8 @@ async function openUserInfoPanel(user) {
 
 /* =========================================================
    AUTH MODAL
+
+   Connects login, signup, and password reset controls to auth.js.
 ========================================================= */
 
 function setupAuthModal() {
@@ -4042,6 +4067,8 @@ function syncPanelLogoutVisibility(isLoggedIn) {
 
 /* =========================================================
    AUTH STATE
+
+   Refreshes account data and guest/signed-in controls after changes.
 ========================================================= */
 
 function handleAuthState() {
@@ -4156,6 +4183,8 @@ function handleAuthState() {
 
 /* =========================================================
    DARK MODE
+
+   Changes the saved theme; applyAppSettings updates the page itself.
 ========================================================= */
 
 function setupDarkMode() {
@@ -4192,7 +4221,10 @@ function setupLogoNavigation() {
 
 }
 /* =========================================================
-   HOME SEARCH (CONTROLLED VERSION)
+   HOME SEARCH
+
+   Handles exact matches, suggestions, duplicates, missing words,
+   and keyboard navigation.
 ========================================================= */
 
 function setupHomeSearch() {
@@ -4425,13 +4457,16 @@ function updateActive(items) {
 }
 
 }
-// panel buttons
-const mobileBtn = document.getElementById("mobileMenuBtn");
-const panel = document.getElementById("mobileSidePanel");
+
 /* =========================================================
    DESKTOP/MOBILE PANEL LOGIC
+
+   Keeps panels mutually exclusive and synchronizes accessibility
+   labels, open state, outside clicks, and responsive header offset.
 ========================================================= */
 
+const mobileBtn = document.getElementById("mobileMenuBtn");
+const panel = document.getElementById("mobileSidePanel");
 const desktopBtn = document.getElementById("desktopMenuBtn");
 const desktopPanel = document.getElementById("desktopSidePanel");
 
@@ -4600,3 +4635,37 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
+
+/* =========================================================
+   APPLICATION INITIALIZATION
+
+   Public entry point called by app.js after the DOM is ready. Data
+   loads first, followed by the initial view and event listeners.
+========================================================= */
+
+export async function initUI() {
+  try {
+    await loadWords();
+  } catch (error) {
+    console.error("Failed to load words/irregulars JSON.", error);
+  }
+
+  restoreGitHubFallbackRoute();
+  generateCategories();
+  showSection("homePage");
+  updateWordCounter();
+  reportDuplicateWords();
+
+  applyAppSettings(getStoredSettings(), { persist: false });
+  setupDarkMode();
+  setupAuthModal();
+  setupUserInfoModal();
+  handleAuthState();
+  handleRouting();
+  setupLogoNavigation();
+  setupHomeSearch();
+  setupHomeSprachweltCta();
+  setupFooterNavigation();
+
+  window.addEventListener("popstate", handleRouting);
+}

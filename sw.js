@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v40";
+const CACHE_VERSION = "rw-cache-v52";
 const DATA_VERSION = "2026-03-16-3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
