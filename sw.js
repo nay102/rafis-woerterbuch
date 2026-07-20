@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v52";
+const CACHE_VERSION = "rw-cache-v77";
 const DATA_VERSION = "2026-03-16-3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -21,6 +21,17 @@ function toAbsolute(path) {
 }
 
 function coreUrls() {
+  const resourcePdfNames = {
+    grammar: ["grammar-reference", "verb-and-sentence-guide", "grammar-quick-review"],
+    vocabulary: ["everyday-vocabulary", "topic-word-list", "useful-expressions"],
+    worksheets: ["grammar-worksheet", "reading-worksheet", "mixed-practice"],
+    flashcards: ["daily-life-flashcards", "verbs-flashcards", "expressions-flashcards"]
+  };
+  const resourcePdfs = ["a1", "a2", "b1", "b2"].flatMap(level =>
+    Object.entries(resourcePdfNames).flatMap(([category, names]) =>
+      names.map(name => toAbsolute(`assets/pdfs/${level}/${category}/${name}.pdf`))
+    )
+  );
   return [
     toAbsolute(""),
     toAbsolute("index.html"),
@@ -28,8 +39,23 @@ function coreUrls() {
     toAbsolute("manifest.webmanifest"),
     toAbsolute("css/style.css"),
     toAbsolute("css/dark.css"),
+    toAbsolute("css/course-enrollment.css"),
+    toAbsolute("css/library-topic.css"),
+    toAbsolute("css/practice.css"),
+    toAbsolute("css/download-center.css"),
+    toAbsolute("css/course-module.css"),
     toAbsolute("js/app.js"),
     toAbsolute("js/ui.js"),
+    toAbsolute("js/course-enrollment.js"),
+    toAbsolute("js/library-topic.js"),
+    toAbsolute("js/library-topic-data.js"),
+    toAbsolute("js/practice.js"),
+    toAbsolute("js/practice-data.js"),
+    toAbsolute("js/download-center.js"),
+    toAbsolute("js/auth-gate.js"),
+    toAbsolute("js/course-module.js"),
+    toAbsolute("js/course-module-data.js"),
+    toAbsolute("js/level-page.js"),
     toAbsolute("js/words.js"),
     toAbsolute(`js/words.json?v=${DATA_VERSION}`),
     toAbsolute(`js/irregular_verbs.json?v=${DATA_VERSION}`),
@@ -38,7 +64,13 @@ function coreUrls() {
     toAbsolute("assets/favicon.png"),
     toAbsolute("assets/logo.png"),
     toAbsolute("assets/icon-192.png"),
-    toAbsolute("assets/icon-512.png")
+    toAbsolute("assets/icon-512.png"),
+    toAbsolute("pages/course-enrollment.html"),
+    toAbsolute("pages/library-topic.html"),
+    toAbsolute("pages/practice.html"),
+    toAbsolute("pages/download-center.html"),
+    toAbsolute("pages/course-module.html"),
+    ...resourcePdfs
   ];
 }
 

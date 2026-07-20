@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Rafis Sprachwelt German learning library topic" />
+    <meta name="theme-color" content="#111827" />
+    <title>Learning Topic | Rafis Sprachwelt</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/icon-192.png" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/library-topic.css" />
+    <link rel="stylesheet" href="../css/dark.css" />
+  </head>
+  <body class="topic-body">
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo-area" id="logoHome">
+          <img src="../assets/logo.png" alt="Rafis Woerterbuch logo" class="logo" />
+          <span id="titleHome" class="site-title">Rafi&rsquo;s W&ouml;rterbuch</span>
+        </div>
+        <div class="branding" id="topicBranding">Rafis Sprachwelt</div>
+        <div class="header-controls">
+          <button id="darkToggle" type="button" aria-label="Toggle Dark Mode">&#127769;</button>
+          <button id="loginBtn" type="button">Login</button>
+          <button id="desktopMenuBtn" class="desktop-menu-btn" type="button" aria-label="Open desktop menu" aria-controls="desktopSidePanel" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button id="mobileMenuBtn" class="mobile-menu-btn" type="button" aria-label="Open mobile menu" aria-controls="mobileSidePanel" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="topic-page">
+      <section class="topic-hero">
+        <div class="topic-hero-shape topic-hero-shape--one"></div>
+        <div class="topic-hero-shape topic-hero-shape--two"></div>
+        <div class="container topic-hero-inner">
+          <a class="topic-back" id="topicBackLink" href="a1.html#library"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Learning Library</a>
+          <div class="topic-breadcrumb"><span id="breadcrumbLevel">A1</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span id="breadcrumbType">Grammar</span></div>
+          <span class="topic-level-badge" id="topicLevelBadge">Level A1</span>
+          <h1 id="topicTitle">Articles</h1>
+          <p id="topicIntroduction"></p>
+        </div>
+      </section>
+
+      <section class="topic-meta-section" aria-label="Topic information">
+        <div class="container topic-meta-grid" id="topicMetaGrid"></div>
+      </section>
+
+      <section class="topic-learning-section">
+        <div class="container topic-layout">
+          <article class="topic-content">
+            <section class="learning-block learning-block--overview">
+              <span class="learning-block-number">01</span>
+              <div class="learning-block-heading"><span>Foundation</span><h2>Understand the Topic</h2></div>
+              <p id="topicOverview"></p>
+            </section>
+
+            <section class="learning-block">
+              <span class="learning-block-number">02</span>
+              <div class="learning-block-heading"><span>Key Knowledge</span><h2>Important Learning Points</h2></div>
+              <div class="key-points-grid" id="keyPointsGrid"></div>
+            </section>
+
+            <section class="learning-block">
+              <span class="learning-block-number">03</span>
+              <div class="learning-block-heading"><span>In Context</span><h2>German Examples</h2></div>
+              <div class="topic-table-wrap">
+                <table class="topic-examples-table">
+                  <thead><tr><th>German</th><th>English</th><th>Learning Note</th></tr></thead>
+                  <tbody id="topicExamples"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="learning-block">
+              <span class="learning-block-number">04</span>
+              <div class="learning-block-heading"><span>Self Practice</span><h2>Practice Activities</h2></div>
+              <ol class="practice-list" id="practiceList"></ol>
+            </section>
+          </article>
+
+          <aside class="topic-sidebar">
+            <section class="topic-tip-card">
+              <span><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span>
+              <small>Learning Tip</small>
+              <h2>Study Smarter</h2>
+              <p id="topicTip"></p>
+            </section>
+            <nav class="topic-navigation" aria-label="Other library topics">
+              <span>Continue Learning</span>
+              <a id="previousTopic" href="library-topic.html?level=A1&amp;topic=school-work"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span><small>Previous</small><strong></strong></span></a>
+              <a id="nextTopic" href="library-topic.html?level=A1&amp;topic=pronouns"><span><small>Next</small><strong></strong></span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </nav>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" aria-label="Site footer">
+      <div class="footer-shell">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <strong>Rafis W&ouml;rterbuch</strong>
+            <div class="footer-actions" aria-label="Footer navigation">
+              <button class="footer-action" type="button" data-footer-page="owner">Who is Rafi?</button>
+              <button class="footer-action" type="button" data-footer-page="sprachwelt">German Courses</button>
+            </div>
+            <a class="footer-email" href="mailto:rafikul.islam005r@gmail.com">E-Mail: rafikul.islam005r@gmail.com</a>
+          </div>
+          <div class="footer-social">
+            <h2>Follow me on</h2>
+            <div class="footer-social-icons" aria-label="Social links">
+              <a href="https://www.facebook.com/profile.php?id=61587780268691" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@deutschwelt.nayeem" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/nayeem_3378/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.tiktok.com/@deutschwelt.nayeem?lang=en" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Rafis W&ouml;rterbuch. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <div id="desktopSidePanel" class="desktop-side-panel"><div class="desktop-panel-content">
+      <button type="button" data-page="home">&#127968; Home</button><button type="button" data-page="owner">&#128081; About Rafi</button><button type="button" data-page="about">&#127465;&#127466; Germany</button><button type="button" data-page="bangladesh">&#127463;&#127465; Bangladesh</button><button type="button" data-page="sprachwelt">&#10024; Sprachwelt</button><button type="button" data-page="ausbildung">&#128218; Ausbildung</button><button type="button" data-page="option5">&#128221; Exam Zone</button><button type="button" data-page="option6">&#128640; Pro Tools</button><button type="button" data-page="favorites">&#11088; Favorites</button><button type="button" data-page="settings">&#9881; Settings</button><button type="button" data-page="logout">&#128682; Logout</button>
+    </div></div>
+    <div id="mobileSidePanel" class="mobile-side-panel"><div class="panel-content">
+      <button type="button" data-page="home">&#127968; Home</button><button type="button" data-page="owner">&#128081; About Rafi</button><button type="button" data-page="about">&#127465;&#127466; Germany</button><button type="button" data-page="bangladesh">&#127463;&#127465; Bangladesh</button><button type="button" data-page="sprachwelt">&#10024; Sprachwelt</button><button type="button" data-page="ausbildung">&#128218; Ausbildung</button><button type="button" data-page="option5">&#128221; Exam Zone</button><button type="button" data-page="option6">&#128640; Pro Tools</button><button id="panelDarkToggle" type="button">&#127769; Dark Mode</button><button id="panelLoginBtn" type="button">Login</button><button type="button" data-page="favorites">&#11088; Favorites</button><button type="button" data-page="settings">&#9881; Settings</button><button type="button" data-page="logout">&#128682; Logout</button>
+    </div></div>
+
+    <script type="module" src="../js/library-topic.js"></script>
+  </body>
+</html>

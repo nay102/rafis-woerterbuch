@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive German exercises from Rafis Sprachwelt"
+    />
+    <title>Practice Center | Rafis Sprachwelt</title>
+    <link rel="icon" href="../assets/favicon.png" />
+    <link rel="manifest" href="../manifest.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/practice.css" />
+    <link rel="stylesheet" href="../css/dark.css" />
+  </head>
+  <body class="practice-body">
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo-area" id="logoHome">
+          <img
+            src="../assets/logo.png"
+            alt="Rafis Woerterbuch logo"
+            class="logo"
+          /><span id="titleHome" class="site-title"
+            >Rafi&rsquo;s W&ouml;rterbuch</span
+          >
+        </div>
+        <div class="branding" id="practiceBranding">Rafis Sprachwelt</div>
+        <div class="header-controls">
+          <button id="darkToggle" type="button" aria-label="Toggle Dark Mode">
+            &#127769;</button
+          ><button id="loginBtn" type="button">Login</button
+          ><button
+            id="desktopMenuBtn"
+            class="desktop-menu-btn"
+            type="button"
+            aria-label="Open desktop menu"
+            aria-controls="desktopSidePanel"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span></button
+          ><button
+            id="mobileMenuBtn"
+            class="mobile-menu-btn"
+            type="button"
+            aria-label="Open mobile menu"
+            aria-controls="mobileSidePanel"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="practice-page">
+      <section class="practice-hero">
+        <div class="container">
+          <a class="practice-back" id="practiceBack" href="a1.html#exercises"
+            ><i class="fa-solid fa-arrow-left"></i> Practice Center</a
+          >
+          <div class="practice-badges">
+            <span id="practiceLevel">A1 Practice</span
+            ><span id="practiceType">Grammar</span>
+          </div>
+          <h1 id="practiceTitle">Grammar Challenge</h1>
+          <p id="practiceInstruction"></p>
+          <div class="practice-overview">
+            <span id="questionCount">4 Questions</span
+            ><span>Instant feedback</span><span>Free practice</span>
+          </div>
+        </div>
+      </section>
+      <section class="practice-workspace">
+        <div class="container practice-layout">
+          <article class="practice-sheet">
+            <div class="practice-progress">
+              <div>
+                <strong>Your progress</strong
+                ><span id="answeredCount">0 of 4 answered</span>
+              </div>
+              <div class="progress-track"><i id="progressFill"></i></div>
+            </div>
+            <form id="practiceForm"></form>
+            <button
+              class="practice-submit"
+              id="submitPractice"
+              type="submit"
+              form="practiceForm"
+            >
+              Check answers <i class="fa-solid fa-check"></i>
+            </button>
+            <section class="practice-result" id="practiceResult" hidden>
+              <span>Your result</span><strong id="resultScore">0/4</strong>
+              <p id="resultMessage"></p>
+              <button id="retryPractice" type="button">
+                <i class="fa-solid fa-rotate-right"></i> Try again
+              </button>
+            </section>
+          </article>
+          <aside class="practice-help">
+            <i class="fa-solid fa-lightbulb"></i><span>How it works</span>
+            <h2>Learn from every answer</h2>
+            <p>
+              Answer every question, check your result, and read the explanation
+              beneath each item. A score of 75% or higher shows strong
+              understanding.
+            </p>
+            <small>Your results stay private on this device.</small>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-shell">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <strong>Rafis W&ouml;rterbuch</strong>
+            <div class="footer-actions">
+              <button
+                class="footer-action"
+                type="button"
+                data-footer-page="owner"
+              >
+                Who is Rafi?</button
+              ><button
+                class="footer-action"
+                type="button"
+                data-footer-page="sprachwelt"
+              >
+                German Courses
+              </button>
+            </div>
+            <a class="footer-email" href="mailto:rafikul.islam005r@gmail.com"
+              >E-Mail: rafikul.islam005r@gmail.com</a
+            >
+          </div>
+          <div class="footer-social">
+            <h2>Follow me on</h2>
+            <div class="footer-social-icons">
+              <a
+                href="https://www.facebook.com/profile.php?id=61587780268691"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i></a
+              ><a
+                href="https://www.youtube.com/@deutschwelt.nayeem"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                ><i class="fa-brands fa-youtube"></i></a
+              ><a
+                href="https://www.instagram.com/nayeem_3378/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <p class="footer-copy">
+          &copy; 2026 Rafis W&ouml;rterbuch. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+    <div id="desktopSidePanel" class="desktop-side-panel">
+      <div class="desktop-panel-content">
+        <button type="button" data-page="home">&#127968; Home</button
+        ><button type="button" data-page="owner">&#128081; About Rafi</button
+        ><button type="button" data-page="sprachwelt">
+          &#10024; Sprachwelt</button
+        ><button type="button" data-page="favorites">&#11088; Favorites</button
+        ><button type="button" data-page="settings">&#9881; Settings</button
+        ><button type="button" data-page="logout">&#128682; Logout</button>
+      </div>
+    </div>
+    <div id="mobileSidePanel" class="mobile-side-panel">
+      <div class="panel-content">
+        <button type="button" data-page="home">&#127968; Home</button
+        ><button type="button" data-page="owner">&#128081; About Rafi</button
+        ><button type="button" data-page="sprachwelt">
+          &#10024; Sprachwelt</button
+        ><button id="panelDarkToggle" type="button">&#127769; Dark Mode</button
+        ><button id="panelLoginBtn" type="button">Login</button
+        ><button type="button" data-page="favorites">&#11088; Favorites</button
+        ><button type="button" data-page="settings">&#9881; Settings</button
+        ><button type="button" data-page="logout">&#128682; Logout</button>
+      </div>
+    </div>
+    <script type="module" src="../js/practice.js"></script>
+  </body>
+</html>

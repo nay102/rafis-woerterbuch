@@ -87,14 +87,136 @@ function initBackToSprachwelt() {
   const link = document.createElement("a");
   link.className = "back-to-sprachwelt";
   link.href = "../index.html?page=sprachwelt";
-  link.setAttribute("aria-label", "Back to Sprachwelt");
-  link.innerHTML = '<span aria-hidden="true">&lt;</span> Back to Sprachwelt';
+  link.setAttribute("aria-label", "Sprachwelt");
+  link.innerHTML = '<span aria-hidden="true">&lt;</span> Sprachwelt';
   document.body.appendChild(link);
+}
+
+function initCourseSectionMenu() {
+  if (document.querySelector(".course-section-menu")) return;
+
+  // Each label points to an existing section shared by the A1-B2 pages.
+  const menuItems = [
+    { label: "Course Overview", selector: ".overview-section", id: "course-overview" },
+    { label: "Why Sprachwelt", selector: ".features-section", id: "why-sprachwelt" },
+    { label: "Course Modules", selector: ".modules-section", id: "modules" },
+    { label: "Learning Library", selector: ".learning-library", id: "library" },
+    { label: "Practice Center", selector: ".exercise-section", id: "exercises" },
+    { label: "Study Resources", selector: ".resources-section", id: "resources" },
+    { label: "Study Tips", selector: ".study-support-section", id: "study-tips" }
+  ];
+
+  // Add stable targets only when their corresponding section exists.
+  const availableItems = menuItems.flatMap(item => {
+    const section = document.querySelector(item.selector);
+    if (!section) return [];
+    section.id ||= item.id;
+    section.classList.add("course-section-menu-target");
+    return [{ ...item, id: section.id }];
+  });
+
+  if (availableItems.length === 0) return;
+
+  const menu = document.createElement("div");
+  menu.className = "course-section-menu";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "course-section-menu-toggle";
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", "courseSectionMenuPanel");
+  button.innerHTML = `
+    <span class="course-menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="course-menu-label">Menu</span>
+  `;
+
+  const panel = document.createElement("nav");
+  panel.id = "courseSectionMenuPanel";
+  panel.className = "course-section-menu-panel";
+  panel.setAttribute("aria-label", "Course sections");
+  panel.setAttribute("aria-hidden", "true");
+  panel.innerHTML = `
+    <div class="course-section-nav">
+      ${availableItems.map(item => `
+        <a href="#${item.id}">${item.label}</a>
+      `).join("")}
+    </div>
+  `;
+
+  menu.append(button, panel);
+  document.body.appendChild(menu);
+
+  const setOpen = shouldOpen => {
+    menu.classList.toggle("is-open", shouldOpen);
+    button.setAttribute("aria-expanded", String(shouldOpen));
+    panel.setAttribute("aria-hidden", String(!shouldOpen));
+  };
+
+  button.addEventListener("click", event => {
+    event.stopPropagation();
+    setOpen(!menu.classList.contains("is-open"));
+  });
+
+  panel.addEventListener("click", event => {
+    const link = event.target.closest("a");
+    if (!link) return;
+    event.preventDefault();
+    const target = document.querySelector(link.getAttribute("href"));
+    setOpen(false);
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  document.addEventListener("click", event => {
+    if (!menu.contains(event.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key !== "Escape" || !menu.classList.contains("is-open")) return;
+    setOpen(false);
+    button.focus();
+  });
+
+  // The main header side panel takes priority over this section menu.
+  document.querySelectorAll("#desktopMenuBtn, #mobileMenuBtn").forEach(sidePanelButton => {
+    sidePanelButton.addEventListener("click", () => setOpen(false));
+  });
+}
+
+function initResponsiveModuleReveal() {
+  const modulesGrid = document.querySelector(".modules-grid");
+  const revealButton = modulesGrid?.querySelector(".more-modules-note");
+  if (!modulesGrid || !revealButton) return;
+
+  modulesGrid.id ||= "courseModulesGrid";
+  revealButton.setAttribute("aria-controls", modulesGrid.id);
+
+  const setExpanded = shouldExpand => {
+    modulesGrid.classList.toggle("show-all-modules", shouldExpand);
+    revealButton.setAttribute("aria-expanded", String(shouldExpand));
+  };
+
+  revealButton.addEventListener("click", event => {
+    event.stopPropagation();
+    setExpanded(!modulesGrid.classList.contains("show-all-modules"));
+  });
+
+  // Any click outside the toggle returns the responsive grid to four modules.
+  document.addEventListener("click", () => setExpanded(false));
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") setExpanded(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 992) setExpanded(false);
+  });
 }
 
 export function initCourseInteractions() {
   initFaqAccordion();
   initExerciseFilters();
   initBackToSprachwelt();
+  initCourseSectionMenu();
+  initResponsiveModuleReveal();
   initBackToTop();
 }

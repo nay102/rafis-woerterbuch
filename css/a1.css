@@ -4,17 +4,16 @@
    01. Hero
    02. Course overview
    03. Learning features
-   04. Learning roadmap
-   05. Course modules
-   06. Grammar library
-   07. Exercise center
-   08. Resources
-   09. Study support
-   10. FAQ
-   11. Final CTA
-   12. Level interactions
-   13. Simple dark mode
-   14. Responsive styles
+   04. Course modules
+   05. Grammar library
+   06. Exercise center
+   07. Resources
+   08. Study support
+   09. FAQ
+   10. Final CTA
+   11. Level interactions
+   12. Simple dark mode
+   13. Responsive styles
 ========================================== */
 
 .course-page {
@@ -823,366 +822,7 @@ font-size: small;
 
 
 /* ==========================================
-   04. LEARNING ROADMAP
-========================================== */
-
-.roadmap-section {
-  padding: 50px 0;
-
-  background: #ffffff;
-
-  position: relative;
-
-  overflow: hidden;
-}
-
-/* ==========================================
-   ROADMAP CONTAINER
-========================================== */
-
-.roadmap {
-  position: relative;
-
-  max-width: 1100px;
-
-  margin: 80px auto 0;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 40px;
-}
-
-/* Timeline */
-
-.roadmap::before {
-  content: "";
-
-  position: absolute;
-
-  left: 48px;
-
-  top: 0;
-
-  bottom: 0;
-
-  width: 4px;
-
-  border-radius: 20px;
-
-  background: linear-gradient(180deg, #2563eb, #14b8a6);
-}
-
-/* ==========================================
-   ROADMAP CARD
-========================================== */
-
-.roadmap-card {
-  position: relative;
-
-  display: grid;
-
-  grid-template-columns: 90px 1fr;
-
-  gap: 32px;
-
-  align-items: flex-start;
-}
-
-/* ==========================================
-   MODULE NUMBER
-========================================== */
-
-.module-number {
-  position: relative;
-
-  z-index: 2;
-
-  width: 90px;
-
-  height: 90px;
-
-  border-radius: 50%;
-
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  color: #ffffff;
-
-  font-size: 1.5rem;
-
-  font-weight: 800;
-
-  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.3);
-}
-
-/* White Ring */
-
-.module-number::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 7px;
-
-  border-radius: 50%;
-
-  border: 2px solid rgba(255, 255, 255, 0.35);
-}
-
-/* ==========================================
-   MODULE CONTENT
-========================================== */
-
-.module-content {
-  background: #ffffff;
-
-  border: 1px solid #e2e8f0;
-
-  border-radius: 28px;
-
-  padding: 20px;
-
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
-
-  transition: all 0.35s ease;
-}
-
-/* Hover */
-
-.roadmap-card:hover .module-content {
-  transform: translateY(-8px);
-
-  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12);
-}
-
-.roadmap-card:hover .module-number {
-  transform: scale(1.08);
-}
-
-/* ==========================================
-   BADGE
-========================================== */
-
-.module-badge {
-  display: inline-block;
-
-  padding: 8px 16px;
-
-  margin-bottom: 18px;
-
-  border-radius: 999px;
-
-  background: rgba(37, 99, 235, 0.08);
-
-  color: #2563eb;
-
-  font-size: 0.82rem;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.6px;
-}
-
-/* ==========================================
-   HEADING
-========================================== */
-
-.module-content h3 {
-  margin-bottom: 18px;
-
-  font-size: 1.7rem;
-
-  color: #0f172a;
-}
-
-/* ==========================================
-   DESCRIPTION
-========================================== */
-
-.module-content > p {
-  margin-bottom: 26px;
-
-  color: #64748b;
-
-  line-height: 1.9;
-}
-/* ==========================================
-   MODULE LIST
-========================================== */
-
-.module-list {
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 14px 24px;
-
-  margin-bottom: 30px;
-}
-
-.module-list li {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  color: #334155;
-
-  font-size: 0.97rem;
-
-  font-weight: 500;
-
-  line-height: 1.6;
-
-  transition: 0.3s ease;
-}
-
-.module-list li:hover {
-  color: #2563eb;
-
-  transform: translateX(6px);
-}
-
-/* ==========================================
-   MODULE META
-========================================== */
-
-.module-meta {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 14px;
-
-  padding-top: 24px;
-
-  border-top: 1px solid #e2e8f0;
-}
-
-.module-meta span {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 10px 18px;
-
-  border-radius: 999px;
-
-  background: #f8fafc;
-
-  border: 1px solid #e2e8f0;
-
-  color: #475569;
-
-  font-size: 0.9rem;
-
-  font-weight: 600;
-
-  transition: 0.3s ease;
-}
-
-.module-meta span:hover {
-  background: #2563eb;
-
-  border-color: #2563eb;
-
-  color: #ffffff;
-
-  transform: translateY(-3px);
-}
-
-/* ==========================================
-   ROADMAP HOVER EFFECTS
-========================================== */
-
-.roadmap-card {
-  transition: 0.35s ease;
-}
-
-.roadmap-card:hover {
-  transform: translateX(8px);
-}
-
-.roadmap-card:hover .module-badge {
-  background: #2563eb;
-
-  color: #ffffff;
-}
-
-.roadmap-card:hover .module-content h3 {
-  color: #2563eb;
-}
-
-/* ==========================================
-   ROADMAP ANIMATION
-========================================== */
-
-.roadmap-card {
-  opacity: 0;
-
-  transform: translateY(50px);
-
-  animation: roadmapFade 0.8s ease forwards;
-}
-
-.roadmap-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.roadmap-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.roadmap-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.roadmap-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-.roadmap-card:nth-child(5) {
-  animation-delay: 0.5s;
-}
-
-.roadmap-card:nth-child(6) {
-  animation-delay: 0.6s;
-}
-
-@keyframes roadmapFade {
-  from {
-    opacity: 0;
-
-    transform: translateY(50px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0);
-  }
-}
-
-/* ==========================================
-   05. COURSE MODULES
+   04. COURSE MODULES
 ========================================== */
 
 .modules-section {
@@ -1207,6 +847,11 @@ font-size: small;
   gap: 32px;
 
   margin-top: 70px;
+}
+
+/* Shown only when responsive layouts hide Modules 5-10. */
+.more-modules-note {
+  display: none;
 }
 
 /* ==========================================
@@ -1512,6 +1157,22 @@ font-size: small;
   animation-delay: 0.55s;
 }
 
+.module-card:nth-child(7) {
+  animation-delay: 0.65s;
+}
+
+.module-card:nth-child(8) {
+  animation-delay: 0.75s;
+}
+
+.module-card:nth-child(9) {
+  animation-delay: 0.85s;
+}
+
+.module-card:nth-child(10) {
+  animation-delay: 0.95s;
+}
+
 @keyframes moduleFade {
   from {
     opacity: 0;
@@ -1527,7 +1188,7 @@ font-size: small;
 }
 
 /* ==========================================
-   06. GRAMMAR LIBRARY
+   05. GRAMMAR LIBRARY
 ========================================== */
 
 .learning-library {
@@ -1724,7 +1385,7 @@ font-size: small;
   border-top: 1px solid #e2e8f0;
 }
 /* ==========================================
-   07. INTERACTIVE EXERCISE CENTER
+   06. INTERACTIVE EXERCISE CENTER
 ========================================== */
 
 .exercise-section {
@@ -1807,6 +1468,10 @@ font-size: small;
   grid-template-columns: repeat(4, 1fr);
 
   gap: 30px;
+
+  align-items: stretch;
+
+  grid-auto-rows: 1fr;
 }
 
 /* ==========================================
@@ -1820,7 +1485,11 @@ font-size: small;
 
   flex-direction: column;
 
-  padding: 30px;
+  align-self: stretch;
+
+  height: 100%;
+
+  padding: 24px;
 
   border-radius: 28px;
 
@@ -1895,7 +1564,7 @@ font-size: small;
 
   padding: 8px 16px;
 
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 
   border-radius: 999px;
 
@@ -1923,19 +1592,19 @@ font-size: small;
 ========================================== */
 
 .exercise-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 
   color: #0f172a;
 
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .exercise-card p {
   color: #64748b;
 
-  line-height: 1.8;
+  line-height: 1.6;
 
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 
   flex: 1;
 }
@@ -1948,9 +1617,9 @@ font-size: small;
 
   flex-wrap: wrap;
 
-  gap: 12px;
+  gap: 8px;
 
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .exercise-meta span {
@@ -2006,7 +1675,7 @@ font-size: small;
 
   align-self: flex-start;
 
-  padding: 8px 18px;
+  padding: 7px 13px;
 
   border-radius: 999px;
 
@@ -2018,7 +1687,7 @@ font-size: small;
 
   letter-spacing: 0.6px;
 
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .difficulty.easy {
@@ -2128,7 +1797,7 @@ font-size: small;
 
 
 /* ==========================================
-   08. RESOURCES SECTION
+   07. RESOURCES SECTION
 ========================================== */
 
 .resources-section {
@@ -2370,7 +2039,7 @@ font-size: small;
 }
 
 /* ==========================================
-   09. STUDY SUPPORT SECTION
+   08. STUDY SUPPORT SECTION
 ========================================== */
 
 .study-support-section {
@@ -2578,7 +2247,7 @@ font-size: small;
 }
 
 /* ==========================================
-   10. FAQ SECTION
+   09. FAQ SECTION
 ========================================== */
 
 .faq-section {
@@ -2673,7 +2342,7 @@ font-size: small;
 }
 
 /* ==========================================
-   11. FINAL CTA
+   10. FINAL CTA
 ========================================== */
 
 .cta-section {
@@ -2925,7 +2594,7 @@ font-size: small;
 }
 
 /* ==========================================
-   12. LEVEL INTERACTIONS
+   11. LEVEL INTERACTIONS
 ========================================== */
 
 .exercise-card[hidden] {
@@ -2986,6 +2655,156 @@ font-size: small;
   outline-offset: 4px;
 }
 
+/* Compact trigger for navigating between course sections. */
+.course-section-menu {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+body.level-side-panel-open .course-section-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.course-section-menu-toggle {
+  position: absolute;
+  top: calc(var(--header-offset, 78px) + 14px);
+  right: 24px;
+  z-index: 4900;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 11px;
+  border: 1px solid rgba(37, 99, 235, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e40af;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-section-menu-toggle:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.48);
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.22);
+}
+
+.course-section-menu-toggle:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.42);
+  outline-offset: 3px;
+}
+
+.course-menu-icon {
+  display: grid;
+  gap: 3px;
+  width: 18px;
+}
+
+.course-menu-icon i {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.course-section-menu.is-open .course-menu-icon i:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.course-section-menu.is-open .course-menu-icon i:nth-child(2) {
+  opacity: 0;
+}
+
+.course-section-menu.is-open .course-menu-icon i:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Premium horizontal panel positioned below the visible trigger. */
+.course-section-menu-panel {
+  position: absolute;
+  top: calc(var(--header-offset, 78px) + 68px);
+  right: 24px;
+  left: 24px;
+  z-index: 4800;
+  padding: 10px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 246, 255, 0.94));
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-16px) scale(0.985);
+  transform-origin: top center;
+  transition: opacity 0.28s ease, visibility 0s linear 0.28s,
+    transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.course-section-menu.is-open .course-section-menu-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.course-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  overflow: visible;
+}
+
+.course-section-nav a {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #1e3a8a;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.course-section-nav a:hover,
+.course-section-nav a:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.42);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+  outline: none;
+}
+
+.course-section-menu-target {
+  scroll-margin-top: calc(var(--header-offset, 78px) + 24px);
+}
+
 @keyframes backButtonIn {
   from {
     opacity: 0;
@@ -3039,7 +2858,7 @@ font-size: small;
 }
 
 /* ==========================================
-   13. SIMPLE DARK MODE
+   12. SIMPLE DARK MODE
    Course-page colors only; structure and spacing remain unchanged.
 ========================================== */
 
@@ -3051,7 +2870,6 @@ body.dark {
 body.dark .hero-section,
 body.dark .course-overview,
 body.dark .features-section,
-body.dark .roadmap-section,
 body.dark .modules-section,
 body.dark .grammar-library,
 body.dark .exercise-section,
@@ -3066,7 +2884,6 @@ body.dark .cta-section {
 body.dark .hero-container,
 body.dark .course-information,
 body.dark .learning-outcomes,
-body.dark .roadmap-card,
 body.dark .module-card,
 body.dark .library-block,
 body.dark .library-card,
@@ -3097,7 +2914,6 @@ body.dark .section-header p { color: #cbd5e1; }
 body.dark .information-card,
 body.dark .outcome-card,
 body.dark .feature-card,
-body.dark .module-content,
 body.dark .module-details,
 body.dark .exercise-filter,
 body.dark .exercise-meta,
@@ -3136,9 +2952,52 @@ body.dark .back-to-top {
   color: #bfdbfe;
 }
 
+body.dark .course-section-menu-toggle {
+  border-color: rgba(96, 165, 250, 0.34);
+  background: rgba(15, 28, 49, 0.94);
+  color: #bfdbfe;
+  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.34);
+}
+
+body.dark .course-section-menu-toggle:hover {
+  background: #172642;
+  border-color: rgba(96, 165, 250, 0.58);
+}
+
+body.dark .course-section-menu-panel {
+  border-color: rgba(96, 165, 250, 0.24);
+  background: linear-gradient(135deg, rgba(15, 28, 49, 0.98), rgba(17, 38, 68, 0.97));
+  box-shadow: 0 26px 64px rgba(2, 6, 23, 0.48);
+}
+
+body.dark .course-section-nav a {
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(30, 50, 82, 0.76);
+  color: #dbeafe;
+}
+
+body.dark .course-section-nav a:hover,
+body.dark .course-section-nav a:focus-visible {
+  border-color: rgba(96, 165, 250, 0.62);
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+}
+
+body.dark .more-modules-note {
+  border-color: rgba(96, 165, 250, 0.28);
+  background: rgba(30, 58, 138, 0.2);
+  color: #bfdbfe;
+}
+
+body.dark .more-modules-note:hover,
+body.dark .more-modules-note:focus-visible {
+  border-color: rgba(96, 165, 250, 0.52);
+  background: rgba(30, 64, 175, 0.34);
+  color: #dbeafe;
+}
+
 body.dark a { color: #93c5fd; }
 
-body.dark .roadmap-card:hover,
 body.dark .module-card:hover,
 body.dark .library-card:hover,
 body.dark .exercise-card:hover,
@@ -3149,9 +3008,87 @@ body.dark .tip-card:hover {
 }
 
 /* ==========================================
-   14. RESPONSIVE STYLES
+   13. RESPONSIVE STYLES
    Matches the main stylesheet breakpoints and stays at the file end.
 ========================================== */
+
+/* Five equal module columns on desktop screens. */
+@media (min-width: 993px) {
+  .modules-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .module-card {
+    min-width: 0;
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .module-card-top {
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .module-icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    font-size: 1.25rem;
+  }
+
+  .module-status {
+    min-width: 0;
+    padding: 6px 8px;
+    font-size: 0.58rem;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .module-card h3 {
+    margin-bottom: 7px;
+    font-size: 0.72rem;
+  }
+
+  .module-card h4 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .module-card > p {
+    margin-bottom: 14px;
+    font-size: 0.74rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .module-details {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .module-details span {
+    min-width: 0;
+    padding: 7px 6px;
+    border-radius: 9px;
+    font-size: 0.66rem;
+    overflow-wrap: anywhere;
+  }
+
+  .module-buttons a {
+    min-width: 0;
+    padding: 9px 6px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+}
 
 /* Large desktop and laptop adjustments. */
 @media (max-width: 1200px) {
@@ -3196,33 +3133,7 @@ body.dark .tip-card:hover {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .roadmap::before {
-      left: 35px;
-    }
-
-    .roadmap-card {
-      grid-template-columns: 70px 1fr;
-
-      gap: 24px;
-    }
-
-    .module-number {
-      width: 70px;
-
-      height: 70px;
-
-      font-size: 1.2rem;
-    }
-
-    .module-content {
-      padding: 20px;
-    }
-
-    .module-list {
-      grid-template-columns: 1fr;
-    }
-
-  .modules-grid {
+.modules-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -3252,6 +3163,33 @@ body.dark .tip-card:hover {
   .branding {
     display: block;
     font-size: 0.68rem;
+  }
+
+  .course-section-menu-toggle {
+    top: calc(var(--header-offset, 78px) + 10px);
+    right: 14px;
+    min-height: 39px;
+    padding: 8px 12px;
+    font-size: 0.68rem;
+  }
+
+  .course-section-menu-panel {
+    top: calc(var(--header-offset, 78px) + 58px);
+    right: 12px;
+    left: 12px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .course-section-nav {
+    gap: 6px;
+  }
+
+  .course-section-nav a {
+    flex: 1 1 calc(25% - 6px);
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 0.66rem;
   }
 
   .hero-section {
@@ -3303,39 +3241,7 @@ body.dark .tip-card:hover {
       grid-template-columns: 1fr;
     }
 
-  .roadmap-section {
-      padding: 50px 0;
-    }
-
-    .roadmap {
-      gap: 30px;
-    }
-
-    .roadmap::before {
-      display: none;
-    }
-
-    .roadmap-card {
-      grid-template-columns: 1fr;
-    }
-
-    .module-number {
-      margin: 0 auto;
-    }
-
-    .module-content {
-      text-align: center;
-    }
-
-    .module-list {
-      text-align: left;
-    }
-
-    .module-meta {
-      justify-content: center;
-    }
-
-  .modules-section {
+.modules-section {
       padding: 50px 0;
     }
 
@@ -3614,114 +3520,7 @@ body.dark .tip-card:hover {
     overflow-wrap: anywhere;
   }
 
-  .roadmap {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 18px;
-  }
-
-  .roadmap::before {
-    display: none;
-  }
-
-  .roadmap-card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    min-width: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .module-number {
-    align-self: center;
-    flex: 0 0 auto;
-    width: 48px;
-    height: 48px;
-    font-size: 0.95rem;
-  }
-
-  .module-number::before {
-    inset: 5px;
-    border-width: 1px;
-  }
-
-  .module-content {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    max-width: 100%;
-    padding: 18px 14px;
-    border-radius: 18px;
-    overflow: hidden;
-  }
-
-  .module-badge {
-    max-width: 100%;
-    margin-bottom: 10px;
-    padding: 6px 10px;
-    font-size: 0.68rem;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .module-content h3 {
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-  }
-
-  .module-content > p {
-    margin-bottom: 14px;
-    font-size: 0.82rem;
-    line-height: 1.55;
-    overflow-wrap: anywhere;
-  }
-
-  .module-list {
-    grid-template-columns: 1fr;
-    gap: 7px;
-    margin-bottom: 16px;
-    min-width: 0;
-  }
-
-  .module-list li {
-    gap: 6px;
-    min-width: 0;
-    font-size: 0.78rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-
-  .module-meta {
-    gap: 7px;
-    margin-top: auto;
-    padding-top: 12px;
-    min-width: 0;
-  }
-
-  .module-meta span {
-    min-width: 0;
-    max-width: 100%;
-    padding: 6px 9px;
-    font-size: 0.72rem;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .module-content *,
-  .module-list li,
-  .module-meta span {
-    max-width: 100%;
-    word-break: break-word;
-  }
-
-  .features-grid,
+.features-grid,
   .library-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
@@ -3843,6 +3642,49 @@ body.dark .tip-card:hover {
     max-width: 100%;
     word-break: break-word;
   }
+
+  /* Compact exercise content for 481-768px two-column cards. */
+  .exercise-card {
+    padding: 16px 12px;
+    border-radius: 17px;
+  }
+
+  .exercise-type,
+  .exercise-card .difficulty {
+    margin-bottom: 8px;
+    padding: 5px 8px;
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+
+  .exercise-card h3 {
+    margin-bottom: 7px;
+    font-size: 0.86rem;
+    line-height: 1.25;
+  }
+
+  .exercise-card p {
+    margin-bottom: 10px;
+    font-size: 0.68rem;
+    line-height: 1.4;
+  }
+
+  .exercise-card .exercise-meta {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .exercise-card .exercise-meta span {
+    padding: 5px 7px;
+    font-size: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .exercise-card a {
+    gap: 5px;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
 }
 
 /* Standard phone foundation. */
@@ -3850,6 +3692,35 @@ body.dark .tip-card:hover {
   .branding {
     font-size: 0.62rem;
     letter-spacing: -0.1px;
+  }
+
+  .course-section-menu-toggle {
+    top: calc(var(--header-offset, 78px) + 5px);
+    right: 10px;
+    gap: 6px;
+    min-height: 34px;
+    padding: 6px 9px;
+    font-size: 0.6rem;
+  }
+
+  .course-menu-icon {
+    width: 14px;
+  }
+
+  .course-section-menu-panel {
+    top: calc(var(--header-offset, 78px) + 54px);
+    right: 8px;
+    left: 8px;
+    padding: 7px;
+    border-radius: 14px;
+  }
+
+  .course-section-nav a {
+    flex: 1 1 calc(50% - 6px);
+    min-height: 35px;
+    padding: 7px 9px;
+    border-radius: 10px;
+    font-size: 0.61rem;
   }
 
   .hero-buttons {
@@ -3870,25 +3741,7 @@ body.dark .tip-card:hover {
       grid-template-columns: 1fr;
     }
 
-  .module-content {
-      padding: 24px;
-    }
-
-    .module-content h3 {
-      font-size: 1.45rem;
-    }
-
-    .module-meta {
-      flex-direction: column;
-
-      align-items: stretch;
-    }
-
-    .module-meta span {
-      justify-content: center;
-    }
-
-  .module-details {
+.module-details {
       grid-template-columns: 1fr;
     }
 
@@ -3897,13 +3750,17 @@ body.dark .tip-card:hover {
     }
 
   .exercise-meta {
-      flex-direction: column;
+      flex-direction: row;
 
-      align-items: flex-start;
+      align-items: center;
+
+      flex-wrap: wrap;
     }
 
     .exercise-meta span {
-      width: 100%;
+      width: auto;
+
+      flex: 1 1 auto;
 
       justify-content: center;
     }
@@ -3915,7 +3772,6 @@ body.dark .tip-card:hover {
   .course-information,
   .outcomes-grid,
   .features-grid,
-  .roadmap,
   .modules-grid,
   .library-grid,
   .exercise-grid,
@@ -3930,6 +3786,57 @@ body.dark .tip-card:hover {
 
   .faq-list {
     margin-top: 26px;
+  }
+
+  .exercise-grid {
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+  }
+
+  .exercise-card {
+    align-self: stretch;
+    height: 100%;
+    padding: 10px 8px;
+    border-radius: 13px;
+  }
+
+  .exercise-type,
+  .exercise-card .difficulty {
+    margin-bottom: 6px;
+    padding: 4px 6px;
+    font-size: 0.5rem;
+    line-height: 1.15;
+    letter-spacing: 0.25px;
+  }
+
+  .exercise-card h3 {
+    margin-bottom: 5px;
+    font-size: 0.72rem;
+    line-height: 1.22;
+  }
+
+  .exercise-card p {
+    flex: 1;
+    margin-bottom: 7px;
+    font-size: 0.58rem;
+    line-height: 1.32;
+  }
+
+  .exercise-meta {
+    gap: 4px;
+    margin-bottom: 9px;
+  }
+
+  .exercise-meta span {
+    padding: 4px 5px;
+    font-size: 0.5rem;
+    line-height: 1.15;
+  }
+
+  .exercise-grid .exercise-card a {
+    gap: 4px;
+    font-size: 0.56rem;
+    line-height: 1.2;
   }
 
   .outcomes-grid,
@@ -3948,7 +3855,6 @@ body.dark .tip-card:hover {
   .information-card,
   .outcome-card,
   .feature-card,
-  .roadmap-card,
   .module-card,
   .library-card,
   .exercise-card,
@@ -4034,50 +3940,7 @@ body.dark .tip-card:hover {
     overflow-wrap: anywhere;
   }
 
-  .roadmap {
-    margin-top: 38px;
-  }
-
-  .roadmap::before {
-    display: none;
-  }
-
-  .roadmap-card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-
-  .module-number {
-    align-self: center;
-    flex: 0 0 auto;
-    width: 40px;
-    height: 40px;
-    font-size: 0.78rem;
-  }
-
-  .module-number::before {
-    inset: 4px;
-    border-width: 1px;
-  }
-
-  .module-content {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    max-width: 100%;
-    padding: 14px 10px;
-    border-radius: 14px;
-    overflow: hidden;
-  }
-
-  .feature-icon,
+.feature-icon,
   .library-icon,
   .resource-icon,
   .tip-card span,
@@ -4098,82 +3961,10 @@ body.dark .tip-card:hover {
   .information-card p,
   .outcome-card p,
   .feature-card p,
-  .module-content > p,
-  .module-card p,
-  .library-card p,
-  .exercise-card p,
-  .resource-card p,
-  .tip-card p {
-    margin-bottom: 10px;
-    font-size: 0.7rem;
-    line-height: 1.42;
-    overflow-wrap: anywhere;
-  }
-
-  .information-card h3,
+.information-card h3,
   .outcome-card h3,
   .feature-card h3,
-  .module-content h3,
-  .module-card h3,
-  .library-card h4,
-  .exercise-card h3,
-  .resource-card h4 {
-    margin-bottom: 8px;
-    font-size: 0.88rem;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-  }
-
-  .module-badge,
-  .exercise-type,
-  .difficulty,
-  .status-badge,
-  .card-badge {
-    max-width: 100%;
-    margin-bottom: 8px;
-    padding: 5px 7px;
-    font-size: 0.58rem;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .module-list {
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin-bottom: 10px;
-  }
-
-  .module-list li,
-  .cta-card li {
-    min-width: 0;
-    padding-block: 5px;
-    font-size: 0.64rem;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
-
-  .module-meta,
-  .exercise-meta,
-  .module-details {
-    gap: 5px;
-    min-width: 0;
-    margin-bottom: 10px;
-    padding-top: 8px;
-  }
-
-  .module-meta span,
-  .exercise-meta span,
-  .module-details span {
-    min-width: 0;
-    width: auto;
-    max-width: 100%;
-    padding: 5px 7px;
-    font-size: 0.6rem;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .module-buttons,
+.module-buttons,
   .exercise-card a,
   .library-card a,
   .resource-card a {
@@ -4194,7 +3985,6 @@ body.dark .tip-card:hover {
   .information-card *,
   .outcome-card *,
   .feature-card *,
-  .roadmap-card *,
   .module-card *,
   .library-card *,
   .exercise-card *,
@@ -4214,6 +4004,79 @@ body.dark .tip-card:hover {
     letter-spacing: -0.2px;
   }
 
+  .course-section-menu-toggle {
+    right: 8px;
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 0.56rem;
+  }
+
+  .course-section-menu-panel {
+    right: 6px;
+    left: 6px;
+  }
+
+  .course-section-nav a {
+    flex-basis: calc(50% - 5px);
+    padding-inline: 8px;
+    font-size: 0.58rem;
+  }
+
+  .exercise-grid {
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+  }
+
+  .exercise-card {
+    align-self: stretch;
+    height: 100%;
+    padding: 13px 10px;
+    border-radius: 14px;
+  }
+
+  .exercise-type,
+  .exercise-card .difficulty {
+    margin-bottom: 7px;
+    padding: 4px 7px;
+    font-size: 0.54rem;
+    line-height: 1.15;
+    letter-spacing: 0.25px;
+  }
+
+  .exercise-card h3 {
+    margin-bottom: 6px;
+    font-size: 0.76rem;
+    line-height: 1.24;
+  }
+
+  .exercise-card p {
+    flex: 1;
+    margin-bottom: 8px;
+    font-size: 0.6rem;
+    line-height: 1.35;
+  }
+
+  .exercise-meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 11px;
+  }
+
+  .exercise-meta span {
+    width: auto;
+    flex: 1 1 auto;
+    padding: 4px 6px;
+    font-size: 0.52rem;
+    line-height: 1.15;
+  }
+
+  .exercise-card a {
+    gap: 4px;
+    font-size: 0.58rem;
+    line-height: 1.2;
+  }
+
   .container { padding-inline: 12px; }
 
   .hero-content h1,
@@ -4230,7 +4093,6 @@ body.dark .tip-card:hover {
     justify-content: center;
   }
 
-  .roadmap-card,
   .module-card,
   .library-card,
   .exercise-card,
@@ -4329,5 +4191,297 @@ body.dark .tip-card:hover {
   .back-to-top {
     right: 12px;
     bottom: 12px;
+  }
+}
+
+/* ==========================================
+   CONTENT-ONLY RESPONSIVE CARD CORRECTIONS
+   These rules resize content without changing card grids or dimensions.
+   Exercise cards are intentionally excluded and keep their own rules.
+========================================== */
+
+/* Small tablets: compact content inside existing card layouts. */
+@media (min-width: 481px) and (max-width: 768px) {
+  .stat-card h3 { font-size: 0.95rem; line-height: 1.2; }
+  .stat-card p { font-size: 0.68rem; line-height: 1.35; }
+
+  .information-card h3,
+  .outcome-card h3,
+  .feature-card h3 { font-size: 0.88rem; line-height: 1.25; }
+
+  .information-card p,
+  .outcome-card p,
+  .feature-card p { font-size: 0.68rem; line-height: 1.42; }
+
+  .info-icon,
+  .outcome-icon,
+  .feature-icon,
+  .library-icon,
+  .resource-icon,
+  .tip-card > span {
+    width: 42px;
+    height: 42px;
+    font-size: 1.12rem;
+  }
+
+  .module-card h3 { font-size: 0.66rem; line-height: 1.2; }
+  .module-card h4 { font-size: 0.9rem; line-height: 1.25; }
+  .module-card > p { font-size: 0.66rem; line-height: 1.4; }
+  .module-status { padding: 5px 7px; font-size: 0.54rem; line-height: 1.15; }
+  .module-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+  .module-details span { padding: 5px 6px; font-size: 0.56rem; line-height: 1.2; }
+  .module-buttons a { padding: 8px 7px; font-size: 0.62rem; line-height: 1.2; }
+
+  .library-card h4,
+  .resource-card h4 { font-size: 0.86rem; line-height: 1.25; }
+
+  .library-card p,
+  .resource-card p,
+  .tip-card p { font-size: 0.66rem; line-height: 1.4; }
+
+  .library-card a,
+  .resource-card a { font-size: 0.64rem; line-height: 1.25; }
+
+  .faq-question { font-size: 0.76rem; line-height: 1.35; }
+  .faq-answer p { font-size: 0.66rem; line-height: 1.45; }
+
+  .cta-card h3 { font-size: 0.98rem; line-height: 1.25; }
+  .cta-card li,
+  .cta-feature p { font-size: 0.66rem; line-height: 1.4; }
+  .cta-buttons a,
+  .course-button { font-size: 0.66rem; line-height: 1.25; }
+}
+
+/* Phones: smaller content for narrow two-column cards. */
+@media (min-width: 361px) and (max-width: 480px) {
+  .stat-card h3 { font-size: 0.82rem; line-height: 1.18; }
+  .stat-card p { font-size: 0.56rem; line-height: 1.3; }
+
+  .information-card h3,
+  .outcome-card h3,
+  .feature-card h3 { font-size: 0.72rem; line-height: 1.22; }
+
+  .information-card p,
+  .outcome-card p,
+  .feature-card p { font-size: 0.56rem; line-height: 1.35; }
+
+  .info-icon,
+  .outcome-icon,
+  .feature-icon,
+  .library-icon,
+  .resource-icon,
+  .tip-card > span {
+    width: 36px;
+    height: 36px;
+    font-size: 0.92rem;
+  }
+
+  .module-card h3 { font-size: 0.62rem; line-height: 1.18; }
+  .module-card h4 { font-size: 0.82rem; line-height: 1.23; }
+  .module-card > p { font-size: 0.58rem; line-height: 1.35; }
+  .module-status { padding: 4px 6px; font-size: 0.48rem; line-height: 1.12; }
+  .module-icon { width: 36px; height: 36px; font-size: 0.96rem; }
+  .module-details span { padding: 4px 5px; font-size: 0.5rem; line-height: 1.15; }
+  .module-buttons a { padding: 7px 6px; font-size: 0.56rem; line-height: 1.18; }
+
+  .library-card h4,
+  .resource-card h4 { font-size: 0.7rem; line-height: 1.22; }
+
+  .library-card p,
+  .resource-card p,
+  .tip-card p { font-size: 0.54rem; line-height: 1.34; }
+
+  .library-card a,
+  .resource-card a { font-size: 0.56rem; line-height: 1.2; }
+
+  .faq-question { font-size: 0.66rem; line-height: 1.3; }
+  .faq-answer p { font-size: 0.58rem; line-height: 1.4; }
+
+  .cta-card h3 { font-size: 0.82rem; line-height: 1.22; }
+  .cta-card li,
+  .cta-feature p { font-size: 0.56rem; line-height: 1.34; }
+  .cta-buttons a,
+  .course-button { font-size: 0.56rem; line-height: 1.2; }
+}
+
+/* Extra-small phones: content remains readable inside compact cards. */
+@media (max-width: 360px) {
+  .stat-card h3 { font-size: 0.78rem; line-height: 1.18; }
+  .stat-card p { font-size: 0.54rem; line-height: 1.28; }
+
+  .information-card h3,
+  .outcome-card h3,
+  .feature-card h3 { font-size: 0.68rem; line-height: 1.2; }
+
+  .information-card p,
+  .outcome-card p,
+  .feature-card p { font-size: 0.54rem; line-height: 1.32; }
+
+  .info-icon,
+  .outcome-icon,
+  .feature-icon,
+  .library-icon,
+  .resource-icon,
+  .tip-card > span {
+    width: 34px;
+    height: 34px;
+    font-size: 0.88rem;
+  }
+
+  .module-card h3 { font-size: 0.6rem; line-height: 1.16; }
+  .module-card h4 { font-size: 0.78rem; line-height: 1.22; }
+  .module-card > p { font-size: 0.56rem; line-height: 1.32; }
+  .module-status { padding: 4px 6px; font-size: 0.46rem; line-height: 1.1; }
+  .module-icon { width: 34px; height: 34px; font-size: 0.9rem; }
+  .module-details span { padding: 4px 5px; font-size: 0.48rem; line-height: 1.14; }
+  .module-buttons a { padding: 7px 6px; font-size: 0.54rem; line-height: 1.16; }
+
+  .library-card h4,
+  .resource-card h4 { font-size: 0.68rem; line-height: 1.2; }
+
+  .library-card p,
+  .resource-card p,
+  .tip-card p { font-size: 0.52rem; line-height: 1.32; }
+
+  .library-card a,
+  .resource-card a { font-size: 0.54rem; line-height: 1.18; }
+
+  .faq-question { font-size: 0.64rem; line-height: 1.28; }
+  .faq-answer p { font-size: 0.56rem; line-height: 1.36; }
+
+  .cta-card h3 { font-size: 0.78rem; line-height: 1.2; }
+  .cta-card li,
+  .cta-feature p { font-size: 0.54rem; line-height: 1.32; }
+  .cta-buttons a,
+  .course-button { font-size: 0.54rem; line-height: 1.18; }
+}
+
+/* ==========================================
+   RESPONSIVE COURSE MODULES ONLY
+   Desktop keeps all 10; screens below 992px initially show Modules 1-4.
+========================================== */
+
+@media (max-width: 991px) {
+  .modules-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .module-card:nth-of-type(n + 5) {
+    display: none;
+  }
+
+  .modules-grid.show-all-modules .module-card:nth-of-type(n + 5) {
+    display: flex;
+  }
+
+  .more-modules-note {
+    grid-column: 1 / -1;
+    margin: 2px 0 0;
+    padding: 10px 14px;
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: 12px;
+    background: rgba(239, 246, 255, 0.86);
+    color: #1e40af;
+    font-size: 0.68rem;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease,
+      border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .more-modules-note:hover,
+  .more-modules-note:focus-visible {
+    border-color: rgba(37, 99, 235, 0.42);
+    background: rgba(219, 234, 254, 0.96);
+    color: #1d4ed8;
+    outline: none;
+    transform: translateY(-1px);
+  }
+
+  .module-card {
+    min-width: 0;
+    height: 100%;
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .module-card-top { gap: 7px; margin-bottom: 12px; }
+  .module-icon { width: 40px; height: 40px; border-radius: 12px; font-size: 1.08rem; }
+  .module-status { padding: 5px 7px; font-size: 0.52rem; line-height: 1.15; }
+  .module-card h3 { margin-bottom: 6px; font-size: 0.64rem; line-height: 1.18; }
+  .module-card h4 { margin-bottom: 9px; font-size: 0.88rem; line-height: 1.24; }
+  .module-card > p { margin-bottom: 11px; font-size: 0.64rem; line-height: 1.38; }
+  .module-details { gap: 6px; margin-bottom: 11px; }
+  .module-details span { padding: 5px 6px; font-size: 0.54rem; line-height: 1.16; }
+  .module-buttons a { padding: 8px 6px; font-size: 0.6rem; line-height: 1.18; }
+}
+
+@media (max-width: 480px) {
+  .modules-grid { gap: 9px; }
+
+  .module-card {
+    padding: 10px 8px;
+    border-radius: 14px;
+  }
+
+  .module-card-top { gap: 5px; margin-bottom: 8px; }
+  .module-icon { width: 32px; height: 32px; border-radius: 9px; font-size: 0.84rem; }
+  .module-status { padding: 4px 5px; font-size: 0.44rem; line-height: 1.1; letter-spacing: 0.2px; }
+  .module-card h3 { margin-bottom: 4px; font-size: 0.54rem; line-height: 1.15; }
+  .module-card h4 { margin-bottom: 6px; font-size: 0.7rem; line-height: 1.2; }
+  .module-card > p { margin-bottom: 8px; font-size: 0.52rem; line-height: 1.3; }
+  .module-details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin-bottom: 8px; }
+  .module-details span { padding: 4px 3px; font-size: 0.43rem; line-height: 1.12; }
+  .module-buttons a { padding: 6px 4px; font-size: 0.5rem; line-height: 1.14; }
+
+  .more-modules-note {
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 0.58rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 360px) {
+  .modules-grid { gap: 7px; }
+  .module-card { padding: 8px 6px; border-radius: 12px; }
+  .module-icon { width: 29px; height: 29px; font-size: 0.76rem; }
+  .module-status { font-size: 0.4rem; }
+  .module-card h3 { font-size: 0.5rem; }
+  .module-card h4 { font-size: 0.64rem; }
+  .module-card > p { font-size: 0.48rem; line-height: 1.28; }
+  .module-details span { font-size: 0.39rem; }
+  .module-buttons a { font-size: 0.46rem; }
+  .more-modules-note { font-size: 0.54rem; }
+}
+
+/* The supporting message belongs only to screens below 992px. */
+@media (max-width: 991px) {
+  .more-modules-note {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .modules-grid > .more-modules-note {
+    display: none !important;
+  }
+}
+
+/* CTA card keeps its natural content height on small screens. */
+@media (max-width: 768px) {
+  .cta-section .container {
+    align-items: start;
+  }
+
+  .cta-card {
+    align-self: start;
+    height: auto;
+    min-height: 0;
   }
 }

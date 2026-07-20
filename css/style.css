@@ -1323,6 +1323,13 @@ body {
   display: none;
 }
 
+/* Authentication gate keeps protected learning content inaccessible until login. */
+body.auth-modal-open { overflow: hidden; }
+body.auth-content-locked main,
+body.auth-content-locked footer { visibility: hidden; pointer-events: none; }
+#authGateSwitch { background: none; border: 0; color: #2a5cff; font-weight: 700; cursor: pointer; }
+#authGateClose { border: 0; background: transparent; }
+
 /* =========================================================
    1️⃣2️⃣ FOOTER
    Premium Glass Style Footer

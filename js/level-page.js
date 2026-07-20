@@ -145,6 +145,14 @@ export function initLevelPage() {
   const darkToggle = document.getElementById("darkToggle");
   let currentUser = null;
 
+  function syncSidePanelState() {
+    const isOpen = Boolean(
+      desktopPanel?.classList.contains("active") ||
+      mobilePanel?.classList.contains("active")
+    );
+    document.body.classList.toggle("level-side-panel-open", isOpen);
+  }
+
   function closePanels() {
     desktopPanel?.classList.remove("active");
     mobilePanel?.classList.remove("active");
@@ -152,6 +160,7 @@ export function initLevelPage() {
     mobileBtn?.classList.remove("is-active");
     desktopBtn?.setAttribute("aria-expanded", "false");
     mobileBtn?.setAttribute("aria-expanded", "false");
+    syncSidePanelState();
   }
 
   function openMainPage(page) {
@@ -209,6 +218,7 @@ export function initLevelPage() {
     desktopPanel?.classList.toggle("active");
     desktopBtn.classList.toggle("is-active", desktopPanel?.classList.contains("active"));
     desktopBtn.setAttribute("aria-expanded", String(desktopPanel?.classList.contains("active")));
+    syncSidePanelState();
   });
   mobileBtn?.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -216,6 +226,7 @@ export function initLevelPage() {
     mobilePanel?.classList.toggle("active");
     mobileBtn.classList.toggle("is-active", mobilePanel?.classList.contains("active"));
     mobileBtn.setAttribute("aria-expanded", String(mobilePanel?.classList.contains("active")));
+    syncSidePanelState();
   });
   document.addEventListener("click", (event) => {
     if (!event.target.closest(".desktop-side-panel, .mobile-side-panel, .desktop-menu-btn, .mobile-menu-btn")) {
