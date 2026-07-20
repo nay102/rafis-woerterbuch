@@ -818,6 +818,15 @@ body {
   color: #fcfdff;
 }
 
+.detail-category-label {
+  display: inline-block;
+  font-size: 0.55em;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.82;
+  vertical-align: middle;
+}
+
 /* Section Blocks */
 .detail-section {
   margin-bottom: 20px;
@@ -1374,7 +1383,7 @@ body.auth-content-locked footer { visibility: hidden; pointer-events: none; }
 
 .footer-brand strong {
   color: #102a6b;
-  font-size: clamp(24px, 3vw, 34px);
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 900;
   line-height: 1.12;
 }
@@ -4488,7 +4497,7 @@ input,
   }
 
   .footer-action {
-    flex: 1 1 100%;
+    flex: 1 1 10%;
   }
 
   .footer-social-icons a {
@@ -4837,6 +4846,7 @@ input,
   .detail-section {
     padding: 10px 9px;
     margin-bottom: 9px;
+    margin-inline: -10px;
   }
 
   .detail-section h3 {
@@ -5262,6 +5272,7 @@ input,
   .detail-section {
     padding: 8px 8px;
     margin-bottom: 8px;
+    margin-inline: -10px;
   }
 
   .detail-section p {
@@ -5338,6 +5349,6 @@ input,
   }
 
 .footer-action {
-    flex: 1 1 10%;
+    flex: 1 1 100%;
   }
 }

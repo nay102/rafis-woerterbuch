@@ -1074,6 +1074,15 @@ function getCategorySectionLabel(categoryName) {
   return CATEGORY_SECTION_LABELS[categoryName] || categoryName;
 }
 
+function getDetailCategoryLabel(categoryName) {
+  const compactLabels = {
+    "Nomen-Verb Verbindung": "N-V Verbindung",
+    "Best YT Kanäle": "YT Kanal"
+  };
+
+  return compactLabels[categoryName] || getCategorySectionLabel(categoryName);
+}
+
 const CATEGORY_EXPLANATIONS = {
   Verben: {
     de: "Verben beschreiben Handlungen, Vorgänge oder Zustände. Sie bilden das Zentrum eines Satzes, weil ohne Verb keine vollständige Aussage möglich ist.",
@@ -1921,6 +1930,8 @@ function handleRouting() {
 ========================================================= */
 
 function showSection(id) {
+
+  updateFooterBrand(false);
 
   const sections = ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"];
 
@@ -2951,7 +2962,9 @@ function openWordDetail(wordId, options = {}) {
   const card = document.createElement("div");
   card.className = "detail-card";
   const homeSearchCategorySuffix =
-    openedFromHomeSearch && word.category ? ` (${escapeHtml(word.category)})` : "";
+    openedFromHomeSearch && word.category
+      ? ` <span class="detail-category-label">(${escapeHtml(getDetailCategoryLabel(word.category))})</span>`
+      : "";
 
   card.innerHTML = `
   <h1 class="detail-title">
@@ -3182,6 +3195,7 @@ function wireAboutRafiLanguageToggle() {
 
 function renderPanelPage(pageKey) {
   pageKey = normalizePanelPageKey(pageKey);
+  updateFooterBrand(pageKey === "sprachwelt");
 
   if (pageKey === "about") {
     renderGermanyPage();
@@ -3292,6 +3306,7 @@ function wirePanelCardReadMore(container) {
 }
 
 function renderFavoritesPage() {
+  updateFooterBrand(false);
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage) return;
 
@@ -3352,6 +3367,7 @@ function renderFavoritesPage() {
 }
 
 function renderSettingsPage() {
+  updateFooterBrand(false);
   // Settings hub: appearance, syncing, progress tracking, lists, and community feedback.
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage) return;
@@ -4456,6 +4472,15 @@ function updateActive(items) {
   items[selectedIndex].classList.add("active");
 }
 
+}
+
+function updateFooterBrand(isSprachweltPage) {
+  const footerBrand = document.getElementById("footerBrandName");
+  if (!footerBrand) return;
+
+  footerBrand.textContent = isSprachweltPage
+    ? "Rafis Wörterbuch · Rafis Sprachwelt"
+    : "Rafis Wörterbuch";
 }
 
 /* =========================================================
