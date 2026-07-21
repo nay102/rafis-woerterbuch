@@ -1,4 +1,4 @@
-import { login, signup, resetPasswordByEmail, listenAuth } from "./auth.js";
+import { login, signup, resetPasswordByEmail, listenAuth } from "./auth-client.js";
 
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 const PROTECTED_PAGES = new Set([

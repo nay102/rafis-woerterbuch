@@ -33,7 +33,7 @@ import {
   saveUserWordNote,
   submitWordSuggestion,
   submitWordReport
-} from "./auth.js";
+} from "./auth-client.js";
 
 /* =========================================================
    GLOBAL STATE

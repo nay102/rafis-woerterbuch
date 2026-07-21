@@ -1,4 +1,3 @@
-import "./firebase.js";
 import { initUI } from "./ui.js";
 
 let deferredInstallPrompt = null;

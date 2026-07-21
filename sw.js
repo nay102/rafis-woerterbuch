@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v77";
+const CACHE_VERSION = "rw-cache-v78";
 const DATA_VERSION = "2026-03-16-3";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -44,8 +44,16 @@ function coreUrls() {
     toAbsolute("css/practice.css"),
     toAbsolute("css/download-center.css"),
     toAbsolute("css/course-module.css"),
+    toAbsolute("css/a1.css"),
     toAbsolute("js/app.js"),
     toAbsolute("js/ui.js"),
+    toAbsolute("js/auth-client.js"),
+    toAbsolute("js/conjugation.js"),
+    toAbsolute("js/level-interactions.js"),
+    toAbsolute("js/a1.js"),
+    toAbsolute("js/a2.js"),
+    toAbsolute("js/b1.js"),
+    toAbsolute("js/b2.js"),
     toAbsolute("js/course-enrollment.js"),
     toAbsolute("js/library-topic.js"),
     toAbsolute("js/library-topic-data.js"),
@@ -65,6 +73,23 @@ function coreUrls() {
     toAbsolute("assets/logo.png"),
     toAbsolute("assets/icon-192.png"),
     toAbsolute("assets/icon-512.png"),
+    toAbsolute("assets/RafisSprachwelt.png"),
+    toAbsolute("assets/a1.png"),
+    toAbsolute("assets/a2.png"),
+    toAbsolute("assets/b1.png"),
+    toAbsolute("assets/b2.png"),
+    ...[
+      "City.jpg", "population.jpg", "History.jpg", "Education.jpg",
+      "Language.png", "food.jpg", "sightseeing.jpg", "religion.png", "economy.jpg"
+    ].map(name => toAbsolute(`assets/Bangladesh/${name}`)),
+    ...[
+      "Rafikul_Islam.png", "n3_nondonpark1.jpeg", "n6_Rafi.jpeg",
+      "n1_bandorban.jpg", "n7_caregiving1.jpg", "goethe.jpeg", "n10_india4.jpg"
+    ].map(name => toAbsolute(`assets/Rafis%20pic/${name}`)),
+    toAbsolute("pages/a1.html"),
+    toAbsolute("pages/a2.html"),
+    toAbsolute("pages/b1.html"),
+    toAbsolute("pages/b2.html"),
     toAbsolute("pages/course-enrollment.html"),
     toAbsolute("pages/library-topic.html"),
     toAbsolute("pages/practice.html"),
@@ -128,7 +153,9 @@ self.addEventListener("fetch", event => {
         })
         .catch(async () => {
           const cache = await caches.open(STATIC_CACHE);
+          const pathOnly = `${requestUrl.origin}${requestUrl.pathname}`;
           return (
+            (await cache.match(pathOnly, { ignoreSearch: true })) ||
             (await cache.match(toAbsolute(""))) ||
             (await cache.match(toAbsolute("index.html"))) ||
             (await cache.match(toAbsolute("404.html")))
