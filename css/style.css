@@ -818,6 +818,18 @@ body {
   color: #fcfdff;
 }
 
+.detail-level {
+  margin: 0 0 28px;
+  color: #dbeafe;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.detail-title.has-level {
+  margin-bottom: 6px;
+}
+
 .detail-category-label {
   display: inline-block;
   font-size: 0.55em;
@@ -1045,6 +1057,8 @@ body {
 .back-btn {
   padding: 10px 18px;
 
+  text-decoration: none;
+
   border: none;
 
   border-radius: 30px;
@@ -1067,6 +1081,8 @@ body {
 .back-btn:hover {
   transform: translateY(-3px);
 
+  text-decoration: none;
+
   box-shadow: 0 12px 25px rgba(42, 92, 255, 0.35);
 
   background: #1e40af;
@@ -1075,6 +1091,53 @@ body {
 /* Click Effect */
 .back-btn:active {
   transform: scale(0.95);
+
+  text-decoration: none;
+}
+
+.back-btn:focus-visible {
+  text-decoration: none;
+}
+
+.level-back-link,
+.level-back-link:hover,
+.level-back-link:focus-visible,
+.level-back-link:active,
+.module-back,
+.module-back:hover,
+.module-back:focus-visible,
+.module-back:active,
+.download-back,
+.download-back:hover,
+.download-back:focus-visible,
+.download-back:active,
+.topic-back,
+.topic-back:hover,
+.topic-back:focus-visible,
+.topic-back:active,
+.practice-back,
+.practice-back:hover,
+.practice-back:focus-visible,
+.practice-back:active {
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .course-module-body .header-inner {
+    position: relative;
+  }
+
+  .course-module-body .branding {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
+
+  .course-module-body .branding:hover {
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* =========================================================

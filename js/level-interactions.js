@@ -1,3 +1,5 @@
+import { getQuestionCount } from "./practice-data.js";
+
 function initFaqAccordion() {
   document.querySelectorAll(".faq-item").forEach((item, index) => {
     const question = item.querySelector(".faq-question");
@@ -56,6 +58,20 @@ function initExerciseFilters() {
         card.hidden = !matches;
       });
     });
+  });
+}
+
+function initPracticeCounts() {
+  document.querySelectorAll(".exercise-card").forEach(card => {
+    const link = card.querySelector('a[href*="practice.html"]');
+    const countLabel = card.querySelector(".exercise-meta span");
+    if (!link || !countLabel) return;
+
+    const url = new URL(link.href, location.href);
+    const level = (url.searchParams.get("level") || "A1").toUpperCase();
+    const type = url.searchParams.get("type") || "grammar";
+    const count = getQuestionCount(level, type);
+    countLabel.textContent = `${count} Questions`;
   });
 }
 
@@ -215,6 +231,7 @@ function initResponsiveModuleReveal() {
 export function initCourseInteractions() {
   initFaqAccordion();
   initExerciseFilters();
+  initPracticeCounts();
   initBackToSprachwelt();
   initCourseSectionMenu();
   initResponsiveModuleReveal();

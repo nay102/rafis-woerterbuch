@@ -2965,11 +2965,16 @@ function openWordDetail(wordId, options = {}) {
     openedFromHomeSearch && word.category
       ? ` <span class="detail-category-label">(${escapeHtml(getDetailCategoryLabel(word.category))})</span>`
       : "";
+  const detailLevelLabel =
+    ["Verben", "Nomen", "Adjektiven", "Adverbien"].includes(word.category) && word.level
+      ? `<p class="detail-level">(Niveau ${escapeHtml(word.level)})</p>`
+      : "";
 
   card.innerHTML = `
-  <h1 class="detail-title">
+  <h1 class="detail-title${detailLevelLabel ? " has-level" : ""}">
     ${word.article ? word.article + " " : ""}${word.word}${homeSearchCategorySuffix}
   </h1>
+  ${detailLevelLabel}
 
   <div class="detail-section">
     <h3>Meaning</h3>

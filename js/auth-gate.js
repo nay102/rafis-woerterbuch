@@ -2,12 +2,16 @@ import { login, signup, resetPasswordByEmail, listenAuth } from "./auth-client.j
 
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 const PROTECTED_PAGES = new Set([
-  "course-enrollment.html", "course-module.html", "library-topic.html", "practice.html", "download-center.html"
+  "course-module.html", "library-topic.html", "practice.html", "download-center.html"
 ]);
 let currentUser;
 let resolveAuth;
 const authReady = new Promise(resolve => { resolveAuth = resolve; });
 let firstAuthState = true;
+
+const PUBLIC_LIBRARY_TOPICS = new Set(["articles", "pronouns"]);
+const PUBLIC_PRACTICE_TYPES = new Set(["grammar", "flashcards"]);
+const PUBLIC_RESOURCE_CATEGORIES = new Set(["grammar", "vocabulary"]);
 
 listenAuth(user => {
   currentUser = user || null;
@@ -16,9 +20,33 @@ listenAuth(user => {
   if (firstAuthState) { firstAuthState = false; resolveAuth(currentUser); }
 });
 
+function isPublicLearningCard(url) {
+  const file = url.pathname.split("/").pop();
+
+  if (file === "course-module.html") {
+    const moduleNumber = Number(url.searchParams.get("module"));
+    return moduleNumber === 1 || moduleNumber === 2;
+  }
+
+  if (file === "library-topic.html") {
+    return PUBLIC_LIBRARY_TOPICS.has(url.searchParams.get("topic") || "");
+  }
+
+  if (file === "practice.html") {
+    return PUBLIC_PRACTICE_TYPES.has(url.searchParams.get("type") || "");
+  }
+
+  if (file === "download-center.html") {
+    return PUBLIC_RESOURCE_CATEGORIES.has(url.searchParams.get("category") || "");
+  }
+
+  return false;
+}
+
 function isProtectedUrl(url) {
   if (url.origin !== location.origin) return false;
   const file = url.pathname.split("/").pop();
+  if (isPublicLearningCard(url)) return false;
   return PROTECTED_PAGES.has(file) || url.pathname.includes("/assets/pdfs/");
 }
 
@@ -146,8 +174,7 @@ export function initAuthGate() {
     open(link ? destination.href : "");
   }, true);
 
-  const currentFile = location.pathname.split("/").pop();
-  if (PROTECTED_PAGES.has(currentFile)) {
+  if (isProtectedUrl(new URL(location.href))) {
     document.body.classList.add("auth-content-locked");
     authReady.then(user => {
       if (user) document.body.classList.remove("auth-content-locked");
