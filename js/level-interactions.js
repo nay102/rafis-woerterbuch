@@ -54,9 +54,11 @@ function initExerciseFilters() {
 
       cards.forEach(card => {
         const type = card.querySelector(".exercise-type")?.textContent.trim().toLowerCase() || "";
-        const matches = selected === "all" || type === selected || (selected === "goethe prep" && type.includes("goethe"));
-        card.hidden = !matches;
+        const matches = selected === "all" || type === selected;
+        card.dataset.filterMatch = String(matches);
       });
+
+      document.querySelector(".exercise-grid")?.dispatchEvent(new Event("exercisefilterchange"));
     });
   });
 }
@@ -168,9 +170,31 @@ function initCourseSectionMenu() {
     panel.setAttribute("aria-hidden", String(!shouldOpen));
   };
 
+  // Pointer users can reveal the menu without clicking. A short close delay
+  // leaves enough time to move from the trigger into the panel below it.
+  const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (supportsHover) {
+    let hoverCloseTimer;
+    const cancelHoverClose = () => window.clearTimeout(hoverCloseTimer);
+    const scheduleHoverClose = () => {
+      cancelHoverClose();
+      hoverCloseTimer = window.setTimeout(() => {
+        if (!button.matches(":hover") && !panel.matches(":hover")) setOpen(false);
+      }, 180);
+    };
+
+    button.addEventListener("mouseenter", () => {
+      cancelHoverClose();
+      setOpen(true);
+    });
+    button.addEventListener("mouseleave", scheduleHoverClose);
+    panel.addEventListener("mouseenter", cancelHoverClose);
+    panel.addEventListener("mouseleave", scheduleHoverClose);
+  }
+
   button.addEventListener("click", event => {
     event.stopPropagation();
-    setOpen(!menu.classList.contains("is-open"));
+    setOpen(supportsHover || !menu.classList.contains("is-open"));
   });
 
   panel.addEventListener("click", event => {
@@ -228,6 +252,121 @@ function initResponsiveModuleReveal() {
   });
 }
 
+function initCardReveals() {
+  const responsiveQuery = window.matchMedia("(max-width: 991px)");
+  const revealGroups = [
+    {
+      grid: document.querySelector(".exercise-grid"),
+      cards: [...document.querySelectorAll(".exercise-grid .exercise-card")],
+      text: "There are more exercises. Click here to practice more.",
+      filterEvent: "exercisefilterchange"
+    },
+    ...[...document.querySelectorAll(".learning-library .library-grid")].map(grid => ({
+      grid,
+      cards: [...grid.querySelectorAll(".library-card")],
+      text: "There are more topics. Click here to explore more."
+    }))
+  ];
+
+  revealGroups.forEach((group, groupIndex) => {
+    if (
+      !group.grid
+      || group.cards.length <= 4
+      || group.grid.querySelector(":scope > .card-reveal-note")
+    ) return;
+
+    const gridId = group.grid.id || `revealCardGrid${groupIndex + 1}`;
+    group.grid.id = gridId;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "more-modules-note card-reveal-note";
+    button.textContent = group.text;
+    button.setAttribute("aria-controls", gridId);
+    button.setAttribute("aria-expanded", "false");
+    group.grid.append(button);
+
+    let isExpanded = false;
+    const animateCard = (card, revealOrder) => {
+      card.getAnimations().forEach(animation => animation.cancel());
+      // Keep the card visible after the controlled reveal animation finishes,
+      // without reactivating its original page-load animation.
+      card.classList.add("reveal-animation-managed");
+      card.style.setProperty("--reveal-order", revealOrder);
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      card.animate(
+        [
+          { opacity: 0, transform: "translateY(50px)" },
+          { opacity: 1, transform: "translateY(0)" }
+        ],
+        {
+          duration: reduceMotion ? 1 : 800,
+          delay: reduceMotion ? 0 : revealOrder * 80,
+          easing: "ease",
+          fill: "backwards"
+        }
+      );
+    };
+
+    const syncCards = (animateNewCards = false) => {
+      const matchingCards = group.cards.filter(card => card.dataset.filterMatch !== "false");
+      const shouldLimitCards = responsiveQuery.matches;
+
+      group.cards.forEach(card => {
+        const matchingIndex = matchingCards.indexOf(card);
+        const wasHidden = card.hidden;
+        const shouldHide = matchingIndex === -1
+          || (shouldLimitCards && !isExpanded && matchingIndex >= 4);
+        card.hidden = shouldHide;
+
+        if (animateNewCards && wasHidden && !shouldHide && matchingIndex >= 4) {
+          animateCard(card, matchingIndex - 4);
+        }
+      });
+
+      const hasMoreCards = shouldLimitCards && matchingCards.length > 4;
+      const buttonAnchor = matchingCards[Math.min(3, matchingCards.length - 1)];
+      if (buttonAnchor) buttonAnchor.insertAdjacentElement("afterend", button);
+      button.hidden = !hasMoreCards;
+      button.setAttribute("aria-expanded", String(isExpanded && hasMoreCards));
+    };
+
+    const setExpanded = shouldExpand => {
+      const shouldAnimate = shouldExpand && !isExpanded;
+      isExpanded = shouldExpand;
+      syncCards(shouldAnimate);
+    };
+
+    button.addEventListener("click", event => {
+      event.stopPropagation();
+      setExpanded(!isExpanded);
+    });
+
+    document.addEventListener("click", () => {
+      if (isExpanded) setExpanded(false);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && isExpanded) {
+        setExpanded(false);
+        button.focus();
+      }
+    });
+
+    if (group.filterEvent) {
+      group.grid.addEventListener(group.filterEvent, () => {
+        setExpanded(false);
+      });
+    }
+
+    responsiveQuery.addEventListener?.("change", () => {
+      setExpanded(false);
+    });
+
+    syncCards();
+  });
+}
+
 export function initCourseInteractions() {
   initFaqAccordion();
   initExerciseFilters();
@@ -235,5 +374,6 @@ export function initCourseInteractions() {
   initBackToSprachwelt();
   initCourseSectionMenu();
   initResponsiveModuleReveal();
+  initCardReveals();
   initBackToTop();
 }

@@ -7,7 +7,7 @@ export const PRACTICE_TYPES = {
   reading: { title: "Reading Comprehension", label: "Reading", instruction: "Read the short text and select the best answer." },
   writing: { title: "Sentence Builder", label: "Writing", instruction: "Choose the sentence with correct spelling and word order." },
   speaking: { title: "Speaking Practice", label: "Speaking", instruction: "Choose the most natural response for each situation." },
-  mock: { title: "Goethe-Style Practice Test", label: "Exam Practice", instruction: "Complete this mixed-skills practice set under test conditions." }
+  communication: { title: "Real-Life Dialogues", label: "Speaking", instruction: "Choose the most natural response for each everyday situation." }
 };
 
 const q = (prompt, options, answer, note, speech = "") => ({ prompt, options, answer, note, speech });
@@ -192,12 +192,6 @@ export function getQuestions(level, type) {
   if (type === "grammar" || type === "writing") return fullBank.grammar;
   if (type === "reading") return fullBank.reading;
   if (type === "flashcards" || type === "matching") return fullBank.vocabulary;
-  if (type === "mock") return [
-    ...fullBank.grammar.slice(0, 3),
-    ...fullBank.vocabulary.slice(0, 2),
-    ...fullBank.reading.slice(0, 3),
-    ...fullBank.communication.slice(0, 2)
-  ];
   return fullBank.communication.map(item => type === "listening" ? { ...item, speech: item.prompt } : item);
 }
 

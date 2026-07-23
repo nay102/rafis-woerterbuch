@@ -2597,8 +2597,39 @@ font-size: small;
    11. LEVEL INTERACTIONS
 ========================================== */
 
-.exercise-card[hidden] {
-  display: none;
+.exercise-card[hidden],
+.library-card[hidden],
+.card-reveal-note[hidden] {
+  display: none !important;
+}
+
+.card-reveal-note {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 1rem 0 0;
+  padding: 10px 14px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 12px;
+  background: rgba(239, 246, 255, 0.86);
+  color: #1e40af;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease, transform 0.25s ease;
+}
+
+.card-reveal-note:hover,
+.card-reveal-note:focus-visible {
+  border-color: rgba(37, 99, 235, 0.42);
+  background: rgba(219, 234, 254, 0.96);
+  color: #1d4ed8;
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .back-to-sprachwelt {
@@ -4483,5 +4514,423 @@ body.dark .tip-card:hover {
     align-self: start;
     height: auto;
     min-height: 0;
+  }
+}
+
+body.dark .card-reveal-note {
+  border-color: rgba(96, 165, 250, 0.28);
+  background: rgba(30, 58, 138, 0.2);
+  color: #bfdbfe;
+}
+
+body.dark .card-reveal-note:hover,
+body.dark .card-reveal-note:focus-visible {
+  border-color: rgba(96, 165, 250, 0.52);
+  background: rgba(30, 64, 175, 0.34);
+  color: #dbeafe;
+}
+
+/* German.net-inspired horizontal Learning Library cards on small screens. */
+@media (max-width: 599.98px) {
+  .learning-library .library-grid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .learning-library .library-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg, 18px);
+  }
+
+  .learning-library .library-icon {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    border-radius: 0.85rem;
+    font-size: 1.3rem;
+  }
+
+  .learning-library .library-card h4,
+  .learning-library .library-card p,
+  .learning-library .library-card a {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .learning-library .library-card h4 {
+    grid-row: 1;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .learning-library .library-card p {
+    grid-row: 2;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .learning-library .library-card a {
+    grid-row: 3;
+    margin-top: 0.15rem;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .modules-grid,
+  .exercise-grid,
+  .resource-grid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .module-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: repeat(5, auto);
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg, 18px);
+  }
+
+  .module-card-top {
+    grid-column: 1;
+    grid-row: 1 / 6;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin: 0;
+  }
+
+  .module-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.85rem;
+    font-size: 1.3rem;
+  }
+
+  .module-card h3,
+  .module-card h4,
+  .module-card > p,
+  .module-details,
+  .module-buttons {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .module-card h3 {
+    grid-row: 1;
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .module-card h4 {
+    grid-row: 2;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .module-card > p {
+    grid-row: 3;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .module-details {
+    grid-row: 4;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .module-buttons {
+    grid-row: 5;
+    margin-top: 0.15rem;
+  }
+
+  .module-buttons a {
+    width: auto;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+
+  .exercise-card {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, auto) minmax(0, 1fr);
+    grid-template-rows: repeat(4, auto);
+    column-gap: 1rem;
+    row-gap: 0.45rem;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg, 18px);
+  }
+
+  .exercise-card .exercise-type {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 100%;
+    margin: 0;
+    white-space: normal;
+  }
+
+  .exercise-card .difficulty {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    margin: 0;
+  }
+
+  .exercise-card h3,
+  .exercise-card > p,
+  .exercise-card .exercise-meta,
+  .exercise-card > a {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .exercise-card h3 {
+    grid-row: 1;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .exercise-card > p {
+    grid-row: 2;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .exercise-card .exercise-meta {
+    grid-row: 3;
+    gap: 0.4rem;
+  }
+
+  .exercise-grid .exercise-card > a {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 0.4rem;
+    padding: clamp(0.68rem, 2.6vw, 0.85rem) clamp(0.9rem, 4vw, 1.25rem);
+    border-radius: 0.8rem;
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .exercise-grid .exercise-card > a:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+    box-shadow: 0 11px 24px rgba(37, 99, 235, 0.3);
+  }
+
+  .exercise-grid .exercise-card.featured > a {
+    background: #ffffff;
+    color: #1d4ed8;
+  }
+
+  .resource-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    align-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg, 18px);
+  }
+
+  .resource-card .resource-icon {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    border-radius: 0.85rem;
+    font-size: 1.3rem;
+  }
+
+  .resource-card h4,
+  .resource-card p,
+  .resource-card a {
+    grid-column: 2;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  .resource-card h4 {
+    grid-row: 1;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .resource-card p {
+    grid-row: 2;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .resource-card a {
+    grid-row: 3;
+    margin-top: 0.15rem;
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .learning-library .library-card > a,
+  .resource-grid .resource-card > a {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 0.4rem;
+    padding: clamp(0.68rem, 2.6vw, 0.85rem) clamp(0.9rem, 4vw, 1.25rem);
+    border-radius: 0.8rem;
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .learning-library .library-card > a:hover,
+  .resource-grid .resource-card > a:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+    color: #ffffff;
+    box-shadow: 0 11px 24px rgba(37, 99, 235, 0.3);
+  }
+}
+
+/* Consistent card action buttons at every viewport size. */
+.exercise-grid .exercise-card > a,
+.learning-library .library-card > a,
+.resource-grid .resource-card > a {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  margin-top: auto;
+  padding: clamp(0.68rem, 1.5vw, 0.85rem) clamp(0.9rem, 2vw, 1.25rem);
+  border-radius: 0.8rem;
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.exercise-grid .exercise-card > a:hover,
+.learning-library .library-card > a:hover,
+.resource-grid .resource-card > a:hover {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+  color: #ffffff;
+  box-shadow: 0 11px 24px rgba(37, 99, 235, 0.3);
+}
+
+.exercise-grid .exercise-card.featured > a {
+  background: #ffffff;
+  color: #1d4ed8;
+}
+
+/* Keep desktop/tablet cards equal and pin their actions to the bottom. */
+@media (min-width: 600px) {
+  .learning-library .library-grid,
+  .exercise-grid,
+  .resource-grid {
+    align-items: stretch;
+    grid-auto-rows: auto;
+  }
+
+  .learning-library .library-card,
+  .resource-grid .resource-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+  }
+}
+
+/* Stable end state for cards whose reveal motion is controlled by JavaScript. */
+.library-card.reveal-animation-managed,
+.exercise-card.reveal-animation-managed {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+}
+
+.library-card.reveal-animation-managed:hover,
+.exercise-card.reveal-animation-managed:hover {
+  transform: translateY(-10px);
+}
+
+/* Compact, centered reveal control shared by modules, library, and exercises. */
+@media (max-width: 991px) {
+  .more-modules-note {
+    justify-self: center;
+    align-self: center;
+    width: min(100%, 620px);
+    min-height: clamp(38px, 6vw, 44px);
+    padding: clamp(8px, 1.5vw, 11px) clamp(12px, 2.5vw, 18px);
+    border-radius: clamp(10px, 1.5vw, 13px);
+    font-size: clamp(0.62rem, 1.5vw, 0.76rem);
+    line-height: 1.35;
+  }
+
+  .exercise-grid {
+    grid-auto-rows: auto;
+  }
+
+  .exercise-grid > .more-modules-note {
+    margin-block: 2px;
   }
 }
