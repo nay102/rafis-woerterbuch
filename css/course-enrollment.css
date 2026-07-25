@@ -499,6 +499,13 @@ body.dark .purchase-close { border-color: #334a68; background: #172943; color: #
   .package-popular { top: 13px; right: 13px; font-size: 0.48rem; }
 }
 
+/* Hide the level back control on narrow phones. */
+@media (max-width: 479.98px) {
+  .level-back-link {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .enrollment-orb,
   .course-package-card,

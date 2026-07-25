@@ -566,6 +566,19 @@ function isVerbWord(word) {
   return category === "verben" || type === "verb";
 }
 
+function formatExamples(word) {
+  const examples = Array.isArray(word?.examples) ? word.examples : [];
+  const examplesHtml = examples.join("<br><br>") || "-";
+
+  // Tense labels in square brackets are highlighted only in the Verben category.
+  if (String(word?.category || "").toLowerCase() !== "verben") return examplesHtml;
+
+  return examplesHtml.replace(
+    /\[([^\]\r\n<>]+)\]/g,
+    '<span class="verb-example-tense">[$1]</span>'
+  );
+}
+
 function getConjugationStatusText(word) {
   const status = String(word?.conjugation_status || "").toLowerCase();
   if (!status) return "Unknown";
@@ -3026,7 +3039,7 @@ function openWordDetail(wordId, options = {}) {
 
   <div class="detail-section">
     <h3>Examples</h3>
-    <p>${word.examples?.join("<br><br>") || "-"}</p>
+    <p>${formatExamples(word)}</p>
   </div>
 
   <div class="detail-section">

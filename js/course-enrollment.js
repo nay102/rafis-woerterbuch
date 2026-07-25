@@ -21,7 +21,7 @@ const COURSE_DATA = {
     description: "Build a confident German foundation through live instruction, guided practice, and structured support designed for complete beginners.",
     coursePrice: "৳ 6,000",
     preparationPrice: "৳ 1,000",
-    examPrice: "৳ 800",
+    examPrice: "৳ 500",
     privatePrice: "৳ 10,000",
     duration: "10-12 weeks",
     schedule: "Sat, Mon & Wed, 9:00 PM",
@@ -165,7 +165,7 @@ function renderPackages(level, course) {
       <span class="package-eyebrow">${item.eyebrow}</span>
       <h2>${item.title}</h2>
       <p class="package-description">${item.description}</p>
-      <div class="package-price"><strong>${item.price}</strong><small>Sample price</small></div>
+      <div class="package-price"><strong>${item.price}</strong><small>price</small></div>
       <dl class="package-meta">
         <div><dt><i class="fa-regular fa-calendar" aria-hidden="true"></i> Date</dt><dd>${item.date}</dd></div>
         <div><dt><i class="fa-regular fa-clock" aria-hidden="true"></i> Duration</dt><dd>${item.duration}</dd></div>

@@ -233,6 +233,7 @@ function initResponsiveModuleReveal() {
   const setExpanded = shouldExpand => {
     modulesGrid.classList.toggle("show-all-modules", shouldExpand);
     revealButton.setAttribute("aria-expanded", String(shouldExpand));
+    revealButton.setAttribute("aria-hidden", String(shouldExpand));
   };
 
   revealButton.addEventListener("click", event => {
@@ -329,6 +330,7 @@ function initCardReveals() {
       if (buttonAnchor) buttonAnchor.insertAdjacentElement("afterend", button);
       button.hidden = !hasMoreCards;
       button.setAttribute("aria-expanded", String(isExpanded && hasMoreCards));
+      button.setAttribute("aria-hidden", String(isExpanded && hasMoreCards));
     };
 
     const setExpanded = shouldExpand => {

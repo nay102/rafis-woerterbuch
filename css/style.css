@@ -550,31 +550,6 @@ body {
    Premium List With Smooth Hover & Cards
 ========================================================= */
 
-.vertical-word-list {
-  max-width: 750px;
-
-  margin: 40px auto;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
-
-  animation: wordListFade 0.5s ease forwards;
-}
-
-/* Smooth appearance */
-@keyframes wordListFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ================= WORD ITEM ================= */
 
 #categoryPage {
@@ -707,13 +682,6 @@ body {
   line-height: 1.62;
   color: #1f2937;
   white-space: pre-line;
-}
-
-.category-explainer-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
 }
 
 .category-explain-btn {
@@ -872,6 +840,11 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
   hyphens: auto;
+}
+
+.verb-example-tense {
+  color: #0033ff;
+  font-weight: 800;
 }
 
 .detail-topbar {
@@ -2093,30 +2066,6 @@ body {
   font-size: 11px;
 }
 
-.photo-fit-top {
-  --photo-position: center top;
-}
-
-.photo-fit-center {
-  --photo-position: center;
-}
-
-.photo-fit-bottom {
-  --photo-position: center bottom;
-}
-
-.photo-square {
-  --photo-ratio: 1 / 1;
-}
-
-.photo-portrait {
-  --photo-ratio: 4 / 5;
-}
-
-.photo-wide {
-  --photo-ratio: 16 / 9;
-}
-
 .panel-page-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(34, 80, 210, 0.14);
@@ -2248,7 +2197,6 @@ body {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.46);
 }
 
-.germany-hero-side,
 .bangladesh-hero-side {
   position: relative;
   z-index: 1;
@@ -2350,7 +2298,6 @@ body {
   gap: 12px;
 }
 
-.germany-flag-panel,
 .bangladesh-flag-panel {
   width: 100%;
   display: grid;
@@ -2364,7 +2311,6 @@ body {
   backdrop-filter: blur(10px);
 }
 
-.germany-flag-art,
 .bangladesh-flag-art {
   width: min(290px, 100%);
   aspect-ratio: 5 / 3;
@@ -2377,12 +2323,6 @@ body {
     0 18px 34px rgba(0, 0, 0, 0.2);
 }
 
-.germany-flag-art {
-  background:
-    linear-gradient(180deg, #111827 0 33.33%, #d10f1f 33.33% 66.66%, #f0bf28 66.66%);
-}
-
-.germany-flag-art::after,
 .bangladesh-flag-art::after {
   content: "";
   position: absolute;
@@ -2391,41 +2331,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.germany-flag-label,
-.bangladesh-flag-label {
-  font-size: clamp(28px, 3.6vw, 48px);
-  line-height: 1;
-  letter-spacing: 0;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-}
-
 .bangladesh-flag-art {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
     #006a4e;
-}
-
-.germany-flag-art span {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 33.333%;
-}
-
-.germany-flag-art span:nth-child(1) {
-  top: 0;
-  background: #111827;
-}
-
-.germany-flag-art span:nth-child(2) {
-  top: 33.333%;
-  background: #d10f1f;
-}
-
-.germany-flag-art span:nth-child(3) {
-  top: 66.666%;
-  background: #f0bf28;
 }
 
 .germany-stat,
@@ -2853,10 +2762,6 @@ body {
   border-radius: 50%;
   background: #f42a41;
   box-shadow: 0 10px 24px rgba(244, 42, 65, 0.3);
-}
-
-.bangladesh-flag-label {
-  display: none;
 }
 
 .bangladesh-stats {
@@ -3433,11 +3338,6 @@ body {
   font-weight: 700;
   text-align: left;
   cursor: pointer;
-}
-
-.compact-btn {
-  margin-top: 8px;
-  width: 100%;
 }
 
 body.text-compact {
@@ -4213,11 +4113,6 @@ input,
     line-height: 1.55;
   }
 
-  .category-explainer-actions {
-    grid-template-columns: 1fr 1fr;
-    display: grid;
-  }
-
   .four-column-wrapper,
   .two-column-wrapper {
     display: grid;
@@ -4330,7 +4225,6 @@ input,
     width: 100%;
   }
 
-  .germany-hero-side,
   .bangladesh-hero-side {
     width: 100%;
     flex-basis: auto;
@@ -4368,17 +4262,7 @@ input,
     border-radius: 20px;
   }
 
-  .germany-flag-panel {
-    width: 100%;
-    padding: 14px;
-    border-radius: 20px;
-  }
-
   .bangladesh-flag-art {
-    width: min(260px, 100%);
-  }
-
-  .germany-flag-art {
     width: min(260px, 100%);
   }
 
@@ -4649,26 +4533,9 @@ input,
     padding: 12px;
   }
 
-  .germany-flag-panel {
-    padding: 12px;
-  }
-
   .bangladesh-flag-art {
     width: min(240px, 100%);
     border-radius: 20px;
-  }
-
-  .germany-flag-art {
-    width: min(240px, 100%);
-    border-radius: 20px;
-  }
-
-  .bangladesh-flag-label {
-    font-size: clamp(24px, 8vw, 38px);
-  }
-
-  .germany-flag-label {
-    font-size: clamp(24px, 8vw, 38px);
   }
 
   .germany-stats,
@@ -5043,17 +4910,7 @@ input,
     border-radius: 16px;
   }
 
-  .germany-flag-panel {
-    padding: 10px;
-    border-radius: 16px;
-  }
-
   .bangladesh-flag-art {
-    width: min(220px, 100%);
-    border-radius: 16px;
-  }
-
-  .germany-flag-art {
     width: min(220px, 100%);
     border-radius: 16px;
   }
@@ -5152,10 +5009,6 @@ input,
   .category-explain-panel p {
     font-size: 11.5px;
     line-height: 1.48;
-  }
-
-  .category-explainer-actions {
-    grid-template-columns: 1fr;
   }
 
   .category-explain-btn {
