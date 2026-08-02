@@ -579,6 +579,25 @@ function formatExamples(word) {
   );
 }
 
+function getEasyExamples(word) {
+  const category = String(word?.category || "").toLowerCase();
+  if (!["verben", "adjektiven", "adverbien"].includes(category)) return [];
+
+  const easyExamples = Array.isArray(word?.["easy examples"])
+    ? word["easy examples"]
+    : [];
+  return easyExamples.map(example =>
+    String(example).replace(
+      /\[([^\]\r\n<>]+)\]/g,
+      '<span class="verb-example-tense">[$1]</span>'
+    )
+  );
+}
+
+function formatEasyExamples(word) {
+  return getEasyExamples(word).join("<br><br>") || "-";
+}
+
 function getConjugationStatusText(word) {
   const status = String(word?.conjugation_status || "").toLowerCase();
   if (!status) return "Unknown";
@@ -3038,8 +3057,21 @@ function openWordDetail(wordId, options = {}) {
   </div>
 
   <div class="detail-section">
-    <h3>Examples</h3>
-    <p>${formatExamples(word)}</p>
+    ${
+      ["Verben", "Adjektiven", "Adverbien"].includes(word.category)
+        ? `<div class="detail-section-heading">
+             <h3>Examples</h3>
+             <button
+               id="easyExamplesToggle"
+               class="easy-examples-toggle"
+               type="button"
+               aria-pressed="false"
+               aria-controls="wordExamples"
+             >Easy Examples</button>
+           </div>`
+        : "<h3>Examples</h3>"
+    }
+    <p${["Verben", "Adjektiven", "Adverbien"].includes(word.category) ? ' id="wordExamples" class="word-examples-content"' : ""}>${formatExamples(word)}</p>
   </div>
 
   <div class="detail-section">
@@ -3070,6 +3102,42 @@ function openWordDetail(wordId, options = {}) {
 `;
 
   detailPage.appendChild(card);
+
+  if (["Verben", "Adjektiven", "Adverbien"].includes(word.category)) {
+    const easyExamplesToggle = document.getElementById("easyExamplesToggle");
+    const examplesContent = document.getElementById("wordExamples");
+    const defaultExamplesHtml = formatExamples(word);
+    const easyExamplesHtml = formatEasyExamples(word);
+    let showingEasyExamples = false;
+    let examplesAnimating = false;
+
+    easyExamplesToggle?.addEventListener("click", () => {
+      if (!examplesContent || examplesAnimating) return;
+
+      examplesAnimating = true;
+      const startHeight = examplesContent.getBoundingClientRect().height;
+      examplesContent.style.height = `${startHeight}px`;
+      examplesContent.classList.add("is-changing");
+
+      window.setTimeout(() => {
+        showingEasyExamples = !showingEasyExamples;
+        examplesContent.innerHTML = showingEasyExamples
+          ? easyExamplesHtml
+          : defaultExamplesHtml;
+        easyExamplesToggle.classList.toggle("active", showingEasyExamples);
+        easyExamplesToggle.setAttribute("aria-pressed", String(showingEasyExamples));
+
+        const endHeight = examplesContent.scrollHeight;
+        examplesContent.style.height = `${endHeight}px`;
+        examplesContent.classList.remove("is-changing");
+
+        window.setTimeout(() => {
+          examplesContent.style.height = "auto";
+          examplesAnimating = false;
+        }, 360);
+      }, 180);
+    });
+  }
 
   if (currentUser) {
     updateProgressStatsForWordOpen();

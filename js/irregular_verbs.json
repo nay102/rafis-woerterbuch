@@ -11,17 +11,6 @@
         "k1_ihr":  "bedürfet"
     },
     {
-        "infinitive":  "begegnen",
-        "praeteritum":  "begegnete",
-        "partizip2":  "begegnet",
-        "aux":  "sein",
-        "present_du":  "begegnest",
-        "present_er":  "begegnet",
-        "konjunktiv2_stem":  "begegnete",
-        "k1_du":  "begegnest",
-        "k1_ihr":  "begegnet"
-    },
-    {
         "infinitive":  "behalten",
         "praeteritum":  "behielt",
         "partizip2":  "behalten",
@@ -297,17 +286,6 @@
         "k1_ihr":  "gehet"
     },
     {
-        "infinitive":  "gelangen",
-        "praeteritum":  "gelangte",
-        "partizip2":  "gelangt",
-        "aux":  "sein",
-        "present_du":  "gelangst",
-        "present_er":  "gelangt",
-        "konjunktiv2_stem":  "gelangte",
-        "k1_du":  "gelangest",
-        "k1_ihr":  "gelanget"
-    },
-    {
         "infinitive":  "geschehen",
         "praeteritum":  "geschah",
         "partizip2":  "geschehen",
@@ -372,17 +350,6 @@
         "konjunktiv2_stem":  "käme",
         "k1_du":  "kommest",
         "k1_ihr":  "kommet"
-    },
-    {
-        "infinitive":  "kriegen",
-        "praeteritum":  "kriegte",
-        "partizip2":  "gekriegt",
-        "aux":  "haben",
-        "present_du":  "kriegst",
-        "present_er":  "kriegt",
-        "konjunktiv2_stem":  "kriegte",
-        "k1_du":  "kriegest",
-        "k1_ihr":  "krieget"
     },
     {
         "infinitive":  "laufen",
@@ -1096,5 +1063,159 @@
         "konjunktiv2_stem":  "täte",
         "k1_du":  "tuest",
         "k1_ihr":  "tuet"
+    },
+    {
+        "infinitive":  "nennen",
+        "praeteritum":  "nannte",
+        "partizip2":  "genannt",
+        "aux":  "haben",
+        "present_du":  "nennst",
+        "present_er":  "nennt",
+        "konjunktiv2_stem":  "nennte",
+        "k1_du":  "nennest",
+        "k1_ihr":  "nennet"
+    },
+    {
+        "infinitive":  "übertreiben",
+        "praeteritum":  "übertrieb",
+        "partizip2":  "übertrieben",
+        "aux":  "haben",
+        "present_du":  "übertreibst",
+        "present_er":  "übertreibt",
+        "konjunktiv2_stem":  "übertriebe",
+        "k1_du":  "übertreibest",
+        "k1_ihr":  "übertreibet"
+    },
+    {
+        "infinitive":  "überwinden",
+        "praeteritum":  "überwand",
+        "partizip2":  "überwunden",
+        "aux":  "haben",
+        "present_du":  "überwindest",
+        "present_er":  "überwindet",
+        "konjunktiv2_stem":  "überwände",
+        "k1_du":  "überwindest",
+        "k1_ihr":  "überwindet"
+    },
+    {
+        "infinitive":  "verhalten",
+        "praeteritum":  "verhielt",
+        "partizip2":  "verhalten",
+        "aux":  "haben",
+        "present_du":  "verhältst",
+        "present_er":  "verhält",
+        "konjunktiv2_stem":  "verhielte",
+        "k1_du":  "verhaltest",
+        "k1_ihr":  "verhaltet"
+    },
+    {
+        "infinitive":  "übernehmen",
+        "praeteritum":  "übernahm",
+        "partizip2":  "übernommen",
+        "aux":  "haben",
+        "present_du":  "übernimmst",
+        "present_er":  "übernimmt",
+        "konjunktiv2_stem":  "übernähme",
+        "k1_du":  "übernehmest",
+        "k1_ihr":  "übernehmet"
+    },
+    {
+        "infinitive":  "befinden",
+        "praeteritum":  "befand",
+        "partizip2":  "befunden",
+        "aux":  "haben",
+        "present_du":  "befindest",
+        "present_er":  "befindet",
+        "konjunktiv2_stem":  "befände",
+        "k1_du":  "befindest",
+        "k1_ihr":  "befindet"
+    },
+    {
+        "infinitive":  "verraten",
+        "praeteritum":  "verriet",
+        "partizip2":  "verraten",
+        "aux":  "haben",
+        "present_du":  "verrätst",
+        "present_er":  "verrät",
+        "konjunktiv2_stem":  "verriete",
+        "k1_du":  "verratest",
+        "k1_ihr":  "verratet"
+    },
+    {
+        "infinitive":  "unterhalten",
+        "praeteritum":  "unterhielt",
+        "partizip2":  "unterhalten",
+        "aux":  "haben",
+        "present_du":  "unterhältst",
+        "present_er":  "unterhält",
+        "konjunktiv2_stem":  "unterhielte",
+        "k1_du":  "unterhaltest",
+        "k1_ihr":  "unterhaltet"
+    },
+    {
+        "infinitive":  "entlassen",
+        "praeteritum":  "entließ",
+        "partizip2":  "entlassen",
+        "aux":  "haben",
+        "present_du":  "entlässt",
+        "present_er":  "entlässt",
+        "konjunktiv2_stem":  "entließe",
+        "k1_du":  "entlassest",
+        "k1_ihr":  "entlasset"
+    },
+    {
+        "infinitive":  "benennen",
+        "praeteritum":  "benannte",
+        "partizip2":  "benannt",
+        "aux":  "haben",
+        "present_du":  "benennst",
+        "present_er":  "benennt",
+        "konjunktiv2_stem":  "benennte",
+        "k1_du":  "benennest",
+        "k1_ihr":  "benennet"
+    },
+    {
+        "infinitive":  "vollziehen",
+        "praeteritum":  "vollzog",
+        "partizip2":  "vollzogen",
+        "aux":  "haben",
+        "present_du":  "vollziehst",
+        "present_er":  "vollzieht",
+        "konjunktiv2_stem":  "vollzöge",
+        "k1_du":  "vollziehest",
+        "k1_ihr":  "vollziehet"
+    },
+    {
+        "infinitive":  "erschaffen",
+        "praeteritum":  "erschuf",
+        "partizip2":  "erschaffen",
+        "aux":  "haben",
+        "present_du":  "erschaffst",
+        "present_er":  "erschafft",
+        "konjunktiv2_stem":  "erschüfe",
+        "k1_du":  "erschaffest",
+        "k1_ihr":  "erschaffet"
+    },
+    {
+        "infinitive":  "erheben",
+        "praeteritum":  "erhob",
+        "partizip2":  "erhoben",
+        "aux":  "haben",
+        "present_du":  "erhebst",
+        "present_er":  "erhebt",
+        "konjunktiv2_stem":  "erhöbe",
+        "k1_du":  "erhebest",
+        "k1_ihr":  "erhebet"
+    },
+    {
+        "infinitive":  "erziehen",
+        "praeteritum":  "erzog",
+        "partizip2":  "erzogen",
+        "aux":  "haben",
+        "present_du":  "erziehst",
+        "present_er":  "erzieht",
+        "konjunktiv2_stem":  "erzöge",
+        "k1_du":  "erziehest",
+        "k1_ihr":  "erziehet"
     }
 ]

@@ -1,4 +1,5 @@
 ﻿const DATA_VERSION = "2026-03-16-3";
+const CONJUGATION_DATA_VERSION = `${DATA_VERSION}-conjugation-2026-08-02-1`;
 let allWords = [];
 
 export function getAllWords() {
@@ -7,8 +8,8 @@ export function getAllWords() {
 
 export async function loadWords() {
   const [wordsResponse, irregularResponse] = await Promise.all([
-    fetch(`./js/words.json?v=${DATA_VERSION}`),
-    fetch(`./js/irregular_verbs.json?v=${DATA_VERSION}`)
+    fetch(`./js/words.json?v=${CONJUGATION_DATA_VERSION}`),
+    fetch(`./js/irregular_verbs.json?v=${CONJUGATION_DATA_VERSION}`)
   ]);
   const data = await wordsResponse.json();
   let irregularVerbs = [];

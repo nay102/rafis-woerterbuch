@@ -19,6 +19,7 @@ const SEPARABLE_PREFIXES = [
   "durch",
   "entgegen",
   "ein",
+  "gerade",
   "mit",
   "nach",
   "vor",
@@ -26,6 +27,8 @@ const SEPARABLE_PREFIXES = [
   "zurueck",
   "zurück",
   "runter",
+  "raus",
+  "rein",
   "schief",
   "statt",
   "teil",
@@ -58,7 +61,52 @@ const SEPARABLE_PREFIXES = [
 ];
 
 const AMBIGUOUS_VERBS = new Set([]);
-const NON_SEPARABLE_VERBS = new Set(["antworten"]);
+const NON_SEPARABLE_VERBS = new Set([
+  "antworten",
+  "absolvieren",
+  "einigen",
+  "reinigen"
+]);
+const SEIN_AUXILIARY_VERBS = new Set([
+  "ausbrechen",
+  "auswandern",
+  "begegnen",
+  "einbrechen",
+  "gelangen",
+  "reisen",
+  "spazieren",
+  "stolpern",
+  "verreisen",
+  "verzweifeln",
+  "scheitern",
+  "aufstehen"
+]);
+const HABEN_AUXILIARY_VERBS = new Set(["herunterfahren"]);
+const INSEPARABLE_EXTENDED_PREFIXES = ["über", "unter", "hinter"];
+const IMPERATIVE_DU_OVERRIDES = {
+  backen: "back",
+  entlassen: "entlass",
+  essen: "iss",
+  fahren: "fahr",
+  fallen: "fall",
+  fangen: "fang",
+  haben: "hab",
+  halten: "halt",
+  heißen: "heiße",
+  laden: "lad",
+  laufen: "lauf",
+  lesen: "lies",
+  reisen: "reise",
+  schlafen: "schlaf",
+  sein: "sei",
+  tragen: "trag",
+  treten: "tritt",
+  stoßen: "stoß",
+  verhalten: "verhalte",
+  waschen: "wasch",
+  werden: "werde",
+  wissen: "wisse"
+};
 
 const IRREGULAR_OVERRIDE_FIELDS = [
   "praeteritum",
@@ -125,7 +173,7 @@ function isVerbEntry(entry) {
 }
 
 function isInseparablePrefix(verb) {
-  return INSEPARABLE_PREFIXES.some(prefix =>
+  return [...INSEPARABLE_PREFIXES, ...INSEPARABLE_EXTENDED_PREFIXES].some(prefix =>
     verb.startsWith(prefix) && verb.length > prefix.length + 2
   );
 }
@@ -156,13 +204,28 @@ function getStem(verb) {
 
 function needsE(stem) {
   if (/[dt]$/.test(stem)) return true;
-  if (/[^aeiouäöüüy][mn]$/.test(stem)) return true;
+  if (/[mn]$/.test(stem)) {
+    const before = stem.at(-2);
+    if (!before || /[aeiouäöüylrmn]/.test(before)) return false;
+    if (before === "h") {
+      const beforeH = stem.at(-3);
+      return Boolean(beforeH && !/[aeiouäöü]/.test(beforeH));
+    }
+    return true;
+  }
   return false;
 }
 
 function duEnding(stem) {
   if (/(s|ß|x|z|tz|ss)$/.test(stem)) return "t";
   return "st";
+}
+
+function joinStemEnding(stem, ending) {
+  if (stem.endsWith("e") && ending.startsWith("e")) {
+    return `${stem}${ending.slice(1)}`;
+  }
+  return `${stem}${ending}`;
 }
 
 function buildRegularBase(coreVerb) {
@@ -235,7 +298,7 @@ function insertReflexive(auxForm, pronoun, rest) {
   return `${auxForm} ${pronoun} ${rest}`;
 }
 
-function buildImperative(presentForms, isSeparable, prefix, isReflexive) {
+function buildImperative(presentForms, isSeparable, prefix, isReflexive, coreVerb) {
   let duForm = presentForms.du;
   let ihrForm = presentForms.ihr;
   let sieFormBase = presentForms.sie_formal;
@@ -255,6 +318,10 @@ function buildImperative(presentForms, isSeparable, prefix, isReflexive) {
   let ihr = ihrForm;
   let sieForm = `${sieFormBase} Sie`;
 
+  if (IMPERATIVE_DU_OVERRIDES[coreVerb]) {
+    du = IMPERATIVE_DU_OVERRIDES[coreVerb];
+  }
+
   if (isReflexive) {
     du = `${du} ${REFLEXIVE_PRONOUNS.du}`;
     ihr = `${ihr} ${REFLEXIVE_PRONOUNS.ihr}`;
@@ -271,7 +338,7 @@ function buildImperative(presentForms, isSeparable, prefix, isReflexive) {
 }
 
 function buildConjugationFromRegular(coreVerb, options) {
-  const { isSeparable, prefix, isReflexive, fullVerb } = options;
+  const { isSeparable, prefix, isReflexive, fullVerb, infinitiveLabel } = options;
   const base = buildRegularBase(coreVerb);
 
   const present = isSeparable ? applySeparablePrefix(base.present, prefix) : base.present;
@@ -279,19 +346,26 @@ function buildConjugationFromRegular(coreVerb, options) {
   const k1Present = isSeparable ? applySeparablePrefix(base.k1Present, prefix) : base.k1Present;
 
   const partizipII = (() => {
+    if (isSeparable && prefix) {
+      if (coreVerb.endsWith("ieren") || isInseparablePrefix(coreVerb)) {
+        return `${prefix}${base.partizipII}`;
+      }
+      return `${prefix}ge${base.partizipII}`;
+    }
     if (coreVerb.endsWith("ieren")) return base.partizipII;
-    if (isSeparable && prefix) return `${prefix}ge${base.partizipII}`;
     if (isInseparablePrefix(coreVerb)) return base.partizipII;
     return `ge${base.partizipII}`;
   })();
 
-  const partizipI = base.partizipI;
+  const partizipIBase =
+    isSeparable && prefix ? `${prefix}${base.partizipI}` : base.partizipI;
+  const partizipI = isReflexive ? `sich ${partizipIBase}` : partizipIBase;
 
   const presentFinal = isReflexive ? applyReflexive(present, isSeparable, prefix) : present;
   const preteriteFinal = isReflexive ? applyReflexive(preterite, isSeparable, prefix) : preterite;
   const k1Final = isReflexive ? applyReflexive(k1Present, isSeparable, prefix) : k1Present;
 
-  const aux = "haben";
+  const aux = SEIN_AUXILIARY_VERBS.has(fullVerb.toLowerCase()) ? "sein" : "haben";
   const perf = {};
   const plusperf = {};
   const futurI = {};
@@ -301,22 +375,40 @@ function buildConjugationFromRegular(coreVerb, options) {
     const pronoun = REFLEXIVE_PRONOUNS[key];
     const auxPresent =
       key === "ich"
-        ? "habe"
+        ? aux === "sein"
+          ? "bin"
+          : "habe"
         : key === "du"
-          ? "hast"
+          ? aux === "sein"
+            ? "bist"
+            : "hast"
           : key === "er_sie_es"
-            ? "hat"
+            ? aux === "sein"
+              ? "ist"
+              : "hat"
             : key === "ihr"
-              ? "habt"
-              : "haben";
+              ? aux === "sein"
+                ? "seid"
+                : "habt"
+              : aux === "sein"
+                ? "sind"
+                : "haben";
     const auxPast =
       key === "ich" || key === "er_sie_es"
-        ? "hatte"
+        ? aux === "sein"
+          ? "war"
+          : "hatte"
         : key === "du"
-          ? "hattest"
+          ? aux === "sein"
+            ? "warst"
+            : "hattest"
           : key === "ihr"
-            ? "hattet"
-            : "hatten";
+            ? aux === "sein"
+              ? "wart"
+              : "hattet"
+            : aux === "sein"
+              ? "waren"
+              : "hatten";
     const auxFutur =
       key === "ich"
         ? "werde"
@@ -353,20 +445,36 @@ function buildConjugationFromRegular(coreVerb, options) {
     const pronoun = REFLEXIVE_PRONOUNS[key];
     const auxK1 =
       key === "ich" || key === "er_sie_es"
-        ? "habe"
+        ? aux === "sein"
+          ? "sei"
+          : "habe"
         : key === "du"
-          ? "habest"
+          ? aux === "sein"
+            ? "seiest"
+            : "habest"
           : key === "ihr"
-            ? "habet"
-            : "haben";
+            ? aux === "sein"
+              ? "seiet"
+              : "habet"
+            : aux === "sein"
+              ? "seien"
+              : "haben";
     const auxK2 =
       key === "ich" || key === "er_sie_es"
-        ? "hätte"
+        ? aux === "sein"
+          ? "wäre"
+          : "hätte"
         : key === "du"
-          ? "hättest"
+          ? aux === "sein"
+            ? "wärest"
+            : "hättest"
           : key === "ihr"
-            ? "hättet"
-            : "hätten";
+            ? aux === "sein"
+              ? "wäret"
+              : "hättet"
+            : aux === "sein"
+              ? "wären"
+              : "hätten";
     const auxWuerde =
       key === "ich"
         ? "würde"
@@ -426,20 +534,27 @@ function buildConjugationFromRegular(coreVerb, options) {
       futur_ii: k2Futur2
     },
     imperativ: {
-      praesens: buildImperative(present, isSeparable, prefix, isReflexive)
+      praesens: buildImperative(present, isSeparable, prefix, isReflexive, coreVerb)
     },
     partizip: {
       partizip_i: partizipI,
       partizip_ii: partizipII
     },
     infinitiv: {
-      praesens: fullVerb
+      praesens: infinitiveLabel || fullVerb
     }
   };
 }
 
 function buildConjugationFromIrregular(coreVerb, irregular, options) {
-  const { isSeparable, prefix, isReflexive, fullVerb, matchType } = options;
+  const {
+    isSeparable,
+    prefix,
+    isReflexive,
+    fullVerb,
+    infinitiveLabel,
+    matchType
+  } = options;
   const base = buildRegularBase(coreVerb);
   const presentStem = irregular.present_stem || null;
 
@@ -457,9 +572,9 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
     ich: irregular.praeteritum,
     du: `${praeteritumStem}st`,
     er_sie_es: irregular.praeteritum,
-    wir: `${praeteritumStem}en`,
+    wir: joinStemEnding(praeteritumStem, "en"),
     ihr: `${praeteritumStem}t`,
-    sie_formal: `${praeteritumStem}en`
+    sie_formal: joinStemEnding(praeteritumStem, "en")
   };
 
   const k1Present = {
@@ -484,7 +599,12 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
   const preteriteRef = isReflexive ? applyReflexive(preteriteFinal, isSeparable, prefix) : preteriteFinal;
   const k1Ref = isReflexive ? applyReflexive(k1Final, isSeparable, prefix) : k1Final;
 
-  const aux = irregular.aux || "haben";
+  const normalizedFullVerb = fullVerb.toLowerCase();
+  const aux = HABEN_AUXILIARY_VERBS.has(normalizedFullVerb)
+    ? "haben"
+    : SEIN_AUXILIARY_VERBS.has(normalizedFullVerb)
+      ? "sein"
+      : irregular.aux || "haben";
   const perf = {};
   const plusperf = {};
   const futurI = {};
@@ -558,9 +678,9 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
     ich: k2Stem,
     du: `${k2Stem}st`,
     er_sie_es: k2Stem,
-    wir: `${k2Stem}en`,
+    wir: joinStemEnding(k2Stem, "en"),
     ihr: `${k2Stem}t`,
-    sie_formal: `${k2Stem}en`
+    sie_formal: joinStemEnding(k2Stem, "en")
   };
   const k2PretFinal = isSeparable ? applySeparablePrefix(k2Pret, prefix) : k2Pret;
   const k2PretRef = isReflexive ? applyReflexive(k2PretFinal, isSeparable, prefix) : k2PretFinal;
@@ -575,20 +695,36 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
     const pronoun = REFLEXIVE_PRONOUNS[key];
     const auxK1 =
       key === "ich" || key === "er_sie_es"
-        ? "habe"
+        ? aux === "sein"
+          ? "sei"
+          : "habe"
         : key === "du"
-          ? "habest"
+          ? aux === "sein"
+            ? "seiest"
+            : "habest"
           : key === "ihr"
-            ? "habet"
-            : "haben";
+            ? aux === "sein"
+              ? "seiet"
+              : "habet"
+            : aux === "sein"
+              ? "seien"
+              : "haben";
     const auxK2 =
       key === "ich" || key === "er_sie_es"
-        ? "hätte"
+        ? aux === "sein"
+          ? "wäre"
+          : "hätte"
         : key === "du"
-          ? "hättest"
+          ? aux === "sein"
+            ? "wärest"
+            : "hättest"
           : key === "ihr"
-            ? "hättet"
-            : "hätten";
+            ? aux === "sein"
+              ? "wäret"
+              : "hättet"
+            : aux === "sein"
+              ? "wären"
+              : "hätten";
     const auxWuerde =
       key === "ich"
         ? "würde"
@@ -648,14 +784,22 @@ function buildConjugationFromIrregular(coreVerb, irregular, options) {
       futur_ii: k2Futur2
     },
     imperativ: {
-      praesens: buildImperative(presentFinal, isSeparable, prefix, isReflexive)
+      praesens: buildImperative(
+        presentFinal,
+        isSeparable,
+        prefix,
+        isReflexive,
+        coreVerb
+      )
     },
     partizip: {
-      partizip_i: base.partizipI,
+      partizip_i: isReflexive
+        ? `sich ${isSeparable && prefix ? prefix : ""}${base.partizipI}`
+        : `${isSeparable && prefix ? prefix : ""}${base.partizipI}`,
       partizip_ii: partizipII
     },
     infinitiv: {
-      praesens: fullVerb
+      praesens: infinitiveLabel || fullVerb
     }
   };
 }
@@ -675,6 +819,7 @@ function parseVerb(word) {
   if (NON_SEPARABLE_VERBS.has(base.toLowerCase())) {
     return {
       fullVerb: base,
+      infinitiveLabel: normalized,
       coreVerb: base,
       prefix: null,
       isSeparable: false,
@@ -682,10 +827,13 @@ function parseVerb(word) {
     };
   }
   const prefix = findSeparablePrefix(base);
-  const isSeparable = Boolean(prefix && !isInseparablePrefix(base));
+  // A longer separable particle (for example "bei-" in "beitragen") must
+  // take precedence over a shorter inseparable-looking prefix such as "be-".
+  const isSeparable = Boolean(prefix);
   const core = isSeparable ? base.slice(prefix.length) : base;
   return {
     fullVerb: base,
+    infinitiveLabel: normalized,
     coreVerb: core,
     prefix,
     isSeparable,
@@ -715,11 +863,162 @@ function resolveIrregular(verbInfo, irregularMap) {
   return null;
 }
 
+function buildReflexiveLassenCompound(innerVerb) {
+  const presentLassen = {
+    ich: "lasse",
+    du: "lässt",
+    er_sie_es: "lässt",
+    wir: "lassen",
+    ihr: "lasst",
+    sie_formal: "lassen"
+  };
+  const preteriteLassen = {
+    ich: "ließ",
+    du: "ließt",
+    er_sie_es: "ließ",
+    wir: "ließen",
+    ihr: "ließt",
+    sie_formal: "ließen"
+  };
+  const k1Lassen = {
+    ich: "lasse",
+    du: "lassest",
+    er_sie_es: "lasse",
+    wir: "lassen",
+    ihr: "lasset",
+    sie_formal: "lassen"
+  };
+  const k2Lassen = {
+    ich: "ließe",
+    du: "ließest",
+    er_sie_es: "ließe",
+    wir: "ließen",
+    ihr: "ließet",
+    sie_formal: "ließen"
+  };
+  const auxPresent = {
+    ich: "habe",
+    du: "hast",
+    er_sie_es: "hat",
+    wir: "haben",
+    ihr: "habt",
+    sie_formal: "haben"
+  };
+  const auxPast = {
+    ich: "hatte",
+    du: "hattest",
+    er_sie_es: "hatte",
+    wir: "hatten",
+    ihr: "hattet",
+    sie_formal: "hatten"
+  };
+  const auxK1 = {
+    ich: "habe",
+    du: "habest",
+    er_sie_es: "habe",
+    wir: "haben",
+    ihr: "habet",
+    sie_formal: "haben"
+  };
+  const auxK2 = {
+    ich: "hätte",
+    du: "hättest",
+    er_sie_es: "hätte",
+    wir: "hätten",
+    ihr: "hättet",
+    sie_formal: "hätten"
+  };
+  const werden = {
+    ich: "werde",
+    du: "wirst",
+    er_sie_es: "wird",
+    wir: "werden",
+    ihr: "werdet",
+    sie_formal: "werden"
+  };
+  const werdenK1 = {
+    ich: "werde",
+    du: "werdest",
+    er_sie_es: "werde",
+    wir: "werden",
+    ihr: "werdet",
+    sie_formal: "werden"
+  };
+  const wuerde = {
+    ich: "würde",
+    du: "würdest",
+    er_sie_es: "würde",
+    wir: "würden",
+    ihr: "würdet",
+    sie_formal: "würden"
+  };
+  const fullInfinitive = `sich ${innerVerb} lassen`;
+  const mapPersons = callback =>
+    Object.fromEntries(PERSON_KEYS.map(key => [key, callback(key, REFLEXIVE_PRONOUNS[key])]));
+
+  return {
+    indikativ: {
+      praesens: mapPersons((key, pronoun) => `${presentLassen[key]} ${pronoun} ${innerVerb}`),
+      praeteritum: mapPersons(
+        (key, pronoun) => `${preteriteLassen[key]} ${pronoun} ${innerVerb}`
+      ),
+      perfekt: mapPersons(
+        (key, pronoun) => `${auxPresent[key]} ${pronoun} ${innerVerb} lassen`
+      ),
+      plusquamperfekt: mapPersons(
+        (key, pronoun) => `${auxPast[key]} ${pronoun} ${innerVerb} lassen`
+      ),
+      futur_i: mapPersons(
+        (key, pronoun) => `${werden[key]} ${pronoun} ${innerVerb} lassen`
+      ),
+      futur_ii: mapPersons(
+        (key, pronoun) => `${werden[key]} ${pronoun} haben ${innerVerb} lassen`
+      )
+    },
+    konjunktiv_i: {
+      praesens: mapPersons((key, pronoun) => `${k1Lassen[key]} ${pronoun} ${innerVerb}`),
+      perfekt: mapPersons((key, pronoun) => `${auxK1[key]} ${pronoun} ${innerVerb} lassen`),
+      futur_i: mapPersons(
+        (key, pronoun) => `${werdenK1[key]} ${pronoun} ${innerVerb} lassen`
+      )
+    },
+    konjunktiv_ii: {
+      praeteritum: mapPersons((key, pronoun) => `${k2Lassen[key]} ${pronoun} ${innerVerb}`),
+      plusquamperfekt: mapPersons(
+        (key, pronoun) => `${auxK2[key]} ${pronoun} ${innerVerb} lassen`
+      ),
+      futur_i: mapPersons((key, pronoun) => `${wuerde[key]} ${pronoun} ${innerVerb} lassen`),
+      futur_ii: mapPersons(
+        (key, pronoun) => `${wuerde[key]} ${pronoun} haben ${innerVerb} lassen`
+      )
+    },
+    imperativ: {
+      praesens: {
+        du: `lass dich ${innerVerb}`,
+        ihr: `lasst euch ${innerVerb}`,
+        sie_formal: `lassen Sie sich ${innerVerb}`
+      }
+    },
+    partizip: {
+      partizip_i: "-",
+      partizip_ii: `${innerVerb} lassen`
+    },
+    infinitiv: {
+      praesens: fullInfinitive
+    }
+  };
+}
+
 export function attachConjugations(words, irregularList) {
   validateIrregularEntries(irregularList);
   const irregularMap = buildIrregularMap(irregularList);
   (words || []).forEach(word => {
     if (!isVerbEntry(word)) return;
+    if (normalizeWord(word.word).toLowerCase() === "sich beraten lassen") {
+      word.conjugation_status = "irregular compound";
+      word.conjugation = buildReflexiveLassenCompound("beraten");
+      return;
+    }
     const info = parseVerb(word.word);
     if (!info) return;
 
