@@ -16,6 +16,7 @@
 ========================================================= */
 
 import { getAllWords, loadWords } from "./words.js";
+import { validateDictionary } from "./data-quality.js";
 import {
   signup,
   login,
@@ -55,6 +56,8 @@ let openedFromCategory = false;
 let detachCategorySearchOutsideClose = null;
 // Signed-in user and already fetched profile data.
 let currentUser = null;
+let authStateResolved = false;
+const ADMIN_EMAIL = "nayeemislam3378@gmail.com";
 const userProfileCache = new Map();
 // Active appearance, accessibility, and synchronization preferences.
 let currentAppSettings = null;
@@ -69,6 +72,8 @@ const customListWordIds = {
 // Notes and recently searched terms for the current account.
 let wordNotesMap = {};
 let searchHistoryItems = [];
+let reviewSchedule = {};
+let practiceOrigin = { type: "panel" };
 // Learning counters displayed on progress and account screens.
 let progressStats = {
   wordsOpened: 0,
@@ -223,6 +228,7 @@ function saveLearningStateToLocal(user = currentUser) {
         },
         notes: wordNotesMap,
         searchHistory: searchHistoryItems,
+        reviewSchedule,
         progressStats,
         lastContext
       })
@@ -256,6 +262,7 @@ function buildAccountDataSignature() {
     history: (searchHistoryItems || [])
       .map(item => String(item?.q || "").toLowerCase())
       .slice(0, MAX_SEARCH_HISTORY),
+    reviews: reviewSchedule,
     progress: progressStats,
     context: lastContext
   });
@@ -354,6 +361,7 @@ async function persistLearningStateIfLoggedIn() {
         examPrep: Array.from(customListWordIds.examPrep)
       },
       searchHistory: searchHistoryItems,
+      reviewSchedule,
       progressStats,
       lastContext
     });
@@ -391,6 +399,10 @@ function hydrateAccountLearningState(profile) {
   searchHistoryItems = Array.isArray(profile?.searchHistory)
     ? profile.searchHistory.slice(0, MAX_SEARCH_HISTORY)
     : [];
+  reviewSchedule =
+    profile?.reviewSchedule && typeof profile.reviewSchedule === "object"
+      ? profile.reviewSchedule
+      : {};
   progressStats = {
     wordsOpened: Number(profile?.progressStats?.wordsOpened || 0),
     daysActive: Number(profile?.progressStats?.daysActive || 0),
@@ -564,6 +576,354 @@ function isVerbWord(word) {
   const category = String(word?.category || "").toLowerCase();
   const type = String(word?.type || "").toLowerCase();
   return category === "verben" || type === "verb";
+}
+
+function renderDataQualityPage() {
+  if (!isAdminUser()) {
+    if (authStateResolved) {
+      setHomeRoute();
+      showSection("homePage");
+      showToast("Administrator access is required.", "error");
+    }
+    return;
+  }
+  const host = document.getElementById("desktopPage");
+  if (!host) return;
+  const report = validateDictionary(getAllWords());
+  showSection("desktopPage");
+  host.style.display = "block";
+  host.className = "quality-page";
+  host.innerHTML = `
+    <div class="quality-shell">
+      <div class="quality-heading">
+        <div>
+          <p class="quality-eyebrow">Dictionary maintenance</p>
+          <h1 tabindex="-1">Data Quality Dashboard</h1>
+          <p>Live checks for missing, malformed, and duplicate dictionary content.</p>
+        </div>
+        <button type="button" class="quality-export-btn" id="qualityExport">Export JSON report</button>
+      </div>
+      <div class="quality-kpis" aria-label="Validation summary">
+        <article><strong>${report.totalWords}</strong><span>Total words</span></article>
+        <article><strong>${report.validWords}</strong><span>Without errors</span></article>
+        <article class="quality-error"><strong>${report.counts.error}</strong><span>Errors</span></article>
+        <article class="quality-warning"><strong>${report.counts.warning}</strong><span>Warnings</span></article>
+      </div>
+      <div class="quality-note">
+        <strong>Easy examples:</strong> ${report.easyExamples.ready} of ${report.easyExamples.total} ready.
+        Empty entries are intentionally tracked only and are not validation errors.
+      </div>
+      <div class="quality-controls">
+        <label>Severity
+          <select id="qualitySeverity">
+            <option value="">All</option><option value="error">Errors</option><option value="warning">Warnings</option>
+          </select>
+        </label>
+        <label>Category
+          <select id="qualityCategory">
+            <option value="">All categories</option>
+            ${report.categoryStats.map(item => `<option value="${escapeHtml(item.category)}">${escapeHtml(item.category)} (${item.issues})</option>`).join("")}
+          </select>
+        </label>
+        <label class="quality-query">Find issue
+          <input id="qualityQuery" type="search" placeholder="Word, field, or message">
+        </label>
+      </div>
+      <p id="qualityResultCount" class="quality-result-count" role="status"></p>
+      <div id="qualityIssues" class="quality-issues"></div>
+    </div>`;
+
+  const severity = host.querySelector("#qualitySeverity");
+  const category = host.querySelector("#qualityCategory");
+  const query = host.querySelector("#qualityQuery");
+  const list = host.querySelector("#qualityIssues");
+  const count = host.querySelector("#qualityResultCount");
+  const draw = () => {
+    const needle = query.value.trim().toLowerCase();
+    const filtered = report.issues.filter(issue =>
+      (!severity.value || issue.severity === severity.value) &&
+      (!category.value || issue.category === category.value) &&
+      (!needle || `${issue.word} ${issue.field} ${issue.message}`.toLowerCase().includes(needle))
+    );
+    count.textContent = `${filtered.length} issue${filtered.length === 1 ? "" : "s"} shown`;
+    list.innerHTML = filtered.length ? filtered.map(issue => `
+      <button type="button" class="quality-issue quality-${issue.severity}" data-word-id="${escapeHtml(issue.id)}">
+        <span class="quality-badge">${escapeHtml(issue.severity)}</span>
+        <span><strong>${escapeHtml(issue.word)}</strong><small>${escapeHtml(issue.category)} · ${escapeHtml(issue.field)}</small></span>
+        <span class="quality-message">${escapeHtml(issue.message)}</span>
+      </button>`).join("") : `<div class="quality-empty">No issues match these filters.</div>`;
+  };
+  [severity, category, query].forEach(control => control.addEventListener("input", draw));
+  list.addEventListener("click", event => {
+    const button = event.target.closest("[data-word-id]");
+    if (!button?.dataset.wordId) return;
+    const word = getAllWords().find(item => String(item.id) === button.dataset.wordId);
+    if (word) openWordDetail(word.id);
+  });
+  host.querySelector("#qualityExport").addEventListener("click", () => {
+    if (!isAdminUser()) {
+      showToast("Administrator access is required.", "error");
+      return;
+    }
+    const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `dictionary-quality-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  });
+  draw();
+  host.querySelector("h1")?.focus();
+}
+
+function speakGerman(text) {
+  const clean = String(text || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  if (!clean) return;
+  if (!("speechSynthesis" in window)) {
+    showToast("Audio pronunciation is not supported by this browser.", "error");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(clean);
+  utterance.lang = "de-DE";
+  utterance.rate = 0.86;
+  const germanVoice = window.speechSynthesis
+    .getVoices()
+    .find(voice => String(voice.lang || "").toLowerCase().startsWith("de"));
+  if (germanVoice) utterance.voice = germanVoice;
+  window.speechSynthesis.speak(utterance);
+}
+
+function showLearningToolPage(className, html) {
+  const page = document.getElementById("desktopPage");
+  if (!page) return null;
+  showSection("desktopPage");
+  page.style.display = "block";
+  page.className = className;
+  page.innerHTML = html;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  return page;
+}
+
+function buildConjugationQuestion() {
+  const people = [
+    ["ich", "ich"], ["du", "du"], ["er_sie_es", "er/sie/es"],
+    ["wir", "wir"], ["ihr", "ihr"], ["sie_formal", "Sie"]
+  ];
+  const tenses = [
+    ["praesens", "Präsens"], ["praeteritum", "Präteritum"]
+  ];
+  const verbs = getAllWords().filter(word => isVerbWord(word) && word.conjugation);
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    const word = verbs[Math.floor(Math.random() * verbs.length)];
+    const [tenseKey, tenseLabel] = tenses[Math.floor(Math.random() * tenses.length)];
+    const [personKey, personLabel] = people[Math.floor(Math.random() * people.length)];
+    const indicative = getConjugationNode(word.conjugation, "indikativ");
+    const tense = getConjugationNode(indicative, tenseKey);
+    const answer = getConjugationPersonValue(tense, personKey);
+    if (answer && answer !== "-") return { word, tenseLabel, personLabel, answer };
+  }
+  return null;
+}
+
+function renderConjugationPracticePage() {
+  if (!currentUser) {
+    if (authStateResolved) {
+      promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
+    }
+    return;
+  }
+  let score = 0;
+  let answered = 0;
+  let question = buildConjugationQuestion();
+  const page = showLearningToolPage("learning-tool-page", `
+    <div class="learning-tool-shell">
+      <div class="learning-tool-head">
+        <button class="back-btn" id="practiceBackBtn"></button>
+        <div><p class="quality-eyebrow">Active recall</p><h1>Conjugation Practice</h1>
+        <p>Type the correct verb form without looking at the table.</p></div>
+        <strong id="practiceScore" class="practice-score">0 / 0</strong>
+      </div>
+      <section class="practice-card" id="practiceCard"></section>
+    </div>`);
+  if (!page) return;
+  const backButton = page.querySelector("#practiceBackBtn");
+  if (practiceOrigin.type === "word") {
+    backButton.textContent = "← Back to Word";
+    backButton.addEventListener("click", () => {
+      const word = getAllWords().find(item => String(item.id) === String(practiceOrigin.wordId));
+      if (!word) return goHomeWithoutRefresh();
+      setSingleRouteParam("word", word.word);
+      openWordDetail(word.id);
+    });
+  } else if (practiceOrigin.type === "category") {
+    backButton.textContent = "← Back to Category";
+    backButton.addEventListener("click", () => {
+      setSingleRouteParam("category", practiceOrigin.category);
+      openCategoryPage(practiceOrigin.category, { requireEntryWarning: false });
+    });
+  } else {
+    backButton.textContent = "🏠 Home";
+    backButton.addEventListener("click", goHomeWithoutRefresh);
+  }
+  const card = page.querySelector("#practiceCard");
+  const scoreNode = page.querySelector("#practiceScore");
+
+  const draw = () => {
+    if (!question) {
+      card.innerHTML = `<p>No conjugation questions are available.</p>`;
+      return;
+    }
+    card.innerHTML = `
+      <span class="practice-level">${escapeHtml(question.word.level || "German")}</span>
+      <h2>${escapeHtml(question.word.word)}</h2>
+      <p>Complete: <strong>${escapeHtml(question.personLabel)} ______</strong></p>
+      <p class="practice-tense">${escapeHtml(question.tenseLabel)}</p>
+      <form id="practiceForm">
+        <label for="practiceAnswer">Your answer</label>
+        <input id="practiceAnswer" autocomplete="off" spellcheck="false" required>
+        <button class="settings-primary" type="submit">Check answer</button>
+      </form>
+      <div id="practiceFeedback" class="practice-feedback" role="status" aria-live="polite"></div>`;
+    const form = card.querySelector("#practiceForm");
+    const input = card.querySelector("#practiceAnswer");
+    input.focus();
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const supplied = input.value.trim().toLocaleLowerCase("de");
+      const expected = question.answer.trim().toLocaleLowerCase("de");
+      const correct = supplied === expected;
+      answered += 1;
+      if (correct) score += 1;
+      scoreNode.textContent = `${score} / ${answered}`;
+      input.disabled = true;
+      form.querySelector("button").disabled = true;
+      const feedback = card.querySelector("#practiceFeedback");
+      feedback.className = `practice-feedback ${correct ? "is-correct" : "is-wrong"}`;
+      feedback.innerHTML = correct
+        ? `Correct! <strong>${escapeHtml(question.personLabel)} ${escapeHtml(question.answer)}</strong>`
+        : `Correct answer: <strong>${escapeHtml(question.personLabel)} ${escapeHtml(question.answer)}</strong>`;
+      feedback.insertAdjacentHTML("beforeend", `
+        <div class="practice-feedback-actions">
+          <button type="button" id="practiceListenBtn">🔊 Listen</button>
+          <button type="button" id="nextPracticeBtn" class="settings-primary">Next question</button>
+        </div>`);
+      feedback.querySelector("#practiceListenBtn").addEventListener("click", () =>
+        speakGerman(`${question.personLabel} ${question.answer}`)
+      );
+      feedback.querySelector("#nextPracticeBtn").addEventListener("click", () => {
+        question = buildConjugationQuestion();
+        draw();
+      });
+    });
+  };
+  draw();
+}
+
+function getReviewWords() {
+  return Object.entries(reviewSchedule)
+    .sort((a, b) => Number(a[1]?.due || 0) - Number(b[1]?.due || 0))
+    .map(([id]) => getAllWords().find(word => String(word.id) === id))
+    .filter(Boolean);
+}
+
+function scheduleReview(wordId, rating) {
+  const current = reviewSchedule[wordId] || { repetitions: 0, interval: 0 };
+  let repetitions = Number(current.repetitions || 0);
+  let interval = Number(current.interval || 0);
+  if (rating === "again") {
+    repetitions = 0;
+    interval = 0;
+  } else if (rating === "hard") {
+    interval = 1;
+  } else if (rating === "good") {
+    repetitions += 1;
+    interval = [1, 3, 7, 14, 30][Math.min(repetitions - 1, 4)];
+  } else {
+    repetitions += 1;
+    interval = Math.max(4, Math.round((interval || 2) * 2.5));
+  }
+  const delay = rating === "again" ? 10 * 60 * 1000 : interval * 86400000;
+  reviewSchedule[wordId] = { repetitions, interval, due: Date.now() + delay, lastRating: rating };
+  persistLearningStateIfLoggedIn();
+}
+
+function renderReviewPage() {
+  if (!currentUser) {
+    if (authStateResolved) {
+      promptLoginForRestrictedCategory("Login to review your saved words.");
+    }
+    return;
+  }
+  let queue = getReviewWords();
+  let index = 0;
+  let revealed = false;
+  const page = showLearningToolPage("learning-tool-page", `
+    <div class="learning-tool-shell">
+      <div class="learning-tool-head">
+        <button class="back-btn" id="reviewHomeBtn">🏠 Home</button>
+        <div><p class="quality-eyebrow">Memory schedule</p><h1>Spaced Repetition</h1>
+        <p>Review difficult words more often and familiar words less often.</p></div>
+        <strong id="reviewCount" class="practice-score"></strong>
+      </div>
+      <section class="practice-card review-card" id="reviewCard"></section>
+    </div>`);
+  if (!page) return;
+  page.querySelector("#reviewHomeBtn").addEventListener("click", goHomeWithoutRefresh);
+  const card = page.querySelector("#reviewCard");
+  const count = page.querySelector("#reviewCount");
+  const draw = () => {
+    const word = queue[index];
+    count.textContent = `${Math.min(index + 1, queue.length)} / ${queue.length}`;
+    if (!word) {
+      count.textContent = "0 words";
+      card.innerHTML = `
+        <div class="review-empty"><h2>You are caught up!</h2>
+        <p>Add words from their detail pages to build your personal review queue.</p></div>`;
+      return;
+    }
+    const toList = value => Array.isArray(value) ? value : value ? [value] : [];
+    const translations = [...toList(word.englisch), ...toList(word.bangla)].join(" · ");
+    const dueAt = Number(reviewSchedule[word.id]?.due || 0);
+    const dueText = dueAt <= Date.now()
+      ? "Due now"
+      : `Next review: ${new Date(dueAt).toLocaleDateString()}`;
+    card.innerHTML = `
+      ${queue.length > 1 ? `<button type="button" class="review-nav-btn review-prev" aria-label="Previous review word">‹</button>
+      <button type="button" class="review-nav-btn review-next" aria-label="Next review word">›</button>` : ""}
+      <span class="practice-level">${escapeHtml(word.category || "")}${word.level ? ` · ${escapeHtml(word.level)}` : ""}</span>
+      <button type="button" class="audio-pronounce-btn" id="reviewListenBtn">🔊 Listen</button>
+      <h2>${escapeHtml(word.article ? `${word.article} ${word.word}` : word.word)}</h2>
+      <p class="review-due-label">${escapeHtml(dueText)}</p>
+      <div id="reviewAnswer" class="review-answer ${revealed ? "is-visible" : ""}">
+        <p>${escapeHtml(translations || word.meaning || "-")}</p>
+      </div>
+      ${revealed ? `<div class="review-ratings" aria-label="How well did you remember?">
+        <button data-rating="again">Again<small>10 min</small></button>
+        <button data-rating="hard">Hard<small>1 day</small></button>
+        <button data-rating="good">Good<small>scheduled</small></button>
+        <button data-rating="easy">Easy<small>longer</small></button>
+      </div>` : `<button id="revealReviewBtn" class="settings-primary">Show meaning</button>`}`;
+    card.querySelector("#reviewListenBtn").addEventListener("click", () => speakGerman(word.word));
+    const move = direction => {
+      index = (index + direction + queue.length) % queue.length;
+      revealed = false;
+      draw();
+    };
+    card.querySelector(".review-prev")?.addEventListener("click", () => move(-1));
+    card.querySelector(".review-next")?.addEventListener("click", () => move(1));
+    card.querySelector("#revealReviewBtn")?.addEventListener("click", () => {
+      revealed = true;
+      draw();
+    });
+    card.querySelectorAll("[data-rating]").forEach(button => button.addEventListener("click", () => {
+      scheduleReview(word.id, button.dataset.rating);
+      index = queue.length > 1 ? (index + 1) % queue.length : 0;
+      revealed = false;
+      draw();
+    }));
+  };
+  draw();
 }
 
 function formatExamples(word) {
@@ -1945,6 +2305,21 @@ function handleRouting() {
     return;
   }
 
+  if (page === "conjugation-practice") {
+    renderConjugationPracticePage();
+    return;
+  }
+
+  if (page === "review") {
+    renderReviewPage();
+    return;
+  }
+
+  if (page === "quality") {
+    renderDataQualityPage();
+    return;
+  }
+
   if (page === "favorites") {
     renderFavoritesPage();
     return;
@@ -2057,6 +2432,22 @@ function openCategoryPage(categoryName, options = {}) {
 
   topBar.appendChild(backBtn);
   topBar.appendChild(title);
+  if (categoryName === "Verben") {
+    const categoryPracticeBtn = document.createElement("button");
+    categoryPracticeBtn.type = "button";
+    categoryPracticeBtn.className = "conjugation-open-btn category-practice-btn";
+    categoryPracticeBtn.textContent = "✍️ Practice Verbs";
+    categoryPracticeBtn.addEventListener("click", () => {
+      if (!currentUser) {
+        promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
+        return;
+      }
+      practiceOrigin = { type: "category", category: categoryName };
+      setSingleRouteParam("page", "conjugation-practice");
+      renderConjugationPracticePage();
+    });
+    topBar.appendChild(categoryPracticeBtn);
+  }
   categoryPage.appendChild(topBar);
 
 /* =========================================================
@@ -2075,11 +2466,19 @@ searchWrapper.style.margin = "30px auto";
 const searchInput = document.createElement("input");
 searchInput.placeholder = getCategorySearchPlaceholder(categoryName);
 searchInput.className = "category-search";
+searchInput.setAttribute("aria-label", `Search within ${categoryName}`);
+searchInput.setAttribute("aria-autocomplete", "list");
+searchInput.setAttribute("aria-expanded", "false");
 
 const suggestionBox = document.createElement("div");
 suggestionBox.className = "suggestions-box";
+suggestionBox.id = `category-suggestions-${categoryName.replace(/\W+/g, "-")}`;
+suggestionBox.setAttribute("role", "listbox");
+searchInput.setAttribute("aria-controls", suggestionBox.id);
 const categorySearchMessage = document.createElement("div");
 categorySearchMessage.className = "search-message";
+categorySearchMessage.setAttribute("role", "status");
+categorySearchMessage.setAttribute("aria-live", "polite");
 categorySearchMessage.style.marginTop = "10px";
 categorySearchMessage.style.textAlign = "left";
 categorySearchMessage.style.fontSize = "14px";
@@ -2185,7 +2584,7 @@ let selectedIndex = -1;
 
 searchInput.addEventListener("input", debounce(function () {
 
-  const query = searchInput.value.trim().toLowerCase();
+  const query = searchInput.value.trim();
   categorySearchMessage.textContent = "";
 
   suggestionBox.innerHTML = "";
@@ -2196,23 +2595,16 @@ searchInput.addEventListener("input", debounce(function () {
     return;
   }
 
-  if (/\d/.test(query)) {
-    categorySearchMessage.textContent = "Numbers are not allowed. Type a word.";
-    suggestionBox.classList.remove("active");
-    return;
-  }
-
-  const exactMatches = words.filter(
-    w => w.word.toLowerCase() === query
-  );
+  const exactMatches = findExactWordMatches(words, query);
 
   if (exactMatches.length > 1) {
     categorySearchMessage.innerHTML = buildDuplicateResultHTML(exactMatches, words);
   }
 
+  const normalizedQuery = query.toLocaleLowerCase("de");
   const matches = words
-    .filter(w => w.word.toLowerCase().startsWith(query))
-    .slice(0, 4);
+    .filter(word => String(word.word || "").toLocaleLowerCase("de").startsWith(normalizedQuery))
+    .slice(0, 8);
 
   if (matches.length === 0) {
     if (exactMatches.length === 0) {
@@ -2232,14 +2624,15 @@ searchInput.addEventListener("input", debounce(function () {
     return;
   }
 
-  matches.forEach(word => {
+  matches.forEach((word, resultIndex) => {
 
     const item = document.createElement("div");
     item.className = "suggestion-item";
+    item.id = `category-suggestion-${resultIndex}`;
+    item.setAttribute("role", "option");
+    item.setAttribute("aria-selected", "false");
 
-    // Highlight typed letters
-    const regex = new RegExp(`^(${query})`, "i");
-    item.innerHTML = word.word.replace(regex, "<mark>$1</mark>");
+    item.innerHTML = `<strong>${escapeHtml(word.word)}</strong>${word.level ? `<small>${escapeHtml(word.level)}</small>` : ""}`;
 
 item.addEventListener("click", function (e) {
 
@@ -2270,6 +2663,7 @@ item.addEventListener("click", function (e) {
   });
 
   suggestionBox.classList.add("active");
+  searchInput.setAttribute("aria-expanded", "true");
 
 }, 250));
 
@@ -2319,8 +2713,13 @@ searchInput.addEventListener("keydown", function (e) {
 });
 
 function updateActive(items) {
-  items.forEach(i => i.classList.remove("active"));
+  items.forEach(i => {
+    i.classList.remove("active");
+    i.setAttribute("aria-selected", "false");
+  });
   items[selectedIndex].classList.add("active");
+  items[selectedIndex].setAttribute("aria-selected", "true");
+  searchInput.setAttribute("aria-activedescendant", items[selectedIndex].id);
 }
 
   /* =========================================================
@@ -2976,6 +3375,40 @@ function openWordDetail(wordId, options = {}) {
   };
   topActions.appendChild(learnedBtn);
 
+  const audioBtn = document.createElement("button");
+  audioBtn.className = "audio-pronounce-btn";
+  audioBtn.type = "button";
+  audioBtn.textContent = "🔊 Pronounce";
+  audioBtn.setAttribute("aria-label", `Hear the German pronunciation of ${word.word}`);
+  audioBtn.addEventListener("click", () => speakGerman(word.word));
+
+  const reviewBtn = document.createElement("button");
+  reviewBtn.className = "favorite-btn review-add-btn";
+  reviewBtn.type = "button";
+  const syncReviewButton = () => {
+    const added = Boolean(reviewSchedule[word.id]);
+    reviewBtn.textContent = added ? "🧠 In Review" : "＋ Add to Review";
+    reviewBtn.classList.toggle("active", added);
+  };
+  syncReviewButton();
+  reviewBtn.addEventListener("click", async () => {
+    if (!currentUser) {
+      promptLoginForRestrictedCategory("Login to add words to Spaced Repetition.");
+      return;
+    }
+    if (reviewSchedule[word.id]) {
+      delete reviewSchedule[word.id];
+      showToast("Removed from spaced repetition.", "success");
+    } else {
+      reviewSchedule[word.id] = { repetitions: 0, interval: 0, due: Date.now() };
+      showToast("Added to today’s review queue.", "success");
+    }
+    syncReviewButton();
+    await persistLearningStateIfLoggedIn();
+  });
+  topActions.appendChild(reviewBtn);
+  topActions.appendChild(audioBtn);
+
   if (isVerbEntry) {
     const conjugationBtn = document.createElement("button");
     conjugationBtn.className = "conjugation-open-btn";
@@ -2985,6 +3418,20 @@ function openWordDetail(wordId, options = {}) {
       openConjugationPage(word.id);
     });
     topActions.appendChild(conjugationBtn);
+
+    const practiceBtn = document.createElement("button");
+    practiceBtn.className = "conjugation-open-btn practice-open-btn";
+    practiceBtn.textContent = "Practice Conjugation";
+    practiceBtn.addEventListener("click", () => {
+      if (!currentUser) {
+        promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
+        return;
+      }
+      practiceOrigin = { type: "word", wordId: word.id };
+      setSingleRouteParam("page", "conjugation-practice");
+      renderConjugationPracticePage();
+    });
+    topActions.appendChild(practiceBtn);
   }
 
   detailPage.appendChild(topBar);
@@ -3001,6 +3448,9 @@ function openWordDetail(wordId, options = {}) {
     ["Verben", "Nomen", "Adjektiven", "Adverbien"].includes(word.category) && word.level
       ? `<p class="detail-level">(Niveau ${escapeHtml(word.level)})</p>`
       : "";
+  const hasEasyExamples =
+    ["Verben", "Adjektiven", "Adverbien"].includes(word.category) &&
+    getEasyExamples(word).length > 0;
 
   card.innerHTML = `
   <h1 class="detail-title${detailLevelLabel ? " has-level" : ""}">
@@ -3058,7 +3508,7 @@ function openWordDetail(wordId, options = {}) {
 
   <div class="detail-section">
     ${
-      ["Verben", "Adjektiven", "Adverbien"].includes(word.category)
+      hasEasyExamples
         ? `<div class="detail-section-heading">
              <h3>Examples</h3>
              <button
@@ -3071,7 +3521,7 @@ function openWordDetail(wordId, options = {}) {
            </div>`
         : "<h3>Examples</h3>"
     }
-    <p${["Verben", "Adjektiven", "Adverbien"].includes(word.category) ? ' id="wordExamples" class="word-examples-content"' : ""}>${formatExamples(word)}</p>
+    <p${hasEasyExamples ? ' id="wordExamples" class="word-examples-content"' : ""}>${formatExamples(word)}</p>
   </div>
 
   <div class="detail-section">
@@ -3103,7 +3553,7 @@ function openWordDetail(wordId, options = {}) {
 
   detailPage.appendChild(card);
 
-  if (["Verben", "Adjektiven", "Adverbien"].includes(word.category)) {
+  if (hasEasyExamples) {
     const easyExamplesToggle = document.getElementById("easyExamplesToggle");
     const examplesContent = document.getElementById("wordExamples");
     const defaultExamplesHtml = formatExamples(word);
@@ -4167,6 +4617,22 @@ function syncPanelLogoutVisibility(isLoggedIn) {
   });
 }
 
+function isAdminUser(user = currentUser) {
+  return Boolean(
+    user?.email &&
+    String(user.email).trim().toLowerCase() === ADMIN_EMAIL
+  );
+}
+
+function syncAdminAccessUI() {
+  const canAccess = isAdminUser();
+  document.querySelectorAll('[data-page="quality"]').forEach(button => {
+    button.hidden = !canAccess;
+    button.classList.toggle("hidden", !canAccess);
+    button.setAttribute("aria-hidden", String(!canAccess));
+  });
+}
+
 /* =========================================================
    AUTH STATE
 
@@ -4189,9 +4655,12 @@ function handleAuthState() {
     if (panelLoginBtn) panelLoginBtn.textContent = "Login";
     syncPanelLogoutVisibility(false);
   }
+  syncAdminAccessUI();
 
   listenAuth(async (user) => {
     currentUser = user || null;
+    authStateResolved = true;
+    syncAdminAccessUI();
 
     if (user) {
       // Apply logged-in UI immediately to avoid delayed access after refresh.
@@ -4268,6 +4737,7 @@ function handleAuthState() {
       customListWordIds.examPrep.clear();
       wordNotesMap = {};
       searchHistoryItems = [];
+      reviewSchedule = {};
       progressStats = {
         wordsOpened: 0,
         daysActive: 0,
@@ -4279,6 +4749,12 @@ function handleAuthState() {
         panelLoginBtn.textContent = "Login";
       }
       syncPanelLogoutVisibility(false);
+      const signedOutPage = new URLSearchParams(window.location.search).get("page");
+      if (signedOutPage === "quality") {
+        goHomeWithoutRefresh();
+      } else if (["conjugation-practice", "review"].includes(signedOutPage)) {
+        handleRouting();
+      }
     }
   });
 }
@@ -4374,18 +4850,9 @@ if (!input) return;
     // ❌ If empty
     if (query === "") return;
 
-    // ❌ If contains number
-    if (/\d/.test(query)) {
-      messageBox.textContent = "Numbers are not allowed, type a word";
-      return;
-    }
-
     const words = getAllWords();
 
-    // Find exact matches
-    const matches = words.filter(
-      w => w.word.toLowerCase() === query.toLowerCase()
-    );
+    const matches = findExactWordMatches(words, query);
 
     // ❌ Not found
     if (matches.length === 0) {
@@ -4426,7 +4893,7 @@ if (!input) return;
 
   // ⌨ ENTER key
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && selectedIndex < 0) {
       performSearch();
     }
   });
@@ -4437,36 +4904,34 @@ if (!input) return;
 
 input.addEventListener("input", debounce(function () {
 
-  const query = input.value.trim().toLowerCase();
+  const query = input.value.trim();
   messageBox.textContent = "";
 
   suggestionBox.innerHTML = "";
   selectedIndex = -1;
 
-  if (!query) {
-    suggestionBox.classList.remove("active");
-    return;
-  }
-
-  if (/\d/.test(query)) {
-    messageBox.textContent = "Numbers are not allowed, type a word";
-    suggestionBox.classList.remove("active");
-    return;
+    if (!query) {
+      suggestionBox.classList.remove("active");
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+      return;
   }
 
   const words = getAllWords();
-  const exactMatches = words.filter(w => w.word.toLowerCase() === query);
+  const exactMatches = findExactWordMatches(words, query);
 
   if (exactMatches.length > 1) {
     messageBox.innerHTML = buildDuplicateResultHTML(exactMatches, words);
   }
 
+  const normalizedQuery = query.toLocaleLowerCase("de");
   const matches = words
-    .filter(w => w.word.toLowerCase().startsWith(query))
-    .slice(0, 4);
+    .filter(word => String(word.word || "").toLocaleLowerCase("de").startsWith(normalizedQuery))
+    .slice(0, 8);
 
   if (matches.length === 0) {
     suggestionBox.classList.remove("active");
+    input.setAttribute("aria-expanded", "false");
     return;
   }
 
@@ -4474,10 +4939,12 @@ input.addEventListener("input", debounce(function () {
 
     const item = document.createElement("div");
     item.className = "suggestion-item";
+    item.id = `home-suggestion-${index}`;
+    item.setAttribute("role", "option");
+    item.setAttribute("aria-selected", "false");
 
-    // Highlight typed letters
-    const regex = new RegExp(`^(${query})`, "i");
-    item.innerHTML = word.word.replace(regex, "<mark>$1</mark>");
+    const metadata = [word.category, word.level].filter(Boolean).map(escapeHtml).join(" · ");
+    item.innerHTML = `<strong>${escapeHtml(word.word)}</strong>${metadata ? `<small>${metadata}</small>` : ""}`;
 
     item.addEventListener("click", function (e) {
 
@@ -4507,6 +4974,7 @@ input.addEventListener("input", debounce(function () {
     suggestionBox.appendChild(item);
   });
   suggestionBox.classList.add("active");
+  input.setAttribute("aria-expanded", "true");
 
 }, 250));
 
@@ -4549,13 +5017,19 @@ input.addEventListener("keydown", function (e) {
 
   if (e.key === "Escape") {
     suggestionBox.classList.remove("active");
+    input.setAttribute("aria-expanded", "false");
   }
 
 });
 
 function updateActive(items) {
-  items.forEach(i => i.classList.remove("active"));
+  items.forEach(i => {
+    i.classList.remove("active");
+    i.setAttribute("aria-selected", "false");
+  });
   items[selectedIndex].classList.add("active");
+  items[selectedIndex].setAttribute("aria-selected", "true");
+  input.setAttribute("aria-activedescendant", items[selectedIndex].id);
 }
 
 }
@@ -4589,6 +5063,8 @@ function syncPanelButtonState() {
   mobileBtn?.classList.toggle("is-active", Boolean(mobileOpen));
   desktopBtn?.setAttribute("aria-expanded", String(Boolean(desktopOpen)));
   mobileBtn?.setAttribute("aria-expanded", String(Boolean(mobileOpen)));
+  desktopPanel?.setAttribute("aria-hidden", String(!desktopOpen));
+  panel?.setAttribute("aria-hidden", String(!mobileOpen));
   desktopBtn?.setAttribute(
     "aria-label",
     desktopOpen ? "Close desktop menu" : "Open desktop menu"
@@ -4668,6 +5144,37 @@ async function handleSidePanelAction(page) {
   if (page === "favorites") {
     setSingleRouteParam("page", "favorites");
     renderFavoritesPage();
+    return;
+  }
+
+  if (page === "conjugation-practice") {
+    if (!currentUser) {
+      promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
+      return;
+    }
+    practiceOrigin = { type: "panel" };
+    setSingleRouteParam("page", "conjugation-practice");
+    renderConjugationPracticePage();
+    return;
+  }
+
+  if (page === "review") {
+    if (!currentUser) {
+      promptLoginForRestrictedCategory("Login to review your saved words.");
+      return;
+    }
+    setSingleRouteParam("page", "review");
+    renderReviewPage();
+    return;
+  }
+
+  if (page === "quality") {
+    if (!isAdminUser()) {
+      showToast("Administrator access is required.", "error");
+      return;
+    }
+    setSingleRouteParam("page", "quality");
+    renderDataQualityPage();
     return;
   }
 

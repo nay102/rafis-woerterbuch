@@ -32,6 +32,7 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#homePage">Skip to main content</a>
     <!-- Top header with logo, site title, dark mode, login, and menu buttons -->
     <header class="header">
       <div class="container header-inner">
@@ -93,12 +94,15 @@
           id="searchInput"
           placeholder="Search word..."
           autocomplete="off"
+          aria-label="Search the German dictionary"
+          aria-autocomplete="list"
+          aria-controls="homeSuggestions"
+          aria-expanded="false"
         />
-        <div id="homeSuggestions" class="suggestions-box"></div>
+        <div id="homeSuggestions" class="suggestions-box" role="listbox"></div>
       </div>
-
       <!-- Search feedback, dictionary count, and homepage call-to-action -->
-      <div id="searchMessage" class="search-message"></div>
+      <div id="searchMessage" class="search-message" role="status" aria-live="polite"></div>
       <div id="wordCount" class="word-counter"></div>
       <button id="sprachweltHomeCta" class="home-sprachwelt-cta" type="button">
         ✨ Rafis Sprachwelt
@@ -126,10 +130,10 @@
     <section id="desktopPage" style="display: none"></section>
 
     <!-- Login and signup modal with email, password, mode switch, and reset link -->
-    <div id="authModal" class="hidden modal-overlay">
+    <div id="authModal" class="hidden modal-overlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
       <div class="modal-box">
         <!-- Close button for the login/signup modal -->
-        <span id="closeAuth" class="close-btn">✖</span>
+        <button id="closeAuth" class="close-btn" type="button" aria-label="Close authentication dialog">✖</button>
 
         <!-- Auth title and subtitle change between login and signup modes -->
         <h2 id="authTitle">Welcome back</h2>
@@ -142,11 +146,14 @@
 
         <!-- Email/password form used for login and signup -->
         <form id="authForm">
-          <input id="authEmail" type="email" placeholder="Email" required />
+          <label class="sr-only" for="authEmail">Email address</label>
+          <input id="authEmail" type="email" placeholder="Email" autocomplete="email" required />
+          <label class="sr-only" for="authPassword">Password</label>
           <input
             id="authPassword"
             type="password"
             placeholder="Password"
+            autocomplete="current-password"
             required
           />
           <button type="submit" id="authSubmitBtn">Login</button>
@@ -243,7 +250,7 @@
     </footer>
 
     <!-- Desktop side panel navigation opened from the desktop menu button -->
-    <div id="desktopSidePanel" class="desktop-side-panel">
+    <div id="desktopSidePanel" class="desktop-side-panel" aria-hidden="true" aria-label="Desktop navigation">
       <div class="desktop-panel-content">
         <!-- Main website navigation links -->
         <button type="button" data-page="home">🏠 Home</button>
@@ -254,6 +261,9 @@
         <button type="button" data-page="ausbildung">📚 Ausbildung</button>
         <button type="button" data-page="option5">📝 Exam Zone</button>
         <button type="button" data-page="option6">🚀 Pro Tools</button>
+        <button type="button" data-page="conjugation-practice">✍️ Conjugation Practice</button>
+        <button type="button" data-page="review">🧠 Review Words</button>
+        <button type="button" data-page="quality" class="admin-only hidden" hidden>🩺 Data Quality</button>
 
         <!-- Desktop install button appears when the PWA can be installed -->
         <button
@@ -272,7 +282,7 @@
     </div>
 
     <!-- Mobile side panel navigation opened from the mobile menu button -->
-    <div id="mobileSidePanel" class="mobile-side-panel">
+    <div id="mobileSidePanel" class="mobile-side-panel" aria-hidden="true" aria-label="Mobile navigation">
       <div class="panel-content">
         <!-- Main mobile navigation links -->
         <button type="button" data-page="home">🏠 Home</button>
@@ -283,6 +293,9 @@
         <button type="button" data-page="ausbildung">📚 Ausbildung</button>
         <button type="button" data-page="option5">📝 Exam Zone</button>
         <button type="button" data-page="option6">🚀 Pro Tools</button>
+        <button type="button" data-page="conjugation-practice">✍️ Conjugation Practice</button>
+        <button type="button" data-page="review">🧠 Review Words</button>
+        <button type="button" data-page="quality" class="admin-only hidden" hidden>🩺 Data Quality</button>
 
         <!-- Mobile theme, login/profile, and install controls -->
         <button id="panelDarkToggle" type="button">🌙 Dark Mode</button>
@@ -303,22 +316,22 @@
     </div>
 
     <!-- User profile modal: profile details, password change, and account actions render here -->
-    <div id="userInfoModal" class="hidden modal-overlay">
+    <div id="userInfoModal" class="hidden modal-overlay" role="dialog" aria-modal="true" aria-labelledby="userProfileTitle">
       <div class="modal-box user-modal-box">
-        <span id="closeUserInfo" class="close-btn">✖</span>
-        <h2>👤 User Profile</h2>
+        <button id="closeUserInfo" class="close-btn" type="button" aria-label="Close user profile">✖</button>
+        <h2 id="userProfileTitle">👤 User Profile</h2>
         <div id="userInfoContent" class="user-info-content"></div>
       </div>
     </div>
 
     <!-- Restricted-content warning modal for Schimpfwörter category -->
-    <div id="schimpfWarningModal" class="hidden modal-overlay">
+    <div id="schimpfWarningModal" class="hidden modal-overlay" role="dialog" aria-modal="true" aria-labelledby="schimpfWarningTitle">
       <div class="modal-box warning-modal-box">
         <!-- Warning modal close button -->
-        <span id="closeSchimpfWarning" class="close-btn">✖</span>
+        <button id="closeSchimpfWarning" class="close-btn" type="button" aria-label="Close content warning">✖</button>
 
         <!-- Warning modal title and multilingual caution text -->
-        <h2>⚠️ Content Warning</h2>
+        <h2 id="schimpfWarningTitle">⚠️ Content Warning</h2>
         <p class="warning-modal-text">
           Diese Wörter sind beleidigend und sollten mit Vorsicht verwendet
           werden.

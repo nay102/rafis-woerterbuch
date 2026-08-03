@@ -1113,3 +1113,43 @@ body.dark .close-btn:hover {
       background: #111827;
     }
 }
+body.dark .quality-kpis article,
+body.dark .quality-controls :is(select, input),
+body.dark .quality-issue {
+  border-color: #334155;
+  background: #111827;
+  color: #e5e7eb;
+}
+body.dark .quality-heading p,
+body.dark .quality-kpis span,
+body.dark .quality-result-count,
+body.dark .quality-issue small,
+body.dark .suggestion-item small {
+  color: #94a3b8;
+}
+body.dark .quality-note {
+  background: #172554;
+  color: #bfdbfe;
+}
+body.dark .quality-empty {
+  border-color: #475569;
+  color: #94a3b8;
+}
+body.dark .practice-card,
+body.dark .review-ratings button,
+body.dark .review-nav-btn {
+  border-color: #334155;
+  background: #111827;
+  color: #e5e7eb;
+}
+body.dark .practice-score,
+body.dark .practice-level {
+  background: #1e3a8a;
+  color: #dbeafe;
+}
+body.dark #practiceForm input,
+body.dark .review-answer {
+  border-color: #475569;
+  background: #1f2937;
+  color: #f8fafc;
+}
