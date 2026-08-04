@@ -2,8 +2,8 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v93";
-const DATA_VERSION = "2026-03-16-3";
+const CACHE_VERSION = "rw-cache-v94";
+const DATA_VERSION = "2026-03-16-3-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {
@@ -20,18 +20,21 @@ function toAbsolute(path) {
   return `${base}${clean}`;
 }
 
-function coreUrls() {
+function optionalUrls() {
   const resourcePdfNames = {
     grammar: ["grammar-reference", "verb-and-sentence-guide", "grammar-quick-review"],
     vocabulary: ["everyday-vocabulary", "topic-word-list", "useful-expressions"],
     worksheets: ["grammar-worksheet", "reading-worksheet", "mixed-practice"],
     flashcards: ["daily-life-flashcards", "verbs-flashcards", "expressions-flashcards"]
   };
-  const resourcePdfs = ["a1", "a2", "b1", "b2"].flatMap(level =>
+  return ["a1", "a2", "b1", "b2"].flatMap(level =>
     Object.entries(resourcePdfNames).flatMap(([category, names]) =>
       names.map(name => toAbsolute(`assets/pdfs/${level}/${category}/${name}.pdf`))
     )
   );
+}
+
+function coreUrls() {
   return [
     toAbsolute(""),
     toAbsolute("index.html"),
@@ -76,6 +79,21 @@ function coreUrls() {
     toAbsolute("assets/icon-512.png"),
     toAbsolute("assets/icon-launch-192.png"),
     toAbsolute("assets/icon-launch-512.png"),
+    toAbsolute("assets/vendor/css/poppins.css"),
+    toAbsolute("assets/vendor/css/fontawesome.min.css"),
+    ...[
+      "poppins-400.woff2", "poppins-500.woff2", "poppins-600.woff2",
+      "poppins-700.woff2", "poppins-800.woff2", "fa-solid-900.woff2",
+      "fa-regular-400.woff2", "fa-brands-400.woff2", "fa-v4compatibility.woff2"
+    ].map(name => toAbsolute(`assets/vendor/webfonts/${name}`)),
+    ...[
+      "panel-ausbildung.jpg", "panel-bangladesh.jpg", "panel-germany.jpg",
+      "panel-exam-zone.jpg", "panel-pro-tools.jpg", "panel-settings.jpg",
+      "germany-hero.jpg", "germany-city.jpg", "germany-culture.jpg",
+      "germany-history.jpg", "germany-education.jpg", "germany-work.jpg",
+      "germany-language.jpg", "germany-spoken.jpg", "germany-food.jpg",
+      "germany-sightseeing.jpg", "germany-religion.jpg", "germany-companies.jpg"
+    ].map(name => toAbsolute(`assets/offline/${name}`)),
     toAbsolute("assets/RafisSprachwelt.png"),
     toAbsolute("assets/a1.png"),
     toAbsolute("assets/a2.png"),
@@ -97,14 +115,18 @@ function coreUrls() {
     toAbsolute("pages/library-topic.html"),
     toAbsolute("pages/practice.html"),
     toAbsolute("pages/download-center.html"),
-    toAbsolute("pages/course-module.html"),
-    ...resourcePdfs
+    toAbsolute("pages/course-module.html")
   ];
 }
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache => cache.addAll(coreUrls())).then(() => self.skipWaiting())
+    caches.open(STATIC_CACHE)
+      .then(async cache => {
+        await cache.addAll(coreUrls());
+        await Promise.allSettled(optionalUrls().map(url => cache.add(url)));
+      })
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -133,7 +155,7 @@ self.addEventListener("message", event => {
 });
 
 function isStaticAsset(requestUrl) {
-  return /\.(?:css|js|json|png|jpg|jpeg|gif|svg|webp|ico|webmanifest)$/i.test(
+  return /\.(?:css|js|json|png|jpg|jpeg|gif|svg|webp|ico|webmanifest|woff2?|ttf|pdf)$/i.test(
     requestUrl.pathname
   );
 }

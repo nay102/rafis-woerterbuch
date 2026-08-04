@@ -1267,36 +1267,36 @@ const sitePhotos = {
     internationalJourney: "assets/Rafis%20pic/n10_india4.jpg"
   },
   panel: {
-    ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
-    bangladesh: "https://picsum.photos/seed/bangladesh/1200/500",
-    germany: "https://picsum.photos/seed/germany/1200/500",
+    ausbildung: "assets/offline/panel-ausbildung.jpg",
+    bangladesh: "assets/offline/panel-bangladesh.jpg",
+    germany: "assets/offline/panel-germany.jpg",
     sprachwelt: "assets/RafisSprachwelt.png",
-    examZone: "https://picsum.photos/seed/option5/1200/500",
-    proTools: "https://picsum.photos/seed/option6/1200/500",
-    settings: "https://picsum.photos/seed/settings/1200/500"
+    examZone: "assets/offline/panel-exam-zone.jpg",
+    proTools: "assets/offline/panel-pro-tools.jpg",
+    settings: "assets/offline/panel-settings.jpg"
   },
   panelHero: {
     owner: "assets/Rafis%20pic/Rafikul_Islam.png",
-    germany: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
+    germany: "assets/offline/germany-hero.jpg",
     bangladesh: "assets/Bangladesh/City.jpg",
-    ausbildung: "https://picsum.photos/seed/ausbildung/1200/500",
+    ausbildung: "assets/offline/panel-ausbildung.jpg",
     sprachwelt: "assets/RafisSprachwelt.png",
-    examZone: "https://picsum.photos/seed/option5/1200/500",
-    proTools: "https://picsum.photos/seed/option6/1200/500"
+    examZone: "assets/offline/panel-exam-zone.jpg",
+    proTools: "assets/offline/panel-pro-tools.jpg"
   },
   germany: {
-    hero: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1600&q=80",
-    city: "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=1000&q=80",
-    culture: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1000&q=80",
-    history: "https://images.unsplash.com/photo-1527866959252-deab85ef7d1b?auto=format&fit=crop&w=1000&q=80",
-    education: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80",
-    work: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80",
-    language: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80",
-    spoken: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
-    food: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
-    sightseeing: "https://images.unsplash.com/photo-1564594985645-4427056e22e2?auto=format&fit=crop&w=1000&q=80",
-    religion: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=80",
-    companies: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1000&q=80"
+    hero: "assets/offline/germany-hero.jpg",
+    city: "assets/offline/germany-city.jpg",
+    culture: "assets/offline/germany-culture.jpg",
+    history: "assets/offline/germany-history.jpg",
+    education: "assets/offline/germany-education.jpg",
+    work: "assets/offline/germany-work.jpg",
+    language: "assets/offline/germany-language.jpg",
+    spoken: "assets/offline/germany-spoken.jpg",
+    food: "assets/offline/germany-food.jpg",
+    sightseeing: "assets/offline/germany-sightseeing.jpg",
+    religion: "assets/offline/germany-religion.jpg",
+    companies: "assets/offline/germany-companies.jpg"
   },
   bangladesh: {
     city: "assets/Bangladesh/City.jpg",

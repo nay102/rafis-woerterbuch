@@ -15,6 +15,16 @@ window.addEventListener("appinstalled", () => {
   setInstallButtonsVisible(false);
 });
 
+// Keep users inside the working offline app instead of opening a browser error
+// for destinations that inherently require an internet connection.
+document.addEventListener("click", event => {
+  if (navigator.onLine) return;
+  const externalLink = event.target.closest?.('a[href^="http://"], a[href^="https://"]');
+  if (!externalLink) return;
+  event.preventDefault();
+  window.alert("This external link needs an internet connection. The rest of the app remains available offline.");
+});
+
 function getBasePath() {
   const { hostname, pathname } = window.location;
   if (hostname.endsWith("github.io")) {
