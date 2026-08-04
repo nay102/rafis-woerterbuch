@@ -9,13 +9,20 @@
       content="German - Bangla - English Learning Platform"
     />
     <meta name="theme-color" content="#1557c0" />
+    <meta name="color-scheme" content="light" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script>
-      if (
+      const navigationEntry = performance.getEntriesByType?.("navigation")?.[0];
+      const isPageRefresh =
+        navigationEntry?.type === "reload" ||
+        (!navigationEntry && performance.navigation?.type === 1);
+      const isInstalledApp =
         window.matchMedia?.("(display-mode: standalone)")?.matches ||
-        window.navigator.standalone === true
-      ) {
+        window.navigator.standalone === true;
+      const isAppLaunchUrl =
+        new URLSearchParams(window.location.search).get("source") === "pwa-launch";
+      if (isInstalledApp && isAppLaunchUrl && !isPageRefresh) {
         document.documentElement.classList.add("app-launching");
         window.addEventListener("DOMContentLoaded", () => {
           window.setTimeout(() => {
@@ -32,6 +39,9 @@
     </script>
     <style>
       #appLaunchSplash { display: none; }
+      @media (display-mode: standalone) {
+        html, body { background-color: #1557c0; }
+      }
       html.app-launching,
       html.app-launching body {
         min-height: 100%;
@@ -85,6 +95,14 @@
         border-radius: 24%;
         object-fit: cover;
       }
+      .app-launch-tagline {
+        margin: 20px 0 0;
+        color: rgba(255, 255, 255, .96);
+        font: 600 clamp(.86rem, 3.5vw, 1rem)/1.45 "Poppins", system-ui, sans-serif;
+        letter-spacing: .01em;
+        text-align: center;
+        animation: appLaunchTaglineIn .7s .2s cubic-bezier(.16, 1, .3, 1) both;
+      }
       #appLaunchSplash.is-leaving {
         opacity: 0;
         visibility: hidden;
@@ -102,8 +120,13 @@
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.025); }
       }
+      @keyframes appLaunchTaglineIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
       @media (prefers-reduced-motion: reduce) {
         .app-launch-content,
+        .app-launch-tagline,
         .app-launch-icon-wrap { animation: none; }
         html.app-launching #appLaunchSplash { transition-duration: .2s; }
       }
@@ -113,7 +136,7 @@
     <!-- App icons and install manifest -->
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/icon-launch-192.png" />
-    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="manifest" href="manifest.webmanifest?v=3" />
 
     <!-- External fonts and icon library -->
     <link
@@ -142,6 +165,7 @@
             height="512"
           />
         </div>
+        <p class="app-launch-tagline">Made for German learners</p>
       </div>
     </div>
     <a class="skip-link" href="#homePage">Skip to main content</a>

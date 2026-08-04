@@ -2,7 +2,8 @@
   "name": "Rafi's Wörterbuch",
   "short_name": "Wörterbuch",
   "description": "German-Bangla-English learning dictionary with category routing and offline support.",
-  "start_url": "./",
+  "id": "./",
+  "start_url": "./?source=pwa-launch",
   "scope": "./",
   "display": "standalone",
   "background_color": "#1557c0",
@@ -12,13 +13,19 @@
       "src": "assets/icon-launch-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "assets/icon-launch-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-launch-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
