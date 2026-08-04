@@ -71,20 +71,6 @@ function setupInstallPromptUI() {
   });
 }
 
-function dismissAppLaunchSplash() {
-  const splash = document.getElementById("appLaunchSplash");
-  if (!splash || !document.documentElement.classList.contains("app-launching")) return;
-  const minimumDisplayTime = 1800;
-  const remainingTime = Math.max(0, minimumDisplayTime - performance.now());
-  window.setTimeout(() => {
-    splash.classList.add("is-leaving");
-    window.setTimeout(() => {
-      splash.remove();
-      document.documentElement.classList.remove("app-launching");
-    }, 680);
-  }, remainingTime);
-}
-
 async function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   try {
@@ -177,7 +163,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("App initialized successfully");
   } catch (error) {
     console.error("App init error:", error);
-  } finally {
-    dismissAppLaunchSplash();
   }
 });
