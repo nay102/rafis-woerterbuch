@@ -705,7 +705,51 @@ function showLearningToolPage(className, html) {
   return page;
 }
 
-function buildConjugationQuestion() {
+const PRACTICE_ROUND_SIZE = 10;
+
+function getPracticeRoundMessage(score) {
+  if (score === PRACTICE_ROUND_SIZE) {
+    return {
+      title: "Outstanding work!",
+      text: "A perfect round. Your focus and recall are excellent—keep that momentum going.",
+      icon: "🏆"
+    };
+  }
+  if (score >= 8) {
+    return {
+      title: "Excellent progress!",
+      text: "You are very close to mastery. One more round will make these words even stronger.",
+      icon: "🌟"
+    };
+  }
+  if (score >= 5) {
+    return {
+      title: "Good work—keep building!",
+      text: "Every answer strengthens your memory. Review the difficult ones and try another fresh round.",
+      icon: "💪"
+    };
+  }
+  return {
+    title: "Keep going—you are learning!",
+    text: "Mistakes are part of progress, not failure. Take another round and you will recognize more each time.",
+    icon: "🌱"
+  };
+}
+
+function buildPracticeRoundCompleteMarkup(score, roundNumber) {
+  const message = getPracticeRoundMessage(score);
+  return `
+    <div class="practice-round-complete">
+      <span class="practice-complete-icon" aria-hidden="true">${message.icon}</span>
+      <span class="practice-level">Round ${roundNumber} complete</span>
+      <h2>${escapeHtml(message.title)}</h2>
+      <p class="practice-final-score">${score} out of ${PRACTICE_ROUND_SIZE} correct</p>
+      <p>${escapeHtml(message.text)}</p>
+      <button type="button" id="newPracticeRoundBtn" class="settings-primary">Start a New 10-Word Round</button>
+    </div>`;
+}
+
+function buildConjugationQuestion(excludedWordIds = new Set()) {
   const people = [
     ["ich", "ich"], ["du", "du"], ["er_sie_es", "er/sie/es"],
     ["wir", "wir"], ["ihr", "ihr"], ["sie_formal", "Sie"]
@@ -713,7 +757,12 @@ function buildConjugationQuestion() {
   const tenses = [
     ["praesens", "Präsens"], ["praeteritum", "Präteritum"]
   ];
-  const verbs = getAllWords().filter(word => isVerbWord(word) && word.conjugation);
+  const verbs = getAllWords().filter(word =>
+    isVerbWord(word) &&
+    word.conjugation &&
+    !excludedWordIds.has(String(word.id))
+  );
+  if (!verbs.length) return null;
   for (let attempt = 0; attempt < 30; attempt += 1) {
     const word = verbs[Math.floor(Math.random() * verbs.length)];
     const [tenseKey, tenseLabel] = tenses[Math.floor(Math.random() * tenses.length)];
@@ -733,16 +782,27 @@ function renderConjugationPracticePage() {
     }
     return;
   }
+  const usedWordIds = new Set();
+  let roundNumber = 1;
   let score = 0;
   let answered = 0;
-  let question = buildConjugationQuestion();
+  const getNextQuestion = () => {
+    let nextQuestion = buildConjugationQuestion(usedWordIds);
+    if (!nextQuestion) {
+      usedWordIds.clear();
+      nextQuestion = buildConjugationQuestion(usedWordIds);
+    }
+    if (nextQuestion) usedWordIds.add(String(nextQuestion.word.id));
+    return nextQuestion;
+  };
+  let question = getNextQuestion();
   const page = showLearningToolPage("learning-tool-page", `
     <div class="learning-tool-shell">
       <div class="learning-tool-head">
         <button class="back-btn" id="practiceBackBtn"></button>
         <div><p class="quality-eyebrow">Active recall</p><h1>Conjugation Practice</h1>
         <p>Type the correct verb form without looking at the table.</p></div>
-        <strong id="practiceScore" class="practice-score">0 / 0</strong>
+        <strong id="practiceScore" class="practice-score">0 / ${PRACTICE_ROUND_SIZE}</strong>
       </div>
       <section class="practice-card" id="practiceCard"></section>
     </div>`);
@@ -769,6 +829,19 @@ function renderConjugationPracticePage() {
   const card = page.querySelector("#practiceCard");
   const scoreNode = page.querySelector("#practiceScore");
 
+  const showRoundComplete = () => {
+    scoreNode.textContent = `${score} / ${PRACTICE_ROUND_SIZE}`;
+    card.innerHTML = buildPracticeRoundCompleteMarkup(score, roundNumber);
+    card.querySelector("#newPracticeRoundBtn").addEventListener("click", () => {
+      roundNumber += 1;
+      score = 0;
+      answered = 0;
+      scoreNode.textContent = `0 / ${PRACTICE_ROUND_SIZE}`;
+      question = getNextQuestion();
+      draw();
+    });
+  };
+
   const draw = () => {
     if (!question) {
       card.innerHTML = `<p>No conjugation questions are available.</p>`;
@@ -776,6 +849,7 @@ function renderConjugationPracticePage() {
     }
     card.innerHTML = `
       <span class="practice-level">${escapeHtml(question.word.level || "German")}</span>
+      <p class="practice-question-count">Question ${answered + 1} of ${PRACTICE_ROUND_SIZE} · Round ${roundNumber}</p>
       <h2>${escapeHtml(question.word.word)}</h2>
       <p>Complete: <strong>${escapeHtml(question.personLabel)} ______</strong></p>
       <p class="practice-tense">${escapeHtml(question.tenseLabel)}</p>
@@ -795,7 +869,7 @@ function renderConjugationPracticePage() {
       const correct = supplied === expected;
       answered += 1;
       if (correct) score += 1;
-      scoreNode.textContent = `${score} / ${answered}`;
+      scoreNode.textContent = `${score} / ${PRACTICE_ROUND_SIZE}`;
       input.disabled = true;
       form.querySelector("button").disabled = true;
       const feedback = card.querySelector("#practiceFeedback");
@@ -806,14 +880,144 @@ function renderConjugationPracticePage() {
       feedback.insertAdjacentHTML("beforeend", `
         <div class="practice-feedback-actions">
           <button type="button" id="practiceListenBtn">🔊 Listen</button>
-          <button type="button" id="nextPracticeBtn" class="settings-primary">Next question</button>
+          <button type="button" id="nextPracticeBtn" class="settings-primary">${answered === PRACTICE_ROUND_SIZE ? "View Round Results" : "Next question"}</button>
         </div>`);
       feedback.querySelector("#practiceListenBtn").addEventListener("click", () =>
         speakGerman(`${question.personLabel} ${question.answer}`)
       );
       feedback.querySelector("#nextPracticeBtn").addEventListener("click", () => {
-        question = buildConjugationQuestion();
-        draw();
+        if (answered === PRACTICE_ROUND_SIZE) {
+          showRoundComplete();
+        } else {
+          question = getNextQuestion();
+          draw();
+        }
+      });
+    });
+  };
+  draw();
+}
+
+function buildCategoryPracticeQuestion(categoryName, excludedWordIds = new Set()) {
+  const words = getAllWords().filter(word =>
+    word.category === categoryName &&
+    word.word &&
+    !excludedWordIds.has(String(word.id)) &&
+    (Array.isArray(word.englisch) ? word.englisch.length : word.englisch)
+  );
+  if (!words.length) return null;
+  const word = words[Math.floor(Math.random() * words.length)];
+  const translations = Array.isArray(word.englisch) ? word.englisch : [word.englisch];
+  return {
+    word,
+    prompt: translations.filter(Boolean).join(" · ")
+  };
+}
+
+function renderCategoryPracticePage(categoryName = practiceOrigin.category) {
+  if (!currentUser) {
+    if (authStateResolved) {
+      promptLoginForRestrictedCategory("Login to use Category Practice.");
+    }
+    return;
+  }
+  if (!categoryName) return goHomeWithoutRefresh();
+
+  practiceOrigin = { type: "category", category: categoryName };
+  const usedWordIds = new Set();
+  let roundNumber = 1;
+  let score = 0;
+  let answered = 0;
+  const getNextQuestion = () => {
+    let nextQuestion = buildCategoryPracticeQuestion(categoryName, usedWordIds);
+    if (!nextQuestion) {
+      usedWordIds.clear();
+      nextQuestion = buildCategoryPracticeQuestion(categoryName, usedWordIds);
+    }
+    if (nextQuestion) usedWordIds.add(String(nextQuestion.word.id));
+    return nextQuestion;
+  };
+  let question = getNextQuestion();
+  const page = showLearningToolPage("learning-tool-page", `
+    <div class="learning-tool-shell">
+      <div class="learning-tool-head">
+        <button class="back-btn" id="practiceBackBtn">← Back to Category</button>
+        <div><p class="quality-eyebrow">Active recall</p><h1>${escapeHtml(categoryName)} Practice</h1>
+        <p>Read the English meaning and type the matching German word or expression.</p></div>
+        <strong id="practiceScore" class="practice-score">0 / ${PRACTICE_ROUND_SIZE}</strong>
+      </div>
+      <section class="practice-card" id="practiceCard"></section>
+    </div>`);
+  if (!page) return;
+
+  page.querySelector("#practiceBackBtn").addEventListener("click", () => {
+    setSingleRouteParam("category", categoryName);
+    openCategoryPage(categoryName, { requireEntryWarning: false });
+  });
+  const card = page.querySelector("#practiceCard");
+  const scoreNode = page.querySelector("#practiceScore");
+
+  const showRoundComplete = () => {
+    scoreNode.textContent = `${score} / ${PRACTICE_ROUND_SIZE}`;
+    card.innerHTML = buildPracticeRoundCompleteMarkup(score, roundNumber);
+    card.querySelector("#newPracticeRoundBtn").addEventListener("click", () => {
+      roundNumber += 1;
+      score = 0;
+      answered = 0;
+      scoreNode.textContent = `0 / ${PRACTICE_ROUND_SIZE}`;
+      question = getNextQuestion();
+      draw();
+    });
+  };
+
+  const draw = () => {
+    if (!question) {
+      card.innerHTML = `<p>No practice questions are available for this category.</p>`;
+      return;
+    }
+    card.innerHTML = `
+      <span class="practice-level">${escapeHtml(question.word.level || categoryName)}</span>
+      <p class="practice-question-count">Question ${answered + 1} of ${PRACTICE_ROUND_SIZE} · Round ${roundNumber}</p>
+      <h2>${escapeHtml(question.prompt)}</h2>
+      <p>What is the German word or expression?</p>
+      <form id="practiceForm">
+        <label for="practiceAnswer">Your answer</label>
+        <input id="practiceAnswer" autocomplete="off" spellcheck="false" required>
+        <button class="settings-primary" type="submit">Check answer</button>
+      </form>
+      <div id="practiceFeedback" class="practice-feedback" role="status" aria-live="polite"></div>`;
+    const form = card.querySelector("#practiceForm");
+    const input = card.querySelector("#practiceAnswer");
+    input.focus();
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const normalize = value => String(value || "").trim().replace(/\s+/g, " ").toLocaleLowerCase("de");
+      const correct = normalize(input.value) === normalize(question.word.word);
+      answered += 1;
+      if (correct) score += 1;
+      scoreNode.textContent = `${score} / ${PRACTICE_ROUND_SIZE}`;
+      input.disabled = true;
+      form.querySelector("button").disabled = true;
+      const feedback = card.querySelector("#practiceFeedback");
+      feedback.className = `practice-feedback ${correct ? "is-correct" : "is-wrong"}`;
+      feedback.innerHTML = correct
+        ? `Correct! <strong>${escapeHtml(question.word.word)}</strong>`
+        : `Correct answer: <strong>${escapeHtml(question.word.word)}</strong>`;
+      feedback.insertAdjacentHTML("beforeend", `
+        <div class="practice-feedback-actions">
+          <button type="button" id="practiceListenBtn">🔊 Listen</button>
+          <button type="button" id="nextPracticeBtn" class="settings-primary">${answered === PRACTICE_ROUND_SIZE ? "View Round Results" : "Next question"}</button>
+        </div>`);
+      feedback.querySelector("#practiceListenBtn").addEventListener("click", () =>
+        speakGerman(question.word.word)
+      );
+      feedback.querySelector("#nextPracticeBtn").addEventListener("click", () => {
+        if (answered === PRACTICE_ROUND_SIZE) {
+          showRoundComplete();
+        } else {
+          question = getNextQuestion();
+          draw();
+        }
       });
     });
   };
@@ -2310,6 +2514,13 @@ function handleRouting() {
     return;
   }
 
+  if (page === "category-practice") {
+    const practiceCategory = params.get("practice-category");
+    practiceOrigin = { type: "category", category: practiceCategory };
+    renderCategoryPracticePage(practiceCategory);
+    return;
+  }
+
   if (page === "review") {
     renderReviewPage();
     return;
@@ -2432,19 +2643,34 @@ function openCategoryPage(categoryName, options = {}) {
 
   topBar.appendChild(backBtn);
   topBar.appendChild(title);
-  if (categoryName === "Verben") {
+  const practiceCategoryLabels = {
+    Verben: "✍️ Practice Verbs",
+    Adjektiven: "✍️ Practice Adjectives",
+    Adverbien: "✍️ Practice Adverbs",
+    "Nomen-Verb Verbindung": "✍️ Practice Nomen-Verb-Verbindungen",
+    Redewendungen: "✍️ Practice Redewendungen"
+  };
+  if (practiceCategoryLabels[categoryName]) {
     const categoryPracticeBtn = document.createElement("button");
     categoryPracticeBtn.type = "button";
     categoryPracticeBtn.className = "conjugation-open-btn category-practice-btn";
-    categoryPracticeBtn.textContent = "✍️ Practice Verbs";
+    categoryPracticeBtn.textContent = practiceCategoryLabels[categoryName];
     categoryPracticeBtn.addEventListener("click", () => {
       if (!currentUser) {
-        promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
+        promptLoginForRestrictedCategory(`Login to practice ${categoryName}.`);
         return;
       }
       practiceOrigin = { type: "category", category: categoryName };
-      setSingleRouteParam("page", "conjugation-practice");
-      renderConjugationPracticePage();
+      if (categoryName === "Verben") {
+        setSingleRouteParam("page", "conjugation-practice");
+        renderConjugationPracticePage();
+      } else {
+        const params = new URLSearchParams();
+        params.set("page", "category-practice");
+        params.set("practice-category", categoryName);
+        history.pushState(null, "", buildRouteUrl(params));
+        renderCategoryPracticePage(categoryName);
+      }
     });
     topBar.appendChild(categoryPracticeBtn);
   }
@@ -4752,7 +4978,7 @@ function handleAuthState() {
       const signedOutPage = new URLSearchParams(window.location.search).get("page");
       if (signedOutPage === "quality") {
         goHomeWithoutRefresh();
-      } else if (["conjugation-practice", "review"].includes(signedOutPage)) {
+      } else if (["conjugation-practice", "category-practice", "review"].includes(signedOutPage)) {
         handleRouting();
       }
     }

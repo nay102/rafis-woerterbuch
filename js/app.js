@@ -71,41 +71,18 @@ function setupInstallPromptUI() {
   });
 }
 
-function showAppWelcomeMessage() {
-  if (!isStandaloneMode()) return;
-  const shownKey = "rw_app_welcome_shown";
-  if (sessionStorage.getItem(shownKey) === "1") return;
-  sessionStorage.setItem(shownKey, "1");
-
-  const welcome = document.createElement("div");
-  welcome.id = "appWelcomeToast";
-  welcome.textContent = "Willkommen bei Rafi's Wörterbuch 👋";
-  welcome.style.position = "fixed";
-  welcome.style.left = "50%";
-  welcome.style.top = "16px";
-  welcome.style.transform = "translateX(-50%) translateY(-10px)";
-  welcome.style.zIndex = "12050";
-  welcome.style.background = "linear-gradient(135deg, #0f172a, #1d4ed8)";
-  welcome.style.color = "#ffffff";
-  welcome.style.padding = "10px 14px";
-  welcome.style.borderRadius = "12px";
-  welcome.style.fontSize = "13px";
-  welcome.style.fontWeight = "600";
-  welcome.style.boxShadow = "0 10px 24px rgba(0,0,0,0.28)";
-  welcome.style.opacity = "0";
-  welcome.style.transition = "opacity 0.28s ease, transform 0.28s ease";
-  document.body.appendChild(welcome);
-
-  requestAnimationFrame(() => {
-    welcome.style.opacity = "1";
-    welcome.style.transform = "translateX(-50%) translateY(0)";
-  });
-
-  setTimeout(() => {
-    welcome.style.opacity = "0";
-    welcome.style.transform = "translateX(-50%) translateY(-8px)";
-    setTimeout(() => welcome.remove(), 300);
-  }, 2000);
+function dismissAppLaunchSplash() {
+  const splash = document.getElementById("appLaunchSplash");
+  if (!splash || !document.documentElement.classList.contains("app-launching")) return;
+  const minimumDisplayTime = 1800;
+  const remainingTime = Math.max(0, minimumDisplayTime - performance.now());
+  window.setTimeout(() => {
+    splash.classList.add("is-leaving");
+    window.setTimeout(() => {
+      splash.remove();
+      document.documentElement.classList.remove("app-launching");
+    }, 680);
+  }, remainingTime);
 }
 
 async function registerServiceWorker() {
@@ -196,10 +173,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     await initUI();
     setupInstallPromptUI();
-    showAppWelcomeMessage();
     await registerServiceWorker();
     console.log("App initialized successfully");
   } catch (error) {
     console.error("App init error:", error);
+  } finally {
+    dismissAppLaunchSplash();
   }
 });
