@@ -2,6 +2,19 @@ import { initUI } from "./ui.js";
 
 let deferredInstallPrompt = null;
 
+// Capture Chrome's one-time install event as early as possible. Waiting for the
+// rest of the app to initialize can miss this event on slower mobile devices.
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  setInstallButtonsVisible(true);
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  setInstallButtonsVisible(false);
+});
+
 function getBasePath() {
   const { hostname, pathname } = window.location;
   if (hostname.endsWith("github.io")) {
@@ -30,22 +43,20 @@ function setInstallButtonsVisible(visible) {
 
 async function triggerInstallPrompt() {
   if (!deferredInstallPrompt) {
-    window.alert(
-      "Install prompt is not available right now.\n\nDesktop (Chrome/Edge): use browser menu -> Install app.\nAndroid Chrome: menu -> Add to Home screen."
-    );
+    setInstallButtonsVisible(false);
     return;
   }
   const promptEvent = deferredInstallPrompt;
   deferredInstallPrompt = null;
-  promptEvent.prompt();
+  setInstallButtonsVisible(false);
   try {
+    await promptEvent.prompt();
     const choice = await promptEvent.userChoice;
-    if (choice?.outcome !== "accepted") {
-      // User dismissed. Wait for browser to offer again.
-    }
-  } finally {
-    // Keep button visible for consistent UX; browser can re-offer later.
-    setInstallButtonsVisible(true);
+    if (choice?.outcome === "accepted") return;
+    // A dismissed prompt cannot be reused. Chrome may provide a new event on a
+    // future visit, at which point the early listener will show the button again.
+  } catch {
+    // Keep the unavailable control hidden if Chrome withdraws the prompt.
   }
 }
 
@@ -53,22 +64,11 @@ function setupInstallPromptUI() {
   const desktopInstallBtn = document.getElementById("desktopInstallBtn");
   const panelInstallBtn = document.getElementById("panelInstallBtn");
 
-  // Keep install button consistently visible when app is not installed.
-  setInstallButtonsVisible(true);
+  // Only show the control after Chrome confirms this page is installable.
+  setInstallButtonsVisible(Boolean(deferredInstallPrompt));
 
   desktopInstallBtn?.addEventListener("click", triggerInstallPrompt);
   panelInstallBtn?.addEventListener("click", triggerInstallPrompt);
-
-  window.addEventListener("beforeinstallprompt", event => {
-    event.preventDefault();
-    deferredInstallPrompt = event;
-    setInstallButtonsVisible(true);
-  });
-
-  window.addEventListener("appinstalled", () => {
-    deferredInstallPrompt = null;
-    setInstallButtonsVisible(false);
-  });
 }
 
 async function registerServiceWorker() {
