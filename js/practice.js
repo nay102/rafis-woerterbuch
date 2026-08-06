@@ -19,7 +19,7 @@ function render() {
   $("practiceType").textContent = config.label;
   $("practiceTitle").textContent = config.title;
   $("practiceInstruction").textContent = config.instruction;
-  $("practiceBack").href = `${level.toLowerCase()}.html#exercises`;
+  $("practiceBack").href = `../${level.toLowerCase()}/#exercises`;
   $("questionCount").textContent = `${questions.length} Questions`;
   $("practiceForm").innerHTML = questions.map((item, questionIndex) => `
     <fieldset class="practice-question" data-question="${questionIndex}">

@@ -2,6 +2,19 @@ const SETTINGS_KEY = "rw_app_settings_v1";
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 let authApiPromise = null;
 
+function redirectLegacyPage() {
+  const match = window.location.pathname.match(
+    /\/pages\/(a1|a2|b1|b2|course-enrollment|library-topic|practice|download-center|course-module)\.html$/i
+  );
+  if (!match) return false;
+
+  const cleanUrl = new URL(`../${match[1].toLowerCase()}/`, window.location.href);
+  cleanUrl.search = window.location.search;
+  cleanUrl.hash = window.location.hash;
+  window.location.replace(cleanUrl.href);
+  return true;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -137,7 +150,9 @@ function openProfile(user, homeUrl) {
 }
 
 export function initLevelPage() {
-  const homeUrl = "../index.html";
+  if (redirectLegacyPage()) return;
+
+  const homeUrl = "../";
   const desktopBtn = document.getElementById("desktopMenuBtn");
   const mobileBtn = document.getElementById("mobileMenuBtn");
   const desktopPanel = document.getElementById("desktopSidePanel");

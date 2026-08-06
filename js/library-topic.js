@@ -16,7 +16,7 @@ function text(id, value) {
 }
 
 function topicUrl(level, slug) {
-  return `library-topic.html?level=${encodeURIComponent(level)}&topic=${encodeURIComponent(slug)}`;
+  return `./?level=${encodeURIComponent(level)}&topic=${encodeURIComponent(slug)}`;
 }
 
 function renderTopicPage() {
@@ -38,7 +38,7 @@ function renderTopicPage() {
   text("topicTip", topic.tip);
 
   const backLink = document.getElementById("topicBackLink");
-  if (backLink) backLink.href = `${level.toLowerCase()}.html#library`;
+  if (backLink) backLink.href = `../${level.toLowerCase()}/#library`;
 
   const metaGrid = document.getElementById("topicMetaGrid");
   if (metaGrid) {

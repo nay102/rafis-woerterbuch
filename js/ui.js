@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    UI CONTROLLER
 
    This module connects the word database and authentication
@@ -1258,29 +1258,29 @@ function showSchimpfWarningModal({ onConfirm, onCancel } = {}) {
 const sitePhotos = {
   // Change photo filenames here first. Keep spaces as %20 for browser-safe paths.
   aboutRafi: {
-    hero: "assets/Rafis%20pic/Rafikul_Islam.png",
-    backgroundValues: "assets/Rafis%20pic/n3_nondonpark1.jpeg",
-    germanJourney: "assets/Rafis%20pic/n6_Rafi.jpeg",
-    academicTrajectory: "assets/Rafis%20pic/n1_bandorban.jpg",
-    healthcareTraining: "assets/Rafis%20pic/n7_caregiving1.jpg",
-    languageCertifications: "assets/Rafis%20pic/goethe.jpeg",
-    internationalJourney: "assets/Rafis%20pic/n10_india4.jpg"
+    hero: "assets/people/rafi/Rafikul_Islam.png",
+    backgroundValues: "assets/people/rafi/n3_nondonpark1.jpeg",
+    germanJourney: "assets/people/rafi/n6_Rafi.jpeg",
+    academicTrajectory: "assets/people/rafi/n1_bandorban.jpg",
+    healthcareTraining: "assets/people/rafi/n7_caregiving1.jpg",
+    languageCertifications: "assets/people/rafi/goethe.jpeg",
+    internationalJourney: "assets/people/rafi/n10_india4.jpg"
   },
   panel: {
     ausbildung: "assets/offline/panel-ausbildung.jpg",
     bangladesh: "assets/offline/panel-bangladesh.jpg",
     germany: "assets/offline/panel-germany.jpg",
-    sprachwelt: "assets/RafisSprachwelt.png",
+    sprachwelt: "assets/branding/rafis-sprachwelt.png",
     examZone: "assets/offline/panel-exam-zone.jpg",
     proTools: "assets/offline/panel-pro-tools.jpg",
     settings: "assets/offline/panel-settings.jpg"
   },
   panelHero: {
-    owner: "assets/Rafis%20pic/Rafikul_Islam.png",
+    owner: "assets/people/rafi/Rafikul_Islam.png",
     germany: "assets/offline/germany-hero.jpg",
-    bangladesh: "assets/Bangladesh/City.jpg",
+    bangladesh: "assets/countries/bangladesh/City.jpg",
     ausbildung: "assets/offline/panel-ausbildung.jpg",
-    sprachwelt: "assets/RafisSprachwelt.png",
+    sprachwelt: "assets/branding/rafis-sprachwelt.png",
     examZone: "assets/offline/panel-exam-zone.jpg",
     proTools: "assets/offline/panel-pro-tools.jpg"
   },
@@ -1299,21 +1299,21 @@ const sitePhotos = {
     companies: "assets/offline/germany-companies.jpg"
   },
   bangladesh: {
-    city: "assets/Bangladesh/City.jpg",
-    population: "assets/Bangladesh/population.jpg",
-    history: "assets/Bangladesh/History.jpg",
-    education: "assets/Bangladesh/Education.jpg",
-    language: "assets/Bangladesh/Language.png",
-    food: "assets/Bangladesh/food.jpg",
-    sightseeing: "assets/Bangladesh/sightseeing.jpg",
-    religion: "assets/Bangladesh/religion.png",
-    economy: "assets/Bangladesh/economy.jpg"
+    city: "assets/countries/bangladesh/City.jpg",
+    population: "assets/countries/bangladesh/population.jpg",
+    history: "assets/countries/bangladesh/History.jpg",
+    education: "assets/countries/bangladesh/Education.jpg",
+    language: "assets/countries/bangladesh/Language.png",
+    food: "assets/countries/bangladesh/food.jpg",
+    sightseeing: "assets/countries/bangladesh/sightseeing.jpg",
+    religion: "assets/countries/bangladesh/religion.png",
+    economy: "assets/countries/bangladesh/economy.jpg"
   },
     sprachwelt: {
-    a1: "assets/a1.png",
-    a2: "assets/a2.png",
-    b1: "assets/b1.png",
-    b2: "assets/b2.png",
+    a1: "assets/levels/a1.png",
+    a2: "assets/levels/a2.png",
+    b1: "assets/levels/b1.png",
+    b2: "assets/levels/b2.png",
   }
 
 };
@@ -1417,7 +1417,7 @@ const panelPageContent = {
 cards: [
   {
     title: "German A1: \nDer perfekte Start",
-    href: "pages/a1.html",
+    href: "a1/",
     image: sitePhotos.sprachwelt.a1,
     imagePosition: "center 40%",
     body: "Master the basics: greetings, core vocabulary, and simple grammar from scratch.",
@@ -1425,7 +1425,7 @@ cards: [
   },
   {
     title: "German A2: \nMehr verstehen",
-    href: "pages/a2.html",
+    href: "a2/",
     image: sitePhotos.sprachwelt.a2,
     imagePosition: "center 40%",
     body: "Build real-world conversational confidence and unlock essential everyday grammar.",
@@ -1433,7 +1433,7 @@ cards: [
   },
     {
     title: "German B1:\nSicher sprechen",
-    href: "pages/b1.html",
+    href: "b1/",
     image: sitePhotos.sprachwelt.b1,
     imagePosition: "center 40%",
     body: "Express your opinions smoothly and handle complex daily or work situations.",
@@ -1441,7 +1441,7 @@ cards: [
   },
   {
     title: "German B2: \nFließend kommunizieren",
-    href: "pages/b2.html",
+    href: "b2/",
     image: sitePhotos.sprachwelt.b2,
     imagePosition: "center 40%",
     body: "Dive into advanced idioms and nuanced debates to speak like a professional.",

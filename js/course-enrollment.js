@@ -234,7 +234,7 @@ function initEnrollmentPage() {
   document.getElementById("enrollmentTitle").textContent = `${course.name} Online Course`;
   document.getElementById("enrollmentIntro").textContent = course.description;
   document.getElementById("packagesTitle").textContent = `${level} Course Options`;
-  document.getElementById("levelBackLink").href = `${level.toLowerCase()}.html`;
+  document.getElementById("levelBackLink").href = `../${level.toLowerCase()}/`;
 
   renderCourseFacts(course);
   renderPackages(level, course);

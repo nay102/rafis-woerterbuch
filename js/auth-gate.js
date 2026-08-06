@@ -2,7 +2,7 @@ import { login, signup, resetPasswordByEmail, listenAuth } from "./auth-client.j
 
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 const PROTECTED_PAGES = new Set([
-  "course-module.html", "library-topic.html", "practice.html", "download-center.html"
+  "course-module", "library-topic", "practice", "download-center"
 ]);
 let currentUser;
 let resolveAuth;
@@ -21,22 +21,22 @@ listenAuth(user => {
 });
 
 function isPublicLearningCard(url) {
-  const file = url.pathname.split("/").pop();
+  const file = routeName(url);
 
-  if (file === "course-module.html") {
+  if (file === "course-module") {
     const moduleNumber = Number(url.searchParams.get("module"));
     return moduleNumber === 1 || moduleNumber === 2;
   }
 
-  if (file === "library-topic.html") {
+  if (file === "library-topic") {
     return PUBLIC_LIBRARY_TOPICS.has(url.searchParams.get("topic") || "");
   }
 
-  if (file === "practice.html") {
+  if (file === "practice") {
     return PUBLIC_PRACTICE_TYPES.has(url.searchParams.get("type") || "");
   }
 
-  if (file === "download-center.html") {
+  if (file === "download-center") {
     return PUBLIC_RESOURCE_CATEGORIES.has(url.searchParams.get("category") || "");
   }
 
@@ -45,15 +45,20 @@ function isPublicLearningCard(url) {
 
 function isProtectedUrl(url) {
   if (url.origin !== location.origin) return false;
-  const file = url.pathname.split("/").pop();
+  const file = routeName(url);
   if (isPublicLearningCard(url)) return false;
   return PROTECTED_PAGES.has(file) || url.pathname.includes("/assets/pdfs/");
+}
+
+function routeName(url) {
+  const segment = url.pathname.split("/").filter(Boolean).pop() || "";
+  return segment.replace(/\.html$/i, "");
 }
 
 function currentLevel() {
   const queryLevel = (new URLSearchParams(location.search).get("level") || "").toUpperCase();
   if (["A1", "A2", "B1", "B2"].includes(queryLevel)) return queryLevel;
-  const match = location.pathname.match(/\/(a1|a2|b1|b2)\.html$/i);
+  const match = location.pathname.match(/\/(a1|a2|b1|b2)(?:\.html|\/)?$/i);
   return match ? match[1].toUpperCase() : "A1";
 }
 
@@ -117,7 +122,7 @@ export function initAuthGate() {
 
   const close = () => {
     if (pageLocked) {
-      location.href = `${currentLevel().toLowerCase()}.html#resources`;
+      location.href = `../${currentLevel().toLowerCase()}/#resources`;
       return;
     }
     modal.classList.add("hidden");

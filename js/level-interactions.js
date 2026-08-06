@@ -65,7 +65,7 @@ function initExerciseFilters() {
 
 function initPracticeCounts() {
   document.querySelectorAll(".exercise-card").forEach(card => {
-    const link = card.querySelector('a[href*="practice.html"]');
+    const link = card.querySelector('a[href*="/practice/"]');
     const countLabel = card.querySelector(".exercise-meta span");
     if (!link || !countLabel) return;
 
@@ -104,7 +104,7 @@ function initBackToSprachwelt() {
 
   const link = document.createElement("a");
   link.className = "back-to-sprachwelt";
-  link.href = "../index.html?page=sprachwelt";
+  link.href = "../?page=sprachwelt";
   link.setAttribute("aria-label", "Sprachwelt");
   link.innerHTML = '<span aria-hidden="true">&lt;</span> Sprachwelt';
   document.body.appendChild(link);

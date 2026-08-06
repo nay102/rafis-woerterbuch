@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v94";
+const CACHE_VERSION = "rw-cache-v96";
 const DATA_VERSION = "2026-03-16-3-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -73,12 +73,12 @@ function coreUrls() {
     toAbsolute(`js/irregular_verbs.json?v=${DATA_VERSION}`),
     toAbsolute("js/firebase.js"),
     toAbsolute("js/auth.js"),
-    toAbsolute("assets/favicon.png"),
-    toAbsolute("assets/logo.png"),
-    toAbsolute("assets/icon-192.png"),
-    toAbsolute("assets/icon-512.png"),
-    toAbsolute("assets/icon-launch-192.png"),
-    toAbsolute("assets/icon-launch-512.png"),
+    toAbsolute("assets/branding/favicon.png"),
+    toAbsolute("assets/branding/logo.png"),
+    toAbsolute("assets/icons/icon-192.png"),
+    toAbsolute("assets/icons/icon-512.png"),
+    toAbsolute("assets/icons/icon-launch-192.png"),
+    toAbsolute("assets/icons/icon-launch-512.png"),
     toAbsolute("assets/vendor/css/poppins.css"),
     toAbsolute("assets/vendor/css/fontawesome.min.css"),
     ...[
@@ -94,19 +94,19 @@ function coreUrls() {
       "germany-language.jpg", "germany-spoken.jpg", "germany-food.jpg",
       "germany-sightseeing.jpg", "germany-religion.jpg", "germany-companies.jpg"
     ].map(name => toAbsolute(`assets/offline/${name}`)),
-    toAbsolute("assets/RafisSprachwelt.png"),
-    toAbsolute("assets/a1.png"),
-    toAbsolute("assets/a2.png"),
-    toAbsolute("assets/b1.png"),
-    toAbsolute("assets/b2.png"),
+    toAbsolute("assets/branding/rafis-sprachwelt.png"),
+    toAbsolute("assets/levels/a1.png"),
+    toAbsolute("assets/levels/a2.png"),
+    toAbsolute("assets/levels/b1.png"),
+    toAbsolute("assets/levels/b2.png"),
     ...[
       "City.jpg", "population.jpg", "History.jpg", "Education.jpg",
       "Language.png", "food.jpg", "sightseeing.jpg", "religion.png", "economy.jpg"
-    ].map(name => toAbsolute(`assets/Bangladesh/${name}`)),
+    ].map(name => toAbsolute(`assets/countries/bangladesh/${name}`)),
     ...[
       "Rafikul_Islam.png", "n3_nondonpark1.jpeg", "n6_Rafi.jpeg",
       "n1_bandorban.jpg", "n7_caregiving1.jpg", "goethe.jpeg", "n10_india4.jpg"
-    ].map(name => toAbsolute(`assets/Rafis%20pic/${name}`)),
+    ].map(name => toAbsolute(`assets/people/rafi/${name}`)),
     toAbsolute("pages/a1.html"),
     toAbsolute("pages/a2.html"),
     toAbsolute("pages/b1.html"),
@@ -115,7 +115,16 @@ function coreUrls() {
     toAbsolute("pages/library-topic.html"),
     toAbsolute("pages/practice.html"),
     toAbsolute("pages/download-center.html"),
-    toAbsolute("pages/course-module.html")
+    toAbsolute("pages/course-module.html"),
+    toAbsolute("a1/"),
+    toAbsolute("a2/"),
+    toAbsolute("b1/"),
+    toAbsolute("b2/"),
+    toAbsolute("course-enrollment/"),
+    toAbsolute("library-topic/"),
+    toAbsolute("practice/"),
+    toAbsolute("download-center/"),
+    toAbsolute("course-module/")
   ];
 }
 
