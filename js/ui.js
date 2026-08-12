@@ -49,6 +49,8 @@ let currentCategory = null;
 let activeSectionMemory = {};
 // Identifies the main view currently shown to the visitor.
 let currentView = "home";
+// Minimal, public-safe state used by the local Rafi Tutor integration.
+let rafiTutorContext = { view: "home" };
 // Navigation-source flags determine the correct Back button destination.
 let openedFromHomeSearch = false;
 let openedFromCategory = false;
@@ -2262,6 +2264,7 @@ function renderGermanyPage() {
   const page = GERMANY_PAGE_COPY[germanyPageLanguage] || GERMANY_PAGE_COPY.en;
 
   currentView = "custom";
+  rafiTutorContext = { view: "home" };
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
@@ -2359,6 +2362,7 @@ function renderBangladeshPage() {
   const page = BANGLADESH_PAGE_COPY[bangladeshPageLanguage] || BANGLADESH_PAGE_COPY.en;
 
   currentView = "custom";
+  rafiTutorContext = { view: "home" };
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
@@ -2569,6 +2573,14 @@ function showSection(id) {
 
   const active = document.getElementById(id);
   if (!active) return;
+
+  if (id === "homePage") {
+    rafiTutorContext = { view: "home" };
+  } else if (id === "categoryPage" && currentCategory) {
+    rafiTutorContext = { view: "category", category: currentCategory };
+  } else if (id !== "wordDetailPage") {
+    rafiTutorContext = { view: "home" };
+  }
 
   active.style.display = "block";
   setTimeout(() => active.classList.add("active"), 10);
@@ -3490,6 +3502,21 @@ function openWordDetail(wordId, options = {}) {
     return;
   }
 
+  const tutorWord = {
+    id: word.id,
+    word: word.word,
+    category: word.category
+  };
+  if (word.article) tutorWord.article = word.article;
+  if (word.plural) tutorWord.plural = word.plural;
+  if (Array.isArray(word.englisch) && word.englisch.length) {
+    tutorWord.meaningEn = word.englisch.join(", ");
+  }
+  if (Array.isArray(word.bangla) && word.bangla.length) {
+    tutorWord.meaningBn = word.bangla.join(", ");
+  }
+  rafiTutorContext = { view: "word", word: tutorWord };
+
   showSection("wordDetailPage");
 
   const detailPage = document.getElementById("wordDetailPage");
@@ -3974,6 +4001,7 @@ function renderPanelPage(pageKey) {
   if (!desktopPage || !page) return;
 
   currentView = "custom";
+  rafiTutorContext = { view: "home" };
 
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
@@ -4464,8 +4492,6 @@ async function openUserInfoPanel(user) {
   const renderProfileContent = (profileData) => {
     const displayName =
       profileData?.displayName || (user.email ? user.email.split("@")[0] : "User");
-    const cachedPassword = getCachedPlainPasswordForEmail(user.email || "");
-    const storedPassword = profileData?.plainPassword || cachedPassword || "";
 
     content.innerHTML = `
     <div class="user-card-head">
@@ -4481,14 +4507,6 @@ async function openUserInfoPanel(user) {
     </div>
     <div class="user-info-row"><strong>Created:</strong> ${formatTimestamp(profileData?.createdAt)}</div>
     <div class="user-info-row"><strong>Last Login:</strong> ${formatTimestamp(profileData?.lastLoginAt)}</div>
-    <div class="user-info-row password-row">
-      <strong>Password:</strong>
-      <div class="password-preview-wrap">
-        <input id="passwordPreviewField" type="password" value="" readonly />
-        <button id="togglePasswordPreview" type="button">👁 Show</button>
-      </div>
-      <small>Stored for this demo profile panel only.</small>
-    </div>
     <div class="user-info-row user-action-row">
       <button id="toggleChangePasswordPanel" type="button" class="compact-toggle-btn">Change Password</button>
       <div id="changePasswordPanel" class="user-action-grid hidden">
@@ -4507,22 +4525,6 @@ async function openUserInfoPanel(user) {
       <small>This action is permanent.</small>
     </div>
   `;
-
-  const toggleBtn = document.getElementById("togglePasswordPreview");
-  const passwordField = document.getElementById("passwordPreviewField");
-  if (passwordField) {
-    passwordField.value = storedPassword || "Not available";
-  }
-  toggleBtn?.addEventListener("click", () => {
-    if (!passwordField) return;
-    if (!storedPassword) {
-      showToast("Password not available yet. Re-login once.", "error");
-      return;
-    }
-    const isHidden = passwordField.type === "password";
-    passwordField.type = isHidden ? "text" : "password";
-    toggleBtn.textContent = isHidden ? "🙈 Hide" : "👁 Show";
-  });
 
   const toggleChangePanelBtn = document.getElementById("toggleChangePasswordPanel");
   const changePanel = document.getElementById("changePasswordPanel");
@@ -4553,14 +4555,8 @@ async function openUserInfoPanel(user) {
     try {
       await changePasswordWithConfirmation(user, currentPassword, newPassword);
       showToast("Password updated successfully ✅", "success");
-      userProfileCache.set(user.uid, {
-        ...(profileData || {}),
-        plainPassword: newPassword
-      });
-      renderProfileContent({
-        ...(profileData || {}),
-        plainPassword: newPassword
-      });
+      userProfileCache.set(user.uid, { ...(profileData || {}) });
+      renderProfileContent({ ...(profileData || {}) });
     } catch (error) {
       const msg =
         error?.code === "auth/invalid-credential"
@@ -4612,15 +4608,6 @@ async function openUserInfoPanel(user) {
       // Non-blocking analytics update.
     });
     const profile = await getUserProfile(user);
-    if (!profile?.plainPassword) {
-      const localFallbackPassword = getCachedPlainPasswordForEmail(user.email || "");
-      if (localFallbackPassword) {
-        profile.plainPassword = localFallbackPassword;
-        saveUserProfilePatch(user, { plainPassword: localFallbackPassword }).catch(() => {
-          // Non-blocking sync for legacy profiles.
-        });
-      }
-    }
     userProfileCache.set(user.uid, profile || null);
     renderProfileContent(profile || null);
   } catch {
@@ -4711,7 +4698,6 @@ function setupAuthModal() {
       if (isLoginMode) {
 
         await login(emailInput.value, passwordInput.value);
-        cachePlainPasswordForEmail(emailInput.value, passwordInput.value);
         modal.classList.add("hidden");
         form.reset();
         showToast("Welcome back! You are logged in 🎉", "success");
@@ -4719,7 +4705,6 @@ function setupAuthModal() {
       } else {
 
         await signup(emailInput.value, passwordInput.value);
-        cachePlainPasswordForEmail(emailInput.value, passwordInput.value);
         modal.classList.add("hidden");
         form.reset();
         showToast(
@@ -4793,33 +4778,6 @@ function setupUserInfoModal() {
 }
 
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
-const PASSWORD_CACHE_KEY_PREFIX = "rw_cached_pw_";
-
-function getPasswordCacheKey(email = "") {
-  return `${PASSWORD_CACHE_KEY_PREFIX}${String(email || "").trim().toLowerCase()}`;
-}
-
-function cachePlainPasswordForEmail(email, password) {
-  const cleanEmail = String(email || "").trim().toLowerCase();
-  const cleanPassword = String(password || "");
-  if (!cleanEmail || !cleanPassword) return;
-  try {
-    localStorage.setItem(getPasswordCacheKey(cleanEmail), cleanPassword);
-  } catch {
-    // Ignore local cache errors.
-  }
-}
-
-function getCachedPlainPasswordForEmail(email = "") {
-  const cleanEmail = String(email || "").trim().toLowerCase();
-  if (!cleanEmail) return "";
-  try {
-    return localStorage.getItem(getPasswordCacheKey(cleanEmail)) || "";
-  } catch {
-    return "";
-  }
-}
-
 function setHeaderAsProfileButton(loginBtn, email = "") {
   const safeEmail = email || "";
   loginBtn.innerHTML = '<span class="profile-avatar-icon" aria-hidden="true"></span>';
@@ -5512,4 +5470,174 @@ export async function initUI() {
   setupFooterNavigation();
 
   window.addEventListener("popstate", handleRouting);
+}
+
+export function getRafiTutorContext() {
+  if (rafiTutorContext.view === "word") {
+    return { view: "word", word: { ...rafiTutorContext.word } };
+  }
+  return { ...rafiTutorContext };
+}
+
+function getTutorConjugationValue(base, path) {
+  let node = base;
+  for (const key of path) {
+    if (!node || typeof node !== "object") return "";
+    const actualKey = Object.keys(node).find(item => item.toLowerCase() === key.toLowerCase());
+    node = actualKey ? node[actualKey] : undefined;
+  }
+  return typeof node === "string" && node !== "-" ? node.trim() : "";
+}
+
+function cleanTutorText(value) {
+  return String(value || "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function getRafiTutorWordDetails(wordId) {
+  const word = getAllWords().find(item => item.id === wordId);
+  if (!word) return null;
+
+  const details = {
+    id: word.id,
+    word: word.word,
+    category: word.category
+  };
+  if (word.article) details.article = word.article;
+  if (word.plural) details.plural = word.plural;
+  if (word.level) details.level = word.level;
+  if (Array.isArray(word.englisch) && word.englisch.length) details.meaningEn = [...word.englisch];
+  if (Array.isArray(word.bangla) && word.bangla.length) details.meaningBn = [...word.bangla];
+  if (Array.isArray(word.examples) && word.examples.length) {
+    details.examples = word.examples.map(cleanTutorText).filter(Boolean);
+  }
+
+  const category = String(word.category || "").toLowerCase();
+  const type = String(word.type || "").toLowerCase();
+  if (category === "verben" || type === "verb") {
+    const partizipII = getTutorConjugationValue(word.conjugation, ["partizip", "partizip_ii"]);
+    const praeteritum = getTutorConjugationValue(word.conjugation, ["indikativ", "praeteritum", "ich"]);
+    const perfekt = getTutorConjugationValue(word.conjugation, ["indikativ", "perfekt", "ich"]);
+    const ichPresent = getTutorConjugationValue(word.conjugation, ["indikativ", "praesens", "ich"]);
+    const erPresent = getTutorConjugationValue(word.conjugation, ["indikativ", "praesens", "er_sie_es"]);
+    if (partizipII) details.partizipII = partizipII;
+    if (praeteritum) details.praeteritum = praeteritum.replace(/^ich\s+/i, "");
+    if (/^ich\s+habe\b/i.test(perfekt)) details.auxiliary = "haben";
+    if (/^ich\s+bin\b/i.test(perfekt)) details.auxiliary = "sein";
+    if (ichPresent) details.ichPresent = ichPresent.replace(/^ich\s+/i, "");
+    if (erPresent) details.erPresent = erPresent.replace(/^(er|sie|es|er\/sie\/es)\s+/i, "");
+
+    const meaning = cleanTutorText(word.meaning);
+    const verbKind = meaning.match(/\b(nicht trennbares|untrennbares|trennbares)\b/i)?.[1];
+    if (verbKind) details.separability = /nicht|untrennbar/i.test(verbKind) ? "inseparable" : "separable";
+  }
+
+  if (["adjektiven", "adverbien"].includes(category)) {
+    const comparison = cleanTutorText(word.meaning).match(/([^.!?]*→[^.!?]*→[^.!?]*)/)?.[1]?.trim();
+    if (comparison) details.comparison = comparison;
+  }
+
+  return details;
+}
+
+export function getRafiTutorArticleNouns() {
+  return getAllWords()
+    .filter(word =>
+      String(word.category || "").toLowerCase() === "nomen" &&
+      ["der", "die", "das"].includes(String(word.article || "").toLowerCase())
+    )
+    .map(word => {
+      const noun = { id: word.id, word: word.word, article: word.article.toLowerCase() };
+      if (word.level) noun.level = word.level;
+      return noun;
+    });
+}
+
+export function getRafiTutorVocabulary() {
+  return getAllWords()
+    .filter(word =>
+      Array.isArray(word.englisch) && word.englisch.some(Boolean) &&
+      Array.isArray(word.bangla) && word.bangla.some(Boolean)
+    )
+    .map(word => {
+      const item = {
+        id: word.id,
+        word: word.word,
+        category: word.category,
+        meaningEn: word.englisch.map(cleanTutorText).filter(Boolean),
+        meaningBn: word.bangla.map(cleanTutorText).filter(Boolean)
+      };
+      if (word.article) item.article = word.article;
+      if (word.level) item.level = word.level;
+      return item;
+    });
+}
+
+export function getRafiTutorConjugationQuestions() {
+  const people = [
+    ["ich", "ich"], ["du", "du"], ["er_sie_es", "er/sie/es"],
+    ["wir", "wir"], ["ihr", "ihr"], ["sie_formal", "Sie"]
+  ];
+  const modes = [["praesens", "Präsens"], ["perfekt", "Perfekt"], ["praeteritum", "Präteritum"]];
+  const questions = [];
+  getAllWords().forEach(word => {
+    if (!isVerbWord(word) || !word.conjugation) return;
+    modes.forEach(([mode, modeLabel]) => {
+      const tense = getConjugationNode(getConjugationNode(word.conjugation, "indikativ"), mode);
+      people.forEach(([personKey, personLabel]) => {
+        const raw = getConjugationPersonValue(tense, personKey);
+        if (!raw || raw === "-") return;
+        const answer = raw.replace(new RegExp(`^${personLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+`, "i"), "").trim();
+        if (!answer || answer === "-") return;
+        questions.push({ wordId: word.id, verb: word.word, mode, modeLabel, person: personLabel, answer });
+      });
+    });
+  });
+  return questions;
+}
+
+export async function markRafiTutorWordLearned(wordId) {
+  const word = getAllWords().find(item => item.id === wordId);
+  if (!word) return { ok: false, message: "Word not found." };
+  if (!currentUser) {
+    showToast("Login to track learned words.", "error");
+    return { ok: false, message: "Login is required to mark words as learned." };
+  }
+  learnedWordIds.add(wordId);
+  await persistLearningStateIfLoggedIn();
+  showToast("Marked as learned ✅", "success");
+  return { ok: true, message: "Marked as learned." };
+}
+
+export function openNextRafiTutorWord(wordId) {
+  const words = getAllWords();
+  const currentIndex = words.findIndex(item => item.id === wordId);
+  if (currentIndex < 0 || words.length < 2) return null;
+  for (let offset = 1; offset < words.length; offset += 1) {
+    const candidate = words[(currentIndex + offset) % words.length];
+    if (candidate.category === words[currentIndex].category && candidate.id !== wordId) {
+      setSingleRouteParam("word", candidate.word);
+      openWordDetail(candidate.id);
+      return candidate.id;
+    }
+  }
+  return null;
+}
+
+export function recordRafiTutorReviewResult(wordId, correct) {
+  if (!currentUser || !getAllWords().some(item => item.id === wordId)) return false;
+  scheduleReview(wordId, correct ? "good" : "again");
+  return true;
+}
+
+export function openExistingRafiReview() {
+  if (!currentUser) {
+    promptLoginForRestrictedCategory("Login to review your saved words.");
+    return false;
+  }
+  setSingleRouteParam("page", "review");
+  renderReviewPage();
+  return true;
 }

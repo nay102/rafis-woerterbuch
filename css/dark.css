@@ -366,7 +366,8 @@ body.dark .panel-content button:focus-visible {
 }
 
 body.dark #darkToggle,
-body.dark #loginBtn {
+body.dark #loginBtn,
+body.dark #rafiTutorBtn {
   background: linear-gradient(135deg, #1e293b, #0f172a);
   color: #f8fafc;
   border: 1px solid rgba(71, 85, 105, 0.5);
@@ -377,6 +378,12 @@ body.dark #loginBtn {
   cursor: pointer;
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark #rafiTutorBtn {
+  background: linear-gradient(135deg, #5b21b6, #1d4ed8);
+  border-color: rgba(165, 180, 252, 0.55);
+  color: #ffffff;
 }
 
 body.dark #loginBtn.profile-btn {
@@ -391,7 +398,9 @@ body.dark #loginBtn.profile-btn {
 }
 
 body.dark #darkToggle:hover,
-body.dark #loginBtn:hover {
+body.dark #loginBtn:hover,
+body.dark #rafiTutorBtn:hover,
+body.dark #rafiTutorBtn:focus-visible {
   background: linear-gradient(135deg, #2563eb, #3b82f6);
   border-color: #3b82f6;
   box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
@@ -1034,6 +1043,11 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 768px) {
+  body.dark #rafiTutorBtn:hover,
+  body.dark #rafiTutorBtn:focus-visible {
+    transform: translate(-50%, calc(-50% - 2px));
+  }
+
   body.dark #wordDetailPage {
       margin: 12px 10px;
       padding: 20px 14px;

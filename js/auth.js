@@ -56,10 +56,7 @@ export async function signup(email, password) {
 
     const credential = await createUserWithEmailAndPassword(auth, email, password);
     const country = await resolveUserCountry();
-    await ensureUserProfile(credential.user, {
-      country,
-      plainPassword: password
-    });
+    await ensureUserProfile(credential.user, { country });
     try {
       await sendEmailVerification(credential.user);
     } catch {
@@ -103,7 +100,6 @@ export async function login(email, password) {
       doc(db, "users", credential.user.uid),
       {
         email: credential.user.email || "",
-        plainPassword: password,
         lastLoginAt: serverTimestamp()
       },
       { merge: true }
@@ -147,9 +143,6 @@ export async function ensureUserProfile(user, profileExtras = {}) {
     if (!data.country) {
       patch.country = profileExtras.country || (await resolveUserCountry());
     }
-    if (profileExtras.plainPassword) {
-      patch.plainPassword = profileExtras.plainPassword;
-    }
     if (Object.keys(patch).length > 0) {
       await setDoc(profileRef, patch, { merge: true });
     }
@@ -162,7 +155,6 @@ export async function ensureUserProfile(user, profileExtras = {}) {
     email: user.email || "",
     displayName,
     country: profileExtras.country || (await resolveUserCountry()),
-    plainPassword: profileExtras.plainPassword || "",
     createdAt: serverTimestamp(),
     lastLoginAt: serverTimestamp()
   });
@@ -316,7 +308,6 @@ export async function changePasswordWithConfirmation(
   await setDoc(
     doc(db, "users", user.uid),
     {
-      plainPassword: newPassword,
       passwordUpdatedAt: serverTimestamp()
     },
     { merge: true }

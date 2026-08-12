@@ -1,4 +1,5 @@
 import { initUI } from "./ui.js";
+import { initRafiTutor } from "./rafi-tutor.js";
 
 let deferredInstallPrompt = null;
 
@@ -168,6 +169,7 @@ function setupSwUpdatePrompt(registration) {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     await initUI();
+    initRafiTutor();
     setupInstallPromptUI();
     await registerServiceWorker();
     console.log("App initialized successfully");
