@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v104";
+const CACHE_VERSION = "rw-cache-v123";
 const DATA_VERSION = "2026-03-16-3-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -66,6 +66,23 @@ function coreUrls() {
     toAbsolute("js/course-enrollment.js"),
     toAbsolute("js/library-topic.js"),
     toAbsolute("js/library-topic-data.js"),
+    toAbsolute("js/library-session-data.js"),
+    toAbsolute("js/library-pronouns-data.js"),
+    toAbsolute("js/library-verbs-data.js"),
+    toAbsolute("js/library-sentence-structure-data.js"),
+    toAbsolute("js/library-questions-data.js"),
+    toAbsolute("js/library-negation-data.js"),
+    toAbsolute("js/library-modal-verbs-data.js"),
+    toAbsolute("js/library-cases-data.js"),
+    toAbsolute("js/library-greetings-data.js"),
+    toAbsolute("js/library-family-data.js"),
+    toAbsolute("js/library-food-drinks-data.js"),
+    toAbsolute("js/library-numbers-data.js"),
+    toAbsolute("js/library-home-data.js"),
+    toAbsolute("js/library-travel-data.js"),
+    toAbsolute("js/library-shopping-data.js"),
+    toAbsolute("js/library-school-work-data.js"),
+    toAbsolute("js/library-session.js"),
     toAbsolute("js/practice.js"),
     toAbsolute("js/practice-data.js"),
     toAbsolute("js/download-center.js"),

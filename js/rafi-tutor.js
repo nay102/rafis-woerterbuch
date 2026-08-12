@@ -368,7 +368,11 @@ function renderGrammarLibrary(panel) {
     appendField(list, "Examples", item.examples);
     appendField(list, "Common mistake", item.commonMistakes);
     const practice = makeButton("Practice This Topic", "rafi-tutor-primary");
-    practice.addEventListener("click", () => appendField(list, "Practice", item.practice));
+    practice.addEventListener("click", () => {
+      appendField(list, "Practice", item.practice);
+      practice.disabled = true;
+      practice.textContent = "Practice shown below";
+    });
     const topics = makeButton("← All topics", "rafi-tutor-result-back");
     topics.addEventListener("click", drawList);
     list.prepend(topicTitle);
@@ -696,7 +700,12 @@ function renderCaseTrainer(panel) {
     }
     const pool = poolForMode().filter(item => item.sentence !== lastSentence);
     const current = pool[Math.floor(Math.random() * pool.length)];
-    if (!current) return;
+    if (!current) {
+      const empty = document.createElement("p");
+      empty.textContent = "No exercises are available for this group yet.";
+      game.appendChild(empty);
+      return;
+    }
     lastSentence = current.sentence;
     const stats = document.createElement("p"); stats.className = "rafi-article-stats"; stats.textContent = `Question ${number + 1}/10 · Correct ${correct} · Wrong ${wrong}`;
     const sentence = document.createElement("h4"); sentence.textContent = current.sentence;
@@ -728,15 +737,29 @@ function renderMistakeChecker(panel) {
   const view = document.createElement("div"); view.className = "rafi-tutor-tool";
   const back = makeButton("← Practice tools", "rafi-tutor-result-back");
   const title = document.createElement("h3"); title.textContent = "Common Mistake Checker";
-  const description = document.createElement("p"); description.textContent = "Checks selected common A1–B1 mistakes. It does not perform complete grammar correction.";
-  const input = document.createElement("textarea"); input.rows = 4; input.placeholder = "Type one short German sentence"; input.setAttribute("aria-label", "German sentence to check");
-  const check = makeButton("Check known patterns", "rafi-tutor-primary");
+  const description = document.createElement("p"); description.textContent = "Checks selected common A1–B1 patterns only. It does not perform complete grammar correction.";
+  const input = document.createElement("textarea"); input.rows = 4; input.placeholder = "Example: weil ich bin müde"; input.setAttribute("aria-label", "German sentence to check");
+  const examplesLabel = document.createElement("p"); examplesLabel.className = "rafi-article-stats"; examplesLabel.textContent = "Try a supported example:";
+  const examples = document.createElement("div"); examples.className = "rafi-quiz-end-actions";
+  ["ich habe gegangen", "mit den Mann", "ich kann zu kommen", "weil ich bin müde"].forEach(sentence => {
+    const button = makeButton(sentence, "rafi-tutor-result-back");
+    button.addEventListener("click", () => { input.value = sentence; check.click(); });
+    examples.appendChild(button);
+  });
+  const check = makeButton("Check sentence", "rafi-tutor-primary");
   const results = document.createElement("div"); results.className = "rafi-mistake-results"; results.setAttribute("aria-live", "polite");
-  check.addEventListener("click", () => {
+  const runCheck = () => {
     results.replaceChildren();
-    const sentence = input.value.trim();
+    const sentence = input.value
+      .normalize("NFC")
+      .trim()
+      .replace(/\s+/g, " ")
+      .replace(/\s+([,.!?;:])/g, "$1");
     if (!sentence) { const message = document.createElement("p"); message.textContent = "Enter one short sentence first."; results.appendChild(message); return; }
-    const matches = COMMON_MISTAKE_RULES.filter(rule => { rule.regex.lastIndex = 0; return rule.regex.test(sentence); });
+    const matches = COMMON_MISTAKE_RULES.filter(rule => {
+      rule.regex.lastIndex = 0;
+      return rule.regex.test(sentence);
+    });
     if (!matches.length) {
       const message = document.createElement("p"); message.textContent = "No known rule-based issues found. This does not mean the sentence is fully grammatically correct."; results.appendChild(message); return;
     }
@@ -749,10 +772,16 @@ function renderMistakeChecker(panel) {
       const whyBn = document.createElement("p"); whyBn.textContent = rule.explanationBn;
       card.append(heading, original, suggestion, why, whyBn); results.appendChild(card);
     });
+  };
+  check.addEventListener("click", runCheck);
+  input.addEventListener("keydown", event => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      runCheck();
+    }
   });
-  input.addEventListener("keydown", event => { if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) check.click(); });
   back.addEventListener("click", () => renderPracticeChooser(panel));
-  view.append(back, title, description, input, check, results); body.appendChild(view); input.focus();
+  view.append(back, title, description, input, examplesLabel, examples, check, results); body.appendChild(view); input.focus();
 }
 
 function renderPracticeChooser(panel) {

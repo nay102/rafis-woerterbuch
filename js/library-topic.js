@@ -1,6 +1,8 @@
 import { initLevelPage } from "./level-page.js";
 import { initAuthGate } from "./auth-gate.js";
 import { TOPIC_ORDER, LIBRARY_TOPICS } from "./library-topic-data.js";
+import { getLibrarySession } from "./library-session-data.js";
+import { renderLibrarySession } from "./library-session.js";
 
 const VALID_LEVELS = new Set(["A1", "A2", "B1", "B2"]);
 const LEVEL_GUIDANCE = {
@@ -26,6 +28,7 @@ function renderTopicPage() {
   const requestedTopic = params.get("topic") || TOPIC_ORDER[0];
   const slug = LIBRARY_TOPICS[requestedTopic] ? requestedTopic : TOPIC_ORDER[0];
   const topic = LIBRARY_TOPICS[slug];
+  const session = getLibrarySession(level, slug);
 
   document.title = `${topic.title} | Rafis Sprachwelt ${level}`;
   text("topicBranding", `Rafis Sprachwelt - ${level}`);
@@ -39,6 +42,17 @@ function renderTopicPage() {
 
   const backLink = document.getElementById("topicBackLink");
   if (backLink) backLink.href = `../${level.toLowerCase()}/#library`;
+
+  if (session) {
+    document.title = `${session.title} | Rafis Sprachwelt ${level}`;
+    text("topicTitle", session.title);
+    text("topicIntroduction", session.shortDescriptionEn);
+    document.querySelector(".topic-meta-section")?.setAttribute("hidden", "");
+    document.querySelector(".topic-learning-section")?.setAttribute("hidden", "");
+    const sessionRoot = document.getElementById("librarySessionRoot");
+    if (sessionRoot) renderLibrarySession(session, sessionRoot);
+    return;
+  }
 
   const metaGrid = document.getElementById("topicMetaGrid");
   if (metaGrid) {
