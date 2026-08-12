@@ -5517,6 +5517,27 @@ export function getRafiTutorWordDetails(wordId) {
   const category = String(word.category || "").toLowerCase();
   const type = String(word.type || "").toLowerCase();
   if (category === "verben" || type === "verb") {
+    details.isVerb = true;
+    const people = [
+      ["ich", "ich"], ["du", "du"], ["er_sie_es", "er/sie/es"],
+      ["wir", "wir"], ["ihr", "ihr"], ["sie_formal", "Sie"]
+    ];
+    const collectTenseForms = mode => {
+      const tense = getConjugationNode(
+        getConjugationNode(word.conjugation, "indikativ"),
+        mode
+      );
+      return people
+        .map(([personKey, personLabel]) => {
+          const value = getConjugationPersonValue(tense, personKey);
+          if (!value || value === "-") return "";
+          const escapedLabel = personLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          return new RegExp(`^${escapedLabel}\\s+`, "i").test(value)
+            ? value
+            : `${personLabel} ${value}`;
+        })
+        .filter(Boolean);
+    };
     const partizipII = getTutorConjugationValue(word.conjugation, ["partizip", "partizip_ii"]);
     const praeteritum = getTutorConjugationValue(word.conjugation, ["indikativ", "praeteritum", "ich"]);
     const perfekt = getTutorConjugationValue(word.conjugation, ["indikativ", "perfekt", "ich"]);
@@ -5528,6 +5549,13 @@ export function getRafiTutorWordDetails(wordId) {
     if (/^ich\s+bin\b/i.test(perfekt)) details.auxiliary = "sein";
     if (ichPresent) details.ichPresent = ichPresent.replace(/^ich\s+/i, "");
     if (erPresent) details.erPresent = erPresent.replace(/^(er|sie|es|er\/sie\/es)\s+/i, "");
+
+    const praesensForms = collectTenseForms("praesens");
+    const praeteritumForms = collectTenseForms("praeteritum");
+    const perfektForms = collectTenseForms("perfekt");
+    if (praesensForms.length) details.praesensForms = praesensForms;
+    if (praeteritumForms.length) details.praeteritumForms = praeteritumForms;
+    if (perfektForms.length) details.perfektForms = perfektForms;
 
     const meaning = cleanTutorText(word.meaning);
     const verbKind = meaning.match(/\b(nicht trennbares|untrennbares|trennbares)\b/i)?.[1];
