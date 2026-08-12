@@ -365,6 +365,19 @@ body.dark .panel-content button:focus-visible {
   color: #ffffff;
 }
 
+body.dark .panel-content .sprachcoach-panel-btn {
+  background: linear-gradient(135deg, #5b21b6, #1d4ed8);
+  border-color: rgba(165, 180, 252, 0.55);
+  color: #ffffff;
+}
+
+body.dark .panel-content .sprachcoach-panel-btn:hover,
+body.dark .panel-content .sprachcoach-panel-btn:focus-visible {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  border-color: #818cf8;
+  color: #ffffff;
+}
+
 body.dark #darkToggle,
 body.dark #loginBtn,
 body.dark #rafiTutorBtn {
@@ -1043,9 +1056,20 @@ body.dark .close-btn:hover {
 }
 
 @media (max-width: 768px) {
+  body.dark #rafiTutorBtn {
+    border: none;
+    background: transparent;
+    color: #8ea0ff;
+    box-shadow: none;
+  }
+
   body.dark #rafiTutorBtn:hover,
   body.dark #rafiTutorBtn:focus-visible {
     transform: translate(-50%, calc(-50% - 2px));
+    border: none;
+    background: transparent;
+    color: #a5b4fc;
+    box-shadow: none;
   }
 
   body.dark #wordDetailPage {

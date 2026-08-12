@@ -26,13 +26,13 @@ function createTutorPanel() {
   panel.innerHTML = `
     <div class="rafi-tutor-head">
       <div class="rafi-tutor-heading">
-        <h2 id="rafiTutorTitle">✨ Rafi Tutor</h2>
-        <p id="rafiTutorSubtitle">Free German Learning Assistant</p>
+        <h2 id="rafiTutorTitle">SprachCoach</h2>
+        <p id="rafiTutorSubtitle">Dein persönlicher Deutsch-Lerncoach</p>
         <small id="rafiTutorSource">Powered by Rafi's Wörterbuch learning data</small>
       </div>
       <div class="rafi-tutor-head-actions">
         <button id="rafiTutorNew" type="button">New</button>
-        <button id="rafiTutorClose" type="button" aria-label="Close Rafi Smart Tutor">Close</button>
+        <button id="rafiTutorClose" type="button" aria-label="Close SprachCoach">Close</button>
       </div>
     </div>
     <div class="rafi-tutor-body"></div>`;
@@ -60,7 +60,13 @@ function appendField(host, label, values) {
   host.appendChild(section);
 }
 
-function renderWordExplanation(panel, context) {
+function getCurrentWordContext() {
+  const context = getRafiTutorContext();
+  return context.view === "word" && context.word?.id ? context : null;
+}
+
+function renderWordExplanation(panel) {
+  const context = getCurrentWordContext();
   const body = panel.querySelector(".rafi-tutor-body");
   if (!body) return;
   body.replaceChildren();
@@ -69,14 +75,14 @@ function renderWordExplanation(panel, context) {
   const back = document.createElement("button");
   back.type = "button";
   back.className = "rafi-tutor-result-back";
-  back.textContent = "← Tutor home";
+  back.textContent = "← SprachCoach home";
   result.appendChild(back);
 
-  if (context.view !== "word" || !context.word?.id) {
+  if (!context) {
     const heading = document.createElement("h3");
     heading.textContent = "Open a dictionary word first";
     const text = document.createElement("p");
-    text.textContent = "Choose a word in Rafi's Wörterbuch, then open Rafi Tutor and select Explain a Word.";
+    text.textContent = "Choose a word in Rafi's Wörterbuch, then open SprachCoach and select Explain a Word.";
     result.append(heading, text);
     body.appendChild(result);
     back.addEventListener("click", () => panel.dispatchEvent(new CustomEvent("rafi:tutorhome")));
@@ -113,21 +119,22 @@ function renderWordExplanation(panel, context) {
   back.focus();
 }
 
-function renderWordExamples(panel, context) {
+function renderWordExamples(panel) {
+  const context = getCurrentWordContext();
   const body = panel.querySelector(".rafi-tutor-body");
   if (!body) return;
   body.replaceChildren();
   const result = document.createElement("div");
   result.className = "rafi-tutor-result";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← Back to word tools", "rafi-tutor-result-back");
   result.appendChild(back);
 
-  const details = context.view === "word" && context.word?.id
+  const details = context
     ? getRafiTutorWordDetails(context.word.id)
     : null;
   const heading = document.createElement("h3");
   heading.textContent = details
-    ? (details.article ? `${details.article} ${details.word}` : details.word)
+    ? `Examples with ${details.article ? `${details.article} ${details.word}` : details.word}`
     : "Open a dictionary word first";
   result.appendChild(heading);
 
@@ -137,12 +144,21 @@ function renderWordExamples(panel, context) {
     result.appendChild(text);
   } else if (!details.examples?.length) {
     const text = document.createElement("p");
-    text.textContent = "No recorded examples are available for this word.";
+    text.textContent = "No recorded examples are available for this word yet.";
     result.appendChild(text);
   } else {
     appendField(result, "Examples", details.examples);
     appendField(result, "English", details.meaningEn);
     appendField(result, "বাংলা", details.meaningBn);
+  }
+
+  if (details) {
+    const actions = document.createElement("div");
+    actions.className = "rafi-quiz-end-actions";
+    const test = makeButton("🎯 Test this word", "rafi-tutor-primary");
+    test.addEventListener("click", () => renderContextWordTest(panel));
+    actions.appendChild(test);
+    result.appendChild(actions);
   }
 
   body.appendChild(result);
@@ -159,21 +175,27 @@ function hasContextualConjugation(details) {
   );
 }
 
-function renderContextualConjugation(panel, context) {
+function renderContextualConjugation(panel) {
+  const context = getCurrentWordContext();
   const body = panel.querySelector(".rafi-tutor-body");
   if (!body) return;
   body.replaceChildren();
   const result = document.createElement("div");
   result.className = "rafi-tutor-result";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← Back to word tools", "rafi-tutor-result-back");
   result.appendChild(back);
-  const details = context.view === "word" && context.word?.id
+  const details = context
     ? getRafiTutorWordDetails(context.word.id)
     : null;
 
   const heading = document.createElement("h3");
-  heading.textContent = details?.word || "Verb conjugation";
+  heading.textContent = details ? `Conjugation: ${details.word}` : "Verb conjugation";
   result.appendChild(heading);
+
+  if (!details?.isVerb) {
+    renderTutorDashboard(panel);
+    return;
+  }
 
   if (!hasContextualConjugation(details)) {
     const text = document.createElement("p");
@@ -184,15 +206,53 @@ function renderContextualConjugation(panel, context) {
     appendField(result, "Präteritum", details.praeteritumForms);
     appendField(result, "Perfekt", details.perfektForms);
     appendField(result, "Partizip II", details.partizipII);
+    appendField(result, "Auxiliary", details.auxiliary);
 
     const questions = getRafiTutorConjugationQuestions().filter(
       item => item.wordId === details.id
     );
     if (questions.length) {
-      const practice = makeButton("Practice this verb", "rafi-tutor-primary");
+      const practice = makeButton("🎯 Practice this verb", "rafi-tutor-primary");
       practice.addEventListener("click", () => renderConjugationTrainer(panel, details.id));
       result.appendChild(practice);
     }
+  }
+
+  body.appendChild(result);
+  back.addEventListener("click", () => panel.dispatchEvent(new CustomEvent("rafi:tutorhome")));
+  back.focus();
+}
+
+function renderNounArticleAndPlural(panel) {
+  const context = getCurrentWordContext();
+  const body = panel.querySelector(".rafi-tutor-body");
+  if (!body) return;
+  body.replaceChildren();
+  const result = document.createElement("div");
+  result.className = "rafi-tutor-result";
+  const back = makeButton("← Back to word tools", "rafi-tutor-result-back");
+  result.appendChild(back);
+  const details = context ? getRafiTutorWordDetails(context.word.id) : null;
+  const heading = document.createElement("h3");
+  heading.textContent = details
+    ? (details.article ? `${details.article} ${details.word}` : details.word)
+    : "Article & Plural";
+  result.appendChild(heading);
+
+  if (!details?.isNoun) {
+    renderTutorDashboard(panel);
+    return;
+  }
+
+  if (!details.article && !details.plural) {
+    const text = document.createElement("p");
+    text.textContent = "No reliable article or plural data is available for this word.";
+    result.appendChild(text);
+  } else {
+    appendField(result, "Article", details.article);
+    appendField(result, "Plural", details.plural);
+    appendField(result, "English", details.meaningEn);
+    appendField(result, "বাংলা", details.meaningBn);
   }
 
   body.appendChild(result);
@@ -251,7 +311,7 @@ function renderGrammarLibrary(panel) {
   body.replaceChildren();
   const view = document.createElement("div");
   view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3");
   title.textContent = "Grammar Library";
   const controls = document.createElement("div");
@@ -347,7 +407,7 @@ function renderArticleTrainer(panel) {
   body.replaceChildren();
   const view = document.createElement("div");
   view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3");
   title.textContent = "Article Trainer";
   const controls = document.createElement("div");
@@ -458,7 +518,7 @@ function renderVocabularyQuiz(panel) {
   body.replaceChildren();
   const view = document.createElement("div");
   view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3");
   title.textContent = "Vocabulary Quiz";
   const mode = document.createElement("select");
@@ -567,7 +627,7 @@ function renderConjugationTrainer(panel, wordId = "") {
   const body = panel.querySelector(".rafi-tutor-body");
   body.replaceChildren();
   const view = document.createElement("div"); view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3"); title.textContent = wordId ? "Practice this verb" : "Verb Conjugation Trainer";
   const mode = document.createElement("select"); mode.setAttribute("aria-label", "Conjugation tense");
   const questions = getRafiTutorConjugationQuestions().filter(item => !wordId || item.wordId === wordId);
@@ -698,7 +758,7 @@ function renderMistakeChecker(panel) {
 function renderPracticeChooser(panel) {
   const body = panel.querySelector(".rafi-tutor-body"); body.replaceChildren();
   const view = document.createElement("div"); view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3"); title.textContent = "Practice Tools";
   const description = document.createElement("p"); description.textContent = "Choose a structured local exercise.";
   const tools = document.createElement("div"); tools.className = "rafi-practice-tools";
@@ -746,8 +806,13 @@ function renderSentenceBuilder(panel) {
   view.append(back, title, description, category, templateSelect, choiceSelect, output); body.appendChild(view); fillTemplates(); category.focus();
 }
 
-function renderContextWordTest(panel, context) {
+function renderContextWordTest(panel) {
+  const context = getCurrentWordContext();
   const body = panel.querySelector(".rafi-tutor-body"); body.replaceChildren();
+  if (!context) {
+    renderTutorDashboard(panel);
+    return;
+  }
   const details = getRafiTutorWordDetails(context.word.id);
   if (!details) return;
   const vocabulary = getRafiTutorVocabulary();
@@ -770,7 +835,7 @@ function renderContextWordTest(panel, context) {
   }
   const selectedQuestions = questions.slice(0, 5);
   const view = document.createElement("div"); view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3"); title.textContent = `Test: ${details.word}`;
   const game = document.createElement("div"); game.className = "rafi-article-game";
   let index = 0, correct = 0;
@@ -804,7 +869,7 @@ function renderSmartReview(panel, weakOnly = false) {
   const words = getRafiTutorVocabulary().filter(item => ids.includes(item.id) && item.meaningEn?.length);
   const body = panel.querySelector(".rafi-tutor-body"); body.replaceChildren();
   const view = document.createElement("div"); view.className = "rafi-tutor-tool";
-  const back = makeButton("← Tutor home", "rafi-tutor-result-back");
+  const back = makeButton("← SprachCoach home", "rafi-tutor-result-back");
   const title = document.createElement("h3"); title.textContent = weakOnly ? "Review Weak Words" : "Today's Review";
   const game = document.createElement("div"); game.className = "rafi-article-game";
   let index = 0, correct = 0;
@@ -838,7 +903,7 @@ function renderTutorDashboard(panel) {
   const stats = getTutorReviewStats();
   const dashboard = document.createElement("div"); dashboard.className = "rafi-tutor-dashboard";
   const intro = document.createElement("div"); intro.className = "rafi-tutor-dashboard-intro";
-  const title = document.createElement("h3"); title.textContent = "✨ Rafi Tutor";
+  const title = document.createElement("h3"); title.textContent = "SprachCoach";
   const text = document.createElement("p"); text.textContent = "Practice German with your Rafi's Wörterbuch learning data.";
   intro.append(title, text); dashboard.appendChild(intro);
   if (context.view === "word" && context.word?.id) {
@@ -848,12 +913,14 @@ function renderTutorDashboard(panel) {
     const word = document.createElement("h4"); word.textContent = context.word.word;
     const actions = document.createElement("div"); actions.className = "rafi-dashboard-actions";
     const contextActions = [
-      ["Explain", () => renderWordExplanation(panel, context)],
-      ["Examples", () => renderWordExamples(panel, context)],
-      ["Test Me", () => renderContextWordTest(panel, context)]
+      ["Explain", () => renderWordExplanation(panel)],
+      ["Examples", () => renderWordExamples(panel)],
+      ["Test Me", () => renderContextWordTest(panel)]
     ];
-    if (hasContextualConjugation(details)) {
-      contextActions.splice(1, 0, ["Conjugate", () => renderContextualConjugation(panel, context)]);
+    if (details?.isVerb) {
+      contextActions.splice(1, 0, ["Conjugate", () => renderContextualConjugation(panel)]);
+    } else if (details?.isNoun && (details.article || details.plural)) {
+      contextActions.splice(1, 0, ["Article & Plural", () => renderNounArticleAndPlural(panel)]);
     }
     contextActions.forEach(([name, handler]) => { const button = makeButton(name); button.addEventListener("click", handler); actions.appendChild(button); });
     current.append(label, word, actions); dashboard.appendChild(current);
@@ -883,6 +950,8 @@ function renderTutorDashboard(panel) {
 export function initRafiTutor() {
   const launcher = document.getElementById("rafiTutorBtn");
   if (!launcher) return;
+  const panelLauncher = document.getElementById("panelSprachCoachBtn");
+  const launchers = [launcher, panelLauncher].filter(Boolean);
   const panel = document.getElementById("rafiTutorPanel") || createTutorPanel();
   const closeButton = panel.querySelector("#rafiTutorClose");
   const newButton = panel.querySelector("#rafiTutorNew");
@@ -891,13 +960,13 @@ export function initRafiTutor() {
     if (headerHeight) document.documentElement.style.setProperty("--rafi-tutor-header-height", `${headerHeight}px`);
   };
 
-  const open = () => {
+  const open = source => {
     syncHeaderHeight();
     showTutorHome();
-    lastFocusedElement = document.activeElement;
+    lastFocusedElement = source || document.activeElement;
     panel.classList.add("is-open");
     panel.setAttribute("aria-hidden", "false");
-    launcher.setAttribute("aria-expanded", "true");
+    launchers.forEach(button => button.setAttribute("aria-expanded", "true"));
     document.body.classList.add("rafi-tutor-open");
     closeButton?.focus();
   };
@@ -906,17 +975,22 @@ export function initRafiTutor() {
     if (!panel.classList.contains("is-open")) return;
     panel.classList.remove("is-open");
     panel.setAttribute("aria-hidden", "true");
-    launcher.setAttribute("aria-expanded", "false");
+    launchers.forEach(button => button.setAttribute("aria-expanded", "false"));
     document.body.classList.remove("rafi-tutor-open");
     (lastFocusedElement instanceof HTMLElement ? lastFocusedElement : launcher).focus();
   };
 
-  launcher.addEventListener("click", () => panel.classList.contains("is-open") ? close() : open());
+  launchers.forEach(button => {
+    button.addEventListener("click", () => panel.classList.contains("is-open") ? close() : open(button));
+  });
   closeButton?.addEventListener("click", close);
   const showTutorHome = () => {
     renderTutorDashboard(panel);
   };
   panel.addEventListener("rafi:tutorhome", showTutorHome);
+  window.addEventListener("rafi:tutorcontextchange", () => {
+    if (panel.classList.contains("is-open")) showTutorHome();
+  });
   newButton?.addEventListener("click", () => {
     showTutorHome();
     panel.querySelector(".rafi-dashboard-tools button")?.focus();

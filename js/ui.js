@@ -51,6 +51,11 @@ let activeSectionMemory = {};
 let currentView = "home";
 // Minimal, public-safe state used by the local Rafi Tutor integration.
 let rafiTutorContext = { view: "home" };
+
+function setRafiTutorContext(context) {
+  rafiTutorContext = context;
+  window.dispatchEvent(new CustomEvent("rafi:tutorcontextchange"));
+}
 // Navigation-source flags determine the correct Back button destination.
 let openedFromHomeSearch = false;
 let openedFromCategory = false;
@@ -2264,7 +2269,7 @@ function renderGermanyPage() {
   const page = GERMANY_PAGE_COPY[germanyPageLanguage] || GERMANY_PAGE_COPY.en;
 
   currentView = "custom";
-  rafiTutorContext = { view: "home" };
+  setRafiTutorContext({ view: "home" });
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
@@ -2362,7 +2367,7 @@ function renderBangladeshPage() {
   const page = BANGLADESH_PAGE_COPY[bangladeshPageLanguage] || BANGLADESH_PAGE_COPY.en;
 
   currentView = "custom";
-  rafiTutorContext = { view: "home" };
+  setRafiTutorContext({ view: "home" });
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = "none";
@@ -2575,11 +2580,11 @@ function showSection(id) {
   if (!active) return;
 
   if (id === "homePage") {
-    rafiTutorContext = { view: "home" };
+    setRafiTutorContext({ view: "home" });
   } else if (id === "categoryPage" && currentCategory) {
-    rafiTutorContext = { view: "category", category: currentCategory };
+    setRafiTutorContext({ view: "category", category: currentCategory });
   } else if (id !== "wordDetailPage") {
-    rafiTutorContext = { view: "home" };
+    setRafiTutorContext({ view: "home" });
   }
 
   active.style.display = "block";
@@ -3515,7 +3520,7 @@ function openWordDetail(wordId, options = {}) {
   if (Array.isArray(word.bangla) && word.bangla.length) {
     tutorWord.meaningBn = word.bangla.join(", ");
   }
-  rafiTutorContext = { view: "word", word: tutorWord };
+  setRafiTutorContext({ view: "word", word: tutorWord });
 
   showSection("wordDetailPage");
 
@@ -4001,7 +4006,7 @@ function renderPanelPage(pageKey) {
   if (!desktopPage || !page) return;
 
   currentView = "custom";
-  rafiTutorContext = { view: "home" };
+  setRafiTutorContext({ view: "home" });
 
   ["homePage", "categoryPage", "wordDetailPage", "conjugationPage"].forEach(id => {
     const el = document.getElementById(id);
@@ -5331,17 +5336,6 @@ async function handleSidePanelAction(page) {
     return;
   }
 
-  if (page === "conjugation-practice") {
-    if (!currentUser) {
-      promptLoginForRestrictedCategory("Login to use Conjugation Practice.");
-      return;
-    }
-    practiceOrigin = { type: "panel" };
-    setSingleRouteParam("page", "conjugation-practice");
-    renderConjugationPracticePage();
-    return;
-  }
-
   if (page === "review") {
     if (!currentUser) {
       promptLoginForRestrictedCategory("Login to review your saved words.");
@@ -5516,6 +5510,9 @@ export function getRafiTutorWordDetails(wordId) {
 
   const category = String(word.category || "").toLowerCase();
   const type = String(word.type || "").toLowerCase();
+  if (category === "nomen" || type === "noun") {
+    details.isNoun = true;
+  }
   if (category === "verben" || type === "verb") {
     details.isVerb = true;
     const people = [

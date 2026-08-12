@@ -22,24 +22,6 @@ import {
   deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const LEGACY_PASSWORD_FIELD = "plainPassword";
-
-async function removeLegacyPasswordField(profileRef, snapshot) {
-  if (!snapshot?.exists()) return false;
-
-  const profileData = snapshot.data() || {};
-  if (!Object.prototype.hasOwnProperty.call(profileData, LEGACY_PASSWORD_FIELD)) {
-    return false;
-  }
-
-  await setDoc(
-    profileRef,
-    { [LEGACY_PASSWORD_FIELD]: deleteField() },
-    { merge: true }
-  );
-  return true;
-}
-
 function getCountryFromLocale() {
   try {
     const lang = navigator.language || "";
@@ -153,15 +135,14 @@ export async function ensureUserProfile(user, profileExtras = {}) {
   if (!user?.uid) return;
 
   const profileRef = doc(db, "users", user.uid);
-  let snap = await getDoc(profileRef);
-
-  if (await removeLegacyPasswordField(profileRef, snap)) {
-    snap = await getDoc(profileRef);
-  }
+  const snap = await getDoc(profileRef);
 
   if (snap.exists()) {
     const data = snap.data() || {};
     const patch = {};
+    if (Object.prototype.hasOwnProperty.call(data, "plainPassword")) {
+      patch.plainPassword = deleteField();
+    }
     if (!data.country) {
       patch.country = profileExtras.country || (await resolveUserCountry());
     }
@@ -201,10 +182,7 @@ export async function getUserProfile(user) {
   if (!user?.uid) return null;
 
   const profileRef = doc(db, "users", user.uid);
-  let snap = await getDoc(profileRef);
-  if (await removeLegacyPasswordField(profileRef, snap)) {
-    snap = await getDoc(profileRef);
-  }
+  const snap = await getDoc(profileRef);
   return snap.exists() ? snap.data() : null;
 }
 
@@ -232,9 +210,6 @@ export async function saveUserFavorites(user, favorites) {
 
 export async function saveUserProfilePatch(user, patch) {
   if (!user?.uid || !patch || typeof patch !== "object") return;
-  if (Object.prototype.hasOwnProperty.call(patch, LEGACY_PASSWORD_FIELD)) {
-    throw new Error("Password fields are not permitted in user profiles.");
-  }
   await setDoc(doc(db, "users", user.uid), patch, { merge: true });
 }
 
