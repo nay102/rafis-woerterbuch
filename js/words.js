@@ -32,7 +32,6 @@ export async function loadWords() {
   const { attachConjugations } = await import("./conjugation.js");
   attachConjugations(allWords, irregularVerbs);
 
-  console.log("Words loaded from words.json", allWords);
 }
 
 

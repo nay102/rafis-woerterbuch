@@ -4876,3 +4876,16 @@ body.dark .card-reveal-note:focus-visible {
   }
 
 }
+
+.exercise-card .exercise-progress-note {
+  display: block;
+  margin: 10px 0 2px;
+  color: #53647c;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+body.dark .exercise-card .exercise-progress-note,
+body.dark-mode .exercise-card .exercise-progress-note {
+  color: #b8c7dc;
+}

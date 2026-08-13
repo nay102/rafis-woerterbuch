@@ -87,7 +87,6 @@ async function registerServiceWorker() {
   try {
     const swUrl = `${getBasePath()}sw.js`;
     const registration = await navigator.serviceWorker.register(swUrl);
-    console.log("Service worker registered");
     setupSwUpdatePrompt(registration);
   } catch (error) {
     console.error("Service worker registration failed:", error);
@@ -172,7 +171,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     initRafiTutor();
     setupInstallPromptUI();
     await registerServiceWorker();
-    console.log("App initialized successfully");
   } catch (error) {
     console.error("App init error:", error);
   }

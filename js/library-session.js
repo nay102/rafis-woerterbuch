@@ -22,13 +22,22 @@ function defaultProgress(session) {
 
 export function getLibraryProgress(level, id) {
   const key = `${level}:${id}`;
-  return { ...defaultProgress({}), ...(readStore()[key] || {}) };
+  const session = getLibrarySession(level, id);
+  const saved = { ...defaultProgress(session || {}), ...(readStore()[key] || {}) };
+  if (!session) return saved;
+  const lessonIds = new Set(session.lessons.map(lesson => lesson.id));
+  const validSkills = new Set(session.masteryQuestions.map(question => question.skill).filter(Boolean));
+  saved.completedLessons = [...new Set((Array.isArray(saved.completedLessons) ? saved.completedLessons : []).filter(lessonId => lessonIds.has(lessonId)))];
+  saved.currentLesson = lessonIds.has(saved.currentLesson) ? saved.currentLesson : null;
+  saved.weakSkills = [...new Set((Array.isArray(saved.weakSkills) ? saved.weakSkills : []).filter(skill => validSkills.has(skill)))];
+  saved.totalLessons = session.lessons.length;
+  return saved;
 }
 
 function saveProgress(session, patch) {
   const store = readStore();
   const key = `${session.level}:${session.id}`;
-  store[key] = { ...defaultProgress(session), ...(store[key] || {}), ...patch, lastActivity: new Date().toISOString() };
+  store[key] = { ...defaultProgress(session), ...getLibraryProgress(session.level, session.id), ...patch, lastActivity: new Date().toISOString() };
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch { /* practice still works */ }
   return store[key];
 }
@@ -48,7 +57,9 @@ function shuffle(items) {
 
 function appendText(parent, tag, text, className) {
   if (!text) return;
-  parent.append(el(tag, className, text));
+  const node = el(tag, className, text);
+  if (className?.includes("session-bn")) node.lang = "bn";
+  parent.append(node);
 }
 
 function renderBlock(block, session) {
@@ -69,7 +80,9 @@ function renderBlock(block, session) {
     const dialogue = el("div", "session-dialogue");
     block.lines.forEach(([speaker, german, english, bengali]) => {
       const line = el("div", "session-dialogue-line");
-      line.append(el("strong", "", speaker), el("span", "", german), el("small", "", english), el("small", "", bengali));
+      const germanText = el("span", "", german); germanText.lang = "de";
+      const bengaliText = el("small", "", bengali); bengaliText.lang = "bn";
+      line.append(el("strong", "", speaker), germanText, el("small", "", english), bengaliText);
       dialogue.append(line);
     });
     card.append(dialogue);
@@ -77,7 +90,7 @@ function renderBlock(block, session) {
     const grid = el("div", "session-vocabulary-cards");
     block.items.forEach((item) => {
       const entry = el("article", "session-vocabulary-card");
-      entry.append(el("h4", "", item.german));
+      const germanTitle = el("h4", "", item.german); germanTitle.lang = "de"; entry.append(germanTitle);
       appendText(entry, "p", item.plural ? `Plural: ${item.plural}` : "", "session-vocabulary-plural");
       appendText(entry, "p", item.english, "session-vocabulary-meaning");
       appendText(entry, "p", item.bengali, "session-bn");
@@ -116,7 +129,7 @@ function renderBlock(block, session) {
     block.items.forEach((item) => {
       if (Array.isArray(item)) {
         const row = el("div", "session-vocabulary-row");
-        item.forEach((part, index) => row.append(el(index ? "small" : "strong", "", part)));
+        item.forEach((part, index) => { const value = el(index ? "small" : "strong", "", part); if (!index) value.lang = "de"; if (index === 2) value.lang = "bn"; row.append(value); });
         list.append(row);
       } else list.append(el("span", "", item));
     });
@@ -239,7 +252,7 @@ export function renderLibrarySession(session, root) {
   masteryStart.onclick=()=>{masteryStart.hidden=true;const selected=shuffle(session.masteryQuestions).slice(0,10);renderRunner(masteryHost,selected,{session,label:"Mastery",recordProgress:false,onFinish:({correct,wrong,mistakes})=>{state.masteryMistakes=mistakes;const score=Math.round(correct/selected.length*100);const p=getLibraryProgress(session.level,session.id);const weak=[...new Set(mistakes.map((m)=>m.question.skill).filter(Boolean))];const strengths=[...new Set(selected.map((q)=>q.skill).filter((skill)=>skill&&!weak.includes(skill)))];saveProgress(session,{masteryAttempts:p.masteryAttempts+1,lastMasteryScore:score,bestMasteryScore:Math.max(p.bestMasteryScore,score),mastered:p.mastered||score>=session.masteryThreshold,weakSkills:weak,correct:p.correct+correct,wrong:p.wrong+wrong});updateStats();const band=score>=session.masteryThreshold?"mastered":score>=60?"almost":"practice";const defaults={mastered:{title:"Topic Mastered",en:"Great work. You reached this topic's mastery target.",bn:"দারুণ। আপনি এই topic-এর mastery target পূরণ করেছেন।"},almost:{title:"Almost There",en:"Review your weak areas and try again.",bn:"ভুল হওয়া অংশগুলো review করে আবার চেষ্টা করুন।"},practice:{title:"Keep Practicing",en:"Review the related lessons, then try again.",bn:"সম্পর্কিত lesson-গুলো review করে আবার চেষ্টা করুন।"}};const result={...defaults[band],...(session.masteryMessages?.[band]||{})};masteryHost.replaceChildren(el("div","session-score",`${correct} / ${selected.length}`),el("strong","",`${score}%`),el("h3","",result.title),el("p","",result.en),el("p","session-bn",result.bn));if(strengths.length)masteryHost.append(el("p","",`Strengths: ${strengths.join(", ")}`));if(weak.length)masteryHost.append(el("p","",`Weak areas: ${weak.join(", ")}`));const reviewBtn=el("button","session-secondary-btn",score>=60?"Review Weak Areas":"Review Lessons");reviewBtn.disabled=!mistakes.length;reviewBtn.onclick=()=>renderReview();const retry=el("button","session-primary-btn",score>=session.masteryThreshold?"Practice Again":"Try Again");retry.onclick=()=>{masteryStart.hidden=false;masteryStart.click();};masteryHost.append(reviewBtn,retry);}});};mastery.append(masteryStart,masteryHost);main.append(mastery);
   const review=el("section","session-section");review.id="session-review";review.append(el("span","session-eyebrow","Review Mistakes"),el("h2","","Learn from this attempt"));const reviewHost=el("div","session-review-list");review.append(reviewHost);main.append(review);
   function renderReview(){reviewHost.replaceChildren();if(!state.masteryMistakes.length){reviewHost.append(el("p","","No mastery mistakes to review yet."));}state.masteryMistakes.forEach(({question,learnerAnswer})=>{const card=el("article","session-review-item");card.append(el("h3","",question.prompt),el("p","",`Your answer: ${learnerAnswer}`),el("p","",`Correct: ${question.answer}`),el("p","",question.explanationEn||"Review the related lesson."));if(question.lessonId){const button=el("button","session-link-btn","Review lesson");button.onclick=()=>{const i=session.lessons.findIndex((l)=>l.id===question.lessonId);if(i>=0){renderLesson(i);discover.scrollIntoView({behavior:"smooth"});}};card.append(button);}reviewHost.append(card);});review.scrollIntoView({behavior:"smooth"});}
-  const completion=el("section","session-section session-completion");completion.id="session-continue";completion.append(el("span","session-eyebrow",session.isLibraryCoreComplete?"Library Core Complete":"Continue Learning"),el("h2","",session.completionTitle||"What you can do now"));const list=el("ul");session.completionKnowledge.forEach(item=>list.append(el("li","",item)));completion.append(list);const links=el("div","session-completion-links");const back=el("a","session-secondary-btn",session.isLibraryCoreComplete?`Review ${session.level} Learning Library`:`Back to ${session.level} Library`);back.href=`../${session.level.toLowerCase()}/#library`;links.append(back);if(session.nextTopic){const next=el("a","session-primary-btn",`Continue to ${session.nextTopicTitle||"Next Topic"}`);next.href=`./?level=${encodeURIComponent(session.level)}&topic=${encodeURIComponent(session.nextTopic)}`;links.append(next);}completion.append(links);main.append(completion);
+  const completion=el("section","session-section session-completion");completion.id="session-continue";completion.append(el("span","session-eyebrow",session.isLibraryCoreComplete?"Library Core Complete":"Continue Learning"),el("h2","",session.completionTitle||"What you can do now"));const list=el("ul");session.completionKnowledge.forEach(item=>list.append(el("li","",item)));completion.append(list);const links=el("div","session-completion-links");const back=el("a","session-secondary-btn",session.isLibraryCoreComplete?`Review ${session.level} Learning Library`:`Back to ${session.level} Library`);back.href=`../${session.level.toLowerCase()}/#library`;links.append(back);if(session.isLibraryCoreComplete){const practiceAgain=el("a","session-primary-btn",`Practice ${session.title} Again`);practiceAgain.href=`./?level=${encodeURIComponent(session.level)}&topic=${encodeURIComponent(session.id)}#session-guided`;links.append(practiceAgain);}else if(session.nextTopic){const next=el("a","session-primary-btn",`Continue to ${session.nextTopicTitle||"Next Topic"}`);next.href=`./?level=${encodeURIComponent(session.level)}&topic=${encodeURIComponent(session.nextTopic)}`;links.append(next);}completion.append(links);main.append(completion);
   shell.append(rail,main);root.append(shell);
 }
 
