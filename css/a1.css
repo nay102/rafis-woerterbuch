@@ -4889,3 +4889,27 @@ body.dark .exercise-card .exercise-progress-note,
 body.dark-mode .exercise-card .exercise-progress-note {
   color: #b8c7dc;
 }
+.a1-progress-entry-section { padding: 38px 0; background: #f5f8ff; }
+.a1-progress-entry-card { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 28px; padding: 28px 32px; border: 1px solid #d7e3f5; border-radius: 22px; background: #fff; box-shadow: 0 16px 42px rgba(35, 68, 118, .08); }
+.a1-progress-entry-card h2 { margin: 8px 0 5px; color: #14213d; }
+.a1-progress-entry-card p { max-width: 620px; margin: 0; color: #617089; }
+.a1-progress-entry-stats { display: grid; gap: 4px; min-width: 180px; }
+.a1-progress-entry-stats strong { color: #285fdd; font-size: 1.25rem; }
+.a1-progress-entry-stats span { color: #617089; font-size: .8rem; }
+.a1-progress-entry-card > a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 18px; border-radius: 12px; background: #285fdd; color: #fff; text-decoration: none; font-weight: 700; white-space: nowrap; }
+body.dark .a1-progress-entry-section { background: #101b2b; }
+body.dark .a1-progress-entry-card { border-color: #344b69; background: #17263a; }
+body.dark .a1-progress-entry-card h2 { color: #e2ecfa; }
+body.dark .a1-progress-entry-card p, body.dark .a1-progress-entry-stats span { color: #adbed3; }
+@media (max-width: 768px) { .a1-progress-entry-card { grid-template-columns: 1fr; gap: 18px; padding: 24px; } .a1-progress-entry-card > a { width: 100%; } }
+.a1-capstone-section { padding: 54px 0; background: linear-gradient(135deg, #eff4ff, #f8fbff); }
+.a1-capstone-card { max-width: 920px; margin: auto; padding: 36px; border: 1px solid #cbdaf3; border-radius: 24px; background: #fff; text-align: center; box-shadow: 0 20px 55px rgba(34, 68, 119, .09); }
+.a1-capstone-card h2 { margin: 10px 0 4px; color: #14213d; font-size: clamp(1.7rem, 4vw, 2.6rem); }
+.a1-capstone-card h3 { margin: 0 0 10px; color: #285fdd; }
+.a1-capstone-card p { max-width: 700px; margin: 0 auto 18px; color: #617089; }
+.a1-capstone-card > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 20px; }
+.a1-capstone-card > div span { padding: 7px 12px; border-radius: 20px; background: #edf3ff; color: #285fdd; font-size: .8rem; font-weight: 700; }
+.a1-capstone-card > a { display: inline-flex; min-height: 46px; align-items: center; padding: 11px 19px; border-radius: 12px; background: #285fdd; color: #fff; text-decoration: none; font-weight: 700; }
+.a1-capstone-card small { display: block; margin-top: 14px; color: #718098; }
+body.dark .a1-capstone-section { background: #101b2b; } body.dark .a1-capstone-card { border-color: #344b69; background: #17263a; } body.dark .a1-capstone-card h2 { color: #e2ecfa; } body.dark .a1-capstone-card p, body.dark .a1-capstone-card small { color: #adbed3; } body.dark .a1-capstone-card > div span { background: #263f65; color: #d6e6ff; }
+@media (max-width: 430px) { .a1-capstone-card { padding: 24px 18px; } .a1-capstone-card > a { width: 100%; justify-content: center; } }

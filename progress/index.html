@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Your private, local A1 learning progress in Rafis Sprachwelt">
+  <meta name="theme-color" content="#111827"><title>My A1 Progress | Rafis Sprachwelt</title>
+  <link rel="icon" href="../assets/branding/favicon.png"><link rel="manifest" href="../manifest.webmanifest">
+  <link href="../assets/vendor/css/poppins.css" rel="stylesheet"><link rel="stylesheet" href="../assets/vendor/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/a1-progress.css"><link rel="stylesheet" href="../css/dark.css">
+</head>
+<body class="a1-progress-body">
+  <header class="header"><div class="container header-inner">
+    <div class="logo-area" id="logoHome"><img src="../assets/branding/logo.png" alt="Rafis Woerterbuch logo" class="logo"><span id="titleHome" class="site-title">Rafi&rsquo;s W&ouml;rterbuch</span></div>
+    <div class="branding">Rafis Sprachwelt</div><div class="header-controls"><button id="darkToggle" type="button" aria-label="Toggle Dark Mode">&#127769;</button><button id="loginBtn" type="button">Login</button></div>
+  </div></header>
+  <main id="progressDashboard" class="a1-progress-page">
+    <section class="progress-hero"><div class="container"><a class="progress-back" href="../a1/"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to A1</a><span class="progress-kicker">Mein A1-Fortschritt</span><h1>My A1 Progress</h1><p>See what you&rsquo;ve completed, what needs more practice, and what to learn next.</p></div></section>
+    <div class="container progress-content" aria-live="polite">
+      <section id="overview" aria-labelledby="overviewTitle"><div class="progress-section-heading"><span>Overview</span><h2 id="overviewTitle">A1 Journey</h2></div><div id="journeyOverview"></div></section>
+      <section id="continue" aria-labelledby="continueTitle"><div class="progress-section-heading"><span>Pick up where you left off</span><h2 id="continueTitle">Continue</h2></div><div id="continueGrid" class="progress-feature-grid"></div></section>
+      <section id="focus" aria-labelledby="focusTitle"><div class="progress-section-heading"><span>Clear priorities</span><h2 id="focusTitle">Focus Areas</h2></div><div id="focusAreas"></div><div id="recommendation"></div></section>
+      <section id="library" aria-labelledby="libraryTitle"><div class="progress-section-heading"><span>16 topics</span><h2 id="libraryTitle">Learning Library</h2></div><div id="librarySummary"></div><div id="libraryGroups"></div></section>
+      <section id="practice" aria-labelledby="practiceTitle"><div class="progress-section-heading"><span>Repeatable activities</span><h2 id="practiceTitle">Practice Center</h2></div><div id="practiceGrid" class="progress-card-grid"></div></section>
+      <section id="capstone" aria-labelledby="capstoneTitle"><div class="progress-section-heading"><span>Comprehensive A1 review</span><h2 id="capstoneTitle">A1 Mixed Mastery</h2></div><div id="mixedMasteryCard"></div></section>
+      <section id="review" aria-labelledby="reviewTitle"><div class="progress-section-heading"><span>Spaced review</span><h2 id="reviewTitle">Vocabulary Review</h2></div><div id="vocabularyReview"></div></section>
+      <section id="recent" aria-labelledby="recentTitle"><div class="progress-section-heading"><span>Your latest work</span><h2 id="recentTitle">Recent Activity</h2></div><div id="recentActivity"></div></section>
+      <section id="settings" class="progress-settings" aria-labelledby="settingsTitle"><h2 id="settingsTitle">Progress Settings</h2><p>Progress is stored locally in this browser. Clearing browser data may remove it.</p><button id="resetA1Progress" class="progress-reset" type="button">Reset All A1 Progress</button><p id="resetStatus" role="status"></p></section>
+    </div>
+  </main>
+  <dialog id="resetDialog" class="progress-dialog" aria-labelledby="resetDialogTitle"><form method="dialog"><h2 id="resetDialogTitle">Reset all A1 learning and practice progress?</h2><p>This erases local progress for all 16 Library topics and all 8 Practice Center activities. It cannot be undone. Other levels, favorites, theme, authentication and settings are not affected.</p><div><button value="cancel">Cancel</button><button id="confirmReset" class="progress-danger" value="confirm">Reset A1 Progress</button></div></form></dialog>
+  <footer class="footer"><div class="footer-shell"><p class="footer-copy">&copy; 2026 Rafi&rsquo;s W&ouml;rterbuch &middot; Rafis Sprachwelt</p></div></footer>
+  <script type="module" src="../js/a1-progress-dashboard.js"></script>
+</body></html>

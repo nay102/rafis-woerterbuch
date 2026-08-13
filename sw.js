@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v132";
+const CACHE_VERSION = "rw-cache-v134";
 const DATA_VERSION = "2026-03-16-3-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -49,6 +49,8 @@ function coreUrls() {
     toAbsolute("css/download-center.css"),
     toAbsolute("css/course-module.css"),
     toAbsolute("css/a1.css"),
+    toAbsolute("css/a1-progress.css"),
+    toAbsolute("css/a1-mixed-mastery.css"),
     toAbsolute("js/app.js"),
     toAbsolute("js/ui.js"),
     toAbsolute("js/rafi-tutor.js"),
@@ -60,6 +62,9 @@ function coreUrls() {
     toAbsolute("js/conjugation.js"),
     toAbsolute("js/level-interactions.js"),
     toAbsolute("js/a1.js"),
+    toAbsolute("js/a1-progress.js"),
+    toAbsolute("js/a1-progress-dashboard.js"),
+    toAbsolute("js/a1-mixed-mastery.js"),
     toAbsolute("js/a2.js"),
     toAbsolute("js/b1.js"),
     toAbsolute("js/b2.js"),
@@ -159,6 +164,8 @@ function coreUrls() {
     toAbsolute("course-enrollment/"),
     toAbsolute("library-topic/"),
     toAbsolute("practice/"),
+    toAbsolute("progress/"),
+    toAbsolute("mixed-mastery/"),
     toAbsolute("download-center/"),
     toAbsolute("course-module/")
   ];
