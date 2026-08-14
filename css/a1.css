@@ -16,10 +16,6 @@
    13. Responsive styles
 ========================================== */
 
-.course-page {
-  overflow: hidden;
-}
-
 /* ==========================================
    LEVEL TITLE IN THE SHARED HEADER
    Keeps “Rafis Sprachwelt - A1/A2/B1/B2” in the middle header
@@ -3601,48 +3597,6 @@ body.dark .tip-card:hover {
     word-break: break-word;
   }
 
-  /* Compact exercise content for 481-768px two-column cards. */
-  .exercise-card {
-    padding: 16px 12px;
-    border-radius: 17px;
-  }
-
-  .exercise-type,
-  .exercise-card .difficulty {
-    margin-bottom: 8px;
-    padding: 5px 8px;
-    font-size: 0.58rem;
-    line-height: 1.2;
-  }
-
-  .exercise-card h3 {
-    margin-bottom: 7px;
-    font-size: 0.86rem;
-    line-height: 1.25;
-  }
-
-  .exercise-card p {
-    margin-bottom: 10px;
-    font-size: 0.68rem;
-    line-height: 1.4;
-  }
-
-  .exercise-card .exercise-meta {
-    gap: 5px;
-    margin-bottom: 10px;
-  }
-
-  .exercise-card .exercise-meta span {
-    padding: 5px 7px;
-    font-size: 0.6rem;
-    line-height: 1.2;
-  }
-
-  .exercise-card a {
-    gap: 5px;
-    font-size: 0.68rem;
-    line-height: 1.25;
-  }
 }
 
 /* Standard phone foundation. */
@@ -3653,7 +3607,7 @@ body.dark .tip-card:hover {
     gap: 6px;
     min-height: 34px;
     padding: 6px 9px;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
   }
 
   .course-menu-icon {
@@ -3673,7 +3627,7 @@ body.dark .tip-card:hover {
     min-height: 35px;
     padding: 7px 9px;
     border-radius: 10px;
-    font-size: 0.61rem;
+    font-size: 0.7rem;
   }
 
   .hero-buttons {
@@ -3726,7 +3680,7 @@ body.dark .tip-card:hover {
     right: 8px;
     min-height: 32px;
     padding: 5px 8px;
-    font-size: 0.56rem;
+    font-size: 0.68rem;
   }
 
   .course-section-menu-panel {
@@ -3739,61 +3693,6 @@ body.dark .tip-card:hover {
     flex-basis: calc(50% - 5px);
     padding-inline: 8px;
     font-size: 0.58rem;
-  }
-
-  .exercise-grid {
-    align-items: stretch;
-    grid-auto-rows: 1fr;
-  }
-
-  .exercise-card {
-    align-self: stretch;
-    height: 100%;
-    padding: 13px 10px;
-    border-radius: 14px;
-  }
-
-  .exercise-type,
-  .exercise-card .difficulty {
-    margin-bottom: 7px;
-    padding: 4px 7px;
-    font-size: 0.54rem;
-    line-height: 1.15;
-    letter-spacing: 0.25px;
-  }
-
-  .exercise-card h3 {
-    margin-bottom: 6px;
-    font-size: 0.76rem;
-    line-height: 1.24;
-  }
-
-  .exercise-card p {
-    flex: 1;
-    margin-bottom: 8px;
-    font-size: 0.6rem;
-    line-height: 1.35;
-  }
-
-  .exercise-meta {
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 11px;
-  }
-
-  .exercise-meta span {
-    width: auto;
-    flex: 1 1 auto;
-    padding: 4px 6px;
-    font-size: 0.52rem;
-    line-height: 1.15;
-  }
-
-  .exercise-card a {
-    gap: 4px;
-    font-size: 0.58rem;
-    line-height: 1.2;
   }
 
   .container { padding-inline: 12px; }
@@ -3822,86 +3721,6 @@ body.dark .tip-card:hover {
     padding-right: 20px;
   }
 
-  .course-stats,
-  .course-information,
-  .library-grid,
-  .resource-grid,
-  .tips-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .stat-card,
-  .information-card,
-  .library-card,
-  .resource-card,
-  .tip-card {
-    min-width: 0;
-    max-width: 100%;
-    padding: 12px 8px;
-    border-radius: 13px;
-    overflow: hidden;
-  }
-
-  .card-icon,
-  .library-icon,
-  .resource-icon,
-  .tip-card span {
-    width: 38px;
-    height: 38px;
-    margin: 0;
-    border-radius: 10px;
-    font-size: 1rem;
-  }
-
-  .stat-card h3 {
-    margin-bottom: 4px;
-    font-size: 1rem;
-    line-height: 1.2;
-  }
-
-  .information-card h3,
-  .library-card h4,
-  .resource-card h4 {
-    margin-bottom: 6px;
-    font-size: 0.76rem;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-  }
-
-  .stat-card p,
-  .information-card p,
-  .library-card p,
-  .resource-card p,
-  .tip-card p {
-    margin-bottom: 8px;
-    font-size: 0.61rem;
-    line-height: 1.38;
-    overflow-wrap: anywhere;
-  }
-
-  .library-card a,
-  .resource-card a {
-    max-width: 100%;
-    gap: 3px;
-    font-size: 0.6rem;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-  }
-
-  .stat-card *,
-  .information-card *,
-  .library-card *,
-  .resource-card *,
-  .tip-card * {
-    min-width: 0;
-    max-width: 100%;
-    word-break: break-word;
-  }
-
-
   .back-to-sprachwelt {
     left: 10px;
     max-width: calc(100vw - 20px);
@@ -3911,110 +3730,6 @@ body.dark .tip-card:hover {
     right: 12px;
     bottom: 12px;
   }
-}
-
-/* ==========================================
-   CONTENT-ONLY RESPONSIVE CARD CORRECTIONS
-   These rules resize content without changing card grids or dimensions.
-   Exercise cards are intentionally excluded and keep their own rules.
-========================================== */
-
-/* Small tablets: compact content inside existing card layouts. */
-@media (min-width: 481px) and (max-width: 768px) {
-  .stat-card h3 { font-size: 0.95rem; line-height: 1.2; }
-  .stat-card p { font-size: 0.68rem; line-height: 1.35; }
-
-  .information-card h3,
-  .outcome-card h3,
-  .feature-card h3 { font-size: 0.88rem; line-height: 1.25; }
-
-  .information-card p,
-  .outcome-card p,
-  .feature-card p { font-size: 0.68rem; line-height: 1.42; }
-
-  .feature-icon,
-  .library-icon,
-  .resource-icon,
-  .tip-card > span {
-    width: 42px;
-    height: 42px;
-    font-size: 1.12rem;
-  }
-
-  .module-card h3 { font-size: 0.66rem; line-height: 1.2; }
-  .module-card h4 { font-size: 0.9rem; line-height: 1.25; }
-  .module-card > p { font-size: 0.66rem; line-height: 1.4; }
-  .module-status { padding: 5px 7px; font-size: 0.54rem; line-height: 1.15; }
-  .module-icon { width: 40px; height: 40px; font-size: 1.1rem; }
-  .module-details span { padding: 5px 6px; font-size: 0.56rem; line-height: 1.2; }
-  .module-buttons a { padding: 8px 7px; font-size: 0.62rem; line-height: 1.2; }
-
-  .library-card h4,
-  .resource-card h4 { font-size: 0.86rem; line-height: 1.25; }
-
-  .library-card p,
-  .resource-card p,
-  .tip-card p { font-size: 0.66rem; line-height: 1.4; }
-
-  .library-card a,
-  .resource-card a { font-size: 0.64rem; line-height: 1.25; }
-
-  .faq-question { font-size: 0.76rem; line-height: 1.35; }
-  .faq-answer p { font-size: 0.66rem; line-height: 1.45; }
-
-  .cta-card h3 { font-size: 0.98rem; line-height: 1.25; }
-  .cta-card li { font-size: 0.66rem; line-height: 1.4; }
-  .cta-buttons a,
-  .course-button { font-size: 0.66rem; line-height: 1.25; }
-}
-
-/* Extra-small phones: content remains readable inside compact cards. */
-@media (max-width: 360px) {
-  .stat-card h3 { font-size: 0.78rem; line-height: 1.18; }
-  .stat-card p { font-size: 0.54rem; line-height: 1.28; }
-
-  .information-card h3,
-  .outcome-card h3,
-  .feature-card h3 { font-size: 0.68rem; line-height: 1.2; }
-
-  .information-card p,
-  .outcome-card p,
-  .feature-card p { font-size: 0.54rem; line-height: 1.32; }
-
-  .feature-icon,
-  .library-icon,
-  .resource-icon,
-  .tip-card > span {
-    width: 34px;
-    height: 34px;
-    font-size: 0.88rem;
-  }
-
-  .module-card h3 { font-size: 0.6rem; line-height: 1.16; }
-  .module-card h4 { font-size: 0.78rem; line-height: 1.22; }
-  .module-card > p { font-size: 0.56rem; line-height: 1.32; }
-  .module-status { padding: 4px 6px; font-size: 0.46rem; line-height: 1.1; }
-  .module-icon { width: 34px; height: 34px; font-size: 0.9rem; }
-  .module-details span { padding: 4px 5px; font-size: 0.48rem; line-height: 1.14; }
-  .module-buttons a { padding: 7px 6px; font-size: 0.54rem; line-height: 1.16; }
-
-  .library-card h4,
-  .resource-card h4 { font-size: 0.68rem; line-height: 1.2; }
-
-  .library-card p,
-  .resource-card p,
-  .tip-card p { font-size: 0.52rem; line-height: 1.32; }
-
-  .library-card a,
-  .resource-card a { font-size: 0.54rem; line-height: 1.18; }
-
-  .faq-question { font-size: 0.64rem; line-height: 1.28; }
-  .faq-answer p { font-size: 0.56rem; line-height: 1.36; }
-
-  .cta-card h3 { font-size: 0.78rem; line-height: 1.2; }
-  .cta-card li { font-size: 0.54rem; line-height: 1.32; }
-  .cta-buttons a,
-  .course-button { font-size: 0.54rem; line-height: 1.18; }
 }
 
 /* ==========================================
@@ -4064,61 +3779,6 @@ body.dark .tip-card:hover {
     transform: translateY(-1px);
   }
 
-  .module-card {
-    min-width: 0;
-    height: 100%;
-    padding: 30px 40px;
-    border-radius: 18px;
-  }
-
-  .module-card-top { gap: 7px; margin-bottom: 12px; }
-  .module-icon { width: 40px; height: 40px; border-radius: 12px; font-size: 1.08rem; }
-  .module-status { padding: 5px 7px; font-size: 0.52rem; line-height: 1.15; }
-  .module-card h3 { margin-bottom: 6px; font-size: 0.64rem; line-height: 1.18; }
-  .module-card h4 { margin-bottom: 9px; font-size: 0.88rem; line-height: 1.24; }
-  .module-card > p { margin-bottom: 11px; font-size: 0.64rem; line-height: 1.38; }
-  .module-details { gap: 6px; margin-bottom: 11px; }
-  .module-details span { padding: 5px 6px; font-size: 0.54rem; line-height: 1.16; }
-  .module-buttons a { padding: 8px 6px; font-size: 0.6rem; line-height: 1.18; }
-}
-
-@media (max-width: 480px) {
-  .modules-grid { gap: 9px; }
-
-  .module-card {
-    padding: 10px 8px;
-    border-radius: 14px;
-  }
-
-  .module-card-top { gap: 5px; margin-bottom: 8px; }
-  .module-icon { width: 32px; height: 32px; border-radius: 9px; font-size: 0.84rem; }
-  .module-status { padding: 4px 5px; font-size: 0.44rem; line-height: 1.1; letter-spacing: 0.2px; }
-  .module-card h3 { margin-bottom: 4px; font-size: 0.54rem; line-height: 1.15; }
-  .module-card h4 { margin-bottom: 6px; font-size: 0.7rem; line-height: 1.2; }
-  .module-card > p { margin-bottom: 8px; font-size: 0.52rem; line-height: 1.3; }
-  .module-details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin-bottom: 8px; }
-  .module-details span { padding: 4px 3px; font-size: 0.43rem; line-height: 1.12; }
-  .module-buttons a { padding: 6px 4px; font-size: 0.5rem; line-height: 1.14; }
-
-  .more-modules-note {
-    padding: 8px 10px;
-    border-radius: 10px;
-    font-size: 0.58rem;
-    line-height: 1.35;
-  }
-}
-
-@media (max-width: 360px) {
-  .modules-grid { gap: 7px; }
-  .module-card { padding: 8px 6px; border-radius: 12px; }
-  .module-icon { width: 29px; height: 29px; font-size: 0.76rem; }
-  .module-status { font-size: 0.4rem; }
-  .module-card h3 { font-size: 0.5rem; }
-  .module-card h4 { font-size: 0.64rem; }
-  .module-card > p { font-size: 0.48rem; line-height: 1.28; }
-  .module-details span { font-size: 0.39rem; }
-  .module-buttons a { font-size: 0.46rem; }
-  .more-modules-note { font-size: 0.54rem; }
 }
 
 /* The supporting message belongs only to screens below 992px. */
@@ -4589,7 +4249,6 @@ body.dark .a1-capstone-section { background: #101b2b; } body.dark .a1-capstone-c
 
 /* Final coordinated A1 layout layer. This supersedes the earlier compact-card
    experiments without hiding overflow or shrinking educational copy. */
-.course-page--a1 { overflow: visible; }
 .course-page--a1 *, .course-page--a1 *::before, .course-page--a1 *::after { box-sizing: border-box; }
 .course-page--a1 section, .course-page--a1 .container,
 .course-page--a1 [class$="-grid"] > *, .course-page--a1 [class$="-card"] { min-width: 0; }
@@ -5170,7 +4829,7 @@ body.dark .learning-library .library-session-status { color: #b8c7dc; }
 
   .course-page .module-status {
     padding: 5px 7px;
-    font-size: 0.58rem;
+    font-size: 0.68rem;
   }
 
   .course-page .module-card h3 {

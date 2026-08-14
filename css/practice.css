@@ -1061,27 +1061,9 @@ body.dark .dialogue-feedback.quality-not-suitable { background: #45282d; }
   .dialogue-tools > button { flex: 1; }
   .dialogue-breakdown { grid-template-columns: 1fr; }
 }
-@media (max-width: 800px) {
-  .practice-layout {
-    grid-template-columns: 1fr;
-  }
-  .practice-hero {
-    padding-top: 36px;
-  }
-  .practice-workspace {
-    padding-bottom: 60px;
-  }
-}
 @media (max-width: 520px) {
-  .practice-page .container {
-    width: calc(100% - 22px);
-  }
   .practice-hero {
     padding-bottom: 88px;
-  }
-  .practice-sheet {
-    padding: 16px;
-    border-radius: 15px;
   }
   .practice-question {
     padding: 15px;
@@ -1104,7 +1086,6 @@ body.dark .dialogue-feedback.quality-not-suitable { background: #45282d; }
   .challenge-breakdown { grid-template-columns: 1fr; }
   .challenge-warning button { width: 100%; }
   .challenge-warning button + button { margin: 8px 0 0; }
-  .flashcard-controls { grid-template-columns: 1fr; }
   .flashcard-surface { min-height: 300px; padding: 18px 13px; }
   .flashcard-session-header { font-size: .67rem; }
   .flashcard-ratings { gap: 6px; }
@@ -1124,8 +1105,7 @@ body.dark .dialogue-feedback.quality-not-suitable { background: #45282d; }
   .listening-breakdown { grid-template-columns: 1fr; }
   .listening-feedback-controls .challenge-primary { width: 100%; }
   .reading-task-header { align-items: flex-start; flex-direction: column; }
-  .reading-layout { grid-template-columns: 1fr; }
-  .reading-text-panel { position: static; padding: 17px; }
+  .reading-text-panel { padding: 17px; }
   .reading-german-text { font-size: .8rem; line-height: 1.75; }
   .reading-question { padding: 14px; }
   .reading-breakdown { grid-template-columns: 1fr; }
@@ -1177,7 +1157,9 @@ body.dark .dialogue-feedback.quality-not-suitable { background: #45282d; }
   .practice-help { position: static; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
+  .practice-hero { padding-top: 36px; }
+  .practice-workspace { padding-bottom: 60px; }
   .flashcard-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .flashcard-toggle { grid-column: 1 / -1; }
   .listening-task-header, .grammar-task-header { flex-wrap: wrap; }
