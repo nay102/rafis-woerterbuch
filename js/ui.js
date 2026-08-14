@@ -4034,6 +4034,9 @@ function renderPanelPage(pageKey) {
       const linkClass = href ? "panel-page-card-link" : "";
       const cardTag = href ? "a" : "article";
       const hrefAttr = href ? ` href="${escapeHtml(href)}"` : "";
+      const cardBody = isSprachweltCard || !body
+        ? ""
+        : `<p class="panel-card-body">${escapeHtml(body)}</p>`;
       const readMoreButton = isSprachweltCard
         ? ""
         : `
@@ -4055,7 +4058,7 @@ function renderPanelPage(pageKey) {
                 : ""
           }
           <h3>${escapeHtml(title)}</h3>
-          <p class="panel-card-body">${escapeHtml(body)}</p>
+          ${cardBody}
           ${readMoreButton}
           ${levelAction}
         </${cardTag}>

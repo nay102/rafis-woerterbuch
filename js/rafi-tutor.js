@@ -979,8 +979,8 @@ function renderTutorDashboard(panel) {
 export function initRafiTutor() {
   const launcher = document.getElementById("rafiTutorBtn");
   if (!launcher) return;
-  const panelLauncher = document.getElementById("panelSprachCoachBtn");
-  const launchers = [launcher, panelLauncher].filter(Boolean);
+  const panelLaunchers = [...document.querySelectorAll(".sprachcoach-panel-btn")];
+  const launchers = [launcher, ...panelLaunchers];
   const panel = document.getElementById("rafiTutorPanel") || createTutorPanel();
   const closeButton = panel.querySelector("#rafiTutorClose");
   const newButton = panel.querySelector("#rafiTutorNew");

@@ -365,12 +365,15 @@ body.dark .panel-content button:focus-visible {
   color: #ffffff;
 }
 
+body.dark .desktop-panel-content .sprachcoach-panel-btn,
 body.dark .panel-content .sprachcoach-panel-btn {
   background: linear-gradient(135deg, #5b21b6, #1d4ed8);
   border-color: rgba(165, 180, 252, 0.55);
   color: #ffffff;
 }
 
+body.dark .desktop-panel-content .sprachcoach-panel-btn:hover,
+body.dark .desktop-panel-content .sprachcoach-panel-btn:focus-visible,
 body.dark .panel-content .sprachcoach-panel-btn:hover,
 body.dark .panel-content .sprachcoach-panel-btn:focus-visible {
   background: linear-gradient(135deg, #7c3aed, #2563eb);
@@ -397,6 +400,13 @@ body.dark #rafiTutorBtn {
   background: linear-gradient(135deg, #5b21b6, #1d4ed8);
   border-color: rgba(165, 180, 252, 0.55);
   color: #ffffff;
+}
+
+@media (min-width: 993px) {
+  body.dark #rafiTutorBtn {
+    padding: 6px 13px;
+    font-size: 13px;
+  }
 }
 
 body.dark #loginBtn.profile-btn {
@@ -1185,6 +1195,30 @@ body.dark .practice-level {
   background: #1e3a8a;
   color: #dbeafe;
 }
+
+/* Keep the same centered white launcher in dark mode below desktop. */
+@media (max-width: 992px) {
+  body.dark .header #rafiTutorBtn {
+    border: none;
+    background: #ffffff;
+    color: #213bff;
+    box-shadow: none;
+  }
+
+  body.dark .header #rafiTutorBtn:hover,
+  body.dark .header #rafiTutorBtn:focus-visible {
+    border: none;
+    background: #f5f5f5;
+    color: #213bff;
+    box-shadow: none;
+    transform: translate(-50%, calc(-50% - 2px));
+  }
+
+  body.dark .header #rafiTutorBtn:active {
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+}
+
 body.dark #practiceForm input,
 body.dark .review-answer {
   border-color: #475569;
