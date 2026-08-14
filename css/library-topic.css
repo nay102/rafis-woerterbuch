@@ -306,3 +306,32 @@ body.dark .session-feedback.is-wrong, body.dark-mode .session-feedback.is-wrong 
   .topic-hero-shape { animation: none; }
   .topic-page *, .topic-page *::before, .topic-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Shared by all sixteen topics. Keep intrinsic content from widening the page. */
+.topic-page { overflow: visible; }
+.topic-page *, .topic-page *::before, .topic-page *::after { box-sizing: border-box; }
+.topic-page, .topic-layout > *, .learning-block, .topic-meta-card,
+.session-layout > *, .session-main, .session-section, .session-lesson-host,
+.session-lesson-header, .session-block, .session-table-wrap,
+.session-review-item { min-width: 0; max-width: 100%; }
+.topic-page h1, .topic-page h2, .topic-page h3, .topic-page p,
+.topic-page li, .topic-page td, .topic-page th, .topic-page button,
+.topic-page a { overflow-wrap: break-word; }
+.topic-page img, .topic-page svg { max-width: 100%; height: auto; }
+.topic-table-wrap, .session-table-wrap { max-width: 100%; overflow-x: auto; }
+
+@media (max-width: 767px) {
+  .topic-meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .topic-sidebar { grid-template-columns: minmax(0, 1fr); }
+  .topic-navigation { flex-wrap: wrap; gap: 10px; }
+  .topic-navigation > * { flex: 1 1 180px; min-height: 44px; }
+}
+
+@media (max-width: 479px) {
+  .topic-page .container { width: calc(100% - 24px); padding-inline: 0; }
+  .topic-meta-grid { grid-template-columns: minmax(0, 1fr); }
+  .learning-block-heading { padding-right: 0; }
+  .learning-block-number { position: static; display: block; margin-bottom: 8px; }
+  .session-lesson-nav, .session-completion-links { flex-direction: column; }
+  .session-lesson-nav > *, .session-completion-links > * { width: 100%; min-height: 44px; }
+}

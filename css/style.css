@@ -5454,6 +5454,37 @@ input,
     flex: 1 1 100%;
   }
 }
+
+/* Coordinated narrow header: every control owns layout space, so the coach
+   launcher can never cover the logo or menu button. */
+@media (max-width: 768px) {
+  .header { padding: 10px 0; }
+  .logo-area { min-width: 0; }
+  .logo { flex: 0 0 auto; }
+  .site-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #rafiTutorBtn {
+    position: static;
+    max-width: min(42vw, 150px);
+    min-height: 40px;
+    padding: 7px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform: none;
+  }
+  #rafiTutorBtn:hover,
+  #rafiTutorBtn:focus-visible,
+  #rafiTutorBtn:active { transform: none; }
+}
+
+@media (max-width: 359px) {
+  .header-inner { gap: 6px; }
+  #rafiTutorBtn { max-width: 120px; padding-inline: 8px; font-size: 12px; }
+}
 @media (max-width: 380px) {
   .learning-tool-page { padding: 10px 6px 22px; }
   .learning-tool-head {
@@ -5517,6 +5548,7 @@ input,
     font-size: .76rem;
   }
 }
+
 /* Accessibility, responsive search, and dictionary quality tools */
 .skip-link {
   position: fixed;
@@ -5944,5 +5976,28 @@ input,
     margin-top: 4px;
     padding: 5px 8px;
     font-size: .74rem;
+  }
+}
+
+/* Final shared-header placement after all legacy responsive blocks. */
+@media (max-width: 768px) {
+  .header .header-inner { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; }
+  .header .logo-area { grid-column: 1; grid-row: 1; min-width: 0; }
+  .header .branding {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .header .header-controls {
+    grid-column: 3;
+    grid-row: 1;
+    min-width: 0;
+    align-items: center;
+    gap: 8px;
   }
 }
