@@ -3150,11 +3150,6 @@ body.dark .tip-card:hover {
 
 /* Standard tablet and mobile foundation. */
 @media (max-width: 768px) {
-  .branding {
-    display: block;
-    font-size: 0.68rem;
-  }
-
   .course-section-menu-toggle {
     top: calc(var(--header-offset, 78px) + 2px);
     right: 14px;
@@ -3652,11 +3647,6 @@ body.dark .tip-card:hover {
 
 /* Standard phone foundation. */
 @media (max-width: 480px) {
-  .branding {
-    font-size: 0.62rem;
-    letter-spacing: -0.1px;
-  }
-
   .course-section-menu-toggle {
     top: var(--header-offset, 78px);
     right: 10px;
@@ -3729,235 +3719,8 @@ body.dark .tip-card:hover {
     }
 }
 
-/* Standard-phone card refinements: 361–480px only. */
-@media (min-width: 361px) and (max-width: 480px) {
-  .course-stats,
-  .course-information,
-  .outcomes-grid,
-  .features-grid,
-  .modules-grid,
-  .library-grid,
-  .exercise-grid,
-  .resource-grid,
-  .tips-grid,
-  .faq-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .faq-list {
-    margin-top: 26px;
-  }
-
-  .exercise-grid {
-    align-items: stretch;
-    grid-auto-rows: 1fr;
-  }
-
-  .exercise-card {
-    align-self: stretch;
-    height: 100%;
-    padding: 10px 8px;
-    border-radius: 13px;
-  }
-
-  .exercise-type,
-  .exercise-card .difficulty {
-    margin-bottom: 6px;
-    padding: 4px 6px;
-    font-size: 0.5rem;
-    line-height: 1.15;
-    letter-spacing: 0.25px;
-  }
-
-  .exercise-card h3 {
-    margin-bottom: 5px;
-    font-size: 0.72rem;
-    line-height: 1.22;
-  }
-
-  .exercise-card p {
-    flex: 1;
-    margin-bottom: 7px;
-    font-size: 0.58rem;
-    line-height: 1.32;
-  }
-
-  .exercise-meta {
-    gap: 4px;
-    margin-bottom: 9px;
-  }
-
-  .exercise-meta span {
-    padding: 4px 5px;
-    font-size: 0.5rem;
-    line-height: 1.15;
-  }
-
-  .exercise-grid .exercise-card a {
-    gap: 4px;
-    font-size: 0.56rem;
-    line-height: 1.2;
-  }
-
-  .outcomes-grid,
-  .modules-grid,
-  .faq-list {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-section .container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .stat-card,
-  .information-card,
-  .outcome-card,
-  .feature-card,
-  .module-card,
-  .library-card,
-  .exercise-card,
-  .resource-card,
-  .tip-card,
-  .faq-item,
-  .cta-card {
-    min-width: 0;
-    max-width: 100%;
-    padding: 5px;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-
-  .faq-item {
-    margin-bottom: 0;
-  }
-
-  .faq-question {
-    gap: 7px;
-    padding: 11px 10px;
-    font-size: 0.7rem;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
-
-  .faq-question::after {
-    flex: 0 0 auto;
-    font-size: 0.9rem;
-  }
-
-  .faq-answer p {
-    padding: 0 10px 11px;
-    font-size: 0.64rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-
-  .cta-section {
-    padding: 52px 0;
-  }
-
-  .cta-content,
-  .cta-card {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .cta-content h2 {
-    font-size: 1.15rem;
-    line-height: 1.25;
-    overflow-wrap: anywhere;
-  }
-
-  .cta-content > p {
-    font-size: 0.66rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-
-  .cta-buttons {
-    gap: 6px;
-    margin-bottom: 14px;
-  }
-
-  .cta-buttons a,
-  .course-button {
-    min-width: 0;
-    padding: 7px 8px;
-    font-size: 0.62rem;
-    overflow-wrap: anywhere;
-  }
-
-  .cta-card h3 {
-    font-size: 0.9rem;
-    overflow-wrap: anywhere;
-  }
-
-.feature-icon,
-  .library-icon,
-  .resource-icon,
-  .tip-card span {
-    width: 44px;
-    height: 44px;
-    /* margin: 0 ; */
-    border-radius: 12px;
-    font-size: 1.2rem;
-  }
-
-  .stat-card h3 {
-    font-size: 1.15rem;
-  }
-
-  .stat-card p,
-  .information-card p,
-  .outcome-card p,
-  .feature-card p,
-.information-card h3,
-  .outcome-card h3,
-  .feature-card h3,
-.module-buttons,
-  .exercise-card a,
-  .library-card a,
-  .resource-card a {
-    max-width: 100%;
-    font-size: 0.66rem;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-  }
-
-  .module-buttons a,
-  .module-buttons button {
-    min-width: 0;
-    padding: 7px 8px;
-    font-size: 0.62rem;
-  }
-
-  .stat-card *,
-  .information-card *,
-  .outcome-card *,
-  .feature-card *,
-  .module-card *,
-  .library-card *,
-  .exercise-card *,
-  .resource-card *,
-  .tip-card *,
-  .faq-item *,
-  .cta-card * {
-    max-width: 100%;
-    word-break: break-word;
-  }
-}
-
 /* Extra-small phone adjustments. */
 @media (max-width: 360px) {
-  .branding {
-    font-size: 0.56rem;
-    letter-spacing: -0.2px;
-  }
-
   .course-section-menu-toggle {
     top: calc(var(--header-offset, 78px) - 4px);
     right: 8px;
@@ -4203,55 +3966,6 @@ body.dark .tip-card:hover {
   .cta-card li { font-size: 0.66rem; line-height: 1.4; }
   .cta-buttons a,
   .course-button { font-size: 0.66rem; line-height: 1.25; }
-}
-
-/* Phones: smaller content for narrow two-column cards. */
-@media (min-width: 361px) and (max-width: 480px) {
-  .stat-card h3 { font-size: 0.82rem; line-height: 1.18; }
-  .stat-card p { font-size: 0.56rem; line-height: 1.3; }
-
-  .information-card h3,
-  .outcome-card h3,
-  .feature-card h3 { font-size: 0.72rem; line-height: 1.22; }
-
-  .information-card p,
-  .outcome-card p,
-  .feature-card p { font-size: 0.56rem; line-height: 1.35; }
-
-  .feature-icon,
-  .library-icon,
-  .resource-icon,
-  .tip-card > span {
-    width: 36px;
-    height: 36px;
-    font-size: 0.92rem;
-  }
-
-  .module-card h3 { font-size: 0.62rem; line-height: 1.18; }
-  .module-card h4 { font-size: 0.82rem; line-height: 1.23; }
-  .module-card > p { font-size: 0.58rem; line-height: 1.35; }
-  .module-status { padding: 4px 6px; font-size: 0.48rem; line-height: 1.12; }
-  .module-icon { width: 36px; height: 36px; font-size: 0.96rem; }
-  .module-details span { padding: 4px 5px; font-size: 0.5rem; line-height: 1.15; }
-  .module-buttons a { padding: 7px 6px; font-size: 0.56rem; line-height: 1.18; }
-
-  .library-card h4,
-  .resource-card h4 { font-size: 0.7rem; line-height: 1.22; }
-
-  .library-card p,
-  .resource-card p,
-  .tip-card p { font-size: 0.54rem; line-height: 1.34; }
-
-  .library-card a,
-  .resource-card a { font-size: 0.56rem; line-height: 1.2; }
-
-  .faq-question { font-size: 0.66rem; line-height: 1.3; }
-  .faq-answer p { font-size: 0.58rem; line-height: 1.4; }
-
-  .cta-card h3 { font-size: 0.82rem; line-height: 1.22; }
-  .cta-card li { font-size: 0.56rem; line-height: 1.34; }
-  .cta-buttons a,
-  .course-button { font-size: 0.56rem; line-height: 1.2; }
 }
 
 /* Extra-small phones: content remains readable inside compact cards. */
@@ -4652,29 +4366,6 @@ body.dark .card-reveal-note:focus-visible {
   .exercise-grid .exercise-card > a {
     grid-column: 1 / -1;
     grid-row: 4;
-    justify-content: center;
-    width: 100%;
-    min-height: 44px;
-    margin-top: 0.4rem;
-    padding: clamp(0.68rem, 2.6vw, 0.85rem) clamp(0.9rem, 4vw, 1.25rem);
-    border-radius: 0.8rem;
-    background: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
-    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
-    line-height: 1.25;
-    text-align: center;
-  }
-
-  .exercise-grid .exercise-card > a:hover {
-    transform: translateY(-2px);
-    background: #1d4ed8;
-    box-shadow: 0 11px 24px rgba(37, 99, 235, 0.3);
-  }
-
-  .exercise-grid .exercise-card.featured > a {
-    background: #ffffff;
-    color: #1d4ed8;
   }
 
   .resource-card {
@@ -4735,26 +4426,6 @@ body.dark .card-reveal-note:focus-visible {
   .resource-grid .resource-card > a {
     grid-column: 1 / -1;
     grid-row: 4;
-    justify-content: center;
-    width: 100%;
-    min-height: 44px;
-    margin-top: 0.4rem;
-    padding: clamp(0.68rem, 2.6vw, 0.85rem) clamp(0.9rem, 4vw, 1.25rem);
-    border-radius: 0.8rem;
-    background: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
-    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
-    line-height: 1.25;
-    text-align: center;
-  }
-
-  .learning-library .library-card > a:hover,
-  .resource-grid .resource-card > a:hover {
-    transform: translateY(-2px);
-    background: #1d4ed8;
-    color: #ffffff;
-    box-shadow: 0 11px 24px rgba(37, 99, 235, 0.3);
   }
 }
 

@@ -284,6 +284,7 @@ function applyAppSettings(settings, { persist = true } = {}) {
     currentAppSettings.theme === "dark" ||
     (currentAppSettings.theme === "system" && prefersDark);
   body.classList.toggle("dark", shouldUseDark);
+  body.classList.toggle("dark-mode", shouldUseDark);
 
   const panelThemeToggle = document.getElementById("panelDarkToggle");
   if (panelThemeToggle) {

@@ -1059,29 +1059,9 @@ body.dark .close-btn:hover {
   body.dark .category-nav button {
       border-color: #3b475c;
     }
-
-  body.dark #categoryPage .vertical-word-item {
-      border-color: #334155;
-    }
 }
 
 @media (max-width: 768px) {
-  body.dark #rafiTutorBtn {
-    border: none;
-    background: transparent;
-    color: #8ea0ff;
-    box-shadow: none;
-  }
-
-  body.dark #rafiTutorBtn:hover,
-  body.dark #rafiTutorBtn:focus-visible {
-    transform: translate(-50%, calc(-50% - 2px));
-    border: none;
-    background: transparent;
-    color: #a5b4fc;
-    box-shadow: none;
-  }
-
   body.dark #wordDetailPage {
       margin: 12px 10px;
       padding: 20px 14px;
@@ -1113,15 +1093,6 @@ body.dark .close-btn:hover {
       color: #d4deec;
     }
 
-  body.dark #categoryPage .vertical-word-item {
-      background: #1f2937;
-      border: 1px solid #334155;
-      color: #e5e7eb;
-    }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-      background: #111827;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1132,15 +1103,6 @@ body.dark .close-btn:hover {
       border-width: 1px;
     }
 
-  body.dark #categoryPage .vertical-word-item {
-      background: #1f2937;
-      border: 1px solid #334155;
-      color: #e5e7eb;
-    }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-      background: #111827;
-    }
 }
 
 @media (max-width: 360px) {
@@ -1151,15 +1113,6 @@ body.dark .close-btn:hover {
       border-radius: 12px;
     }
 
-  body.dark #categoryPage .vertical-word-item {
-      background: #1f2937;
-      border: 1px solid #334155;
-      color: #e5e7eb;
-    }
-
-  body.dark #categoryPage .vertical-word-item:hover {
-      background: #111827;
-    }
 }
 body.dark .quality-kpis article,
 body.dark .quality-controls :is(select, input),

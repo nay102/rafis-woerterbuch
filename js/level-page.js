@@ -42,6 +42,7 @@ function applyTheme() {
   const systemDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
   const isDark = theme === "dark" || (theme === "system" && systemDark);
   document.body.classList.toggle("dark", isDark);
+  document.body.classList.toggle("dark-mode", isDark);
 
   const panelThemeToggle = document.getElementById("panelDarkToggle");
   if (panelThemeToggle) {

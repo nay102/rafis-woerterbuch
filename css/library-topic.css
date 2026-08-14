@@ -271,7 +271,6 @@ body.dark .session-feedback.is-wrong, body.dark-mode .session-feedback.is-wrong 
 }
 
 @media (max-width: 560px) {
-  .topic-body .branding { max-width: 42vw; font-size: .67rem; text-align: center; }
   .topic-hero { padding-top: 31px; }
   .topic-back { margin-bottom: 22px; padding: 7px 11px; font-size: .72rem; }
   .topic-hero p { margin-top: 14px; line-height: 1.65; }

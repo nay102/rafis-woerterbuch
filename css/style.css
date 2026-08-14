@@ -1196,24 +1196,6 @@ body {
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
-  .course-module-body .header-inner {
-    position: relative;
-  }
-
-  .course-module-body .branding {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max-content;
-    transform: translate(-50%, -50%);
-  }
-
-  .course-module-body .branding:hover {
-    transform: translate(-50%, -50%);
-  }
-}
-
 /* =========================================================
    1️⃣1️⃣ AUTH MODAL
    Ultra Premium Glass Authentication System
@@ -2172,18 +2154,6 @@ body {
   hyphens: auto;
 }
 
-.panel-page-card--sprachwelt .panel-card-body {
-  font-size: clamp(11px, 1vw, 12.5px);
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-  hyphens: auto;
-}
-
-.panel-page-card--sprachwelt .panel-card-read-more {
-  padding: 7px 9px;
-  font-size: 11px;
-}
-
 .panel-page-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(34, 80, 210, 0.14);
@@ -2414,45 +2384,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   gap: 12px;
-}
-
-.bangladesh-flag-panel {
-  width: 100%;
-  display: grid;
-  place-items: center;
-  gap: 14px;
-  padding: 18px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(7, 25, 18, 0.26);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.bangladesh-flag-art {
-  width: min(290px, 100%);
-  aspect-ratio: 5 / 3;
-  position: relative;
-  overflow: hidden;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 18px 34px rgba(0, 0, 0, 0.2);
-}
-
-.bangladesh-flag-art::after {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.bangladesh-flag-art {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%),
-    #006a4e;
 }
 
 .germany-stat,
@@ -4033,10 +3964,6 @@ input,
     gap: 14px;
   }
 
-  .branding {
-    font-size: 16px;
-  }
-
   .category-nav {
     gap: 12px;
   }
@@ -4128,18 +4055,8 @@ input,
     line-height: 1.22;
   }
 
-  .panel-page-card--sprachwelt .panel-card-body {
-    font-size: 11.5px;
-    line-height: 1.4;
-  }
-
   .container {
     padding: 0 14px;
-  }
-
-  .header-inner {
-    grid-template-columns: auto 1fr auto;
-    gap: 10px;
   }
 
   .logo-area {
@@ -4153,42 +4070,8 @@ input,
     justify-content: flex-end;
   }
 
-  #rafiTutorBtn {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    padding: 7px 12px;
-    font-size: 13px;
-    border: none;
-    background: white;
-    color: #213bff;
-    box-shadow: none;
-  }
-
-  #rafiTutorBtn:hover,
-  #rafiTutorBtn:focus-visible {
-    transform: translate(-50%, calc(-50% - 2px));
-    border: none;
-    background: whitesmoke;
-    color: #213bff;
-    box-shadow: none;
-  }
-
-  #rafiTutorBtn:active {
-    transform: translate(-50%, -50%) scale(0.97);
-    background: transparent;
-    color: #213bff;
-    box-shadow: none;
-  }
-
   .site-title {
     font-size: 12px;
-  }
-
-  .branding {
-    display: none;
   }
 
   #darkToggle,
@@ -4993,17 +4876,6 @@ input,
     margin-bottom: 6px;
   }
 
-  .panel-page-card--sprachwelt .panel-card-body {
-    font-size: 10.5px;
-    line-height: 1.35;
-    margin-bottom: 8px;
-  }
-
-  .panel-page-card--sprachwelt .panel-card-read-more {
-    padding: 6px 8px;
-    font-size: 10.5px;
-  }
-
   .mobile-side-panel {
     width: min(250px, 74vw);
     right: 8px;
@@ -5043,9 +4915,6 @@ input,
 }
 
 @media (max-width: 360px) {
-  #rafiTutorBtn {
-    padding-inline: 8px;
-  }
   .detail-section-heading {
     gap: 6px;
   }
@@ -5466,11 +5335,8 @@ input,
   }
 }
 
-/* Coordinated narrow header: every control owns layout space, so the coach
-   launcher can never cover the logo or menu button. */
+/* Keep narrow-header text and logo content constrained. */
 @media (max-width: 768px) {
-  .header { padding: 10px 0; }
-  .logo-area { min-width: 0; }
   .logo { flex: 0 0 auto; }
   .site-title {
     min-width: 0;
@@ -5478,23 +5344,6 @@ input,
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  #rafiTutorBtn {
-    position: static;
-    max-width: min(42vw, 150px);
-    min-height: 40px;
-    padding: 7px 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transform: none;
-  }
-  #rafiTutorBtn:hover,
-  #rafiTutorBtn:focus-visible,
-  #rafiTutorBtn:active { transform: none; }
-}
-
-@media (max-width: 359px) {
-  .header-inner { gap: 6px; }
-  #rafiTutorBtn { max-width: 120px; padding-inline: 8px; font-size: 12px; }
 }
 @media (max-width: 380px) {
   .learning-tool-page { padding: 10px 6px 22px; }
@@ -5535,17 +5384,17 @@ input,
     padding: 2px 6px;
     font-size: .61rem;
   }
-  #practiceForm {
+  .practice-card #practiceForm {
     gap: 5px;
     margin-top: 10px;
   }
-  #practiceForm label { font-size: .72rem; }
-  #practiceForm input {
+  .practice-card #practiceForm label { font-size: .72rem; }
+  .practice-card #practiceForm input {
     min-height: 38px;
     padding: 6px 8px;
     font-size: .86rem;
   }
-  #practiceForm .settings-primary,
+  .practice-card #practiceForm .settings-primary,
   .practice-feedback-actions button {
     min-height: 36px;
     padding: 5px 8px;
@@ -5719,14 +5568,14 @@ input,
   padding: 9px 16px;
 }
 .practice-tense { margin: 8px 0 22px; color: #64748b; }
-#practiceForm {
+.practice-card #practiceForm {
   display: grid;
   gap: 11px;
   width: min(480px, 100%);
   margin: 22px auto 0;
   text-align: left;
 }
-#practiceForm input {
+.practice-card #practiceForm input {
   width: 100%;
   min-height: 50px;
   padding: 11px 14px;
@@ -5895,18 +5744,18 @@ input,
     padding: 7px 11px;
     font-size: .82rem;
   }
-  #practiceForm {
+  .practice-card #practiceForm {
     gap: 7px;
     margin-top: 13px;
   }
-  #practiceForm label { font-size: .8rem; }
-  #practiceForm input {
+  .practice-card #practiceForm label { font-size: .8rem; }
+  .practice-card #practiceForm input {
     min-height: 42px;
     padding: 8px 10px;
     border-radius: 9px;
     font-size: .95rem;
   }
-  #practiceForm .settings-primary {
+  .practice-card #practiceForm .settings-primary {
     min-height: 40px;
     padding: 7px 11px;
     font-size: .86rem;
@@ -6007,7 +5856,7 @@ input,
     min-width: 0;
   }
 
-  .header .branding {
+  body .header .branding {
     display: none;
   }
 

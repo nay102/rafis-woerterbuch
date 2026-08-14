@@ -442,7 +442,6 @@ body.dark .purchase-close { border-color: #334a68; background: #172943; color: #
 }
 
 @media (max-width: 768px) {
-  .enrollment-body .branding { display: block; font-size: 0.66rem; }
   .enrollment-hero { padding: 58px 0 60px; }
   .level-back-link { margin-bottom: 24px; font-size: 0.68rem; }
   .enrollment-hero p { font-size: 0.82rem; line-height: 1.65; }
@@ -452,7 +451,6 @@ body.dark .purchase-close { border-color: #334a68; background: #172943; color: #
 }
 
 @media (max-width: 560px) {
-  .enrollment-body .branding { font-size: 0.58rem; letter-spacing: -0.1px; }
   .enrollment-kicker { padding: 6px 10px; font-size: 0.58rem; }
   .enrollment-hero h1 { font-size: clamp(1.75rem, 9vw, 2.5rem); }
   .enrollment-hero p { margin: 16px auto 20px; font-size: 0.7rem; }
@@ -490,7 +488,6 @@ body.dark .purchase-close { border-color: #334a68; background: #172943; color: #
 }
 
 @media (max-width: 360px) {
-  .enrollment-body .branding { font-size: 0.52rem; }
   .enrollment-hero { padding-top: 46px; }
   .level-back-link { padding: 7px 10px; font-size: 0.58rem; }
   .course-fact-card > span { width: 30px; height: 30px; }
