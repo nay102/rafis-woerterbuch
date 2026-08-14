@@ -5857,6 +5857,23 @@ input,
   }
 
   body .header .branding {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: max-content;
+    max-width: calc(100% - 140px);
+    overflow: hidden;
+    font-size: clamp(0.68rem, 3.3vw, 0.88rem);
+    text-overflow: ellipsis;
+    transform: translate(-50%, -50%);
+  }
+
+  body .header .branding:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  body:has(.header #rafiTutorBtn) .header .branding {
     display: none;
   }
 

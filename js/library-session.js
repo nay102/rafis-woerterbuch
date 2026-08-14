@@ -211,12 +211,10 @@ export function renderLibrarySession(session, root) {
   saveProgress(session, { started: true }); root.hidden = false; root.replaceChildren();
   const shell = el("div", "container session-layout"); const rail = el("nav", "session-rail"); rail.setAttribute("aria-label", "Learning session stages");
   const main = el("div", "session-main");
-  const stages = [["goal","Learning Goal"],["discover","Discover"],["discover","Learn"],["discover","Examples / In Context"],["guided","Guided Practice"],["real-life","Real-Life Application"],["independent","Independent Practice"],["mastery","Mastery Check"],["review","Review Mistakes"],["continue","Continue Learning"]];
+  const stages = [["goal","Progress"],["discover","Discover"],["discover","Learn"],["discover","Examples / In Context"],["guided","Guided Practice"],["real-life","Real-Life Application"],["independent","Independent Practice"],["mastery","Mastery Check"],["review","Review Mistakes"],["continue","Continue Learning"]];
   stages.forEach(([target, label], i) => { const button = el("button", "session-rail-btn", `${i + 1}. ${label}`); button.type="button"; button.addEventListener("click",()=>document.getElementById(`session-${target}`)?.scrollIntoView({behavior:"smooth",block:"start"})); rail.append(button); });
 
-  const overview = el("section", "session-section", ""); overview.id = "session-goal";
-  overview.append(el("span", "session-eyebrow", "Learning Goal"), el("h2", "", session.topicGoalEn), el("p", "session-bn", session.topicGoalBn));
-  const objectiveList = el("ul", "session-objectives"); session.objectives.forEach((objective)=>objectiveList.append(el("li","",objective))); overview.append(objectiveList);
+  const overview = el("section", "session-section session-section--progress", ""); overview.id = "session-goal";
   const stats = el("div", "session-progress-card");
   const updateStats = () => { const p=getLibraryProgress(session.level,session.id); const percent=Math.round((p.completedLessons.length/session.lessons.length)*100); stats.replaceChildren(el("strong","",`${percent}% progress`),el("span","",`${p.completedLessons.length} of ${session.lessons.length} lessons completed`),el("span","",`Current lesson: ${Math.min(state.lesson+1,session.lessons.length)} of ${session.lessons.length}`),el("span","",`Best mastery score: ${p.masteryAttempts ? `${p.bestMasteryScore}%` : "Not attempted"}`)); if(session.type==="vocabulary"&&Array.isArray(p.learnedItems))stats.append(el("span","",`Learned items: ${p.learnedItems.length}`)); };
   updateStats(); overview.append(stats); main.append(overview);

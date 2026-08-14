@@ -166,6 +166,7 @@ body.dark-mode .topic-navigation a:hover { border-color: #4b76b9; color: #82b4ff
 .session-bn, .session-block-bn { color: #52657f; font-family: inherit; line-height: 1.75; }
 .session-objectives { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 24px; padding-left: 20px; color: var(--topic-muted); font-size: .87rem; line-height: 1.65; }
 .session-progress-card { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px 16px; margin-top: 22px; padding: 18px; border-radius: 14px; color: #dbeafe; background: linear-gradient(135deg,#173f98,#2563eb); }
+.session-section--progress .session-progress-card { margin-top: 0; }
 .session-progress-card strong { grid-column: 1/-1; color: #fff; font-size: 1.2rem; }
 .session-progress-card span { font-size: .76rem; }
 .session-lesson-host { display: grid; gap: 15px; margin-top: 18px; }
@@ -253,6 +254,7 @@ body.dark .session-feedback.is-wrong, body.dark-mode .session-feedback.is-wrong 
   .session-layout { grid-template-columns: 1fr; }
   .session-rail { position: sticky; z-index: 4; top: 70px; display: flex; overflow-x: auto; padding: 9px; border-radius: 13px; }
   .session-rail-btn { flex: 0 0 auto; white-space: nowrap; }
+  .session-section { scroll-margin-top: 150px; }
 }
 
 @media (max-width: 768px) {
