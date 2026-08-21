@@ -21,7 +21,7 @@ const COURSE_DATA = {
     description: "Build a confident German foundation through live instruction, guided practice, and structured support designed for complete beginners.",
     coursePrice: "৳ 6,000",
     preparationPrice: "৳ 1,000",
-    examPrice: "৳ 500",
+    examPrice: "৳ 600",
     privatePrice: "৳ 10,000",
     duration: "10-12 weeks",
     schedule: "Sat, Mon & Wed, 9:00 PM",
