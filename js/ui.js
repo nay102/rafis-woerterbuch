@@ -4701,19 +4701,22 @@ function setupAuthModal() {
     e.preventDefault();
 
     errorBox.textContent = "";
+    errorBox.style.color = "";
+    authSubmitBtn.disabled = true;
+    authSubmitBtn.textContent = isLoginMode ? "Logging in…" : "Creating account…";
 
     try {
 
       if (isLoginMode) {
 
-        await login(emailInput.value, passwordInput.value);
+        await login(emailInput.value.trim(), passwordInput.value);
         modal.classList.add("hidden");
         form.reset();
         showToast("Welcome back! You are logged in 🎉", "success");
 
       } else {
 
-        await signup(emailInput.value, passwordInput.value);
+        await signup(emailInput.value.trim(), passwordInput.value);
         modal.classList.add("hidden");
         form.reset();
         showToast(
@@ -4728,6 +4731,9 @@ function setupAuthModal() {
       errorBox.textContent = error.message;
       errorBox.style.color = "#ff4d4d";
 
+    } finally {
+      authSubmitBtn.disabled = false;
+      authSubmitBtn.textContent = isLoginMode ? "Login" : "Sign Up";
     }
 
   });
@@ -4736,6 +4742,9 @@ function setupAuthModal() {
   function setAuthMode(loginMode) {
 
     isLoginMode = loginMode;
+    errorBox.textContent = "";
+    errorBox.style.color = "";
+    passwordInput.autocomplete = loginMode ? "current-password" : "new-password";
 
     if (loginMode) {
 

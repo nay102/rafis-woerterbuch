@@ -37,92 +37,97 @@ function getCountryFromLocale() {
 }
 
 async function resolveUserCountry() {
+  const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+  const timeoutId = controller ? setTimeout(() => controller.abort(), 3500) : null;
   try {
-    const res = await fetch("https://ipapi.co/json/");
+    const res = await fetch("https://ipapi.co/json/", controller ? { signal: controller.signal } : {});
     if (res.ok) {
       const json = await res.json();
       return json?.country_name || json?.country_code || getCountryFromLocale();
     }
   } catch {
     // Fallback below.
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId);
   }
   return getCountryFromLocale();
 }
 
+function authError(code, message) {
+  const error = new Error(message);
+  error.code = code;
+  return error;
+}
+
+function friendlyAuthError(error, fallback) {
+  const messages = {
+    "auth/email-already-in-use": "Account already exists. Please login instead.",
+    "auth/weak-password": "Password too weak. Minimum 6 characters.",
+    "auth/invalid-email": "Enter a valid email address.",
+    "auth/user-not-found": "No account found. Please sign up first.",
+    "auth/wrong-password": "Wrong email or password.",
+    "auth/invalid-credential": "Wrong email or password.",
+    "auth/user-disabled": "This account has been disabled. Please contact support.",
+    "auth/too-many-requests": "Too many attempts. Please wait a few minutes and try again.",
+    "auth/network-request-failed": "Could not reach the login service. Check your connection and try again.",
+    "auth/operation-not-allowed": "Email login is temporarily unavailable. Please contact support.",
+    "auth/unauthorized-domain": "Login is not enabled for this website address. Please contact support."
+  };
+  if (error?.code === "auth/email-not-verified" || error?.code === "auth/verification-email-failed") {
+    return error;
+  }
+  return authError(error?.code || "auth/unknown", messages[error?.code] || fallback);
+}
+
 /* ================= SIGN UP ================= */
 export async function signup(email, password) {
-
+  const cleanEmail = String(email || "").trim();
   try {
-
-    const credential = await createUserWithEmailAndPassword(auth, email, password);
-    const country = await resolveUserCountry();
-    await ensureUserProfile(credential.user, { country });
+    const credential = await createUserWithEmailAndPassword(auth, cleanEmail, password);
     try {
       await sendEmailVerification(credential.user);
-    } catch {
-      // Continue signup even if verification mail fails.
+    } catch (verificationError) {
+      await signOut(auth).catch(() => {});
+      throw authError(
+        "auth/verification-email-failed",
+        "Your account was created, but the verification email could not be sent. Try logging in again to resend it."
+      );
     }
     // Enforce verify-first flow: new users must verify, then login manually.
-    await signOut(auth);
+    await signOut(auth).catch(() => {});
     return credential;
-
   } catch (error) {
-
-    if (error.code === "auth/email-already-in-use") {
-      throw new Error("Account already exists. Please login instead.");
-    }
-
-    if (error.code === "auth/weak-password") {
-      throw new Error("Password too weak. Minimum 6 characters.");
-    }
-
-    if (error.code === "auth/invalid-email") {
-      throw new Error("Invalid email format.");
-    }
-
-    throw new Error("Signup failed. Try again.");
+    throw friendlyAuthError(error, "Signup failed. Please try again.");
   }
-
 }
 
 /* ================= LOGIN ================= */
 export async function login(email, password) {
-
+  const cleanEmail = String(email || "").trim();
   try {
-    const credential = await signInWithEmailAndPassword(auth, email, password);
+    const credential = await signInWithEmailAndPassword(auth, cleanEmail, password);
     if (!credential.user.emailVerified) {
-      await signOut(auth);
-      throw new Error(
-        "Please verify your email first, then login. Check inbox or spam folder."
+      let verificationResent = false;
+      try {
+        await sendEmailVerification(credential.user);
+        verificationResent = true;
+      } catch {
+        // The original verification email may still be valid.
+      }
+      await signOut(auth).catch(() => {});
+      throw authError(
+        "auth/email-not-verified",
+        verificationResent
+          ? "Please verify your email first. A new verification email was sent; check your inbox or spam folder."
+          : "Please verify your email first. Check your inbox or spam folder, then try again."
       );
     }
-    await setDoc(
-      doc(db, "users", credential.user.uid),
-      {
-        email: credential.user.email || "",
-        lastLoginAt: serverTimestamp()
-      },
-      { merge: true }
-    );
+    // Authentication success must not depend on an analytics/profile write.
+    touchUserLastLogin(credential.user).catch(() => {});
     return credential;
-
   } catch (error) {
-
-    if (error.code === "auth/user-not-found") {
-      throw new Error("No account found. Please sign up first.");
-    }
-
-    if (error.code === "auth/wrong-password") {
-      throw new Error("Wrong password. Try again.");
-    }
-
-    if (error.code === "auth/invalid-credential") {
-      throw new Error("Wrong email or password.");
-    }
-
-    throw new Error("Login failed. Please check your credentials.");
+    throw friendlyAuthError(error, "Login failed. Please try again.");
   }
-
 }
 
 /* ================= LOGOUT ================= */
@@ -287,6 +292,14 @@ export async function resetPasswordByEmail(email) {
       throw new Error("No account found with this email.");
     }
 
+    if (error.code === "auth/too-many-requests") {
+      throw new Error("Too many reset attempts. Please wait a few minutes and try again.");
+    }
+
+    if (error.code === "auth/network-request-failed") {
+      throw new Error("Could not reach the password reset service. Check your connection and try again.");
+    }
+
     throw new Error("Password reset email could not be sent. Try again.");
   }
 }
@@ -331,5 +344,7 @@ export async function deleteAccountWithPassword(user, password) {
 
 /* ================= AUTH STATE LISTENER ================= */
 export function listenAuth(callback) {
-  return onAuthStateChanged(auth, callback);
+  return onAuthStateChanged(auth, user => {
+    callback(user?.emailVerified ? user : null);
+  });
 }

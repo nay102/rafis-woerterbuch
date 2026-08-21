@@ -5,13 +5,12 @@
  * This keeps the dictionary and Sprachwelt module graph entirely local, so a
  * missing network connection cannot prevent the rest of the PWA from starting.
  */
-const CACHED_EMAIL_KEY = "rw_cached_email";
 let authModulePromise;
+let authUnsubscribe = null;
+let authObserverPromise = null;
+const authCallbacks = new Set();
 
 function loadAuthModule() {
-  if (!navigator.onLine) {
-    return Promise.reject(new Error("This account action needs an internet connection."));
-  }
   if (!authModulePromise) {
     authModulePromise = import("./auth.js").catch(error => {
       authModulePromise = null;
@@ -21,12 +20,40 @@ function loadAuthModule() {
   return authModulePromise;
 }
 
+function attachAuthObserver(authModule) {
+  if (authUnsubscribe) return;
+  authUnsubscribe = authModule.listenAuth(user => {
+    authCallbacks.forEach(callback => callback(user || null));
+  }) || (() => {});
+}
+
+function ensureAuthObserver() {
+  if (authUnsubscribe) return Promise.resolve();
+  if (!authObserverPromise) {
+    authObserverPromise = loadAuthModule()
+      .then(authModule => attachAuthObserver(authModule))
+      .catch(() => {
+        // A later online event or account action will retry initialization.
+        authCallbacks.forEach(callback => callback(null));
+      })
+      .finally(() => {
+        authObserverPromise = null;
+      });
+  }
+  return authObserverPromise;
+}
+
+window.addEventListener("online", () => {
+  ensureAuthObserver();
+});
+
 async function call(name, args) {
   try {
-    const auth = await loadAuthModule();
-    return await auth[name](...args);
+    const authModule = await loadAuthModule();
+    attachAuthObserver(authModule);
+    return await authModule[name](...args);
   } catch (error) {
-    if (!navigator.onLine || error instanceof TypeError) {
+    if (!navigator.onLine || error?.code === "auth/network-request-failed" || error instanceof TypeError) {
       throw new Error("This account action needs an internet connection.");
     }
     throw error;
@@ -34,25 +61,14 @@ async function call(name, args) {
 }
 
 export function listenAuth(callback) {
-  let stopped = false;
-  let unsubscribe = () => {};
-  const cachedEmail = localStorage.getItem(CACHED_EMAIL_KEY);
-
-  // Restore the last verified session immediately while offline. Firebase will
-  // replace this lightweight value with the real user whenever it is reachable.
-  callback(cachedEmail ? { email: cachedEmail, uid: `offline:${cachedEmail}` } : null);
-
-  if (navigator.onLine) {
-    loadAuthModule()
-      .then(auth => {
-        if (!stopped) unsubscribe = auth.listenAuth(callback) || (() => {});
-      })
-      .catch(() => {});
-  }
+  if (typeof callback !== "function") return () => {};
+  authCallbacks.add(callback);
+  // Only Firebase may confirm an authenticated session. Cached display data is
+  // intentionally not promoted to an authorized user.
+  ensureAuthObserver();
 
   return () => {
-    stopped = true;
-    unsubscribe();
+    authCallbacks.delete(callback);
   };
 }
 

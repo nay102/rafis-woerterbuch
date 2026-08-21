@@ -2,7 +2,7 @@ import { login, signup, resetPasswordByEmail, listenAuth } from "./auth-client.j
 
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 const PROTECTED_PAGES = new Set([
-  "course-module", "library-topic", "practice", "download-center"
+  "course-enrollment", "course-module", "library-topic", "practice", "download-center"
 ]);
 let currentUser;
 let resolveAuth;
@@ -109,6 +109,7 @@ export function initAuthGate() {
     password.autocomplete = isLogin ? "current-password" : "new-password";
     forgot.hidden = !isLogin;
     error.textContent = "";
+    error.style.color = "";
   };
 
   const open = (destination = "", locked = false) => {
@@ -144,15 +145,16 @@ export function initAuthGate() {
 
   form.addEventListener("submit", async event => {
     event.preventDefault(); error.textContent = ""; error.style.color = ""; submit.disabled = true;
+    submit.textContent = loginMode ? "Logging in…" : "Creating account…";
     try {
       if (loginMode) {
-        const credential = await login(email.value, password.value);
+        const credential = await login(email.value.trim(), password.value);
         currentUser = credential.user;
         localStorage.setItem(AUTH_CACHE_EMAIL_KEY, credential.user.email || email.value);
         modal.classList.add("hidden"); document.body.classList.remove("auth-modal-open", "auth-content-locked");
         if (pendingUrl) location.href = pendingUrl;
       } else {
-        await signup(email.value, password.value);
+        await signup(email.value.trim(), password.value);
         setMode(true);
         email.value = email.value;
         password.value = "";
@@ -160,7 +162,10 @@ export function initAuthGate() {
         error.textContent = "Account created. Verify the email we sent you, then log in to continue.";
       }
     } catch (reason) { error.textContent = reason.message; }
-    finally { submit.disabled = false; }
+    finally {
+      submit.disabled = false;
+      submit.textContent = loginMode ? "Login" : "Create Account";
+    }
   });
 
   document.addEventListener("click", async event => {
