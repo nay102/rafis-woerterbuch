@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 import { initLevelPage } from "./level-page.js";
 import { initAuthGate } from "./auth-gate.js";
 import { PRACTICE_TYPES, getQuestions } from "./practice-data.js";
@@ -116,15 +117,18 @@ function initGrammarChallenge() {
   }
 
   let progress = readGrammarProgress();
-  let round = createBalancedGrammarRound(progress.lastRoundIds || []);
+  const daily = params.get("daily") === "1";
+  const focus = params.get("focus");
+  let round = daily && A1_GRAMMAR_SKILLS[focus] ? createWeakGrammarRound([focus]).slice(0,5) : createBalancedGrammarRound(progress.lastRoundIds || []).slice(0,daily?5:20);
   let answers = Array(round.length).fill(null);
   let current = 0;
   let submitted = false;
   let forceSubmit = false;
-  let roundKind = "balanced";
+  let roundKind = daily ? "daily" : "balanced";
 
   setSharedPage("A1 Grammar Challenge", "Complete a balanced 20-question A1 grammar round. Your choices are saved while you move between questions.");
   $("questionCount").textContent = "120-question bank · 20 per round";
+  if(daily){setSharedPage("Today's Grammar Practice","Answer 5 questions, review your mistakes, then return to today's plan.");$("questionCount").textContent="5 questions for today's practice";}
   $("submitPractice").textContent = "Submit Challenge";
   $("practiceResult").setAttribute("aria-live", "polite");
   const help = document.querySelector(".practice-help");
@@ -209,7 +213,7 @@ function initGrammarChallenge() {
       weakSkills,
       lastActivity: new Date().toISOString()
     };
-    localStorage.setItem(A1_GRAMMAR_PROGRESS_KEY, JSON.stringify(progress));
+    learningStorage.setItem(A1_GRAMMAR_PROGRESS_KEY, JSON.stringify(progress));
   }
 
   function resultStatus(percent) {

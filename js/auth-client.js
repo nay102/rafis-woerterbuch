@@ -9,6 +9,7 @@ let authModulePromise;
 let authUnsubscribe = null;
 let authObserverPromise = null;
 const authCallbacks = new Set();
+let lastAuthState;
 
 function loadAuthModule() {
   if (!authModulePromise) {
@@ -23,6 +24,7 @@ function loadAuthModule() {
 function attachAuthObserver(authModule) {
   if (authUnsubscribe) return;
   authUnsubscribe = authModule.listenAuth(user => {
+    lastAuthState = user || null;
     authCallbacks.forEach(callback => callback(user || null));
   }) || (() => {});
 }
@@ -34,7 +36,7 @@ function ensureAuthObserver() {
       .then(authModule => attachAuthObserver(authModule))
       .catch(() => {
         // A later online event or account action will retry initialization.
-        authCallbacks.forEach(callback => callback(null));
+        authCallbacks.forEach(callback => callback(null, {unavailable:true}));
       })
       .finally(() => {
         authObserverPromise = null;
@@ -63,6 +65,7 @@ async function call(name, args) {
 export function listenAuth(callback) {
   if (typeof callback !== "function") return () => {};
   authCallbacks.add(callback);
+  if (lastAuthState !== undefined) queueMicrotask(() => { if (authCallbacks.has(callback)) callback(lastAuthState); });
   // Only Firebase may confirm an authenticated session. Cached display data is
   // intentionally not promoted to an authorized user.
   ensureAuthObserver();
@@ -78,6 +81,7 @@ export const logout = (...args) => call("logout", args);
 export const ensureUserProfile = (...args) => call("ensureUserProfile", args);
 export const touchUserLastLogin = (...args) => call("touchUserLastLogin", args);
 export const getUserProfile = (...args) => call("getUserProfile", args);
+export const syncUserLearningProgress = (...args) => call("syncUserLearningProgress", args);
 export const resetPasswordByEmail = (...args) => call("resetPasswordByEmail", args);
 export const changePasswordWithConfirmation = (...args) => call("changePasswordWithConfirmation", args);
 export const deleteAccountWithPassword = (...args) => call("deleteAccountWithPassword", args);

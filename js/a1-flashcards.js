@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 import {
   A1_FLASHCARDS,
   A1_FLASHCARD_PROGRESS_KEY,
@@ -8,7 +9,7 @@ import {
 } from "./a1-flashcard-data.js";
 import { GermanSpeech } from "./a1-listening.js";
 
-const SESSION_SIZE = 20;
+const SESSION_SIZE = typeof location !== "undefined" && new URLSearchParams(location.search).get("daily") === "1" ? 5 : 20;
 const intervals = {1: 4 * 60 * 60 * 1000, 2: 24 * 60 * 60 * 1000, 3: 3 * 24 * 60 * 60 * 1000, 4: 7 * 24 * 60 * 60 * 1000};
 const stateForBox = box => box <= 0 ? "new" : box === 1 ? "learning" : box >= 4 ? "mastered" : "review";
 const shuffle = input => {
@@ -75,10 +76,13 @@ export function initA1Flashcards(setSharedPage) {
   let flipped = false;
   let sessionStats = null;
   let difficultIds = [];
-  const germanSpeech = new GermanSpeech();
+  const germanSpeech = new GermanSpeech(state => {
+    const live = document.querySelector(".flashcard-live");
+    if (live && (state === "unavailable" || state === "error")) live.textContent = "German audio is unavailable. You can still read the word and continue practising.";
+  });
 
   setSharedPage("A1 Flashcard Trainer", "Think first, flip the card, then rate your recall to build a simple local review schedule.");
-  $("questionCount").textContent = `${A1_FLASHCARDS.length} local cards · 20 per session`;
+  $("questionCount").textContent = `${A1_FLASHCARDS.length} cards · ${SESSION_SIZE} per session`;
   $("practiceType").textContent = "Vocabulary";
   $("submitPractice").hidden = true;
   $("practiceResult").hidden = true;
@@ -87,12 +91,12 @@ export function initA1Flashcards(setSharedPage) {
   const help = document.querySelector(".practice-help");
   if (help) {
     help.querySelector("h2").textContent = "Think · Flip · Rate";
-    help.querySelector("p").textContent = "After revealing the answer, choose Again, Hard or Good. Your private review schedule stays on this device.";
+    help.querySelector("p").textContent = "After revealing the answer, choose Again, Hard or Good. Progress saves on this device. Visit My A1 Progress to manage account sync.";
   }
 
   function persist() {
     progress.showBengali = showBengali;
-    localStorage.setItem(A1_FLASHCARD_PROGRESS_KEY, JSON.stringify(progress));
+    learningStorage.setItem(A1_FLASHCARD_PROGRESS_KEY, JSON.stringify(progress));
   }
 
   function renderControls() {
@@ -129,6 +133,7 @@ export function initA1Flashcards(setSharedPage) {
   }
 
   function startSession(customCards = null, difficult = false) {
+    germanSpeech.cancel();
     const eligible = mode === "article" ? A1_FLASHCARDS.filter(card => card.type === "noun" && card.article) : A1_FLASHCARDS;
     const cards = customCards || createA1FlashcardSession(eligible, progress.cards, topic, SESSION_SIZE);
     session = cards.map(card => ({...card, task: taskFor(card), startedNew: !progress.cards[card.id]}));
@@ -179,7 +184,8 @@ export function initA1Flashcards(setSharedPage) {
   }
 
   function rateCard(rating) {
-    if (!flipped) return;
+    if (!flipped || !session[index] || $("practiceForm").hidden) return;
+    germanSpeech.cancel();
     const card = session[index], old = progress.cards[card.id] || {box: 0, againCount: 0, hardCount: 0, goodCount: 0};
     let box = old.box || 0;
     if (rating === "again") box = 1;
@@ -206,7 +212,7 @@ export function initA1Flashcards(setSharedPage) {
   function renderActive() {
     if (!session.length) return completeSession();
     const card = session[index];
-    const form = $("practiceForm"); form.replaceChildren(renderControls());
+    const form = $("practiceForm"), restoreFocus = form.contains(document.activeElement); form.replaceChildren(renderControls());
     const sessionHeader = create("div", "flashcard-session-header");
     sessionHeader.append(create("span", "", `${index + 1} / ${session.length}`), create("span", "", `Good ${sessionStats.good} · Hard ${sessionStats.hard} · Again ${sessionStats.again}`));
     const track = create("div", "progress-track"); const fill = create("i"); fill.style.width = `${index / session.length * 100}%`; track.append(fill);
@@ -225,11 +231,13 @@ export function initA1Flashcards(setSharedPage) {
       [["again", "Again", "I did not remember it"], ["hard", "Hard", "I remembered it with difficulty"], ["good", "Good", "I remembered it confidently"]].forEach(([value, label, title]) => {
         const button = create("button", `rating-${value}`, label); button.type = "button"; button.title = title; button.setAttribute("aria-label", `${label}: ${title}`); button.addEventListener("click", () => rateCard(value)); ratings.append(button);
       });
-      form.append(ratings);
+    form.append(ratings);
+      ratings.querySelector("button")?.focus({preventScroll:true});
     }
     const live = create("p", "flashcard-live"); live.setAttribute("aria-live", "polite"); form.append(live);
     $("answeredCount").textContent = `${index} of ${session.length} reviewed`;
     $("progressFill").style.width = `${index / session.length * 100}%`;
+    if (restoreFocus && !flipped) surface.focus({preventScroll:true});
   }
 
   function vocabularyTotals() {
@@ -264,8 +272,10 @@ export function initA1Flashcards(setSharedPage) {
     const back = create("a", "challenge-back-link", "Back to Practice Center"); back.href = "../a1/#exercises";
     actions.append(difficult, another, choose, back);
     const reset = create("button", "flashcard-reset", "Reset Flashcard Progress"); reset.type = "button";
-    reset.addEventListener("click", () => { if (!confirm("Reset only your A1 Flashcard Trainer progress? Other learning progress will not be changed.")) return; localStorage.removeItem(A1_FLASHCARD_PROGRESS_KEY); progress = {cards: {}, topicStats: {}}; startSession(); });
+    reset.addEventListener("click", () => { if (!confirm("Reset only your A1 Flashcard Trainer progress? Other learning progress will not be changed.")) return; learningStorage.removeItem(A1_FLASHCARD_PROGRESS_KEY); progress = {cards: {}, topicStats: {}}; startSession(); });
     result.append(summary, progressGrid, actions, reset);
+    result.tabIndex = -1;
+    result.focus({preventScroll:true});
     result.scrollIntoView({behavior: "smooth", block: "start"});
   }
 

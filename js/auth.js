@@ -1,4 +1,5 @@
 import { auth, db } from "./firebase.js";
+import {mergeProgressRecords} from "./learning-storage.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -13,6 +14,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import {
   addDoc,
+  runTransaction,
   collection,
   doc,
   deleteField,
@@ -216,6 +218,17 @@ export async function saveUserFavorites(user, favorites) {
 export async function saveUserProfilePatch(user, patch) {
   if (!user?.uid || !patch || typeof patch !== "object") return;
   await setDoc(doc(db, "users", user.uid), patch, { merge: true });
+}
+
+export async function syncUserLearningProgress(user, records) {
+  if (!user?.uid) throw new Error("Sign in to sync learning progress.");
+  const reference = doc(db, "users", user.uid);
+  return runTransaction(db, async transaction => {
+    const snapshot = await transaction.get(reference);
+    const merged = mergeProgressRecords(records, snapshot.data()?.learningProgressV2 || {});
+    transaction.set(reference, {learningProgressV2: merged}, {mergeFields: ["learningProgressV2"]});
+    return merged;
+  });
 }
 
 export async function saveUserWordNote(user, wordId, noteText) {

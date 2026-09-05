@@ -1,9 +1,10 @@
+import {learningStorage} from "./learning-storage.js";
 import { GermanSpeech } from "./a1-listening.js";
 import { A1_SPEAKING_PROGRESS_KEY, A1_SPEAKING_SKILLS, A1_SPEAKING_TASKS, validateA1SpeakingBank } from "./a1-speaking-data.js";
 
 const shuffle = input => { const out = [...input]; for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; } return out; };
 const make = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
-const readProgress = () => { try { return JSON.parse(localStorage.getItem(A1_SPEAKING_PROGRESS_KEY) || "null") || {}; } catch { return {}; } };
+const readProgress = () => { try { return JSON.parse(learningStorage.getItem(A1_SPEAKING_PROGRESS_KEY) || "null") || {}; } catch { return {}; } };
 
 export function createA1SpeakingSession(previousIds = [], skills = null, limit = 10) {
   const previous = new Set(previousIds), chosen = [];
@@ -46,7 +47,7 @@ export function initA1Speaking(setSharedPage) {
   $("practiceType").textContent = "Speaking"; $("questionCount").textContent = `${A1_SPEAKING_TASKS.length} local prompts · 10 per session`; $("submitPractice").hidden = true;
   $("practiceResult").setAttribute("aria-live", "polite"); document.querySelector(".practice-sheet")?.classList.add("speaking-sheet");
   const help = document.querySelector(".practice-help"); if (help) { help.querySelector("h2").textContent = "Speak, listen and self-review"; help.querySelector("p").textContent = "Record with your browser or practise aloud without recording. Example answers are models, not the only valid answers."; help.querySelector("small").textContent = "Recordings remain in memory for the current task and are never uploaded."; }
-  const persist = () => { progress.lastActivity = new Date().toISOString(); localStorage.setItem(A1_SPEAKING_PROGRESS_KEY, JSON.stringify(progress)); };
+  const persist = () => { progress.lastActivity = new Date().toISOString(); learningStorage.setItem(A1_SPEAKING_PROGRESS_KEY, JSON.stringify(progress)); };
   const announce = text => { const live = document.querySelector(".speaking-live"); if (live) live.textContent = text; };
   function updateSpeechStatus(state) { const node = document.querySelector(".speaking-speech-status"); if (!node) return; node.textContent = state === "playing" ? "Playing German…" : state === "unavailable" ? "German speech is not available on this device/browser." : state === "error" ? "German playback could not be completed." : "German model ready"; }
   function mimeType() { if (!("MediaRecorder" in window)) return ""; return ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"].find(type => MediaRecorder.isTypeSupported?.(type)) || ""; }

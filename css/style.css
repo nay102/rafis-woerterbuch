@@ -5977,3 +5977,17 @@ input,
     line-height: 1.2;
   }
 }
+
+/* Shared keyboard access and compact learning controls. */
+.skip-link{position:fixed;top:8px;left:8px;z-index:100000;padding:12px 18px;background:#fff;color:#123e79;transform:translateY(-160%);border:2px solid currentColor;border-radius:8px}
+.skip-link:focus{transform:none}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #287be0;outline-offset:3px}
+.daily-return{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px;margin:16px auto;max-width:1100px;border:1px solid #7186a3;border-radius:12px}
+.daily-return a{font-weight:600;text-decoration:underline;padding:10px}
+.daily-steps{display:grid;gap:12px;padding-left:24px}
+.daily-steps li{padding:16px;border:1px solid #7186a3;border-radius:12px}
+.daily-steps li span{display:block;margin-bottom:12px;overflow-wrap:anywhere}
+.progress-sync-actions{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
+.progress-sync-actions button{padding:12px;min-height:44px;border:1px solid #7186a3;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
+@media(max-width:600px){.modal-box{max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;box-sizing:border-box}.modal-box input{font-size:16px}.daily-steps .progress-primary-link{display:inline-flex;min-height:44px;align-items:center;white-space:normal}.progress-sync-actions{flex-direction:column}.daily-return{margin:12px 16px}.header-inner{min-width:0}.site-title{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.daily-return,*:focus{scroll-behavior:auto!important}}

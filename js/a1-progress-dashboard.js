@@ -1,4 +1,7 @@
 import {initLevelPage} from "./level-page.js";
+import {renderDailyPlan} from "./daily-plan.js";
+import {syncLearningProgress, importGuestProgress, learningSyncStatus} from "./learning-sync.js";
+import {progressRecords, learningOwner} from "./learning-storage.js";
 import {getA1ProgressSummary,resetA1Progress,validateA1ProgressConfig} from "./a1-progress.js";
 
 const $=id=>document.getElementById(id);
@@ -30,6 +33,14 @@ function renderMixed(summary){const host=$("mixedMasteryCard"),mixed=summary.mix
 
 function renderReview(summary){const host=$("vocabularyReview");host.replaceChildren();const card=make("article","vocabulary-review-card");card.append(make("strong","",summary.dueFlashcards?`${summary.dueFlashcards} card${summary.dueFlashcards===1?"":"s"} due`:"No cards are due right now"),make("p","",summary.dueFlashcards?"A short review will strengthen words that are ready to revisit.":"You can still start a fresh vocabulary session whenever you like."),link(summary.dueFlashcards?"Review Due Cards →":"Start Flashcards →","../practice/?level=A1&type=flashcards","progress-primary-link"));host.append(card);}
 function renderRecent(summary){const host=$("recentActivity");host.replaceChildren();if(!summary.recent.length){host.append(make("p","progress-empty","No recent A1 activity yet. Your latest Library and Practice work will appear here."));return;}const list=make("ol","recent-list");summary.recent.forEach(item=>{const row=make("li","");const content=make("div","");content.append(make("strong","",item.label),make("span","",item.detail));row.append(content,make("time","",formatDate(item.lastActivity)));list.append(row);});host.append(list);}
-function render(){const summary=getA1ProgressSummary();renderOverview(summary);renderContinue(summary);renderFocus(summary);renderLibrary(summary);renderPractice(summary);renderMixed(summary);renderReview(summary);renderRecent(summary);}
+function render(){const summary=getA1ProgressSummary();renderDailyPlan($("dailyPlan"));renderOverview(summary);renderContinue(summary);renderFocus(summary);renderLibrary(summary);renderPractice(summary);renderMixed(summary);renderReview(summary);renderRecent(summary);}
+
+addEventListener("learning-progress-updated",render);
+function renderSyncStatus(){if($("learningSyncStatus"))$("learningSyncStatus").textContent=learningSyncStatus;if($("importGuestProgress"))$("importGuestProgress").hidden=learningOwner()==="guest";}
+addEventListener("learning-sync-status",renderSyncStatus);
+$("syncLearningProgress")?.addEventListener("click",async event=>{const button=event.currentTarget;button.disabled=true;try{await syncLearningProgress({pull:true});renderSyncStatus();}finally{button.disabled=false;}});
+$("importGuestProgress")?.addEventListener("click",async event=>{const button=event.currentTarget;button.disabled=true;try{await importGuestProgress();render();}finally{button.disabled=false;}});
+$("exportLearningProgress")?.addEventListener("click",()=>{const blob=new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),records:progressRecords()},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),anchor=document.createElement("a");anchor.href=url;anchor.download="rafis-learning-progress.json";anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+renderSyncStatus();
 
 const configErrors=validateA1ProgressConfig();if(configErrors.length){console.error("A1 progress configuration is invalid.",configErrors);$("progressDashboard").textContent="The A1 dashboard is temporarily unavailable.";}else{initLevelPage();render();addEventListener("pageshow",render);document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")render();});const dialog=$("resetDialog");$("resetA1Progress").addEventListener("click",()=>dialog.showModal());$("confirmReset").addEventListener("click",event=>{event.preventDefault();resetA1Progress();dialog.close();render();$("resetStatus").textContent="A1 progress has been reset on this browser.";});}

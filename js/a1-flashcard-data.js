@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 import { getLibrarySession } from "./library-session-data.js";
 
 export const A1_FLASHCARD_TOPICS = Object.freeze({
@@ -86,7 +87,7 @@ export function getFlashcardCounts() {
 }
 
 export function readFlashcardProgress() {
-  try { return JSON.parse(localStorage.getItem(A1_FLASHCARD_PROGRESS_KEY) || "null") || {}; }
+  try { return JSON.parse(learningStorage.getItem(A1_FLASHCARD_PROGRESS_KEY) || "null") || {}; }
   catch { return {}; }
 }
 

@@ -1,8 +1,9 @@
+import {learningStorage} from "./learning-storage.js";
 import { A1_LISTENING_PROGRESS_KEY, A1_LISTENING_SKILLS, A1_LISTENING_TASKS, validateA1ListeningBank } from "./a1-listening-data.js";
 
 const shuffle = input => { const result = [...input]; for (let index = result.length - 1; index > 0; index--) { const target = Math.floor(Math.random() * (index + 1)); [result[index], result[target]] = [result[target], result[index]]; } return result; };
 const create = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text !== undefined) node.textContent = text; return node; };
-const readProgress = () => { try { return JSON.parse(localStorage.getItem(A1_LISTENING_PROGRESS_KEY) || "null") || {}; } catch { return {}; } };
+const readProgress = () => { try { return JSON.parse(learningStorage.getItem(A1_LISTENING_PROGRESS_KEY) || "null") || {}; } catch { return {}; } };
 
 function withShuffledOptions(task) {
   const correct = task.options[task.answer], options = shuffle(task.options);
@@ -79,7 +80,7 @@ export function initA1Listening(setSharedPage) {
   $("practiceResult").setAttribute("aria-live", "polite"); document.querySelector(".practice-sheet")?.classList.add("listening-sheet");
   const help = document.querySelector(".practice-help"); if (help) { help.querySelector("h2").textContent = "Listen before reading"; help.querySelector("p").textContent = "Play normal or slow German device speech, answer the task, then compare the revealed transcript with what you heard."; help.querySelector("small").textContent = "Audio uses your device/browser's installed German speech voice."; }
 
-  const persist = () => { progress.lastActivity = new Date().toISOString(); localStorage.setItem(A1_LISTENING_PROGRESS_KEY, JSON.stringify(progress)); };
+  const persist = () => { progress.lastActivity = new Date().toISOString(); learningStorage.setItem(A1_LISTENING_PROGRESS_KEY, JSON.stringify(progress)); };
   function updateAudioStatus() {
     const output = document.querySelector(".listening-audio-status");
     if (!output) return;

@@ -1,0 +1,65 @@
+import {listenAuth, getUserProfile, syncUserLearningProgress} from "./auth-client.js";
+import {learningOwner, selectLearningOwner, progressRecords, applyProgressRecords, mergeProgressRecords} from "./learning-storage.js";
+
+let user = null, enabled = false, running = null, timer, started = false;
+export let learningSyncStatus = "Progress is saved on this device. Sign in to sync across devices.";
+function status(message) { learningSyncStatus = message; window.dispatchEvent(new Event("learning-sync-status")); }
+export function syncLearningProgress({pull = false} = {}) {
+  if (running) return running.then(() => pull ? syncLearningProgress({pull:true}) : undefined);
+  if (!user || !enabled || user.uid !== learningOwner()) return Promise.resolve();
+  const account = user;
+  status("Syncing learning progress…");
+  running = (async () => {
+    try {
+      const sent = progressRecords(account.uid);
+      const merged = await syncUserLearningProgress(account, sent);
+      if (user?.uid !== account.uid || !enabled) return;
+      // Never replace an exercise's in-memory state in the middle of a session.
+      if (pull) applyProgressRecords(mergeProgressRecords(progressRecords(account.uid), merged), account.uid);
+      status("Learning progress synced. Open My A1 Progress on another device to restore it.");
+    } catch {
+      status("Saved on this device. Cloud sync could not finish; reconnect and choose Sync now.");
+    } finally { running = null; }
+  })();
+  return running;
+}
+export function importGuestProgress() {
+  if (!user || user.uid !== learningOwner()) return;
+  const own = progressRecords(), guest = progressRecords("guest");
+  // Existing account records, including resets, take precedence.
+  applyProgressRecords({...guest, ...own});
+  return syncLearningProgress({pull:true});
+}
+export function initLearningSync() {
+  if (started) return;
+  started = true;
+  listenAuth(async (next, context) => {
+    if (context?.unavailable) { status("Saved on this device. Connect to the internet to sync your account."); return; }
+    user = next;
+    const owner = next?.uid || "guest";
+    if (owner !== learningOwner()) {
+      selectLearningOwner(owner);
+      // A full restart keeps all activity closures bound to the correct account.
+      location.reload();
+      return;
+    }
+    enabled = false;
+    if (!next) { status("Progress is saved on this device. Sign in to sync across devices."); return; }
+    try {
+      const profile = await getUserProfile(next);
+      if (user?.uid !== next.uid) return;
+      enabled = profile?.appSettings?.cloudSync !== false;
+      if (!enabled) { status("Cloud sync is turned off in your account settings."); return; }
+      await syncLearningProgress({pull: Boolean(document.getElementById("progressDashboard"))});
+    } catch { status("Saved on this device. Account sync is unavailable right now."); }
+  });
+  window.addEventListener("learning-progress-changed", () => { clearTimeout(timer); timer = setTimeout(() => syncLearningProgress(), 500); });
+  window.addEventListener("app-settings-changed", event => {
+    enabled = Boolean(user) && event.detail?.cloudSync !== false;
+    if (!enabled) { clearTimeout(timer); status(user ? "Cloud sync is turned off in your account settings." : "Progress is saved on this device. Sign in to sync across devices."); }
+    else syncLearningProgress();
+  });
+  window.addEventListener("online", () => syncLearningProgress({pull:Boolean(document.getElementById("progressDashboard"))}));
+  window.addEventListener("learning-storage-full", () => status("Browser storage is unavailable or full. Progress is only held on this page; free some browser storage before leaving."));
+  window.addEventListener("storage", event => { if (event.key === "rw_learning_owner_v2") location.reload(); });
+}

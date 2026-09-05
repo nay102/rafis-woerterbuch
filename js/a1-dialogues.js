@@ -1,9 +1,10 @@
+import {learningStorage} from "./learning-storage.js";
 import { GermanSpeech } from "./a1-listening.js";
 import { A1_DIALOGUE_PROGRESS_KEY, A1_DIALOGUE_SKILLS, A1_DIALOGUES, validateA1DialogueBank } from "./a1-dialogue-data.js";
 
 const shuffle=input=>{const out=[...input];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;};
 const make=(tag,className,text)=>{const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
-const readProgress=()=>{try{return JSON.parse(localStorage.getItem(A1_DIALOGUE_PROGRESS_KEY)||"null")||{};}catch{return {};}};
+const readProgress=()=>{try{return JSON.parse(learningStorage.getItem(A1_DIALOGUE_PROGRESS_KEY)||"null")||{};}catch{return {};}};
 
 export function createA1DialogueSession(previousIds=[],skill=null,limit=4){
   const previous=new Set(previousIds);
@@ -28,7 +29,7 @@ export function initA1Dialogues(setSharedPage){
   setSharedPage("A1 Real-Life Dialogues","Take part in short, deterministic German conversations. Choose context-appropriate responses and learn from natural alternatives.");
   $("practiceType").textContent="Communication";$("questionCount").textContent=`${A1_DIALOGUES.length} local dialogues · 4 per session`;$("submitPractice").hidden=true;$("practiceResult").setAttribute("aria-live","polite");document.querySelector(".practice-sheet")?.classList.add("dialogue-sheet");
   const help=document.querySelector(".practice-help");if(help){help.querySelector("h2").textContent="Choose what you would naturally say";help.querySelector("p").textContent="Best and acceptable responses continue the conversation. Responses that do not fit can be retried without ending the dialogue.";help.querySelector("small").textContent="Optional German audio uses your browser/device voice. No AI or free-text grading is used.";}
-  const persist=()=>{progress.lastActivity=new Date().toISOString();localStorage.setItem(A1_DIALOGUE_PROGRESS_KEY,JSON.stringify(progress));};
+  const persist=()=>{progress.lastActivity=new Date().toISOString();learningStorage.setItem(A1_DIALOGUE_PROGRESS_KEY,JSON.stringify(progress));};
   const announce=text=>{const live=document.querySelector(".dialogue-live");if(live)live.textContent=text;};
   function updateSpeechState(state){const node=document.querySelector(".dialogue-audio-status");if(!node)return;node.textContent=state==="playing"?"Playing German…":state==="unavailable"?"German speech is not available on this device/browser.":state==="error"?"German playback could not be completed.":"Audio ready";}
   function play(text){speech.play({speech:text},.94);}

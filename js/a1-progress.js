@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 export const A1_LIBRARY_TOPICS = Object.freeze([
   {id:"articles",label:"Articles",group:"grammar",lessons:6},
   {id:"pronouns",label:"Pronouns",group:"grammar",lessons:6},
@@ -88,7 +89,7 @@ function practiceSummary(config,progress,now){
   return {...base,started:number(progress.sessionsCompleted)>0,metrics:[["Dialogues Completed",number(progress.dialoguesCompleted)],["Sessions",number(progress.sessionsCompleted)],["Natural Choices",number(progress.naturalChoices)]],weak};
 }
 
-export function getA1ProgressSummary(storage=localStorage,now=new Date()){
+export function getA1ProgressSummary(storage=learningStorage,now=new Date()){
   const libraryStore=safeRead(storage,"rw_library_progress_v1");
   const library=A1_LIBRARY_TOPICS.map(topic=>{
     const raw=libraryStore[`A1:${topic.id}`]||{},validLessons=new Set(libraryLessonIds[topic.id]),completedLessons=[...new Set(Array.isArray(raw.completedLessons)?raw.completedLessons.filter(id=>validLessons.has(id)):[])];
@@ -121,11 +122,12 @@ export function getA1ProgressSummary(storage=localStorage,now=new Date()){
   return {journey,library:{items:library,completed:completedLibrary,mastered:library.filter(x=>x.mastered).length,grammarMastered:library.filter(x=>x.group==="grammar"&&x.mastered).length,vocabularyMastered:library.filter(x=>x.group==="vocabulary"&&x.mastered).length},practice:{items:practices,started:startedPractice},mixed,continueLearning,continuePractice,focusAreas,recommendation,dueFlashcards:due,recent,lastActivity:recent[0]?.lastActivity||null};
 }
 
-export function resetA1Progress(storage=localStorage){
+export function resetA1Progress(storage=learningStorage){
   const library=safeRead(storage,"rw_library_progress_v1"),preserved=Object.fromEntries(Object.entries(library).filter(([key])=>!key.startsWith("A1:")));
   if(Object.keys(preserved).length)storage.setItem("rw_library_progress_v1",JSON.stringify(preserved));else storage.removeItem("rw_library_progress_v1");
   A1_PRACTICE_ACTIVITIES.forEach(item=>storage.removeItem(item.key));
   storage.removeItem(A1_MIXED_PROGRESS_KEY);
+  storage.removeItem("rw_daily_plan_v1");
 }
 
 export function validateA1ProgressConfig(){

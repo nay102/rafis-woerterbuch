@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 import { getLibrarySession } from "./library-session-data.js";
 
 const STORAGE_KEY = "rw_library_progress_v1";
@@ -10,7 +11,7 @@ function el(tag, className, text) {
 }
 
 function readStore() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  try { return JSON.parse(learningStorage.getItem(STORAGE_KEY)) || {}; }
   catch { return {}; }
 }
 
@@ -38,7 +39,7 @@ function saveProgress(session, patch) {
   const store = readStore();
   const key = `${session.level}:${session.id}`;
   store[key] = { ...defaultProgress(session), ...getLibraryProgress(session.level, session.id), ...patch, lastActivity: new Date().toISOString() };
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch { /* practice still works */ }
+  try { learningStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch { /* practice still works */ }
   return store[key];
 }
 

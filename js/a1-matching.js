@@ -1,3 +1,4 @@
+import {learningStorage} from "./learning-storage.js";
 import { A1_FLASHCARDS, A1_FLASHCARD_TOPICS } from "./a1-flashcard-data.js";
 
 export const A1_MATCHING_PROGRESS_KEY = "rw_a1_matching_v1";
@@ -68,7 +69,7 @@ export function validateA1MatchingPool() {
 }
 
 function readProgress() {
-  try { return JSON.parse(localStorage.getItem(A1_MATCHING_PROGRESS_KEY) || "null") || {}; }
+  try { return JSON.parse(learningStorage.getItem(A1_MATCHING_PROGRESS_KEY) || "null") || {}; }
   catch { return {}; }
 }
 
@@ -113,7 +114,7 @@ export function initA1Matching(setSharedPage) {
 
   const persist = () => {
     progress.lastActivity = new Date().toISOString();
-    localStorage.setItem(A1_MATCHING_PROGRESS_KEY, JSON.stringify(progress));
+    learningStorage.setItem(A1_MATCHING_PROGRESS_KEY, JSON.stringify(progress));
   };
   const meaningFor = id => currentRound.right.find(item => item.id === id)?.meaning || "";
   const cardFor = id => A1_FLASHCARDS.find(card => card.id === id);

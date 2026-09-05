@@ -1,0 +1,113 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "scrollWidth": 305,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": false,
+      "screenshot": "320-light.png"
+    },
+    {
+      "width": 320,
+      "scrollWidth": 305,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": true,
+      "screenshot": "320-dark.png"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": false,
+      "screenshot": "390-light.png"
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": true,
+      "screenshot": "390-dark.png"
+    },
+    {
+      "width": 768,
+      "scrollWidth": 753,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": false,
+      "screenshot": "768-light.png"
+    },
+    {
+      "width": 768,
+      "scrollWidth": 753,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": true,
+      "screenshot": "768-dark.png"
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1009,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": false,
+      "screenshot": "1024-light.png"
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1009,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": true,
+      "screenshot": "1024-dark.png"
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": false,
+      "screenshot": "1440-light.png"
+    },
+    {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "sections": 20,
+      "themeVisible": true,
+      "loginVisible": true,
+      "overflow": [],
+      "dark": true,
+      "screenshot": "1440-dark.png"
+    }
+  ],
+  "interactions": {
+    "menu": true,
+    "empty": true,
+    "restored": true,
+    "saved": true,
+    "mobileHomeHidden": true,
+    "topButtonAppears": true,
+    "returnsToTop": true
+  }
+}

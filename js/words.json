@@ -14057,7 +14057,7 @@
       "পরিচালক",
       "চলচ্চিত্র বা নাট্য পরিচালক"
     ],
-    "meaning": "Die Person, die bei einem Film oder Theaterstück die künstlerische Leitung hat und den Schauspielern sagt, was sie tun sollen.",
+    "meaning": "Die Person, die bei einem Film oder Theaterstück die künstlerische Leitung hat und den Schauspielern sagt, was sie tun sollen. <b>Plural:</b> die Regisseure",
     "examples": [
       "<b>(1) Der Regisseur korrigierte die Schauspieler während der Probe für den neuen Film.</b>\n(The director corrected the actors during the rehearsal for the new movie.)",
       "<b>(2) Für seine großartige Arbeit gewann der berühmte Regisseur einen wichtigen Oscar.</b>\n(For his great work, the famous director won an important Oscar.)"
@@ -14208,7 +14208,7 @@
       "বিশ্ববিদ্যালয়ের শিক্ষা ফি",
       "টিউশন ফি"
     ],
-    "meaning": "Das Geld, das Studenten pro Semester an einer Universität für ihre Ausbildung bezahlen müssen.",
+    "meaning": "Das Geld, das Studenten pro Semester an einer Universität für ihre Ausbildung bezahlen müssen. <b>Plural:</b> die Studiengebühren",
     "examples": [
       "<b>(1) In vielen Bundesländern in Deutschland muss man glücklicherweise keine Studiengebühr bezahlen.</b>\n(Fortunately, in many federal states in Germany you do not have to pay tuition fees.)",
       "<b>(2) Die hohen Studiengebühren in den USA sind für viele junge Menschen ein großes Problem.</b>\n(The high tuition fees in the US are a big problem for many young people.)"
@@ -14259,27 +14259,22 @@
     "article": "die",
     "englisch": [
       "survey",
-      "poll",
-      "questionnaire",
-      "canvass"
+      "poll"
     ],
     "bangla": [
       "জরিপ",
       "জনমত সমীক্ষা",
       "প্রশ্নোত্তর পর্ব"
     ],
-    "meaning": "Eine Befragung von vielen Menschen, um herauszufinden, welche Meinung sie zu einem bestimmten Thema haben.",
+    "meaning": "Eine Befragung von vielen Menschen, um herauszufinden, welche Meinung sie zu einem bestimmten Thema haben. <b>Plural:</b> die Umfragen",
     "examples": [
       "<b>(1) Eine aktuelle Umfrage zeigt, dass die Mehrheit der Deutschen gerne im Homeoffice arbeitet.</b>\n(A recent survey shows that the majority of Germans like to work from home.)",
       "<b>(2) Darf ich Ihnen für eine kurze Umfrage zum Thema Umweltschutz drei Fragen stellen?</b>\n(May I ask you three questions for a short survey on environmental protection?)"
     ],
     "synonym": [
       "Befragung",
-      "Statistik",
-      "Demoskopie",
-      "Interview",
       "Erhebung",
-      "Meinungsforschung"
+      "Meinungsumfrage"
     ],
     "level": "B1"
   },
@@ -17349,12 +17344,13 @@
       "wellness"
     ],
     "bangla": [
-      "स्वास्थ्य"
+      "স্বাস্থ্য",
+      "সুস্থতা"
     ],
     "meaning": "Der Zustand, wenn man nicht krank ist und sich gut fühlt.<b>\n➡️Plural Form:</b> — (wird nur im Singular verwendet)✅",
     "examples": [
       "<b>(1) Die Gesundheit ist das Wichtigste im Leben eines Menschen.</b>\n(Health is the most important thing in a person's life.)",
-      "<b>(2) Wenn jemand niest, sagt man in Deutschland: „Gesundheit!“.</b>\n(When someone sneezes, people in Germany say: \"Gesundheit!\".)"
+      "<b>(2) Wenn jemand niest, sagt man in Deutschland: „Gesundheit!“</b>\n(When someone sneezes, people in Germany say: \"Bless you!\")"
     ],
     "synonym": [
       "Wohlergehen",

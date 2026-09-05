@@ -2,8 +2,8 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v145-auth-stability";
-const DATA_VERSION = "2026-03-16-3-conjugation-2026-08-02-1";
+const CACHE_VERSION = "rw-cache-v150-ausbildung-bangla-font";
+const DATA_VERSION = "2026-09-05-1-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
 function getBasePath() {
@@ -38,9 +38,17 @@ function coreUrls() {
   return [
     toAbsolute(""),
     toAbsolute("index.html"),
+    toAbsolute("ausbildung/"),
+    toAbsolute("ausbildung/index.html"),
+    toAbsolute("js/ausbildung-page.js"),
     toAbsolute("404.html"),
     toAbsolute("manifest.webmanifest"),
     toAbsolute("css/style.css"),
+    toAbsolute("css/ausbildung.css"),
+    toAbsolute("assets/vendor/css/noto-serif-bengali.css"),
+    toAbsolute("assets/vendor/webfonts/noto-serif-bengali-1.woff2"),
+    toAbsolute("assets/vendor/webfonts/noto-serif-bengali-2.woff2"),
+    toAbsolute("assets/vendor/webfonts/noto-serif-bengali-3.woff2"),
     toAbsolute("css/dark.css"),
     toAbsolute("css/rafi-tutor.css"),
     toAbsolute("css/course-enrollment.css"),
@@ -53,6 +61,21 @@ function coreUrls() {
     toAbsolute("css/a1-mixed-mastery.css"),
     toAbsolute("js/app.js"),
     toAbsolute("js/ui.js"),
+    toAbsolute("js/ausbildung.js"),
+    toAbsolute("js/ausbildung-data.js"),
+    toAbsolute("js/ausbildung-language.js"),
+    toAbsolute("js/ausbildung-locales.js"),
+    toAbsolute("js/ausbildung-ui-copy.js"),
+    toAbsolute("js/ausbildung-bn.js"),
+    toAbsolute("js/ausbildung-de.js"),
+    toAbsolute("js/learning-storage.js"),
+    toAbsolute("js/learning-sync.js"),
+    toAbsolute("js/daily-plan.js"),
+    toAbsolute("js/accessibility.js"),
+    toAbsolute("js/account-settings.js"),
+    toAbsolute("js/dictionary-format.js"),
+    toAbsolute("js/ui-routing.js"),
+    toAbsolute("js/site-content.js"),
     toAbsolute("js/rafi-tutor.js"),
     toAbsolute("js/tutor-grammar.js"),
     toAbsolute("js/tutor-exercises.js"),

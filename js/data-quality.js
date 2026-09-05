@@ -43,6 +43,12 @@ export function validateDictionary(words) {
       add(word, "error", "conjugation", "missing-conjugation", "Verb has no usable conjugation data.");
     }
     if (word.category === "Nomen" && isBlank(word.article)) add(word, "warning", "article", "missing-article", "Noun article is missing.");
+    if (word.category === "Nomen" && !isBlank(word.article) && !["der","die","das"].includes(word.article)) add(word,"error","article","invalid-article","Noun article must be der, die or das.");
+    if (word.category === "Nomen" && !hasContent(word.plural) && !/plural/i.test(String(word.meaning || ""))) add(word,"warning","plural","missing-plural","Add the plural or an explicit note that the noun has no usual plural.");
+    if (hasContent(word.bangla) && !/[\u0980-\u09ff]/u.test(String(word.bangla))) add(word,"warning","bangla","missing-bengali-script","Bengali translation contains no Bengali characters; check its language.");
+    for (const field of ["word","meaning","englisch","bangla","examples"]) {
+      if (/\uFFFD/u.test(String(word[field] || ""))) add(word,"warning",field,"replacement-character","Text contains a Unicode replacement character; check the original source.");
+    }
   });
 
   const counts = { error: 0, warning: 0, info: 0 };

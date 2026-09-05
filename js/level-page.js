@@ -1,3 +1,6 @@
+import {initLearningSync} from "./learning-sync.js";
+import {initAccessibility} from "./accessibility.js";
+import {initDailyReturn} from "./daily-plan.js";
 const SETTINGS_KEY = "rw_app_settings_v1";
 const AUTH_CACHE_EMAIL_KEY = "rw_cached_email";
 let authApiPromise = null;
@@ -98,8 +101,8 @@ function ensureProfileModal() {
   modal.id = "userInfoModal";
   modal.className = "hidden modal-overlay";
   modal.innerHTML = `
-    <div class="modal-box user-modal-box">
-      <span id="closeUserInfo" class="close-btn">✖</span>
+    <div class="modal-box user-modal-box" role="dialog" aria-modal="true" aria-label="User profile">
+      <button id="closeUserInfo" class="close-btn" type="button" aria-label="Close profile">&#10006;</button>
       <h2>👤 User Profile</h2>
       <div id="userInfoContent" class="user-info-content"></div>
     </div>
@@ -152,6 +155,9 @@ function openProfile(user, homeUrl) {
 
 export function initLevelPage() {
   if (redirectLegacyPage()) return;
+  initLearningSync();
+  initAccessibility();
+  initDailyReturn();
 
   const homeUrl = "../";
   const desktopBtn = document.getElementById("desktopMenuBtn");
@@ -180,6 +186,10 @@ export function initLevelPage() {
   }
 
   function openMainPage(page) {
+    if (page === "ausbildung") {
+      window.location.href = new URL("../ausbildung/", import.meta.url).href;
+      return;
+    }
     if (!page || page === "home") {
       window.location.href = homeUrl;
       return;

@@ -1,4 +1,4 @@
-﻿const DATA_VERSION = "2026-03-16-3";
+﻿const DATA_VERSION = "2026-09-05-1";
 const CONJUGATION_DATA_VERSION = `${DATA_VERSION}-conjugation-2026-08-02-1`;
 let allWords = [];
 
