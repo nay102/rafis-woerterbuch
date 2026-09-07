@@ -1,5 +1,5 @@
 import "./app.js";
-import { panelPageContent, ABOUT_RAFI_PAGE_COPY } from "./site-content.js";
+import { ABOUT_RAFI_PAGE_COPY } from "./about-rafi-data.js";
 
 const root = document.getElementById("aboutRafiPage");
 let language = "en";
@@ -8,7 +8,7 @@ const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, character =>
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 })[character]);
 const assetUrl = path => new URL(`../${path}`, import.meta.url).href;
-const getPage = () => language === "de" ? ABOUT_RAFI_PAGE_COPY.de : panelPageContent.owner;
+const getPage = () => ABOUT_RAFI_PAGE_COPY[language];
 
 function updateButton(button, index) {
   const page = getPage();
@@ -42,7 +42,7 @@ function updateLanguage() {
 }
 
 function render() {
-  const page = language === "de" ? ABOUT_RAFI_PAGE_COPY.de : panelPageContent.owner;
+  const page = ABOUT_RAFI_PAGE_COPY[language];
   root.lang = language;
   root.innerHTML = `
     <div class="panel-page-wrap">

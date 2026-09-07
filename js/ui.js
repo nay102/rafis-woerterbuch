@@ -1559,7 +1559,7 @@ function handleRouting() {
 
   const normalizedPage = normalizePanelPageKey(page);
 
-  if (normalizedPage && panelPageContent[normalizedPage] && normalizedPage !== "settings") {
+  if (normalizedPage && (panelPageContent[normalizedPage] || ["owner", "option5"].includes(normalizedPage)) && normalizedPage !== "settings") {
     if (normalizedPage !== page) {
       setSingleRouteParam("page", normalizedPage);
     }
@@ -3012,7 +3012,7 @@ function goHomeWithoutRefresh() {
   showSection("homePage");
 }
 
-function buildPanelPageHeading(pageKey, page) {
+function buildPanelPageHeading(page) {
   return page.title ? '<div class="panel-page-heading"><h1>' + escapeHtml(page.title) + '</h1></div>' : '';
 }
 
@@ -3116,7 +3116,7 @@ function renderPanelPage(pageKey) {
           : ""
       }
       <div class="panel-page-content">
-        ${buildPanelPageHeading(pageKey, page)}
+        ${buildPanelPageHeading(page)}
         <p class="panel-page-description">${formatPanelDescription(pageKey, page.description)}</p>
         <div class="${cardGridClassName}">
           ${cards}

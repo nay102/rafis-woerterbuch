@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v154-exam-zone";
+const CACHE_VERSION = "rw-cache-v156-page-content-cleanup";
 const DATA_VERSION = "2026-09-05-1-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -48,6 +48,7 @@ function coreUrls() {
     toAbsolute("about-rafi/index.html"),
     toAbsolute("css/about-rafi.css"),
     toAbsolute("js/about-rafi.js"),
+    toAbsolute("js/about-rafi-data.js"),
     toAbsolute("ausbildung/"),
     toAbsolute("ausbildung/index.html"),
     toAbsolute("js/ausbildung-page.js"),
@@ -162,7 +163,7 @@ function coreUrls() {
     ].map(name => toAbsolute(`assets/vendor/webfonts/${name}`)),
     ...[
       "panel-ausbildung.jpg", "panel-bangladesh.jpg", "panel-germany.jpg",
-      "panel-exam-zone.jpg", "panel-pro-tools.jpg", "panel-settings.jpg",
+      "panel-settings.jpg",
       "germany-hero.jpg", "germany-city.jpg", "germany-culture.jpg",
       "germany-history.jpg", "germany-education.jpg", "germany-work.jpg",
       "germany-language.jpg", "germany-spoken.jpg", "germany-food.jpg",
