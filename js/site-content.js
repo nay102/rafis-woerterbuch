@@ -98,7 +98,7 @@ export const panelPageContent = {
         image: sitePhotos.aboutRafi.languageCertifications,
         imagePosition: "center 35%",
         body:
-          "My path to language fluency and professional qualification is defined by resilience, strategic goal-setting, and a hands-on approach to learning: The German B1 Milestone: Demonstrating a fast-track learning approach, I chose to skip the standard A1 and A2 introductory levels and directly challenged the Goethe-Institut B1 Examination in Dhaka in March 2025. While this first attempt yielded passes in two modules, I systematically targeted my remaining requirements. I cleared the Lesen (Reading) module in May 2025. Due to booking constraints in Bangladesh, I proactively extended my search to Goethe-Institut Kolkata (India) for the Sprechen (Speaking) module, where I successfully cleared it with an exceptional score of 95 out of 100.",
+          "My path to language fluency and professional qualification is defined by resilience, strategic goal-setting, and a hands-on approach to learning: The German B1 Milestone: Demonstrating a fast-track learning approach, I chose to skip the A1 and A2 exams and take the Goethe-Institut B1 Examination directly in Dhaka in March 2025. While this first attempt yielded passes in two modules, I systematically targeted my remaining requirements. I cleared the Lesen (Reading) module in May 2025. Due to booking constraints in Bangladesh, I proactively extended my search to Goethe-Institut Kolkata (India) for the Sprechen (Speaking) module, where I successfully cleared it with an exceptional score of 95 out of 100.",
         photo: "Language certifications"
       },
       {

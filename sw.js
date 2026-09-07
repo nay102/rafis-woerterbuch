@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v150-ausbildung-bangla-font";
+const CACHE_VERSION = "rw-cache-v154-exam-zone";
 const DATA_VERSION = "2026-09-05-1-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -38,6 +38,16 @@ function coreUrls() {
   return [
     toAbsolute(""),
     toAbsolute("index.html"),
+    toAbsolute("exam-zone/"),
+    toAbsolute("exam-zone/index.html"),
+    toAbsolute("css/exam-zone.css"),
+    toAbsolute("js/exam-zone.js"),
+    toAbsolute("js/exam-zone-library.js"),
+    toAbsolute("js/exam-zone-data.js"),
+    toAbsolute("about-rafi/"),
+    toAbsolute("about-rafi/index.html"),
+    toAbsolute("css/about-rafi.css"),
+    toAbsolute("js/about-rafi.js"),
     toAbsolute("ausbildung/"),
     toAbsolute("ausbildung/index.html"),
     toAbsolute("js/ausbildung-page.js"),

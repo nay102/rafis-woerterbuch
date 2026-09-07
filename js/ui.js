@@ -1,4 +1,4 @@
-import {sitePhotos, panelPageContent, ABOUT_RAFI_PAGE_COPY, CATEGORY_EXPLANATIONS, GERMANY_PAGE_COPY, BANGLADESH_PAGE_COPY} from "./site-content.js";
+import {sitePhotos, panelPageContent, CATEGORY_EXPLANATIONS, GERMANY_PAGE_COPY, BANGLADESH_PAGE_COPY} from "./site-content.js";
 
 import {DEFAULT_APP_SETTINGS} from "./account-settings.js";
 import {initLearningSync} from "./learning-sync.js";
@@ -53,6 +53,15 @@ import {
 
 // Category currently displayed on the category page.
 let currentCategory = null;
+const standalonePage = document.body.dataset.standalonePage;
+function openMainSite(page = "", word = "") {
+  if (page === "option5" || page === "exam-zone") { window.location.href = new URL("../exam-zone/", import.meta.url).href; return; }
+  if (page === "owner") { window.location.href = new URL("../about-rafi/", import.meta.url).href; return; }
+  const url = new URL("../", import.meta.url);
+  if (page && page !== "home") url.searchParams.set("page", page);
+  if (word) url.searchParams.set("word", word);
+  window.location.href = url.href;
+}
 // Remembers the expanded word-list section for each category.
 let activeSectionMemory = {};
 // Identifies the main view currently shown to the visitor.
@@ -107,7 +116,7 @@ let schimpfWarningOpen = false;
 // Selected languages for multilingual information pages.
 let germanyPageLanguage = "en";
 let bangladeshPageLanguage = "en";
-let aboutRafiPageLanguage = "en";
+
 
 // Browser-storage keys and default application preferences.
 const LOCAL_FAVORITES_KEY_PREFIX = "rw_local_favorites_v1_";
@@ -440,7 +449,7 @@ function buildMissingWordPromptHTML(queryText, notFoundText = "Not added yet.") 
 
 
 function normalizePanelPageKey(pageKey) {
-  return pageKey === "option4" ? "sprachwelt" : pageKey;
+  return pageKey === "option4" ? "sprachwelt" : pageKey === "exam-zone" ? "option5" : pageKey;
 }
 
 function formatPanelDescription(pageKey, description) {
@@ -1499,6 +1508,7 @@ function setupFooterNavigation() {
     btn.addEventListener("click", () => {
       const page = normalizePanelPageKey(btn.dataset.footerPage);
       if (!page) return;
+      if (standalonePage || page === "owner" || page === "option5") { openMainSite(page); return; }
 
       setSingleRouteParam("page", page);
       renderPanelPage(page);
@@ -2513,6 +2523,7 @@ function openWordDetail(wordId, options = {}) {
   const allWords = getAllWords();
 
   const word = allWords.find(w => w.id === wordId);
+  if (standalonePage) { openMainSite("", word?.word || ""); return; }
 
   if (!word) {
 
@@ -2992,6 +3003,7 @@ function openWordDetail(wordId, options = {}) {
 ========================================================= */
 
 function goHomeWithoutRefresh() {
+  if (standalonePage) { openMainSite(); return; }
   openedFromFavorites = false;
   openedFromCategory = false;
   openedFromHomeSearch = false;
@@ -3000,41 +3012,18 @@ function goHomeWithoutRefresh() {
   showSection("homePage");
 }
 
-function getPanelPageData(pageKey) {
-  if (pageKey === "owner" && aboutRafiPageLanguage === "de") {
-    return ABOUT_RAFI_PAGE_COPY.de;
-  }
-
-  return panelPageContent[pageKey];
-}
-
 function buildPanelPageHeading(pageKey, page) {
-  if (!page.title) return "";
-
-  const toggle =
-    pageKey === "owner"
-      ? `<button id="aboutRafiLanguageToggle" class="panel-language-toggle" type="button">${escapeHtml(page.toggleLabel || "Deutsch")}</button>`
-      : "";
-
-  return `
-    <div class="panel-page-heading">
-      <h1>${escapeHtml(page.title)}</h1>
-      ${toggle}
-    </div>
-  `;
-}
-
-function wireAboutRafiLanguageToggle() {
-  document.getElementById("aboutRafiLanguageToggle")?.addEventListener("click", () => {
-    aboutRafiPageLanguage = aboutRafiPageLanguage === "en" ? "de" : "en";
-    renderPanelPage("owner");
-  });
+  return page.title ? '<div class="panel-page-heading"><h1>' + escapeHtml(page.title) + '</h1></div>' : '';
 }
 
 function renderPanelPage(pageKey) {
   pageKey = normalizePanelPageKey(pageKey);
-  if (pageKey === "ausbildung") {
-    const destination = new URL("../ausbildung/", import.meta.url);
+  if (pageKey === "option5") {
+    window.location.replace(new URL("../exam-zone/", import.meta.url).href);
+    return;
+  }
+  if (pageKey === "ausbildung" || pageKey === "owner") {
+    const destination = new URL(pageKey === "owner" ? "../about-rafi/" : "../ausbildung/", import.meta.url);
     destination.hash = window.location.hash;
     window.location.replace(destination.href);
     return;
@@ -3051,7 +3040,7 @@ function renderPanelPage(pageKey) {
     return;
   }
 
-  const page = getPanelPageData(pageKey);
+  const page = panelPageContent[pageKey];
   const desktopPage = document.getElementById("desktopPage");
   if (!desktopPage || !page) return;
 
@@ -3138,7 +3127,7 @@ function renderPanelPage(pageKey) {
   `;
 
   wirePanelCardReadMore(desktopPage);
-  wireAboutRafiLanguageToggle();
+
 }
 
 function wirePanelCardReadMore(container) {
@@ -4047,7 +4036,8 @@ function setupLogoNavigation() {
   // Refresh the page and return to home path only when title is clicked.
   titleHome.addEventListener("click", (e) => {
     e.stopPropagation();
-    window.location.href = window.location.pathname;
+    if (standalonePage) openMainSite();
+    else window.location.href = window.location.pathname;
   });
 
 }
@@ -4372,6 +4362,9 @@ desktopBtn?.addEventListener("click", (e) => {
 });
 
 async function handleSidePanelAction(page) {
+  if (page === "option5" || page === "exam-zone") { openMainSite(page); return; }
+  if (page === "owner") { openMainSite(page); return; }
+  if (standalonePage && page && page !== "logout" && page !== "ausbildung") { openMainSite(page); return; }
   if (page === "ausbildung") {
     window.location.href = new URL("../ausbildung/", import.meta.url).href;
     return;
@@ -4508,6 +4501,18 @@ window.addEventListener("scroll", () => {
 ========================================================= */
 
 export async function initUI() {
+  if (standalonePage) {
+    applyAppSettings(getStoredSettings(), { persist: false });
+    setupDarkMode();
+    setupAuthModal();
+    setupUserInfoModal();
+    handleAuthState();
+    setupLogoNavigation();
+    document.getElementById("logoHome")?.addEventListener("click", () => openMainSite());
+    setupFooterNavigation();
+    try { await loadWords(); } catch (error) { console.error("Unable to load SprachCoach vocabulary.", error); }
+    return;
+  }
   try {
     await loadWords();
   } catch (error) {
@@ -4726,6 +4731,7 @@ export function recordRafiTutorReviewResult(wordId, correct) {
 }
 
 export function openExistingRafiReview() {
+  if (standalonePage) { openMainSite("review"); return true; }
   if (!currentUser) {
     promptLoginForRestrictedCategory("Login to review your saved words.");
     return false;

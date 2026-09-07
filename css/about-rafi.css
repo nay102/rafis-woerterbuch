@@ -1,0 +1,51 @@
+/* Shared panel styles preserve the original profile design and dark theme. */
+#aboutRafiPage {
+  min-width: 0;
+}
+
+#aboutRafiPage .panel-page-heading h1 {
+  min-width: 0;
+}
+
+#aboutRafiPage .panel-page-card h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #1e40af;
+}
+
+body.dark #aboutRafiPage .panel-page-card h2 {
+  color: #93c5fd;
+}
+
+#aboutRafiPage .panel-language-toggle,
+#aboutRafiPage .panel-card-read-more {
+  min-height: 44px;
+}
+
+#aboutRafiPage .panel-card-body,
+#aboutRafiPage .panel-page-description {
+  overflow-wrap: anywhere;
+}
+
+#aboutRafiPage button:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  #aboutRafiPage .panel-page-heading {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #aboutRafiPage .panel-page-wrap {
+    animation: none;
+  }
+
+  #aboutRafiPage .panel-page-card,
+  #aboutRafiPage button {
+    transition: none;
+    transform: none;
+  }
+}

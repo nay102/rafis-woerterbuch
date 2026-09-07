@@ -31,7 +31,7 @@ test("the standalone guide is linked from navigation and included in the offline
   assert.ok(!index.includes('href="css/ausbildung.css"'));
   assert.ok(page.includes('href="../css/ausbildung.css"'));
   assert.ok(page.includes('src="../js/ausbildung-page.js"'));
-  assert.ok(entry.includes('initLevelPage()'));
+  assert.ok(entry.includes('import "./app.js"'));
   assert.ok(entry.includes('mountAusbildungPage(document.getElementById("ausbildungGuide"))'));
   for(const file of ["ausbildung/","ausbildung/index.html","js/ausbildung-page.js","js/ausbildung.js","js/ausbildung-data.js","css/ausbildung.css"])assert.ok(sw.includes(`toAbsolute("${file}")`));
   assert.equal(new Set(AUSBILDUNG_CHECKLIST.map(([id])=>id)).size,AUSBILDUNG_CHECKLIST.length);

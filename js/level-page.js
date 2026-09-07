@@ -186,6 +186,8 @@ export function initLevelPage() {
   }
 
   function openMainPage(page) {
+    if (page === "option5" || page === "exam-zone") { window.location.href = new URL("../exam-zone/", import.meta.url).href; return; }
+    if (page === "owner") { window.location.href = new URL("../about-rafi/", import.meta.url).href; return; }
     if (page === "ausbildung") {
       window.location.href = new URL("../ausbildung/", import.meta.url).href;
       return;

@@ -1,0 +1,12 @@
+// Merge this scoped match into the bucket's existing rules; do not replace
+// unrelated rules blindly. No broader match may grant public access here.
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /exam-zone/{file=**} {
+      allow read: if request.auth != null
+                  && request.auth.token.email_verified == true;
+      allow write: if false;
+    }
+  }
+}

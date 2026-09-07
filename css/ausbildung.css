@@ -35,12 +35,6 @@
 @media(max-width:900px){.aus-hero{grid-template-columns:1fr}.aus-hero-aside{display:none}.aus-layout{grid-template-columns:1fr}.aus-navigation{position:static;max-height:none;padding:20px;border-bottom:1px solid var(--aus-line)}.aus-navigation ol{display:flex;flex-wrap:wrap;gap:4px}.aus-navigation a{border:1px solid var(--aus-line);padding:8px 11px}.aus-reading{border-left:0}.aus-page{margin:14px 12px 40px}}
 @media(max-width:520px){.aus-page{border-radius:15px}.aus-hero{padding:28px 22px}.aus-intro-note{padding:18px 22px}.aus-glossary{grid-template-columns:1fr}.aus-section{padding:28px 0}.aus-page th,.aus-page td{padding:12px;min-width:120px}.aus-tools button{flex:1}.aus-hero-actions{align-items:stretch;flex-direction:column}.aus-section-heading{gap:9px}.aus-navigation a{min-height:44px;display:flex;align-items:center}}
 /* Ausbildung-only reading layout and controls. */
-.ausbildung-body .header-inner{animation:none;min-width:0}
-.ausbildung-body .logo-area{min-width:0}
-.ausbildung-body .header-controls{flex-shrink:0}
-.ausbildung-body #darkToggle,.ausbildung-body #loginBtn{display:inline-flex;align-items:center;justify-content:center}
-.ausbildung-body .site-title{display:block}
-.ausbildung-body.dark .header .branding,.ausbildung-body.dark-mode .header .branding{color:#93c5fd}
 .aus-table-hint{font-size:.82rem!important;color:var(--aus-muted);margin-bottom:-10px!important}
 .aus-page{width:calc(100% - 48px);margin:20px auto 64px;box-shadow:0 18px 60px #142e630d;font-size:16px}
 .aus-hero{gap:clamp(24px,4vw,48px)}
@@ -91,9 +85,6 @@
 .aus-editorial{font-size:.86rem!important}
 .dark .aus-section-heading>span,.dark-mode .aus-section-heading>span{color:#93c5fd}
 @media(max-width:1000px){
-  .ausbildung-body .header-inner{grid-template-columns:minmax(0,1fr) auto;gap:12px}
-  .ausbildung-body .header .header-controls{grid-column:2;justify-self:end}
-  .ausbildung-body .header .branding{display:none}
 }
 @media(max-width:900px){
   .aus-page{width:calc(100% - 32px);margin:16px auto 40px}
@@ -110,13 +101,6 @@
   .aus-reading{padding:28px}
 }
 @media(max-width:520px){
-  .ausbildung-body .header{padding:12px 0}
-  .ausbildung-body .header-inner{padding:0 16px}
-  .ausbildung-body .logo{width:34px;height:34px;object-fit:contain}
-  .ausbildung-body .logo-area{gap:8px}
-  .ausbildung-body .site-title{font-size:.82rem;line-height:1.4;white-space:normal}
-  .ausbildung-body .header-controls{gap:6px}
-  .ausbildung-body #darkToggle,.ausbildung-body #loginBtn{min-width:44px;min-height:44px;padding:8px;font-size:.8rem}
   .aus-page{width:calc(100% - 24px);border-radius:18px}
   .aus-page-links{margin-top:16px;gap:10px 20px;font-size:.82rem}
   .aus-hero{padding:30px 22px}
@@ -145,7 +129,6 @@
 @media(prefers-reduced-motion:reduce){.ausbildung-body *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 @media print{body.printing-ausbildung{background:#fff!important}body.printing-ausbildung .header,body.printing-ausbildung .footer,body.printing-ausbildung .desktop-side-panel,body.printing-ausbildung .mobile-side-panel,body.printing-ausbildung .skip-link,body.printing-ausbildung .rafi-tutor-widget{display:none!important}.printing-ausbildung .aus-page{--aus-ink:#111;--aus-muted:#333;--aus-line:#ccc;--aus-surface:#fff;--aus-tint:#f4f4f4;border:0;margin:0;max-width:none;overflow:visible;color:#111}.printing-ausbildung .aus-tools,.printing-ausbildung .aus-navigation,.printing-ausbildung .aus-hero-actions,.printing-ausbildung .aus-hero-aside,.printing-ausbildung .aus-top-link{display:none}.printing-ausbildung .aus-layout,.printing-ausbildung .aus-hero{display:block}.printing-ausbildung .aus-hero{padding:20px 0;background:#fff;color:#111}.printing-ausbildung .aus-hero h1 span,.printing-ausbildung .aus-hero p,.printing-ausbildung .aus-eyebrow{color:#111}.printing-ausbildung .aus-reading{border:0;padding:0}.printing-ausbildung .aus-section{break-inside:auto}.printing-ausbildung h2,.printing-ausbildung h3{break-after:avoid}.printing-ausbildung .aus-note,.printing-ausbildung tr{break-inside:avoid}.printing-ausbildung .aus-table-scroll{overflow:visible}.printing-ausbildung a{color:#111!important}.printing-ausbildung .aus-citations a:after,.printing-ausbildung .aus-resources a:after{content:" (" attr(href) ")";font-size:8pt;overflow-wrap:anywhere}}
 
-.ausbildung-body .logo-area{text-decoration:none;color:inherit}
 .aus-page-links{max-width:1240px;margin:24px auto 0;padding:0 12px;display:flex;flex-wrap:wrap;gap:20px;font-size:.9rem}
 .aus-page-links a{color:#1557c0;text-underline-offset:4px}
 .dark .aus-page-links a,.dark-mode .aus-page-links a{color:#93c5fd}
@@ -169,7 +152,6 @@
 .aus-scroll-top[hidden]{display:none}
 .aus-scroll-top>span:first-child{font-size:1.4rem;line-height:1}
 .aus-scroll-top:hover{transform:translateY(-3px);box-shadow:0 9px 28px #142e6355}
-.ausbildung-body .footer{padding-bottom:84px}
 @media(max-width:900px){.aus-page-links{width:calc(100% - 32px)}}
 @media(max-width:600px){
   .aus-page-links .aus-home-link{display:none}
@@ -207,7 +189,7 @@
 .ausbildung-body.dark .aus-language-monogram,.ausbildung-body.dark-mode .aus-language-monogram{background:linear-gradient(145deg,#263d65,#302c59);color:#bfdbfe;border-color:#4c6085;box-shadow:inset 0 1px 0 #ffffff10}
 .ausbildung-body .aus-hero h1{overflow-wrap:anywhere}
 .ausbildung-body .aus-tools button{white-space:normal}
-html[lang=bn] .ausbildung-body{font-family:"Noto Serif Bengali","Nirmala UI",serif}
+html[lang=bn] #ausbildungGuide,html[lang=bn] .aus-page-links,html[lang=bn] .aus-language-bar{font-family:"Noto Serif Bengali","Nirmala UI",serif}
 .ausbildung-body [lang=bn],.aus-language-buttons .aus-language-monogram[lang=bn]{font-family:"Noto Serif Bengali","Nirmala UI",serif}
 html[lang=bn] .aus-page p,html[lang=bn] .aus-page li,html[lang=bn] .aus-page dd,html[lang=bn] .aus-checklist label{font-size:1rem;line-height:1.95}
 html[lang=bn] .aus-page table{font-size:.94rem;line-height:1.9}
@@ -233,3 +215,6 @@ html[lang=bn] .aus-scroll-top{font-family:inherit}
 }
 html:has(.ausbildung-body)::view-transition-old(root),html:has(.ausbildung-body)::view-transition-new(root){animation-duration:180ms;animation-timing-function:ease-out}
 @media print{.aus-language-bar{display:none!important}}
+.aus-scroll-top{bottom:max(20px,env(safe-area-inset-bottom),var(--aus-footer-clearance,0px))}
+@media(max-width:600px){.aus-scroll-top{bottom:max(14px,env(safe-area-inset-bottom),var(--aus-footer-clearance,0px))}}
+.ausbildung-body.rafi-tutor-open .aus-scroll-top,.ausbildung-body:has(.modal-overlay:not(.hidden)) .aus-scroll-top{display:none}

@@ -165,7 +165,7 @@ function setupSwUpdatePrompt(registration) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function initializeAppUI() {
   try {
     await initUI();
     initRafiTutor();
@@ -174,4 +174,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("App init error:", error);
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeAppUI, { once: true });
+} else {
+  initializeAppUI();
+}

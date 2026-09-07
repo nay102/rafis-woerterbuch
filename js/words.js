@@ -8,8 +8,8 @@ export function getAllWords() {
 
 export async function loadWords() {
   const [wordsResponse, irregularResponse] = await Promise.all([
-    fetch(`./js/words.json?v=${CONJUGATION_DATA_VERSION}`),
-    fetch(`./js/irregular_verbs.json?v=${CONJUGATION_DATA_VERSION}`)
+    fetch(new URL(`./words.json?v=${CONJUGATION_DATA_VERSION}`, import.meta.url)),
+    fetch(new URL(`./irregular_verbs.json?v=${CONJUGATION_DATA_VERSION}`, import.meta.url))
   ]);
   const data = await wordsResponse.json();
   let irregularVerbs = [];
