@@ -2,6 +2,8 @@ import {sitePhotos, panelPageContent, CATEGORY_EXPLANATIONS, GERMANY_PAGE_COPY, 
 
 import {DEFAULT_APP_SETTINGS} from "./account-settings.js";
 import {initLearningSync} from "./learning-sync.js";
+import {retainAccountPatch, acknowledgeAccountPatch, pendingAccount, withPendingAccount,
+  retainSubmissionDraft, submissionDraft, clearSubmissionDraft, accountSaveError, validateSubmission} from "./account-data.js";
 import {initAccessibility} from "./accessibility.js";
 import {getStoredSettings, saveStoredSettings} from "./account-settings.js";
 import {escapeHtml, getWordSerial, findExactWordMatches, isLikelyGermanWordQuery, formatMeaningText, shouldShowSynonym, isVerbWord, formatExamples, getEasyExamples, formatEasyExamples, getConjugationStatusText, getSynonymText, normalizeText} from "./dictionary-format.js";
@@ -81,6 +83,7 @@ let detachCategorySearchOutsideClose = null;
 // Signed-in user and already fetched profile data.
 let currentUser = null;
 let authStateResolved = false;
+let accountViewGeneration = 0;
 const ADMIN_EMAIL = "nayeemislam3378@gmail.com";
 const userProfileCache = new Map();
 // Active appearance, accessibility, and synchronization preferences.
@@ -273,11 +276,16 @@ function applyAppSettings(settings, { persist = true } = {}) {
 }
 
 async function persistSettingsIfNeeded() {
-  if (!currentUser || !currentAppSettings?.cloudSync) return;
+  if (!currentUser) return true;
+  const user = currentUser, patch = {appSettings:{...currentAppSettings}};
+  retainAccountPatch(user.uid, patch);
   try {
-    await saveUserAppSettings(currentUser, currentAppSettings);
-  } catch {
-    // Keep local settings active even if cloud sync fails.
+    await saveUserAppSettings(user, patch.appSettings);
+    acknowledgeAccountPatch(user.uid, patch);
+    return currentUser?.uid === user.uid;
+  } catch (error) {
+    if (currentUser?.uid === user.uid) showToast(accountSaveError(error, "Settings"), "error");
+    return false;
   }
 }
 
@@ -288,11 +296,17 @@ function getFavoriteWords() {
 
 async function persistFavoritesIfLoggedIn() {
   saveFavoritesToLocal();
-  if (!currentUser || !currentAppSettings?.cloudSync) return;
+  if (!currentUser) return false;
+  const user = currentUser, patch = {favorites:Array.from(favoriteWordIds)};
+  retainAccountPatch(user.uid, patch);
+  if (!currentAppSettings?.cloudSync) return false;
   try {
-    await saveUserFavorites(currentUser, Array.from(favoriteWordIds));
-  } catch {
-    showToast("Could not sync favorites to cloud.", "error");
+    await saveUserFavorites(user, patch.favorites);
+    acknowledgeAccountPatch(user.uid, patch);
+    return currentUser?.uid === user.uid;
+  } catch (error) {
+    if (currentUser?.uid === user.uid) showToast(accountSaveError(error, "Favorites"), "error");
+    return false;
   }
 }
 
@@ -328,9 +342,9 @@ function addSearchHistoryItem(queryText) {
 
 async function persistLearningStateIfLoggedIn() {
   saveLearningStateToLocal();
-  if (!currentUser || !currentAppSettings?.cloudSync) return;
-  try {
-    await saveUserProfilePatch(currentUser, {
+  if (!currentUser) return false;
+  const user = currentUser;
+  const patch = {
       learnedWords: Array.from(learnedWordIds),
       customLists: {
         myVerbs: Array.from(customListWordIds.myVerbs),
@@ -340,19 +354,62 @@ async function persistLearningStateIfLoggedIn() {
       reviewSchedule,
       progressStats,
       lastContext
-    });
-  } catch {
-    // Silent failure; local state remains.
+    };
+  retainAccountPatch(user.uid, patch);
+  if (!currentAppSettings?.cloudSync) return false;
+  try {
+    await saveUserProfilePatch(user, patch);
+    acknowledgeAccountPatch(user.uid, patch);
+    return currentUser?.uid === user.uid;
+  } catch (error) {
+    if (currentUser?.uid === user.uid) showToast(accountSaveError(error, "Learning data"), "error");
+    return false;
   }
 }
 
 async function persistSingleNoteIfLoggedIn(wordId, text) {
   saveLearningStateToLocal();
-  if (!currentUser || !currentAppSettings?.cloudSync) return;
+  if (!currentUser) return false;
+  const user = currentUser, patch = {notes:{[wordId]:text}};
+  retainAccountPatch(user.uid, patch);
+  if (!currentAppSettings?.cloudSync) { showToast("Note retained on this device; cloud sync is off.", "success"); return false; }
   try {
-    await saveUserWordNote(currentUser, wordId, text);
-  } catch {
-    showToast("Could not save note to cloud.", "error");
+    await saveUserWordNote(user, wordId, text);
+    acknowledgeAccountPatch(user.uid, patch);
+    return currentUser?.uid === user.uid;
+  } catch (error) {
+    if (currentUser?.uid === user.uid) showToast(accountSaveError(error, "Note"), "error");
+    return false;
+  }
+}
+
+async function retryPendingAccount(user, generation = accountViewGeneration) {
+  const active = () => generation === accountViewGeneration && currentUser?.uid === user.uid;
+  if (!active()) return;
+  const pending = JSON.parse(JSON.stringify(pendingAccount(user.uid)));
+  try {
+    if (pending.appSettings) {
+      await saveUserAppSettings(user, pending.appSettings);
+      acknowledgeAccountPatch(user.uid, {appSettings:pending.appSettings});
+    }
+    if (!active() || currentAppSettings?.cloudSync === false) return;
+    if (pending.favorites) {
+      await saveUserFavorites(user, pending.favorites);
+      acknowledgeAccountPatch(user.uid, {favorites:pending.favorites});
+    }
+    if (!active() || currentAppSettings?.cloudSync === false) return;
+    const {appSettings, favorites, notes, ...learning} = pending;
+    if (Object.keys(learning).length) {
+      await saveUserProfilePatch(user, learning);
+      acknowledgeAccountPatch(user.uid, learning);
+    }
+    for (const [id, value] of Object.entries(notes || {})) {
+      if (!active() || currentAppSettings?.cloudSync === false) return;
+      await saveUserWordNote(user, id, value);
+      acknowledgeAccountPatch(user.uid, {notes:{[id]:value}});
+    }
+  } catch (error) {
+    if (active()) showToast(accountSaveError(error, "Pending account changes"), "error");
   }
 }
 
@@ -2914,15 +2971,13 @@ function openWordDetail(wordId, options = {}) {
   saveNoteBtn?.addEventListener("click", async () => {
     const noteText = noteInput?.value || "";
     wordNotesMap[word.id] = noteText;
-    await persistSingleNoteIfLoggedIn(word.id, noteText);
-    showToast("Note saved.", "success");
+    if (await persistSingleNoteIfLoggedIn(word.id, noteText)) showToast("Note saved.", "success");
   });
 
   clearNoteBtn?.addEventListener("click", async () => {
     if (noteInput) noteInput.value = "";
     delete wordNotesMap[word.id];
-    await persistSingleNoteIfLoggedIn(word.id, "");
-    showToast("Note removed.", "success");
+    if (await persistSingleNoteIfLoggedIn(word.id, "")) showToast("Note removed.", "success");
   });
 
   const myVerbsBtn = document.getElementById("toggleMyVerbsBtn");
@@ -2977,16 +3032,18 @@ function openWordDetail(wordId, options = {}) {
 
   const reportWordBtn = document.getElementById("reportWordBtn");
   reportWordBtn?.addEventListener("click", async () => {
+    const user = currentUser;
     const reason = window.prompt(
-      "Report issue for this word (meaning/synonym issue):"
+      "Report issue for this word (meaning/synonym issue):",
+      user ? submissionDraft(user.uid, "report", word.id).reason || "" : ""
     );
     if (!reason || !reason.trim()) return;
+    const payload = {wordId:word.id, word:word.word, reason:reason.trim()};
+    if (user) retainSubmissionDraft(user.uid, "report", payload);
     try {
-      await submitWordReport(currentUser, {
-        wordId: word.id,
-        word: word.word,
-        reason: reason.trim()
-      });
+      await submitWordReport(user, payload);
+      clearSubmissionDraft(user.uid, "report", payload);
+      if (currentUser?.uid !== user.uid) return;
       showToast("Report submitted. Thanks!", "success");
     } catch (error) {
       showToast(error?.message || "Could not submit report.", "error");
@@ -3346,6 +3403,21 @@ function renderSettingsPage() {
   const sendSuggestionBtn = document.getElementById("sendSuggestionBtn");
   const reportInput = document.getElementById("reportInput");
   const sendGenericReportBtn = document.getElementById("sendGenericReportBtn");
+  if (currentUser) {
+    const draftOwner = currentUser.uid;
+    suggestionInput.value = submissionDraft(currentUser.uid, "suggestion").message || "";
+    reportInput.value = submissionDraft(currentUser.uid, "report").reason || "";
+    // Validate without maxlength: pasted/legacy content must never be clipped.
+    for (const [input, kind] of [[suggestionInput,"suggestion"], [reportInput,"report"]]) {
+      input?.addEventListener("input", () => {
+        if (currentUser?.uid !== draftOwner) return;
+        const payload = kind === "report" ? {word:"general",wordId:"general",reason:input.value} : {word:"General",message:input.value};
+        retainSubmissionDraft(draftOwner, kind, payload);
+        try { validateSubmission(kind, payload); input.setCustomValidity(""); }
+        catch (error) { input.setCustomValidity(error.message); }
+      });
+    }
+  }
 
   saveBtn?.addEventListener("click", async () => {
     const next = {
@@ -3356,16 +3428,15 @@ function renderSettingsPage() {
       cloudSync: currentUser ? Boolean(cloudToggle?.checked) : false
     };
     applyAppSettings(next, { persist: true });
-    await persistSettingsIfNeeded();
-    showToast("Settings saved successfully ✨", "success");
+    if (await persistSettingsIfNeeded()) showToast("Settings saved successfully ✨", "success");
   });
 
   resetBtn?.addEventListener("click", async () => {
     const next = { ...DEFAULT_APP_SETTINGS, cloudSync: Boolean(currentUser) };
     applyAppSettings(next, { persist: true });
-    await persistSettingsIfNeeded();
+    const saved = await persistSettingsIfNeeded();
     renderSettingsPage();
-    showToast("Settings reset to default.", "success");
+    if (saved) showToast("Settings reset to default.", "success");
   });
 
   openFavoritesBtn?.addEventListener("click", () => {
@@ -3488,14 +3559,19 @@ function renderSettingsPage() {
   });
 
   sendSuggestionBtn?.addEventListener("click", async () => {
+    const user = currentUser;
     const text = suggestionInput?.value.trim() || "";
     if (!text) {
       showToast("Write a suggestion first.", "error");
       return;
     }
     try {
-      await submitWordSuggestion(currentUser, { word: "General", message: text });
-      suggestionInput.value = "";
+      const payload = {word:"General",message:text};
+      retainSubmissionDraft(user.uid, "suggestion", payload);
+      await submitWordSuggestion(user, payload);
+      clearSubmissionDraft(user.uid, "suggestion", payload);
+      if (currentUser?.uid !== user.uid) return;
+      if (suggestionInput.value.trim() === text) suggestionInput.value = "";
       showToast("Suggestion sent. Thank you!", "success");
     } catch (error) {
       showToast(error?.message || "Could not send suggestion.", "error");
@@ -3503,18 +3579,23 @@ function renderSettingsPage() {
   });
 
   sendGenericReportBtn?.addEventListener("click", async () => {
+    const user = currentUser;
     const text = reportInput?.value.trim() || "";
     if (!text) {
       showToast("Write a report first.", "error");
       return;
     }
     try {
-      await submitWordReport(currentUser, {
+      const payload = {
         wordId: "general",
         word: "general",
         reason: text
-      });
-      reportInput.value = "";
+      };
+      retainSubmissionDraft(user.uid, "report", payload);
+      await submitWordReport(user, payload);
+      clearSubmissionDraft(user.uid, "report", payload);
+      if (currentUser?.uid !== user.uid) return;
+      if (reportInput.value.trim() === text) reportInput.value = "";
       showToast("Report submitted. Thank you!", "success");
     } catch (error) {
       showToast(error?.message || "Could not submit report.", "error");
@@ -3531,14 +3612,16 @@ function formatTimestamp(value) {
 }
 
 async function openUserInfoPanel(user) {
+  const generation = accountViewGeneration;
   const modal = document.getElementById("userInfoModal");
   const content = document.getElementById("userInfoContent");
-  if (!modal || !content || !user) return;
+  if (!modal || !content || !user || currentUser?.uid !== user.uid) return;
 
   // Show modal immediately for responsive UX, then hydrate profile details.
   modal.classList.remove("hidden");
 
   const renderProfileContent = (profileData) => {
+    if (generation !== accountViewGeneration || currentUser?.uid !== user.uid) return;
     const displayName =
       profileData?.displayName || (user.email ? user.email.split("@")[0] : "User");
 
@@ -3657,10 +3740,11 @@ async function openUserInfoPanel(user) {
       // Non-blocking analytics update.
     });
     const profile = await getUserProfile(user);
+    if (generation !== accountViewGeneration || currentUser?.uid !== user.uid) return;
     userProfileCache.set(user.uid, profile || null);
     renderProfileContent(profile || null);
-  } catch {
-    // Keep currently rendered content if profile fetch fails.
+  } catch (error) {
+    if (generation === accountViewGeneration && currentUser?.uid === user.uid) showToast(accountSaveError(error, "Profile"), "error");
   }
 }
 
@@ -3900,6 +3984,19 @@ function handleAuthState() {
   syncAdminAccessUI();
 
   listenAuth(async (user) => {
+    const generation = ++accountViewGeneration;
+    if (currentUser?.uid !== user?.uid) {
+      const hadAccount = Boolean(currentUser);
+      favoriteWordIds.clear();
+      hydrateAccountLearningState({});
+      userProfileCache.clear();
+      const modal = document.getElementById("userInfoModal");
+      modal?.classList.add("hidden");
+      document.getElementById("userInfoContent")?.replaceChildren();
+      // Clear the previous account's private view before another profile loads.
+      // Routing as a guest keeps old account controls disabled during that wait.
+      if (hadAccount) { currentUser = null; handleRouting(); }
+    }
     currentUser = user || null;
     authStateResolved = true;
     syncAdminAccessUI();
@@ -3919,15 +4016,13 @@ function handleAuthState() {
       // Fast local hydrate so favorites/notes/lists work instantly after refresh.
       hydrateFavoritesFromLocal(user);
       hydrateLearningStateFromLocal(user);
-      const preCloudSignature = buildAccountDataSignature();
       const params = new URLSearchParams(window.location.search);
-      if (params.get("word") || params.get("category") || params.get("page")) {
-        handleRouting();
-      }
 
       try {
         await ensureUserProfile(user);
-        const profile = await getUserProfile(user);
+        const cloudProfile = await getUserProfile(user);
+        if (generation !== accountViewGeneration || currentUser?.uid !== user.uid) return;
+        const profile = withPendingAccount(user.uid, cloudProfile || {});
         touchUserLastLogin(user).catch(() => {
           // Non-blocking analytics update.
         });
@@ -3945,10 +4040,9 @@ function handleAuthState() {
           const mergedProfileSettings = {
             ...DEFAULT_APP_SETTINGS,
             ...profile.appSettings,
-            cloudSync: true
+            cloudSync: profile.appSettings.cloudSync !== false
           };
           applyAppSettings(mergedProfileSettings, { persist: true });
-          persistSettingsIfNeeded();
         } else {
           // New/legacy profile without saved settings: keep cloud sync enabled for logged-in users.
           const nextSettings = {
@@ -3956,20 +4050,19 @@ function handleAuthState() {
             cloudSync: true
           };
           applyAppSettings(nextSettings, { persist: true });
-          persistSettingsIfNeeded();
         }
-        const postCloudSignature = buildAccountDataSignature();
         const routeNeedsAccountRefresh =
           params.get("page") === "settings" ||
           params.get("page") === "favorites" ||
           Boolean(params.get("word")) ||
           Boolean(params.get("conjugation"));
         // Rebuild only when cloud data differs from local fallback for smoother UX.
-        if (routeNeedsAccountRefresh && postCloudSignature !== preCloudSignature) {
+        if (routeNeedsAccountRefresh || params.get("category")) {
           handleRouting();
         }
-      } catch {
-        // Keep auth flow working even if profile storage fails.
+        await retryPendingAccount(user, generation);
+      } catch (error) {
+        if (generation === accountViewGeneration && currentUser?.uid === user.uid) showToast(accountSaveError(error, "Profile initialization"), "error");
       }
     } else {
       localStorage.removeItem(AUTH_CACHE_EMAIL_KEY);
@@ -3994,12 +4087,18 @@ function handleAuthState() {
       const signedOutPage = new URLSearchParams(window.location.search).get("page");
       if (signedOutPage === "quality") {
         goHomeWithoutRefresh();
-      } else if (["conjugation-practice", "category-practice", "review"].includes(signedOutPage)) {
+      } else if (["settings", "favorites", "conjugation-practice", "category-practice", "review"].includes(signedOutPage)
+        || new URLSearchParams(location.search).has("word")) {
         handleRouting();
       }
     }
   });
 }
+
+window.addEventListener("online", () => { if (currentUser) retryPendingAccount(currentUser); });
+window.addEventListener("account-storage-unavailable", () => {
+  showToast("Browser storage is unavailable or full. Unsynchronized changes are held only on this page; keep it open and free storage before leaving.", "error");
+});
 
 /* =========================================================
    DARK MODE

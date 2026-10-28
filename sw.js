@@ -2,7 +2,7 @@
    Service Worker - PWA cache + SPA fallback
 ========================================================= */
 
-const CACHE_VERSION = "rw-cache-v156-page-content-cleanup";
+const CACHE_VERSION = "rw-cache-v157-account-readiness";
 const DATA_VERSION = "2026-09-05-1-conjugation-2026-08-02-1";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 
@@ -84,6 +84,7 @@ function coreUrls() {
     toAbsolute("js/daily-plan.js"),
     toAbsolute("js/accessibility.js"),
     toAbsolute("js/account-settings.js"),
+    toAbsolute("js/account-data.js"),
     toAbsolute("js/dictionary-format.js"),
     toAbsolute("js/ui-routing.js"),
     toAbsolute("js/site-content.js"),

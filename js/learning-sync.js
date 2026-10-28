@@ -1,24 +1,28 @@
-import {listenAuth, getUserProfile, syncUserLearningProgress} from "./auth-client.js";
+import {listenAuth, ensureUserProfile, getUserProfile, syncUserLearningProgress} from "./auth-client.js";
+import {accountSaveError, validateProgress} from "./account-data.js";
 import {learningOwner, selectLearningOwner, progressRecords, applyProgressRecords, mergeProgressRecords} from "./learning-storage.js";
 
 let user = null, enabled = false, running = null, timer, started = false;
+let authGeneration = 0;
 export let learningSyncStatus = "Progress is saved on this device. Sign in to sync across devices.";
 function status(message) { learningSyncStatus = message; window.dispatchEvent(new Event("learning-sync-status")); }
 export function syncLearningProgress({pull = false} = {}) {
-  if (running) return running.then(() => pull ? syncLearningProgress({pull:true}) : undefined);
+  const generation = authGeneration;
+  if (running) return running.then(() => generation === authGeneration && user && enabled ? syncLearningProgress({pull}) : undefined);
   if (!user || !enabled || user.uid !== learningOwner()) return Promise.resolve();
   const account = user;
   status("Syncing learning progress…");
   running = (async () => {
     try {
       const sent = progressRecords(account.uid);
+      validateProgress(sent);
       const merged = await syncUserLearningProgress(account, sent);
-      if (user?.uid !== account.uid || !enabled) return;
+      if (generation !== authGeneration || user?.uid !== account.uid || !enabled) return;
       // Never replace an exercise's in-memory state in the middle of a session.
       if (pull) applyProgressRecords(mergeProgressRecords(progressRecords(account.uid), merged), account.uid);
       status("Learning progress synced. Open My A1 Progress on another device to restore it.");
-    } catch {
-      status("Saved on this device. Cloud sync could not finish; reconnect and choose Sync now.");
+    } catch (error) {
+      if (generation === authGeneration && user?.uid === account.uid) status(accountSaveError(error, "Learning progress"));
     } finally { running = null; }
   })();
   return running;
@@ -35,6 +39,9 @@ export function initLearningSync() {
   started = true;
   listenAuth(async (next, context) => {
     if (context?.unavailable) { status("Saved on this device. Connect to the internet to sync your account."); return; }
+    const generation = ++authGeneration;
+    enabled = false;
+    clearTimeout(timer);
     user = next;
     const owner = next?.uid || "guest";
     if (owner !== learningOwner()) {
@@ -46,12 +53,14 @@ export function initLearningSync() {
     enabled = false;
     if (!next) { status("Progress is saved on this device. Sign in to sync across devices."); return; }
     try {
+      await ensureUserProfile(next);
+      if (generation !== authGeneration || user?.uid !== next.uid) return;
       const profile = await getUserProfile(next);
-      if (user?.uid !== next.uid) return;
+      if (generation !== authGeneration || user?.uid !== next.uid) return;
       enabled = profile?.appSettings?.cloudSync !== false;
       if (!enabled) { status("Cloud sync is turned off in your account settings."); return; }
       await syncLearningProgress({pull: Boolean(document.getElementById("progressDashboard"))});
-    } catch { status("Saved on this device. Account sync is unavailable right now."); }
+    } catch (error) { if (generation === authGeneration) status(accountSaveError(error, "Account initialization")); }
   });
   window.addEventListener("learning-progress-changed", () => { clearTimeout(timer); timer = setTimeout(() => syncLearningProgress(), 500); });
   window.addEventListener("app-settings-changed", event => {

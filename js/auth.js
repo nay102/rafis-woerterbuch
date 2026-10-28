@@ -1,5 +1,6 @@
 import { auth, db } from "./firebase.js";
 import {mergeProgressRecords} from "./learning-storage.js";
+import {validateSubmission, validateProgress, validateProfilePatch} from "./account-data.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -23,6 +24,29 @@ import {
   serverTimestamp,
   deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+let profileGeneration = 0;
+let profileUid = auth.currentUser?.uid || null;
+const profileInitializations = new Map();
+function invalidateProfiles() { profileGeneration++; profileInitializations.clear(); }
+onAuthStateChanged(auth, user => {
+  const uid = user?.uid || null;
+  if (uid !== (auth.currentUser?.uid || null)) return;
+  if (uid !== profileUid) { profileUid = uid; invalidateProfiles(); }
+});
+function assertProfileSession(user, generation = profileGeneration) {
+  if (!user?.uid || auth.currentUser?.uid !== user.uid || generation !== profileGeneration) {
+    throw authError("account/session-changed", "The account changed before saving. Reopen the original account and retry.");
+  }
+  if (!user.emailVerified) throw authError("auth/email-not-verified", "Verify your email and sign in again before saving account data.");
+}
+async function profileReady(user) {
+  const generation = profileGeneration;
+  assertProfileSession(user, generation);
+  await ensureUserProfile(user);
+  assertProfileSession(user, generation);
+  return () => assertProfileSession(user, generation);
+}
 
 function getCountryFromLocale() {
   try {
@@ -124,7 +148,7 @@ export async function login(email, password) {
           : "Please verify your email first. Check your inbox or spam folder, then try again."
       );
     }
-    // Authentication success must not depend on an analytics/profile write.
+    // The helper gates the metadata write on the same shared cleanup promise.
     touchUserLastLogin(credential.user).catch(() => {});
     return credential;
   } catch (error) {
@@ -134,44 +158,55 @@ export async function login(email, password) {
 
 /* ================= LOGOUT ================= */
 export function logout() {
+  invalidateProfiles();
   return signOut(auth);
 }
 
 /* ================= USER PROFILE HELPERS ================= */
-export async function ensureUserProfile(user, profileExtras = {}) {
+export function ensureUserProfile(user, profileExtras = {}) {
   if (!user?.uid) return;
+  assertProfileSession(user);
+  if (profileInitializations.has(user.uid)) return profileInitializations.get(user.uid);
+  const generation = profileGeneration;
+  const promise = initializeProfile(user, profileExtras, generation).catch(error => {
+    if (profileInitializations.get(user.uid) === promise) profileInitializations.delete(user.uid);
+    throw error;
+  });
+  profileInitializations.set(user.uid, promise);
+  return promise;
+}
 
+async function initializeProfile(user, profileExtras, generation) {
   const profileRef = doc(db, "users", user.uid);
   const snap = await getDoc(profileRef);
-
-  if (snap.exists()) {
-    const data = snap.data() || {};
+  assertProfileSession(user, generation);
+  const initial = snap.exists() ? snap.data() : {};
+  const country = initial.country || profileExtras.country || (await resolveUserCountry());
+  assertProfileSession(user, generation);
+  // Re-read inside a transaction: another tab/activity may have created the
+  // document while locale resolution was pending. Never replace its data.
+  await runTransaction(db, async transaction => {
+    const latest = await transaction.get(profileRef);
+    assertProfileSession(user, generation);
+    const data = latest.exists() ? latest.data() : {};
     const patch = {};
     if (Object.prototype.hasOwnProperty.call(data, "plainPassword")) {
       patch.plainPassword = deleteField();
     }
-    if (!data.country) {
-      patch.country = profileExtras.country || (await resolveUserCountry());
-    }
-    if (Object.keys(patch).length > 0) {
-      await setDoc(profileRef, patch, { merge: true });
-    }
-    return;
-  }
-
-  const displayName = (user.email || "User").split("@")[0];
-  await setDoc(profileRef, {
-    uid: user.uid,
-    email: user.email || "",
-    displayName,
-    country: profileExtras.country || (await resolveUserCountry()),
-    createdAt: serverTimestamp(),
-    lastLoginAt: serverTimestamp()
+    if (!data.country) patch.country = country;
+    if (!("uid" in data)) patch.uid = user.uid;
+    if (!("email" in data)) patch.email = user.email || "";
+    if (!("displayName" in data)) patch.displayName = (user.email || "User").split("@")[0];
+    if (!("createdAt" in data)) patch.createdAt = serverTimestamp();
+    if (!latest.exists()) patch.lastLoginAt = serverTimestamp();
+    if (Object.keys(patch).length) transaction.set(profileRef, patch, {merge:true});
   });
+  assertProfileSession(user, generation);
 }
 
 export async function touchUserLastLogin(user) {
   if (!user?.uid) return;
+  await profileReady(user);
 
   const profileRef = doc(db, "users", user.uid);
   await setDoc(
@@ -187,14 +222,18 @@ export async function touchUserLastLogin(user) {
 
 export async function getUserProfile(user) {
   if (!user?.uid) return null;
+  const check = await profileReady(user);
 
   const profileRef = doc(db, "users", user.uid);
   const snap = await getDoc(profileRef);
+  check();
   return snap.exists() ? snap.data() : null;
 }
 
 export async function saveUserAppSettings(user, appSettings) {
   if (!user?.uid || !appSettings) return;
+  validateProfilePatch({appSettings});
+  await profileReady(user);
   await setDoc(
     doc(db, "users", user.uid),
     {
@@ -206,6 +245,8 @@ export async function saveUserAppSettings(user, appSettings) {
 
 export async function saveUserFavorites(user, favorites) {
   if (!user?.uid) return;
+  validateProfilePatch({favorites});
+  await profileReady(user);
   await setDoc(
     doc(db, "users", user.uid),
     {
@@ -217,15 +258,22 @@ export async function saveUserFavorites(user, favorites) {
 
 export async function saveUserProfilePatch(user, patch) {
   if (!user?.uid || !patch || typeof patch !== "object") return;
+  validateProfilePatch(patch);
+  await profileReady(user);
   await setDoc(doc(db, "users", user.uid), patch, { merge: true });
 }
 
 export async function syncUserLearningProgress(user, records) {
   if (!user?.uid) throw new Error("Sign in to sync learning progress.");
+  validateProgress(records);
+  const check = await profileReady(user);
   const reference = doc(db, "users", user.uid);
   return runTransaction(db, async transaction => {
     const snapshot = await transaction.get(reference);
+    check();
+    validateProgress(snapshot.data()?.learningProgressV2 || {});
     const merged = mergeProgressRecords(records, snapshot.data()?.learningProgressV2 || {});
+    validateProgress(merged);
     transaction.set(reference, {learningProgressV2: merged}, {mergeFields: ["learningProgressV2"]});
     return merged;
   });
@@ -233,6 +281,7 @@ export async function syncUserLearningProgress(user, records) {
 
 export async function saveUserWordNote(user, wordId, noteText) {
   if (!user?.uid || !wordId) return;
+  await profileReady(user);
   if (!noteText || !String(noteText).trim()) {
     await setDoc(
       doc(db, "users", user.uid),
@@ -255,6 +304,8 @@ export async function saveUserWordNote(user, wordId, noteText) {
 
 export async function submitWordSuggestion(user, payload) {
   if (!user?.uid) throw new Error("Login required.");
+  validateSubmission("suggestion", payload);
+  await profileReady(user);
   if (!payload?.word || !payload?.message) {
     throw new Error("Word and suggestion text are required.");
   }
@@ -269,6 +320,8 @@ export async function submitWordSuggestion(user, payload) {
 
 export async function submitWordReport(user, payload) {
   if (!user?.uid) throw new Error("Login required.");
+  validateSubmission("report", payload);
+  await profileReady(user);
   if (!payload?.wordId || !payload?.word || !payload?.reason) {
     throw new Error("Report reason is required.");
   }
@@ -329,10 +382,13 @@ export async function changePasswordWithConfirmation(
   if (newPassword.length < 6) {
     throw new Error("New password must be at least 6 characters.");
   }
+  const check = await profileReady(user);
 
   const credential = EmailAuthProvider.credential(user.email, currentPassword);
   await reauthenticateWithCredential(user, credential);
+  check();
   await updatePassword(user, newPassword);
+  check();
 
   await setDoc(
     doc(db, "users", user.uid),
@@ -346,13 +402,17 @@ export async function changePasswordWithConfirmation(
 export async function deleteAccountWithPassword(user, password) {
   if (!user?.email) throw new Error("No active user found.");
   if (!password) throw new Error("Password is required for account deletion.");
+  const check = await profileReady(user);
 
   const credential = EmailAuthProvider.credential(user.email, password);
   await reauthenticateWithCredential(user, credential);
+  check();
 
   const uid = user.uid;
   await deleteDoc(doc(db, "users", uid));
+  check();
   await deleteUser(user);
+  invalidateProfiles();
 }
 
 /* ================= AUTH STATE LISTENER ================= */
